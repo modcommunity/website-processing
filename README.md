@@ -34,7 +34,12 @@ Here are supported environmental variables you can set typically in the `.env` f
 | `PUBLIC_FAV_ICON` | /favicon.ico | The website's icon to use with meta data. |
 | `PUBLIC_SOCIAL_MEDIA_IMAGE` | /icon-wrench02-200x201.png | The  image to use with social media meta data. |
 | `PUBLIC_URL` | https://moddingcommunity.com | The URL to use with meta data. |
-| `PUBLIC_DESCRIPTION` | ... | The description to use with social media and general meta data. | 
+| `PUBLIC_DESCRIPTION` | ... | The description to use with social media and general meta data. |
+
+## Contributions
+Users are welcomed to create PRs if they see any improvements that can be made!
+
+Users who help will be listed under credits below.
 
 ## Credits
 * [Christian Deacon](https://github.com/gamemann)
