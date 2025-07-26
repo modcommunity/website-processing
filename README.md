@@ -18,7 +18,7 @@ npm install
 # Run Astro's dev server available on port 4321 by default.
 # NOTE - You can pass `-- --host <address>` to listen on specific IP addresses (or all with 0.0.0.0).
 # EX: npm astro dev -- --host 0.0.0.0
-npx astro dev
+npm run dev
 ```
 
 If you want to run this application in production, I recommend looking into [Docker](https://docs.astro.build/en/recipes/docker/).
