@@ -1,0 +1,47 @@
+---
+import "../styles/global.css"
+
+import ObserverProvider from '../components/Observer';
+
+const GA = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<title>The Modding Community (In Development!)</title>
+		<meta name="description" content="An upcoming inclusive modding community and game developer that currently offers a forum and, in the future, will provide a mod workshop, server browser, and more!" />
+
+		{GA && (
+            <>
+                <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA}`}></script>
+                <script define:vars={{ GA }}>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', GA);
+                </script>
+            </>
+        )}
+	</head>
+	<body>
+		<ObserverProvider client:load>
+			<div class="w-full h-full bg-black">
+				<slot />
+			</div>
+		</ObserverProvider>
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+	}
+</style>

@@ -1,0 +1,30 @@
+---
+import Discord from "./landing/Discord.astro"
+import Forum from "./landing/Forum.astro"
+
+import DevText from "./landing/DevText"
+---
+
+<section class="container mx-auto">
+	<div class="flex justify-center items-center px-2">
+		<div class="mt-30 flex flex-col gap-15">
+			<div class="flex flex-col gap-2">
+				<div class="flex justify-center">
+					<h1 class="text-white text-4xl font-bold intersect-once intersect:motion-preset-expand">The Modding Community</h1>
+				</div>
+				<div class="flex justify-center">
+					<h2 class="text-white text-sm motion-preset-focus">An upcoming inclusive <span class="font-bold">modding community</span> and <span class="font-bold">game developer</span> that currently offers a <span class="font-bold">forum</span> and, in the future, will provide a <span class="font-bold">mod workshop</span>, <span class="font-bold">server browser</span>, and more!</h2>
+				</div>
+			</div>
+			<div class="flex justify-center">
+				<div class="flex gap-25 justify-between">
+					<Forum />
+					<Discord />
+				</div>
+			</div>
+			<div class="flex justify-center">
+				<DevText client:load />
+			</div>
+		</div>
+	</div>
+</section>

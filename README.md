@@ -1,0 +1,1 @@
+A temporary landing page for The Modding Community utilizing Astro!
