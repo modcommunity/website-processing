@@ -9,7 +9,7 @@ const GA = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
 const title = import.meta.env.PUBLIC_TITLE ?? "The Modding Community"
 const titleMain = import.meta.env.PUBLIC_TITLE_MAIN ?? "The Modding Community (In Development!)"
 const favIcon = import.meta.env.PUBLIC_FAV_ICON ?? "/favicon.ico"
-const socialMediaImg = import.meta.env.PUBLIC_SOCIAL_MEDIA_IMAGE ?? "/images/icon-wrench02-120x122.png"
+const socialMediaImg = import.meta.env.PUBLIC_SOCIAL_MEDIA_IMAGE ?? "/images/icon.png"
 const url = import.meta.env.PUBLIC_URL ?? "https://moddingcommunity.com"
 const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "An upcoming inclusive modding community and game developer that currently offers a forum and, in the future, will provide a mod workshop, server browser, and more!"
 ---
@@ -53,7 +53,7 @@ const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "An upcoming inclusive moddin
 	</head>
 	<body>
 		<ObserverProvider client:load>
-			<div class="w-full h-full bg-black">
+			<div class="w-full h-full bg-[#0c0c0c]">
 				<slot />
 			</div>
 		</ObserverProvider>
