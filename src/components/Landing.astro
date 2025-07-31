@@ -1,6 +1,7 @@
 ---
-import Discord from "./landing/Discord.astro"
+import Blog from "./landing/Blog.astro"
 import Forum from "./landing/Forum.astro"
+import Discord from "./landing/Discord.astro"
 
 import DevText from "./landing/DevText"
 ---
@@ -29,7 +30,8 @@ import DevText from "./landing/DevText"
 				</div>
 			</div>
 			<div class="flex justify-center">
-				<div class="flex gap-5 sm:gap-25 justify-between">
+				<div class="flex flex-wrap sm:flex-nowrap gap-5 sm:gap-25 justify-center sm:justify-between">
+					<Blog />
 					<Forum />
 					<Discord />
 				</div>
