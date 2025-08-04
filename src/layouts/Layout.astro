@@ -26,9 +26,12 @@ const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive mo
 		<meta name="description" content={desc} />
 
 		<!-- Open Graph -->
+		<meta property="og:site_name" content={title}>
 		<meta property="og:title" content={title}>
 		<meta property="og:description" content={desc}>
-		<meta property="og:image" content={socialMediaImg}>
+		<meta property="og:image" content={url + socialMediaImg}>
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="675">
 		<meta property="og:url" content={url}>
 		<meta property="og:type" content="website">
 
@@ -36,8 +39,9 @@ const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive mo
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:title" content={title}>
 		<meta name="twitter:description" content={desc}>
-		<meta name="twitter:image" content={socialMediaImg}>
+		<meta name="twitter:image" content={url + socialMediaImg}>
 		<meta name="twitter:url" content={url}>
+		<meta name="twitter:site" content="@modcommunity_">
 
 		{GA && (
             <>
