@@ -1,3 +1,62 @@
 @import "tailwindcss";
 @import "tailwindcss-intersect";
 @plugin "tailwindcss-motion";
+
+@theme {
+    --color-header: #080b12;
+    --color-body: #040509;
+    --color-footer: #080b12;
+
+    --breakpoint-xs: 30rem;
+    --breakpoint-3xl: 125rem;
+
+    --color-menu-1: #06070b;
+
+    --color-text-default: #D4D4D4;
+    --color-text-primary: #FFFFFF;
+
+    --color-special-1: #A6AAC9;
+    --color-special-2: #9A9EC1;
+    --color-special-3: #CF542B;
+
+    --color-border-primary: #363B59;
+    --color-border-secondary: #282c42;
+    --color-border-selected: #c66bd5;
+
+    --color-item: #0b0f18;
+    --color-item-primary: #3A4F7E;
+    --color-item-secondary: #334770;
+    --color-item-hover: #131A2A;
+
+    --color-btn-primary: #10151f;
+    --color-btn-primary-hover: #181f2f;
+    --color-btn-primary-ring: #868FC1;
+    --color-btn-primary-ring-hover: #939BC8;
+
+    --color-btn-secondary: #10151f;
+    --color-btn-secondary-hover: #1c1f28;
+    --color-btn-secondary-ring: #868FC1;
+    --color-btn-secondary-ring-hover: #939BC8;
+
+    --color-btn-warning: #000000;
+    --color-btn-warning-hover: #000000;
+    --color-btn-warning-ring: #000000;
+    --color-btn-warning-ring-hover: #000000;
+
+    --color-btn-danger: #C20000;
+    --color-btn-danger-hover: #FF0000;
+    --color-btn-danger-ring: #000000;
+    --color-btn-danger-ring-hover: #000000;
+}
+
+@layer base {
+    body {
+        @apply text-gray-100;
+    }
+}
+
+@layer utilities {
+    .nav-active {
+        @apply text-white font-bold;
+    }
+}

@@ -2,16 +2,17 @@
 import "../styles/global.css"
 
 import ObserverProvider from '../components/Observer';
+import Header from "../components/Header";
 
 const GA = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
 
 // Website meta settings.
 const title = import.meta.env.PUBLIC_TITLE ?? "The Modding Community"
-const titleMain = import.meta.env.PUBLIC_TITLE_MAIN ?? "The Modding Community (In Development!)"
+const titleMain = import.meta.env.PUBLIC_TITLE_MAIN ?? "The Modding Community"
 const favIcon = import.meta.env.PUBLIC_FAV_ICON ?? "/favicon.ico"
 const socialMediaImg = import.meta.env.PUBLIC_SOCIAL_MEDIA_IMAGE ?? "/images/banner-filled.png"
 const url = import.meta.env.PUBLIC_URL ?? "https://moddingcommunity.com"
-const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive modding and game development community. We currently offer a blog and forum, with plans to launch a mod workshop, server browser, and more in the future!"
+const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive modding and game development community. We currently offer a server browser, blog and forum, with plans to launch a mod workshop and more in the future!"
 ---
 
 <!doctype html>
@@ -57,7 +58,8 @@ const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive mo
 	</head>
 	<body>
 		<ObserverProvider client:load>
-			<div class="w-full h-full bg-[#0c0c0c]">
+			<div class="w-full h-full bg-body">
+				<Header client:load />
 				<slot />
 			</div>
 		</ObserverProvider>
