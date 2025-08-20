@@ -6,41 +6,43 @@ import Discord from "./landing/Discord.astro"
 import DevText from "./landing/DevText"
 ---
 
-<section class="container mx-auto">
-	<div class="flex justify-center items-center px-2">
-		<div class="mt-10 flex flex-col gap-15">
-			<div class="flex flex-col gap-6">
-				{/* Here for SEO reasons. */}
-				<h1 class="sr-only">The Modding Community</h1>
+<div class="bg-body min-h-screen">
+	<section class="container mx-auto">
+		<div class="flex justify-center items-center px-2">
+			<div class="mt-10 flex flex-col gap-15">
+				<div class="flex flex-col gap-6">
+					{/* Here for SEO reasons. */}
+					<h1 class="sr-only">The Modding Community</h1>
 
+					<div class="flex justify-center">
+						<a href="/">
+							<img
+								src="/images/banner.png"
+								alt="TMC Banner"
+								class="intersect-once intersect:motion-preset-blur-down w-60 h-20"
+							/>
+						</a>
+					</div>
+					{/*
+					<div class="flex justify-center">
+						<h1 class="text-white text-4xl font-bold intersect-once intersect:motion-preset-expand">The Modding Community</h1>
+					</div>
+					*/}
+					<div class="flex justify-center">
+						<h2 class="font-normal text-white text-sm motion-preset-focus">A welcoming and inclusive <span class="font-bold">modding</span> and <span class="font-bold">game development</span> community. We currently offer a <span class="font-bold">server browser</span>, <span class="font-bold">blog</span>, and <span class="font-bold">forum</span>, with plans to launch a <span class="font-bold">mod workshop</span> and more in the future!</h2>
+					</div>
+				</div>
 				<div class="flex justify-center">
-					<a href="/">
-						<img
-							src="/images/banner.png"
-							alt="TMC Banner"
-							class="intersect-once intersect:motion-preset-blur-down w-60 h-20"
-						/>
-					</a>
+					<div class="flex flex-wrap gap-5 md:gap-25 justify-center sm:justify-between">
+						<Blog />
+						<Forum />
+						<Discord />
+					</div>
 				</div>
-				{/*
 				<div class="flex justify-center">
-					<h1 class="text-white text-4xl font-bold intersect-once intersect:motion-preset-expand">The Modding Community</h1>
+					<DevText client:load />
 				</div>
-				*/}
-				<div class="flex justify-center">
-					<h2 class="text-white text-sm motion-preset-focus">A welcoming and inclusive <span class="font-bold">modding</span> and <span class="font-bold">game development</span> community. We currently offer a <span class="font-bold">server browser</span>, <span class="font-bold">blog</span>, and <span class="font-bold">forum</span>, with plans to launch a <span class="font-bold">mod workshop</span> and more in the future!</h2>
-				</div>
-			</div>
-			<div class="flex justify-center">
-				<div class="flex flex-wrap gap-5 md:gap-25 justify-center sm:justify-between">
-					<Blog />
-					<Forum />
-					<Discord />
-				</div>
-			</div>
-			<div class="flex justify-center">
-				<DevText client:load />
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
+</div>

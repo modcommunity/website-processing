@@ -6,10 +6,10 @@ import HeaderMobile from "./header/Mobile";
 export default function Header() {
     return (
         <>
-            <div className="hidden sm:block">
+            <div className="sticky top-0 z-20 hidden sm:block">
                 <HeaderDesktop />
             </div>
-            <div className="sm:hidden block">
+            <div className="sticky top-0 z-20 sm:hidden block">
                 <HeaderMobile />
             </div>
         </>

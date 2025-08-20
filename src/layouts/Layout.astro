@@ -3,6 +3,7 @@ import "../styles/global.css"
 
 import ObserverProvider from '../components/Observer';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 const GA = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
 
@@ -58,10 +59,9 @@ const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive mo
 	</head>
 	<body>
 		<ObserverProvider client:load>
-			<div class="w-full h-full bg-body">
-				<Header client:load />
-				<slot />
-			</div>
+			<Header client:load />
+			<slot />
+			<Footer client:load />
 		</ObserverProvider>
 	</body>
 </html>
