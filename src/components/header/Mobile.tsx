@@ -32,7 +32,12 @@ export default function HeaderMobile() {
 
     return (
         <>
-            <header className="sticky top-0 w-full bg-header px-4 h-16">
+            <header
+                className="sticky top-0 w-full bg-header px-4 h-16"
+                style={{
+                    borderBottom: "1px solid var(--color-border-primary)"
+                }}
+            >
                 <div className="h-full">
                     <div className="flex justify-between items-center h-full">
                         <div>

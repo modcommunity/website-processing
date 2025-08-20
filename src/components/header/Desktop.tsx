@@ -10,7 +10,12 @@ import IconAndText from "../helper/IconAndText";
 
 export default function HeaderDesktop() {
     return (
-        <header className={`w-full bg-header px-4 py-4 h-16`}>
+        <header
+            className={`w-full bg-header px-4 py-4 h-16`}
+            style={{
+                borderBottom: "1px solid var(--color-border-primary)"
+            }}
+        >
             <div className="container mx-auto h-full">
                 <div className="flex justify-between gap-10">
                     <div className="flex gap-8 items-center">

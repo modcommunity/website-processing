@@ -6,12 +6,12 @@ import HeaderMobile from "./header/Mobile";
 export default function Header() {
     return (
         <>
-            <header className="hidden sm:block">
+            <div className="hidden sm:block">
                 <HeaderDesktop />
-            </header>
-            <header className="sm:hidden block">
+            </div>
+            <div className="sm:hidden block">
                 <HeaderMobile />
-            </header>
+            </div>
         </>
     )
 }
