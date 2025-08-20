@@ -51,7 +51,15 @@
 
 @layer base {
     body {
-        @apply text-gray-100;
+        @apply text-text-default;
+    }
+
+    header {
+        @apply sticky top-0 z-20 border-b-1 border-border-secondary;
+
+        .nav-active {
+            @apply text-text-primary font-bold;
+        }
     }
 }
 
