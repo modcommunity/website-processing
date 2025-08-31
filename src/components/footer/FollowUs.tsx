@@ -1,6 +1,6 @@
 "use client"
 
-import { FaFacebook, FaInstagram, FaSteam, FaTwitch, FaTwitter } from "react-icons/fa6";
+import { FaFacebook, FaGithub, FaInstagram, FaSteam, FaTwitch, FaTwitter } from "react-icons/fa6";
 import { type ReactNode } from "react";
 
 const ICON_SIZE = "24px"
@@ -14,6 +14,10 @@ export default function FooterFollowUs() {
                     <Item
                         icon={<FaSteam size={ICON_SIZE} />}
                         link="https://steamcommunity.com/groups/moddingcommunity"  
+                    />
+                    <Item
+                        icon={<FaGithub size={ICON_SIZE} />}
+                        link="https://github.com/modcommunity"  
                     />
                     <Item
                         icon={<FaTwitter size={ICON_SIZE} />}

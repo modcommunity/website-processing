@@ -4,6 +4,11 @@ import { type ReactNode, useEffect, useState } from "react"
 
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoCloseSharp } from "react-icons/io5";
+import IconAndText from "../helper/IconAndText";
+import { RiRoadMapFill } from "react-icons/ri";
+import { FaCode, FaComments, FaDiscord } from "react-icons/fa6";
+import { IoIosInformationCircle } from "react-icons/io";
+import { MdOutlineArticle } from "react-icons/md";
 
 export default function HeaderMobile() {
 
@@ -75,12 +80,63 @@ export default function HeaderMobile() {
                     <div className="flex flex-col gap-4">
                         <TopLink url="/" active={true}>Home</TopLink>
                         <TopLink url="/apps">Apps</TopLink>
-                        <TopLink url="/servers">Servers</TopLink>
+                        <div className="flex flex-col gap-2">
+                            <TopLink url="/servers">Servers</TopLink>
+                            <div className="flex flex-col gap-2 text-sm">
+                                <a href="https://github.com/modcommunity/server-browser-roadmap/milestones" target="_blank">
+                                    <IconAndText
+                                        icon={<RiRoadMapFill className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Roadmap</span>
+                                    </IconAndText>
+                                </a>
+                                <a href="https://github.com/modcommunity/server-browser-dev-tracker/issues" target="_blank">
+                                    <IconAndText
+                                        icon={<FaCode className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Dev Tracker</span>
+                                    </IconAndText>
+                                </a>
+                                <a href="https://forum.moddingcommunity.com/c/server-browser/knowledgebase/81">
+                                    <IconAndText
+                                        icon={<IoIosInformationCircle className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Knowledgebase</span>
+                                    </IconAndText>
+                                </a>
+                            </div>
+                        </div>
                         <div className="flex flex-col gap-2">
                             <span className="font-bold">Community</span>
-                            <a href="https://blog.moddingcommunity.com">Blog</a>
-                            <a href="https://forum.moddingcommunity.com">Forum</a>
-                            <a href="https://discord.moddingcommunity.com">Discord Server</a>
+                            <div className="flex flex-col gap-2 text-sm">
+                                <a href="https://discord.moddingcommunity.com" target="_blank">
+                                    <IconAndText
+                                        icon={<FaDiscord className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Discord</span>
+                                    </IconAndText>
+                                </a>
+                                <a href="https://blog.moddingcommunity.com">
+                                    <IconAndText
+                                        icon={<MdOutlineArticle className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Blog</span>
+                                    </IconAndText>
+                                </a>
+                                <a href="https://forum.moddingcommunity.com">
+                                    <IconAndText
+                                        icon={<FaComments className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Forum</span>
+                                    </IconAndText>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

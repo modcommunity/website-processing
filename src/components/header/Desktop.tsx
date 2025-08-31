@@ -1,24 +1,26 @@
 "use client"
 
 import { type ReactNode, useState } from "react";
-import { FaDiscord } from "react-icons/fa6";
+import { FaCode, FaDiscord } from "react-icons/fa6";
 
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowDown, IoIosArrowUp, IoIosInformationCircle } from "react-icons/io";
 import { MdOutlineArticle } from "react-icons/md";
 import { FaComments } from "react-icons/fa";
 import IconAndText from "../helper/IconAndText";
+import { DropdownMenu } from "../helper/DropdownMenu";
+import { RiRoadMapFill } from "react-icons/ri";
 
 export default function HeaderDesktop() {
     return (
         <header
-            className={`w-full bg-header px-4 py-4 h-16`}
+            className={`w-full bg-header px-4 h-16`}
             style={{
                 borderBottom: "1px solid var(--color-border-primary)"
             }}
         >
             <div className="container mx-auto h-full">
-                <div className="flex justify-between gap-10">
-                    <div className="flex gap-8 items-center">
+                <div className="flex h-full justify-between gap-10">
+                    <div className="flex gap-8 h-full items-center">
                         <div>
                             <a href="/">
                                 <img
@@ -30,32 +32,62 @@ export default function HeaderDesktop() {
                                 />
                             </a>
                         </div>
-                        <div className="flex gap-6 text-sm">
+                        <div className="flex gap-6 text-sm h-full items-center">
                             <a
                                 href="/"
                                 className="nav-active"
                             >Home</a>
                             <a href="/apps">Apps</a>
-                            <a href="/servers">Servers</a>
-                            <DropdownMenu title="Community">
+                            <DropdownMenu title="Servers" href="/servers" className="flex items-center h-full" fixed={true}>
+                                <div className="flex flex-col gap-4">
+                                    <a href="https://github.com/modcommunity/server-browser-roadmap/milestones" target="_blank">
+                                        <IconAndText
+                                            icon={<RiRoadMapFill className="w-4 h-4 fill-white" />}
+                                            className="gap-2"
+                                        >
+                                            <span>Roadmap</span>
+                                        </IconAndText>
+                                    </a>
+                                    <a href="https://github.com/modcommunity/server-browser-dev-tracker/issues" target="_blank">
+                                        <IconAndText
+                                            icon={<FaCode className="w-4 h-4 fill-white" />}
+                                            className="gap-2"
+                                        >
+                                            <span>Dev Tracker</span>
+                                        </IconAndText>
+                                    </a>
+                                    <a href="https://forum.moddingcommunity.com/c/server-browser/knowledgebase/81">
+                                        <IconAndText
+                                            icon={<IoIosInformationCircle className="w-4 h-4 fill-white" />}
+                                            className="gap-2"
+                                        >
+                                            <span>Knowledgebase</span>
+                                        </IconAndText>
+                                    </a>
+                                </div>
+                            </DropdownMenu>
+                            <DropdownMenu title="Community" className="flex items-center h-full" fixed={true}>
                                 <div className="flex flex-col gap-4">
                                     <a href="https://discord.moddingcommunity.com" target="_blank">
                                         <IconAndText
-                                            icon={<FaDiscord />}
+                                            icon={<FaDiscord className="w-4 h-4 fill-white" />}
+                                            className="gap-2"
                                         >
                                             <span>Discord</span>
                                         </IconAndText>
                                     </a>
                                     <a href="https://blog.moddingcommunity.com">
                                         <IconAndText
-                                            icon={<MdOutlineArticle />}
+                                            icon={<MdOutlineArticle className="w-4 h-4 fill-white" />}
+                                            className="gap-2"
                                         >
                                             <span>Blog</span>
                                         </IconAndText>
                                     </a>
                                     <a href="https://forum.moddingcommunity.com">
                                         <IconAndText
-                                            icon={<FaComments />}
+                                            icon={<FaComments className="w-4 h-4 fill-white" />}
+                                            className="gap-2"
                                         >
                                             <span>Forum</span>
                                         </IconAndText>
@@ -67,43 +99,5 @@ export default function HeaderDesktop() {
                 </div>
             </div>
         </header>
-    )
-}
-
-function DropdownMenu({
-    title,
-    children
-} : {
-    title: string | ReactNode
-    children: ReactNode
-}) {
-    const [menuOpen, setShowMenu] = useState(false)
-
-    return (
-        <div
-            className="relative"
-            onMouseEnter={() => setShowMenu(true)}
-            onMouseLeave={() => setShowMenu(false)}
-            onClick={() => setShowMenu(p => !p)}
-        >
-            <div className="flex gap-1 items-center duration-150 cursor-pointer">
-                <span>{title}</span>
-                <span>
-                    {menuOpen ? (
-                        <IoIosArrowUp />
-                    ) : (
-                        <IoIosArrowDown />
-                    )}
-                </span>
-            </div>
-
-            {menuOpen && (
-                <div className="absolute left-0 z-200 pt-6">
-                    <div className="py-6 px-8 rounded-b bg-item border-1 border-t-0 border-border-secondary intersect-once intersect:motion-preset-slide-up-sm backdrop-blur-sm">
-                        {children}
-                    </div>
-                </div>
-            )}
-        </div>
     )
 }

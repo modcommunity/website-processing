@@ -1,5 +1,6 @@
 "use client"
 
+import FooterFollowUs from "./footer/FollowUs";
 import FollowUs from "./footer/FollowUs";
 
 export default function Footer() {
@@ -9,16 +10,16 @@ export default function Footer() {
                 <div>
                     <div className="flex flex-col w-full">
                         <section className="px-2 py-10">
-                            <div className="flex justify-between items-center">
+                            <div className="flex flex-wrap sm:flex-nowrap justify-center sm:justify-between items-center">
                                 <div>
                                     <span className="text-sm">Taking modding to the next level!</span>
                                 </div>
-                                <FollowUs />
+                                <FooterFollowUs />
                             </div>
                         </section>
                         <hr className="border-border-secondary"/>
                         <section className="px-2 py-10">
-                            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 items-center gap-y-8">
+                            <div className="flex flex-col sm:flex-row gap-x-5 gap-y-5 items-center [&_>*]:w-1/3">
                                 <div className="flex flex-col gap-2">
                                     <h5>Applications</h5>
                                     <div className="flex flex-col gap-1">
@@ -27,27 +28,32 @@ export default function Footer() {
                                         </a>
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-2">
-                                    <h5>Servers</h5>
-                                    <div className="flex flex-col gap-1">
-                                        <a href="/servers">
-                                            <span className="text-sm">Browse</span>
-                                        </a>
+                                <div className="flex items-center sm:justify-center">
+                                    <div className="flex flex-col gap-2">
+                                        <h5>Servers</h5>
+                                        <div className="flex flex-col gap-1">
+                                            <a href="/servers">
+                                                <span className="text-sm">Browse</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="flex flex-col gap-2">
-                                    <h5>Community</h5>
-                                    <div className="flex flex-col gap-1 text-sm">
-                                        <a href="https://blog.moddingcommunity.com">
-                                            <span>Blog</span>
-                                        </a>
-                                
-                                        <a href="https://forum.moddingcommunity.com">
-                                            <span>Forum</span>
-                                        </a>
-                                        <a href="https://discord.moddingcommunity.com" target="_blank">
-                                            <span>Discord</span>
-                                        </a>
+
+                                <div className="flex items-center sm:justify-end">
+                                    <div className="flex flex-col gap-2">
+                                        <h5>Community</h5>
+                                        <div className="flex flex-col gap-2 text-sm">
+                                            <a href="https://blog.moddingcommunity.com">
+                                                <span>Blog</span>
+                                            </a>
+                                    
+                                            <a href="https://forum.moddingcommunity.com">
+                                                <span>Forum</span>
+                                            </a>
+                                            <a href="https://discord.moddingcommunity.com" target="_blank">
+                                                <span>Discord</span>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
