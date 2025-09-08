@@ -71,12 +71,15 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 	</head>
 	<body>
 		<ObserverProvider client:load>
-			<Header client:load />
-
 			<main>
-				<slot />
+				<Header client:load />
+
+				<div class="relative bg-body z-10 w-full overflow-x-hidden text-text-default min-h-screen">
+					<slot />
+				</div>
+
+				<Footer client:load />
 			</main>
-			<Footer client:load />
 		</ObserverProvider>
 	</body>
 </html>
