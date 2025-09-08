@@ -1,6 +1,6 @@
 "use client"
 
-import { FaFacebook, FaGithub, FaInstagram, FaSteam, FaTwitch, FaTwitter } from "react-icons/fa6";
+import { FaFacebook, FaGithub, FaInstagram, FaSteam, FaTwitter } from "react-icons/fa6";
 import { type ReactNode } from "react";
 
 const ICON_SIZE = "24px"

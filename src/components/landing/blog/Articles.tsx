@@ -1,7 +1,6 @@
 "use client"
 
 import "react-multi-carousel/lib/styles.css";
-
 import Carousel from "react-multi-carousel"
 
 import Article from "./articles/Article"
