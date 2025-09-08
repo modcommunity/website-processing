@@ -3,7 +3,6 @@
 import type { ReactNode } from "react"
 
 import Carousel, { type ResponsiveType } from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 
 export default function CustomCarousel({
     responsive,
