@@ -61,7 +61,7 @@ export default function Footer() {
                         <hr className="border-border-secondary" />
                         <section className="px-2 py-10">
                             <div className="flex gap-4 items-center">
-                                <a href="/terms">
+                                <a href="/tos">
                                     <span className="text-sm">Terms of Service</span>
                                 </a>
                                 <a href="/privacy-policy">

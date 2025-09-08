@@ -1,0 +1,9 @@
+@layer utilities {
+    .nav-active {
+        @apply text-white font-bold;
+    }
+
+    .special {
+        @apply text-special-1 font-bold;
+    }
+}

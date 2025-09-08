@@ -1,0 +1,75 @@
+---
+import Card from "../helper/Card.astro";
+
+import { FaSearch } from "react-icons/fa";
+import { FaNetworkWired } from "react-icons/fa";
+import { FaGears } from "react-icons/fa6";
+import { IoMdAnalytics } from "react-icons/io";
+import { FaLink } from "react-icons/fa";
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <div class="flex flex-col gap-4">
+        <h2>Developing A <span class="text-special-1">Mod Workshop</span></h2>
+        <span>We are in the process of <span class="italic">developing</span> our own <span class="special">mod workshop</span>! While we don't have all of the details yet (since we're still under development), we will be supporting the following features!</span>
+    </div>
+    <div class="p-6">
+        <div class="grid gap-x-0 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-x-15 2xl:gap-x-30 gap-y-15">
+            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
+                    <div class="flex flex-col justify-center items-center">
+                        <FaSearch className="w-15 h-15 fill-white" />
+                    </div>
+                    <div class="flex flex-col gap-2 grow">
+                        <h4 class="text-base">Browse</h4>
+                        <p>You will be able to <span class="special">browse</span> and <span class="special">search</span> for mods that are uploaded by others.</p>
+                    </div>
+                </div>
+            </Card>
+            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
+                    <div class="flex flex-col justify-center items-center">
+                        <FaNetworkWired className="w-15 h-15 fill-white" />
+                    </div>
+                    <div class="flex flex-col gap-2 grow">
+                        <h4 class="text-base">Mod Downloads & Uploads</h4>
+                        <p>Users will be able to <span class="special">securely</span> download mods uploaded by others along with upload their <span class="special">own mods</span>!</p>
+                    </div>
+                </div>
+            </Card>
+            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
+                    <div class="flex flex-col justify-center items-center">
+                        <FaGears className="w-15 h-15 fill-white" />
+                    </div>
+                    <div class="flex flex-col gap-2 grow">
+                        <h4 class="text-base">Git & CI/CD Pipeline Support</h4>
+                        <p>Mod owners will be able to upload and update their own mods through <span class="special">CI/CD pipelines</span> and <span class="special">Git</span> support.</p>
+                    </div>
+                </div>
+            </Card>
+            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
+                    <div class="flex flex-col justify-center items-center">
+                        <IoMdAnalytics className="w-15 h-15 fill-white" />
+                    </div>
+                    <div class="flex flex-col gap-2 grow">
+                        <h4 class="text-base">Statistics</h4>
+                        <p><span class="special">Views</span> and <span class="special">downloads</span> will be tracked for every mod and publicly shown. We will also be offering mod owners <span class="special">deeper insights</span> on the type of traffic that views and downloads their mods!</p>
+                    </div>
+                </div>
+            </Card>
+            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
+                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
+                    <div class="flex flex-col justify-center items-center">
+                        <FaLink className="w-15 h-15 fill-white" />
+                    </div>
+                    <div class="flex flex-col gap-2 grow">
+                        <h4 class="text-base">Mod Manager</h4>
+                        <p>At some point, we will be developing our own official <span class="special">TMC App</span> that'll allow users to manage mods in games we support. This includes functionality to automatically <span class="special">download</span>, <span class="special">install</span>, and <span class="special">update</span> your mods!</p>
+                    </div>
+                </div>
+            </Card>
+        </div>
+    </div>
+</section>

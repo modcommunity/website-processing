@@ -1,0 +1,91 @@
+---
+import Card from "../helper/Card.astro";
+import CLink from "../helper/CLink";
+---
+
+<section class="p-4 container mx-auto flex flex-col gap-10">
+    <div class="flex flex-col gap-4">
+        <h2>Explore Over <span class="special italic">50,000</span> Servers Across <span class="special italic">15+</span> Games</h2>
+        <span>We <span class="italic">track</span> over <span class="special">50,000</span> game servers across <span class="special">15+</span> games including <CLink client:load href="/app/rust">Rust</CLink>, <CLink client:load href="/app/cs2">Counter-Strike 2</CLink>, <CLink client:load href="/app/gmod">Garry's Mod</CLink>, <CLink client:load href="app/project-zomboid">Project Zomboid</CLink>, and others! 
+    </div>
+    <div class="p-6 grid gap-x-0 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-x-15 2xl:gap-x-30 gap-y-15">
+        <Card className="intersect-once intersect:motion-preset-slide-right-lg">
+            <div class="w-full h-48">
+                <img
+                    src="/images/server/tmc_browser_cropped.png"
+                    class="w-full h-full brightness-75 group-hover:brightness-100 group-hover:duration-300 rounded object-cover object-left"
+                    alt="Website Image"
+                />
+            </div>
+
+            <div class="flex justify-center">
+                <h4>A Unique Browser</h4>
+            </div>
+            <div class="p-2">
+                <ul class="list-disc pl-4 flex flex-col gap-2">
+                    <li>Search from a list of <span class="special">50,000 and more</span> servers across many games using a smooth interface built by us.</li>
+                    <li>Filter servers by <span class="special">game</span>, server and map name, <span class="special">game mode</span>, location, and more.</li>
+                    <li>Favorite servers <span class="special">you like</span> and <span class="special">hide servers</span> you hope to never see again.</li>
+                </ul>
+            </div>
+        </Card>
+        <Card className="intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
+            <div class="w-full h-48">
+                <img
+                    src="/images/server/tmc_serverinfo_cropped.png"
+                    class="w-full h-full brightness-75 group-hover:brightness-100 group-hover:duration-300 rounded-lg object-left object-cover"
+                    alt="Up-To-Date Server Info Image"
+                />
+            </div>
+            <div class="flex justify-center">
+                <h4>Up-To-Date Server Info</h4>
+            </div>
+            <div class="p-2">
+                <ul class="list-disc pl-4 flex flex-col gap-2">
+                    <li>We try to keep the server list up-to-date by <span class="special">frequently</span> querying servers we track (usually every <span class="special">ten minutes</span> or <span class="italic">sooner</span>).</li>
+                    <li>We track and display basic server info such as <span class="special">player count</span>, <span class="special">map name</span>, connection info (IP/port), and more.</li>
+                </ul>
+            </div>
+        </Card>
+        <Card  className="intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
+            <div class="w-full h-48">
+                <img
+                    src="/images/server/tmc_historical_server_data_cropped.png"
+                    class="w-full h-full brightness-75 group-hover:brightness-100 group-hover:duration-300 rounded-lg object-bottom object-cover"
+                    alt="Historical Server Data Image"
+                />
+            </div>
+            <div class="flex justify-center">
+                <h4>Historical Server Data</h4>
+            </div>
+            <div class="p-2">
+                <ul class="list-disc pl-4 flex flex-col gap-2">
+                    <li>We <span class="special">store</span> and <span class="special">display</span> historical server data including current player count, map name, new players (since last update), and more!</li>
+                    <li>Find out what <span class="special">times</span> and <span class="special">maps</span> result in player drops or more newcomers from our <span class="special">sleak graph</span>!</li>
+                    <li>We try to keep historical data for up to a <span class="special">year</span> or <span class="italic">more</span>!</li>
+                </ul>
+            </div>
+        </Card>
+        <Card  className="intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-slide-right-lg">
+            <div class="w-full h-48">
+                <img
+                    src="/images/server/tmc_player_tracking_cropped.png"
+                    class="w-full h-full brightness-75 group-hover:brightness-100 group-hover:duration-300 rounded-lg object-left object-cover"
+                    alt="Up-To-Date Server Info Image"
+                />
+            </div>
+            <div class="flex justify-center">
+                <h4>Player Tracking</h4>
+            </div>
+            <div class="p-2">
+                <ul class="list-disc pl-4 flex flex-col gap-2">
+                    <li>We track and <span class="special">save</span> player data including <span class="special">score</span>, <span class="special">play time</span>, and more!</li>
+                    <li>Users can <span class="special">search</span> for both online and offline players along with <span class="special">sort</span> by score, play time, and more!</li>
+                </ul>
+            </div>
+        </Card>
+    </div>
+    <div class="flex justify-center">
+        <a href="/servers" class="py-3 px-4 rounded-lg bg-success ring-1 ring-success-2 hover:bg-success-2 font-bold text-white">Browse All Servers!</a>
+    </div>
+</section>

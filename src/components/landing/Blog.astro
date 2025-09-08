@@ -1,18 +1,14 @@
 ---
-import Icon from "../../assets/blog-icon.svg"
+import CLink from "../helper/CLink"
+import Articles from "./blog/Articles"
 ---
 
-<a
-    href="https://blog.moddingcommunity.com"
-    class="bg-[#FF6B6B] rounded w-30 px-2 py-1 sm:w-40 sm:px-4 sm:py-2 duration-150 ring-2 ring-red-500 hover:ring-red-400 shadow-black shadow-lg flex items-center gap-2 intersect-once intersect:motion-preset-fade-lg sm:intersect:motion-preset-slide-right-lg"
->
-    <div>
-        <img
-            src={Icon.src}
-            class="w-10 h-10 sm:w-15 sm:h-15"
-        />
+<section class="px-4 py-20 container mx-auto flex flex-col gap-10">
+    <div class="flex flex-col gap-4">
+        <h2>Check Out Our <span class="special">Blog</span></h2>
+        <div>
+            <p>Our blog serves as a <span class="italic">growing</span> resource for modding and server <span class="special">guides</span> in games such as <CLink client:load href="https://blog.moddingcommunity.com/tag/minecraft/" target="_blank">Minecraft</CLink>, <CLink client:load href="https://blog.moddingcommunity.com/tag/gta/" target="_blank">Grand Theft Auto</CLink>, <CLink client:load href="https://blog.moddingcommunity.com/tag/l4d2/" target="_blank">Left 4 Dead 2</CLink>, and more!</p>
+        </div>
     </div>
-    <div>
-        <span class="text-base sm:text-lg font-bold text-white">Blog</span>
-    </div>
-</a>
+    <Articles client:load client:only="react" />
+</section>

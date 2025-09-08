@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css"
+import "../styles/Global.css"
 
 import ObserverProvider from '../components/Observer';
 import Header from "../components/Header";
@@ -7,13 +7,25 @@ import Footer from "../components/Footer";
 
 const GA = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
 
+type Props = {
+	meta?: {
+		title?: string
+		titleMain?: string
+		desc?: string
+	}
+}
+
+const { meta } = Astro.props as Props
+
+const { title: titleMeta, titleMain: titleMainMeta, desc: descMeta } = meta ?? {}
+
 // Website meta settings.
-const title = import.meta.env.PUBLIC_TITLE ?? "The Modding Community"
-const titleMain = import.meta.env.PUBLIC_TITLE_MAIN ?? "The Modding Community"
+const title = titleMeta ?? import.meta.env.PUBLIC_TITLE ?? "The Modding Community"
+const titleMain = titleMainMeta ?? import.meta.env.PUBLIC_TITLE_MAIN ?? "The Modding Community"
 const favIcon = import.meta.env.PUBLIC_FAV_ICON ?? "/favicon.ico"
 const socialMediaImg = import.meta.env.PUBLIC_SOCIAL_MEDIA_IMAGE ?? "/images/banner-filled.png"
 const url = import.meta.env.PUBLIC_URL ?? "https://moddingcommunity.com"
-const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive modding and game development community. We currently offer a server browser, blog and forum, with plans to launch a mod workshop and more in the future!"
+const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive modding and game development community. We currently offer a server browser, blog and forum, with plans to launch a mod workshop and more in the future!"
 ---
 
 <!doctype html>
@@ -60,7 +72,10 @@ const desc = import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive mo
 	<body>
 		<ObserverProvider client:load>
 			<Header client:load />
-			<slot />
+
+			<main>
+				<slot />
+			</main>
 			<Footer client:load />
 		</ObserverProvider>
 	</body>

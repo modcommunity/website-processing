@@ -15,9 +15,17 @@
     --color-text-default: #D4D4D4;
     --color-text-primary: #FFFFFF;
 
-    --color-special-1: #A6AAC9;
-    --color-special-2: #9A9EC1;
-    --color-special-3: #CF542B;
+    --color-special-0: #5577f0;
+    --color-special-1: #4f70e7;
+    --color-special-2: #6286ff;
+    --color-special-3: #c2481d;
+
+    --color-star: #c2bc00;
+    --color-star-2: #b3ae00;
+
+    --color-success: #008236;
+    --color-success-2: #2a974a;
+    --color-success-3: #6dd383;
 
     --color-border-primary: #363B59;
     --color-border-secondary: #282c42;
@@ -43,54 +51,12 @@
     --color-btn-warning-ring: #000000;
     --color-btn-warning-ring-hover: #000000;
 
-    --color-btn-danger: #C20000;
-    --color-btn-danger-hover: #FF0000;
+    --color-btn-danger: #c2481d;
+    --color-btn-danger-hover: #CF542B;
     --color-btn-danger-ring: #000000;
     --color-btn-danger-ring-hover: #000000;
 }
 
-@layer base {
-    body {
-        @apply text-text-default;
-    }
-
-    header {
-        .nav-active {
-            @apply text-text-primary font-bold;
-        }
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-bold text-text-primary;
-    }
-
-    h1 {
-        @apply text-4xl;
-    }
-
-    h2 {
-        @apply text-3xl;
-    }
-
-    h3 {
-        @apply text-2xl;
-    }
-
-    h4 {
-        @apply text-xl;
-    }
-
-    h5 {
-        @apply text-lg;
-    }
-
-    h6 {
-        @apply text-base;
-    }
-}
-
-@layer utilities {
-    .nav-active {
-        @apply text-white font-bold;
-    }
-}
+@import "./Base.css";
+@import "./Components.css";
+@import "./Utilities.css";

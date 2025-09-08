@@ -12,7 +12,7 @@ export default function IconAndText(props: HTMLAttributes<HTMLDivElement> & Cust
     const { icon, children, vertical, className, ...rest } = props
 
     return (
-        <div className={`flex items-center gap-1 ${vertical ? "flex-col" : ""} ${className ?? ""}`} {...rest}>
+        <div className={`flex items-center gap-2 ${vertical ? "flex-col" : ""} ${className ?? ""}`} {...rest}>
             <div>
                 {icon}
             </div>

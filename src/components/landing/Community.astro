@@ -1,0 +1,63 @@
+---
+import Card from "../helper/Card.astro";
+import CLink from "../helper/CLink";
+
+
+---
+
+<section class="px-4 py-20 container mx-auto flex flex-col gap-10">
+    <div class="flex flex-col gap-4">
+        <h2>Join A Growing Community</h2>
+    </div>
+    <div class="p-6">
+        <div class="flex flex-col sm:flex-row justify-evenly gap-y-10 sm:gap-30 [&>*]w-full [&>*]:sm:w-120">
+            <Card className="intersect-once intersect:sm:motion-preset-slide-right-lg">
+                <div class="w-full h-48">
+                    <a href="https://forum.moddingcommunity.com">
+                        <img
+                            src="/images/community/forum.png"
+                            class="w-full h-full brightness-75 hover:brightness-100 hover:duration-300 rounded-lg object-cover object-center"
+                            alt="Forum Image"
+                        />
+                    </a>
+                </div>
+                <div class="flex justify-center">
+                    <a href="https://forum.moddingcommunity.com">
+                        <h3>Visit Our Forum</h3>
+                    </a>
+                </div>
+                <div class="p-2">
+                    <ul class="list-disc pl-6">
+                        <li>Stay <span class="special">up-to-date</span> with what's new in the community by checking out our <CLink href="https://forum.moddingcommunity.com/c/community/announcements/31" target="_blank">community announcements</CLink>.</li>
+                        <li>View interesting content from <span class="special">other users</span> within the community and participate in topics you're interested in yourself!</li>
+                        <li>Ask <span class="special">questions</span> or request <span class="special">support</span> with anything gaming or modding related!</li>
+                    </ul>
+                </div>
+            </Card>
+            <Card className="intersect-once intersect:sm:motion-preset-slide-left-lg">
+                <div class="w-full h-48">
+                    <a href="https://discord.moddingcommunity.com">
+                        <img
+                            src="/images/community/discord.png"
+                            class="w-full h-full brightness-75 hover:brightness-100 hover:duration-300 rounded-lg object-cover object-center"
+                            alt="Forum Image"
+                        />
+                    </a>
+                </div>
+                <div class="flex justify-center">
+                    <a href="https://discord.moddingcommunity.com">
+                        <h3>Join Our Discord Server</h3>
+                    </a>
+                </div>
+                <div class="p-2">
+                    <ul class="list-disc pl-6">
+                        <li>Communicate with other users in <span class="special">real time</span>.</li>
+                        <li>Participate in future community <span class="special">events</span>.</li>
+                        <li>Text and voice channels <span class="special">dedicated</span> to <span class="special">support</span>. If you're having an issue modding a game or setting up a server, reach out to our community through our Discord server!</li>
+                    </ul>
+                </div>
+            </Card>
+        </div>
+    </div>
+
+</section>

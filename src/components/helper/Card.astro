@@ -1,0 +1,7 @@
+---
+const { className } = Astro.props
+---
+
+<div class={`card group ${className ?? ""}`}>
+    <slot />
+</div>
