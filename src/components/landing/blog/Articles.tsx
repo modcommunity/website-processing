@@ -9,6 +9,8 @@ import { FaHammer } from "react-icons/fa";
 import { FaServer } from "react-icons/fa";
 import IconAndText from "../../helper/IconAndText";
 
+import "react-multi-carousel/lib/styles.css";
+
 type Props = {
     itemClassName?: string
 }
