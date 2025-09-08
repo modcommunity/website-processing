@@ -2,6 +2,8 @@
 @import "tailwindcss-intersect";
 @plugin "tailwindcss-motion";
 
+@import "./Carousel.css";
+
 @theme {
     --color-header: #080b12;
     --color-body: #040509;

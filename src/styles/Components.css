@@ -1,5 +1,4 @@
 @layer components {
     @import "./components/Card.css";
     @import "./components/Button.css";
-    @import "./components/Carousel.css";
 }
