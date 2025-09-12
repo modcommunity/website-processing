@@ -83,22 +83,6 @@ export default function HeaderMobile() {
                         <div className="flex flex-col gap-2">
                             <TopLink url="/servers">Servers</TopLink>
                             <div className="flex flex-col gap-2 text-sm">
-                                <a href="https://github.com/modcommunity/server-browser-roadmap/milestones" target="_blank">
-                                    <IconAndText
-                                        icon={<RiRoadMapFill className="w-4 h-4 fill-white" />}
-                                        className="gap-2"
-                                    >
-                                        <span>Roadmap</span>
-                                    </IconAndText>
-                                </a>
-                                <a href="https://github.com/modcommunity/server-browser-dev-tracker/issues" target="_blank">
-                                    <IconAndText
-                                        icon={<FaCode className="w-4 h-4 fill-white" />}
-                                        className="gap-2"
-                                    >
-                                        <span>Dev Tracker</span>
-                                    </IconAndText>
-                                </a>
                                 <a href="https://forum.moddingcommunity.com/c/server-browser/knowledgebase/81">
                                     <IconAndText
                                         icon={<IoIosInformationCircle className="w-4 h-4 fill-white" />}
@@ -107,11 +91,43 @@ export default function HeaderMobile() {
                                         <span>Knowledgebase</span>
                                     </IconAndText>
                                 </a>
+                                <a href="https://github.com/modcommunity/roadmap/issues?q=is%3Aissue%20state%3Aopen%20label%3Aservers" target="_blank">
+                                    <IconAndText
+                                        icon={<RiRoadMapFill className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Roadmap</span>
+                                    </IconAndText>
+                                </a>
+                                <a href="https://github.com/modcommunity/dev-issue-tracker/issues?q=is%3Aissue%20state%3Aopen%20label%3Aservers" target="_blank">
+                                    <IconAndText
+                                        icon={<FaCode className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Dev Tracker</span>
+                                    </IconAndText>
+                                </a>
                             </div>
                         </div>
                         <div className="flex flex-col gap-2">
                             <span className="font-bold">Community</span>
                             <div className="flex flex-col gap-2 text-sm">
+                                <a href="https://github.com/modcommunity/roadmap/milestones" target="_blank">
+                                    <IconAndText
+                                        icon={<RiRoadMapFill className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Roadmap</span>
+                                    </IconAndText>
+                                </a>
+                                <a href="https://github.com/modcommunity/dev-issue-tracker/issues" target="_blank">
+                                    <IconAndText
+                                        icon={<FaCode className="w-4 h-4 fill-white" />}
+                                        className="gap-2"
+                                    >
+                                        <span>Dev Tracker</span>
+                                    </IconAndText>
+                                </a>
                                 <a href="https://discord.moddingcommunity.com" target="_blank">
                                     <IconAndText
                                         icon={<FaDiscord className="w-4 h-4 fill-white" />}
