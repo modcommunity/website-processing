@@ -5,10 +5,16 @@ import ObserverProvider from '../components/Observer';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
+import UmamiAnalytics from "../components/helper/UmamiAnalytics.astro";
 
+// Plausible Analytics
 const paSrc: string | undefined = import.meta.env.PUBLIC_PA_SRC
 const paDomain: string | undefined = import.meta.env.PUBLIC_PA_DOMAIN
 const paApi: string | undefined = import.meta.env.PUBLIC_PA_API
+
+// Umami Analytics
+const umamiSrc: string | undefined = import.meta.env.PUBLIC_UMAMI_SRC
+const umamiWebsiteId: string | undefined = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID
 
 type Props = {
 	meta?: {
@@ -71,6 +77,14 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 				api={paApi}
 			/>
         )}
+
+		{(umamiSrc && umamiWebsiteId) && (
+			<UmamiAnalytics
+				src={umamiSrc}
+				websiteId={umamiWebsiteId}
+				setOutboundClicks={true}
+			/>
+		)}
 	</head>
 	<body>
 		<ObserverProvider client:load>
