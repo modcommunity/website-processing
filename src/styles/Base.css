@@ -37,6 +37,10 @@
         @apply text-base;
     }
 
+    strong {
+        @apply font-bold;
+    }
+
     ::-webkit-scrollbar {
         @apply w-2;
         @apply rounded;

@@ -1,7 +1,130 @@
 ---
-import InDevelopment from "./InDevelopment.astro";
+import CLink from "./helper/CLink"
+import Special from "./helper/Special.astro"
 ---
 
-<section>
-    <InDevelopment />
+<section class="container mx-auto px-4 py-6 flex flex-col gap-8">
+    <div class="flex flex-col gap-2">
+        <h2>Privacy Policy</h2>
+        <p>This is our <strong>privacy policy</strong>. We aim to be as transparent as possible regarding what we do with any and all personal data we store from users.</p>
+    </div>
+    <div class="flex flex-col gap-2">
+        <h3>Global Analytics</h3>
+        <p>We <Special>track every visit</Special> to our website using <CLink href="https://umami.is/" target="_blank">Umami</CLink>. We also track <span class="italic">events</span> such as <Special>clicks</Special> on buttons and links, <Special>scroll events</Special>, and general activity (e.g. page views). <Special>ALL</Special> of this data is <Special>anonymous</Special> and not personally stored.</p>
+        <p>We want to note that our <CLink href="https://umami.is/" target="_blank">Umami</CLink> tracking service does process your <Special>IP address</Special> to provide us with data on what country and city the IP address is <Special>geo-located</Special> to. This is <Special>not your direct address</Special>, but typically the <span class="italic">nearest</span> <Special>city</Special> or <Special>town</Special> depending on your <Special>ISP</Special> (Internet Service Provider). As stated above, this information is kept <Special>anonymous</Special> and we do <Special>not store</Special> your IP address.</p>
+    </div>
+    <div class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+            <h3>Core Website</h3>
+            <p>The core website is hosted at the <Special>top-level domain</Special> (moddingcommunity.com). At this time, we allow users to sign in through <CLink href="https://discord.com/" target="_blank">Discord</CLink>, accessible on the <CLink href="/login">login page</CLink>.</p>
+            <p>After a user successfully signs in with <CLink href="/login">Discord</CLink>, we create and store a separate user account with the following data from your Discord profile:</p>
+            <ul class="pl-10 list-disc">
+                <li><Special>Email</Special></li>
+                <li><Special>Username</Special></li>
+                <li><Special>Avatar</Special> (image)</li>
+            </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h4>Server Browser</h4>
+            <p>Our <Special>server browser</Special> is a <Special>core</Special> service in our organization. Users are able to <strong>explore</strong> and <strong>discover</strong> game servers across various games and applications.</p>
+            <p>Our <Special>primary</Special> server browser is located <CLink href="/servers">here</CLink> (moddingcommunity.com/servers). There are also <Special>application-specific</Special> server browsers at <span class="italic">moddingcommunity.com/{"<"}app url{">"}/servers</span> (these pages are also listed on our <strong>Games & Apps</strong> page <CLink href="/apps">here</CLink>).</p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h5>Settings Storage</h5>
+            <p>We <Special>store</Special> and rely on <Special>site cookies</Special> for persistent settings within our server browser. The cookie name and key we use is <Special>tmc_settings</Special>. Settings are stored in <Special>JSON</Special> format. The following values may be stored:</p>
+            <ul class="pl-10 list-disc">
+                <li><Special>appTech</Special> - The application tech (<strong>not used</strong>).</li>
+                <li><Special>appView</Special> - The application view (grid or table).</li>
+                <li><Special>appBg</Special> - Whether to enable background images on the site.</li>
+                <li><Special>srvFavsOnly</Special> - Only show favorited servers (true or false).</li>
+                <li><Special>srvFavs</Special> - A list of favorited servers by server ID (only used if not signed in; see below).</li>
+                <li><Special>srvFavsTimerange</Special> - The time range for sorting favorites.</li>
+                <li><Special>srvShowFiltered</Special> - Whether to show filtered servers.</li>
+                <li><Special>srvFiltered</Special> - A list of filtered servers by server ID (only used if not signed in; see below).</li>
+                <li><Special>srvAppIds</Special> - Current games and apps to filter by (if empty, shows all).</li>
+                <li><Special>srvCatIds</Special> - Current categories to filter by (if empty, shows all).</li>
+                <li><Special>srvCountries</Special> - Current countries to filter by (if empty, shows all).</li>
+                <li><Special>srvAppCatsHide</Special> - The app IDs for which to hide category lists.</li>
+                <li><Special>srvAutoRefresh</Special> - Whether to auto-refresh the server list every 10 seconds (only for signed-in users).</li>
+                <li><Special>srvOnline</Special> - Whether to show only online servers.</li>
+                <li><Special>srvMinUsers</Special> - The minimum users to show.</li>
+                <li><Special>srvMaxUsers</Special> - The maximum users to show.</li>
+                <li><Special>srvHideFull</Special> - Whether to hide full servers.</li>
+                <li><Special>srvHideEmpty</Special> - Whether to hide empty servers.</li>
+                <li><Special>srvSort</Special> - The current column used for sorting (e.g. current user count).</li>
+                <li><Special>srvSortDir</Special> - The sorting direction (ascending or descending).</li>
+                <li><Special>srvHideNewServerBtn</Special> - Hides the new server button (currently not used).</li>
+                <li><Special>srvUsePlayerColors</Special> - Whether to color-code user counts based on fill percentage.</li>
+                <li><Special>srvShowPing</Special> - Whether to show ping.</li>
+            </ul>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h5>Favorites & Filters</h5>
+            <p>All users can <Special>favorite</Special> and <Special>filter</Special> (hide) servers in our server browser. The storage method depends on whether the user is <Special>signed in</Special> or not:</p>
+            <ul class="pl-10 list-disc">
+                <li>Users who are <Special>not signed in</Special> use cookie storage as described above.</li>
+                <li>Users who <Special>are signed in</Special> use our <Special>database</Special> (we map user IDs to server IDs in a database table).</li>
+            </ul>
+            <p>Favorite and filtered server lists are <Special>not publicly visible</Special> to other users.</p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h5>Show Ping Feature & Geo Location</h5>
+            <p>If you enable the <Special>Show Ping</Special> setting, you will most likely need to give <Special>access</Special> to our website to access your <Special>location</Special>. This is just your <Special>geo location</Special> and we do <Special>not</Special> store any of this information.</p>
+        </div>
+        <div class="flex flex-col gap-2">
+            <h5>Tracked Servers</h5>
+            <p>We <Special>track</Special> and <Special>display</Special> servers in our server browser. We currently track servers in the following games (this list will expand over time):</p>
+            <ul class="pl-10 list-disc">
+                <li>Counter-Strike 2 (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Rust (<CLink href="https://facepunch.com/" target="_blank">FacePunch</CLink>)</li>
+                <li>Project Zomboid (<CLink href="https://projectzomboid.com/blog/about-us/" target="_blank">The Indie Stone</CLink>)</li>
+                <li>Garry{"'"}s Mod (<CLink href="https://facepunch.com/" target="_blank">FacePunch</CLink>)</li>
+                <li>Arma 3 (<CLink href="https://www.bohemia.net/" target="_blank">Bohemia Interactive</CLink>)</li>
+                <li>7 Days to Die</li>
+                <li>Left 4 Dead 2 (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Team Fortress 2 (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Unturned</li>
+                <li>Counter-Strike: Source (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Killing Floor (<CLink href="https://tripwireinteractive.com/" target="_blank">Tripwire Interactive</CLink>)</li>
+                <li>Killing Floor 2 (<CLink href="https://tripwireinteractive.com/" target="_blank">Tripwire Interactive</CLink>)</li>
+                <li>No More Room In Hell</li>
+                <li>Left 4 Dead (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Counter-Strike (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Half-Life 2: DeathMatch (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Sven: Co-op</li>
+                <li>Insurgency</li>
+                <li>Fistful of Frags</li>
+                <li>Synergy</li>
+                <li>Hell Let Loose</li>
+                <li>Day of Defeat: Source (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
+                <li>Red Orchestra 2</li>
+                <li>Zombie Panic! Source</li>
+                <li>Pirates, Vikings, & Knights II</li>
+                <li>Half-Life DeathMatch: Source</li>
+            </ul>
+            <p>We <Special>track</Special>, <Special>store</Special>, and <Special>display</Special> the following information from each server:</p>
+            <ul class="pl-10 list-disc">
+                <li>Name</li>
+                <li>IP Address</li>
+                <li>Port Number</li>
+                <li>Online status</li>
+                <li>User counts (current, max, and bots)</li>
+                <li>Map name</li>
+            </ul>
+            <p>Additionally, we also <Special>track</Special>, <Special>store</Special>, and <Special>display</Special> user information from servers. This includes:</p>
+            <ul class="pl-10 list-disc">
+                <li>Name (usually Steam display name)</li>
+                <li>Score</li>
+                <li>Play time</li>
+                <li>Current index on server</li>
+            </ul>
+            <p>We also <Special>automatically</Special> add servers to our server browser <CLink href="https://developer.valvesoftware.com/wiki/Master_Server_Query_Protocol" target="_blank">without permission</CLink> from server owners. This is because these servers are already listed in <Special>public server browsers</Special>. We retrieve them from the <Special>Valve Master Server</Special>. Users can also <Special>manually add</Special> servers by IP and port.</p>
+            <p>If you{"'"}d like your server removed, please reach out to us!</p>
+        </div>
+    </div>
+    <div class="flex flex-col gap-2">
+        <h3>Forum</h3>
+        <p>Our forum is located at <CLink href="https://forum.moddingcommunity.com" target="_blank">forum.moddingcommunity.com</CLink>. We use <CLink href="https://discourse.org" target="_blank">Discourse</CLink> as our forum software. Users can sign up using an <Special>email</Special> and <Special>password</Special>, or use alternative sign-in methods such as <CLink href="https://discord.com" target="_blank">Discord</CLink> or <CLink href="https://store.steampowered.com/" target="_blank">Steam</CLink>. Email and password storage is handled securely by <CLink href="https://discourse.org" target="_blank">Discourse</CLink>, and we keep the forum software <Special>up-to-date</Special>.</p>
+    </div>
+    <p>This Privacy Policy <Special>may be updated</Special> from time to time. Continued use of our services means you accept the latest version.</p>
 </section>
