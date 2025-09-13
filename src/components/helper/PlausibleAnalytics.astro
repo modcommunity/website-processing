@@ -1,0 +1,27 @@
+---
+declare global {
+  interface Window {
+    plausible?: ((...args: any[]) => void) & { q?: any[] };
+  }
+}
+
+type Props = {
+    src: string
+    domain : string
+    api?: string
+}
+
+const { src, domain, api } = Astro.props as Props
+---
+
+<script
+    defer
+    src={src}
+    data-domain={domain}
+    data-api={api ?? "https://plausible.io/api/event"}
+></script>
+<script>
+    window.plausible = window.plausible || function () {
+    (window.plausible!.q = window.plausible!.q || []).push(arguments);
+    }
+</script>

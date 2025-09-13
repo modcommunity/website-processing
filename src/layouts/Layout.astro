@@ -4,8 +4,11 @@ import "../styles/Global.css"
 import ObserverProvider from '../components/Observer';
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
 
-const GA = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID
+const paSrc: string | undefined = import.meta.env.PUBLIC_PA_SRC
+const paDomain: string | undefined = import.meta.env.PUBLIC_PA_DOMAIN
+const paApi: string | undefined = import.meta.env.PUBLIC_PA_API
 
 type Props = {
 	meta?: {
@@ -17,7 +20,11 @@ type Props = {
 
 const { meta } = Astro.props as Props
 
-const { title: titleMeta, titleMain: titleMainMeta, desc: descMeta } = meta ?? {}
+const {
+	title: titleMeta,
+	titleMain: titleMainMeta,
+	desc: descMeta }
+= meta ?? {}
 
 // Website meta settings.
 const title = titleMeta ?? import.meta.env.PUBLIC_TITLE ?? "The Modding Community"
@@ -57,16 +64,12 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 		<meta name="twitter:url" content={url}>
 		<meta name="twitter:site" content="@modcommunity_">
 
-		{GA && (
-            <>
-                <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA}`}></script>
-                <script define:vars={{ GA }}>
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', GA);
-                </script>
-            </>
+		{(paSrc && paDomain) && (
+            <PlausibleAnalytics
+				src={paSrc}
+				domain={paDomain}
+				api={paApi}
+			/>
         )}
 	</head>
 	<body>
