@@ -1,62 +1,90 @@
 @layer base {
-    body {
-        @apply text-text-default;
+  body,
+  main {
+    @apply !text-text-default font-dm-sans;
+  }
+
+  header {
+    .nav-active {
+      @apply text-text-primary font-bold;
+    }
+  }
+
+  footer {
+    @apply w-full h-full min-h-60;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold text-text-primary font-pjs;
+  }
+
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-lg;
+  }
+
+  h6 {
+    @apply text-base;
+  }
+
+  p {
+    a {
+      @apply text-special-1-hover visited:text-special-1 hover:text-special-1-ring underline underline-offset-2;
+
+      color: color-mix(in srgb, var(--color-special-1) 80%, white);
     }
 
-    header {
-        .nav-active {
-            @apply text-text-primary font-bold;
-        }
+    a:hover {
+      color: color-mix(in srgb, var(--color-special-1) 70%, white);
     }
 
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-bold text-text-primary;
+    a:visited {
+      color: color-mix(in srgb, var(--color-special-1) 85%, white);
     }
+  }
 
-    h1 {
-        @apply text-4xl;
-    }
+  input,
+  textarea,
+  select {
+    @apply bg-item ring-1 ring-border-secondary focus-visible:ring-border-primary focus-visible:border-0 focus:border-0 text-white rounded py-1 px-2 outline-none;
+  }
 
-    h2 {
-        @apply text-3xl;
-    }
+  ::-webkit-scrollbar {
+    @apply w-2;
+    @apply rounded;
+  }
 
-    h3 {
-        @apply text-2xl;
-    }
+  ::-webkit-scrollbar-track {
+    @apply bg-header;
+  }
 
-    h4 {
-        @apply text-xl;
-    }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border-secondary;
 
-    h5 {
-        @apply text-lg;
-    }
+    @apply rounded-lg;
+  }
 
-    h6 {
-        @apply text-base;
-    }
-
-    strong {
-        @apply font-bold;
-    }
-
-    ::-webkit-scrollbar {
-        @apply w-2;
-        @apply rounded;
-    }
-
-    ::-webkit-scrollbar-track {
-        @apply bg-header;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        @apply bg-border-secondary;
-        
-        @apply rounded-lg;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        @apply bg-border-primary;
-    }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-border-primary;
+  }
 }

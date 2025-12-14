@@ -7,6 +7,12 @@ import Footer from "../components/Footer";
 import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
 import UmamiAnalytics from "../components/helper/UmamiAnalytics.astro";
 
+import '@fontsource/dm-sans/400.css';
+import '@fontsource/dm-sans/700.css';
+
+import '@fontsource/plus-jakarta-sans/400.css';
+import '@fontsource/plus-jakarta-sans/700.css';
+
 // Plausible Analytics
 const paSrc: string | undefined = import.meta.env.PUBLIC_PA_SRC
 const paDomain: string | undefined = import.meta.env.PUBLIC_PA_DOMAIN
@@ -17,6 +23,7 @@ const umamiSrc: string | undefined = import.meta.env.PUBLIC_UMAMI_SRC
 const umamiWebsiteId: string | undefined = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID
 
 type Props = {
+	pathName?: string
 	meta?: {
 		title?: string
 		titleMain?: string
@@ -24,7 +31,7 @@ type Props = {
 	}
 }
 
-const { meta } = Astro.props as Props
+const { pathName = "/", meta } = Astro.props as Props
 
 const {
 	title: titleMeta,
@@ -89,10 +96,10 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 	<body>
 		<ObserverProvider client:load>
 			<main>
-				<Header client:load />
-
-				<div class="relative bg-body z-10 w-full overflow-x-hidden text-text-default min-h-screen">
-					<slot />
+				<div class="relative bg-body w-full text-text-default min-h-screen">
+					<Header pathName={pathName} client:load>
+						<slot />
+					</Header>
 				</div>
 
 				<Footer client:load />

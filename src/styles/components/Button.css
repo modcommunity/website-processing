@@ -1,7 +1,25 @@
-.btn {
-    @apply py-2 px-4 rounded-lg;
-}
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded text-center text-text-primary cursor-pointer font-bold shadow !font-pjs;
+  }
 
-.btn-primary {
-    @apply bg-btn-primary ring-1 ring-border-secondary hover:bg-btn-primary-hover hover:ring-border-primary hover:duration-300
+  .btn-primary {
+    @apply bg-btn-primary hover:bg-btn-primary-hover ring-1 ring-border-secondary hover:ring-border-primary;
+  }
+
+  .btn-secondary {
+    @apply bg-btn-secondary hover:bg-btn-secondary-hover ring-1 ring-border-secondary hover:ring-border-primary;
+  }
+
+  .btn-special {
+    @apply bg-btn-special hover:bg-btn-special-hover ring-1 ring-border-secondary hover:ring-border-primary shadow-black;
+  }
+
+  .btn-warning {
+    @apply bg-btn-warning hover:bg-btn-warning-hover ring-1 ring-border-secondary hover:ring-border-primary;
+  }
+
+  .btn-danger {
+    @apply bg-btn-danger hover:bg-btn-danger-hover ring-1 ring-border-secondary hover:ring-border-primary;
+  }
 }
