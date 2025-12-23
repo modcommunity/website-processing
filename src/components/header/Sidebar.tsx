@@ -26,7 +26,7 @@ export default function HeaderSidebar() {
   return (
     <div
       className={`${
-        isOpen ? "w-42 fixed" : "w-18 hidden sm:block"
+        isOpen ? "w-42 fixed sm:sticky" : "w-18 hidden sm:block"
       } duration-300 z-30`}
     >
       <div className="bg-header border-r-1 self-stretch border-r-border-primary sticky top-12 h-[calc(100vh-3rem)] duration-300 flex flex-col justify-between overflow-y-auto">
