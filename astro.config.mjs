@@ -19,7 +19,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     server: {
-      allowedHosts: ["x-dev"]
+      allowedHosts: ["x-tmc-dev01"]
     }
   },
 

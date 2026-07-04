@@ -2,9 +2,9 @@
 import type { HTMLAttributes } from "react";
 import Tag from "./Tag"
 
-import type { Article } from "../Articles"
+import type { ArticleType } from "../Articles"
 
-export default function Article(props: Article & HTMLAttributes<HTMLDivElement>) {
+export default function Article(props: ArticleType & HTMLAttributes<HTMLDivElement>) {
     const { url, image, title, desc, tags = [], className } = props
 
     return (

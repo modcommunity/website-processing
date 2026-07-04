@@ -2,11 +2,11 @@
 
 import { FaCogs, FaHome, FaSearch, FaServer } from "react-icons/fa";
 import {
+  FaCircleInfo,
   FaCode,
   FaComments,
   FaDiscord,
   FaHammer,
-  FaUsers,
 } from "react-icons/fa6";
 import { IoIosInformationCircle } from "react-icons/io";
 import { MdOutlineArticle } from "react-icons/md";
@@ -58,6 +58,14 @@ export function NavbarSmall() {
             Apps
           </IconAndText>
         </NavItemPrimary>
+        <NavItemPrimary url="/assets" active={false}>
+          <IconAndText
+            icon={<FaCogs className="w-5 h-5 fill-white" />}
+            vertical={true}
+          >
+            Assets
+          </IconAndText>
+        </NavItemPrimary>
         <NavItemPrimary url="/mods" active={false}>
           <IconAndText
             icon={<FaHammer className="w-5 h-5 fill-white" />}
@@ -74,23 +82,20 @@ export function NavbarSmall() {
             Servers
           </IconAndText>
         </NavItemPrimary>
-        <NavItemPrimary url="/assets" active={false}>
+        <NavItemPrimary url="/blog/" active={false}>
           <IconAndText
-            icon={<FaCogs className="w-5 h-5 fill-white" />}
+            icon={<MdOutlineArticle className="w-5 h-5 fill-white" />}
             vertical={true}
           >
-            Assets
+            Blog
           </IconAndText>
         </NavItemPrimary>
-        <NavItemPrimary
-          url="/community"
-          active={COMMUNITY_PATHS.includes(pathName)}
-        >
+        <NavItemPrimary url="https://forum.moddingcommunity.com/" active={false}>
           <IconAndText
-            icon={<FaUsers className="w-5 h-5 fill-white" />}
+            icon={<FaComments className="w-5 h-5 fill-white" />}
             vertical={true}
           >
-            Community
+            Forum
           </IconAndText>
         </NavItemPrimary>
       </div>
@@ -146,6 +151,12 @@ function NavbarLarge() {
             text="Apps"
           />
         </NavItemPrimary>
+        <NavItemPrimary url="/assets" active={false} className="rounded !p-2">
+          <NavbarLargePrimaryDisplay
+            icon={<FaCogs className="w-5 h-5 fill-white" />}
+            text="Assets"
+          />
+        </NavItemPrimary>
         <NavItemPrimary url="/mods" active={false} className="rounded !p-2">
           <NavbarLargePrimaryDisplay
             icon={<FaHammer className="w-5 h-5 fill-white" />}
@@ -185,14 +196,19 @@ function NavbarLarge() {
             </NavbarLargeSecondary>
           </div>
         </div>
-        <div className="flex flex-col gap-1">
-          <NavItemPrimary url="/assets" active={false} className="rounded !p-2">
-            <NavbarLargePrimaryDisplay
-              icon={<FaCogs className="w-5 h-5 fill-white" />}
-              text="Assets"
-            />
-          </NavItemPrimary>
-        </div>
+        <NavItemPrimary url="/blog/" active={false} className="rounded !p-2">
+          <NavbarLargePrimaryDisplay
+            icon={<FaCogs className="w-5 h-5 fill-white" />}
+            text="Blog"
+          />
+        </NavItemPrimary>
+        <NavItemPrimary url="https://forum.moddingcommunity.com/" active={false} className="rounded !p-2">
+          <NavbarLargePrimaryDisplay
+            icon={<FaComments className="w-5 h-5 fill-white" />}
+            text="Forum"
+          />
+        </NavItemPrimary>
+
         <div className="flex flex-col gap-1">
           <NavItemPrimary
             url="/community"
@@ -200,8 +216,8 @@ function NavbarLarge() {
             className="rounded !p-2"
           >
             <NavbarLargePrimaryDisplay
-              icon={<FaUsers className="w-5 h-5 fill-white" />}
-              text="Community"
+              icon={<FaCircleInfo className="w-5 h-5 fill-white" />}
+              text="Resources"
             />
           </NavItemPrimary>
           <div className="flex flex-col [&_>*]:ml-2">
@@ -236,28 +252,6 @@ function NavbarLarge() {
                 className="gap-2"
               >
                 <span>Discord</span>
-              </IconAndText>
-            </NavbarLargeSecondary>
-            <NavbarLargeSecondary
-              url="https://moddingcommunity.com/blog/"
-              newTab={true}
-            >
-              <IconAndText
-                icon={<MdOutlineArticle className="w-4 h-4 fill-white" />}
-                className="gap-2"
-              >
-                <span>Blog</span>
-              </IconAndText>
-            </NavbarLargeSecondary>
-            <NavbarLargeSecondary
-              url="https://forum.moddingcommunity.com"
-              newTab={true}
-            >
-              <IconAndText
-                icon={<FaComments className="w-4 h-4 fill-white" />}
-                className="gap-2"
-              >
-                <span>Forum</span>
               </IconAndText>
             </NavbarLargeSecondary>
           </div>
