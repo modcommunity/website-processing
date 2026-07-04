@@ -69,35 +69,35 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
 
     const articlesModding: Article[] = [
         {
-            url: "https://blog.moddingcommunity.com/how-to-install-mods-for-the-witcher-3",
+            url: "https://moddingcommunity.com/blog/how-to-install-mods-for-the-witcher-3",
             image: "tw3_how_to_mod.png",
             title: "How To Install Mods In The Witcher 3",
             desc: "A guide on how to download and install mods in The Witcher 3 (Wild Hunt) on PC.",
             tags: ["tw3", "modding", "how-to"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-download-install-mods-in-skyrim",
+            url: "https://moddingcommunity.com/blog/how-to-download-install-mods-in-skyrim",
             image: "skyrim_how_to_mod.jpg",
             title: "How To Install Mods In Skyrim",
             desc: "A full guide on how to download and install mods in Skyrim on PC using mod managers like Vortex.",
             tags: ["skyrim", "modding", "how-to"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-install-mods-in-rdr2",
+            url: "https://moddingcommunity.com/blog/how-to-install-mods-in-rdr2",
             image: "rdr2_how_to_mod.jpg",
             title: "How To Install Mods In RDR2",
             desc: "A guide on how to install mods in Red Dead Redemption 2 (RDR2) on PC, including instructions on how to use a popular mod loader, Lenny's Mod Loader (LML).",
             tags: ["rdr2", "modding", "lml", "how-to"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-download-install-mods-in-minecraft",
+            url: "https://moddingcommunity.com/blog/how-to-download-install-mods-in-minecraft",
             image: "mc_how_to_mod.png",
             title: "How To Install Mods In MC",
             desc: "A full guide on how to download and install mods in Minecraft including how to use Forge and Fabric.",
             tags: ["minecraft", "modding", "how-to"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-download-install-mods-in-halo-mcc",
+            url: "https://moddingcommunity.com/blog/how-to-download-install-mods-in-halo-mcc",
             image: "halo_how_to_mod.png",
             title: "How To Install Mods In Halo: MCC",
             desc: "A full guide on how to download and install mods in Halo: Master Chief Collection (Halo: MCC) using Steam Workshop and Vortex.",
@@ -107,35 +107,35 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
 
     const articlesServer: Article[] = [
         {
-            url: "https://blog.moddingcommunity.com/how-to-set-up-a-rust-server",
+            url: "https://moddingcommunity.com/blog/how-to-set-up-a-rust-server",
             image: "rust_how_to_set_up_server.png",
             title: "How To Set Up A Rust Game Server",
             desc: "A guide on how to install mods in Red Dead Redemption 2.",
             tags: ["rust", "server", "setup"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-install-umod-onto-rust-servers",
+            url: "https://moddingcommunity.com/blog/how-to-install-umod-onto-rust-servers",
             image: "rust_how_to_install_umod.png",
             title: "How To Install uMod Onto Rust Servers",
             desc: "A guide on how to download and install uMod (Oxide) onto a Rust game server for Windows and Linux.",
             tags: ["rust", "umod", "server"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-set-up-a-minecraft-java-edition-server",
+            url: "https://moddingcommunity.com/blog/how-set-up-a-minecraft-java-edition-server",
             image: "mc_how_to_set_up_server.png",
             title: "How Set Up A MC Java Edition Server",
             desc: "A full guide on how to set up a Minecraft Java Edition server on both Windows and Linux (Debian 12).",
             tags: ["minecraft", "server", "setup"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-make-a-l4d2-server-with-mods",
+            url: "https://moddingcommunity.com/blog/how-to-make-a-l4d2-server-with-mods",
             image: "l4d2_how_to_set_up_server.jpg",
             title: "How To Make A L4D2 Server With Mods",
             desc: "A guide on how to create and run a Left 4 Dead 2 server with mods on both Windows and Linux.",
             tags: ["l4d2", "server", "mods", "setup"]
         },
         {
-            url: "https://blog.moddingcommunity.com/how-to-make-a-gmod-server-install-mods-addons",
+            url: "https://moddingcommunity.com/blog/how-to-make-a-gmod-server-install-mods-addons",
             image: "gmod_how_to_set_up_server.png",
             title: "How To Make A GMod Server With Mods",
             desc: "A guide on how to set up a Garry's Mod server and download and install mods (addons) on both Windows and Linux.",

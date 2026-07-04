@@ -43,7 +43,7 @@ export default function Footer() {
                                     <div className="flex flex-col gap-2">
                                         <h5>Community</h5>
                                         <div className="flex flex-col gap-2 text-sm">
-                                            <a href="https://blog.moddingcommunity.com">
+                                            <a href="https://moddingcommunity.com/blog/">
                                                 <span>Blog</span>
                                             </a>
                                     

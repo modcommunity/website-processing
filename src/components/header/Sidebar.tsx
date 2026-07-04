@@ -239,7 +239,7 @@ function NavbarLarge() {
               </IconAndText>
             </NavbarLargeSecondary>
             <NavbarLargeSecondary
-              url="https://blog.moddingcommunity.com"
+              url="https://moddingcommunity.com/blog/"
               newTab={true}
             >
               <IconAndText
