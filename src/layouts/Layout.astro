@@ -3,6 +3,7 @@ import "../styles/Global.css"
 
 import ObserverProvider from '../components/Observer';
 import SiteHeader from "../components/SiteHeader";
+import SiteSidebar from "../components/SiteSidebar";
 import SiteFooter from "../components/SiteFooter";
 import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
 import UmamiAnalytics from "../components/helper/UmamiAnalytics.astro";
@@ -101,9 +102,13 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 			<div class="relative flex min-h-screen flex-col bg-background text-foreground">
 				<SiteHeader pathName={pathName} client:load />
 
-				<main class="relative z-20 grow">
-					<slot />
-				</main>
+				<div class="flex flex-1">
+					<SiteSidebar pathName={pathName} client:load />
+
+					<main class="relative z-20 min-w-0 grow">
+						<slot />
+					</main>
+				</div>
 
 				<SiteFooter client:load />
 			</div>
