@@ -2,8 +2,8 @@
 import "../styles/Global.css"
 
 import ObserverProvider from '../components/Observer';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import SiteHeader from "../components/SiteHeader";
+import SiteFooter from "../components/SiteFooter";
 import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
 import UmamiAnalytics from "../components/helper/UmamiAnalytics.astro";
 
@@ -12,6 +12,9 @@ import '@fontsource/dm-sans/700.css';
 
 import '@fontsource/plus-jakarta-sans/400.css';
 import '@fontsource/plus-jakarta-sans/700.css';
+
+// Orbitron powers the shared TMC logo wordmark.
+import '@fontsource/orbitron/700.css';
 
 // Plausible Analytics
 const paSrc: string | undefined = import.meta.env.PUBLIC_PA_SRC
@@ -49,7 +52,7 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
@@ -95,15 +98,15 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 	</head>
 	<body>
 		<ObserverProvider client:load>
-			<main>
-				<div class="relative bg-body w-full text-text-default min-h-screen">
-					<Header pathName={pathName} client:load>
-						<slot />
-					</Header>
-				</div>
+			<div class="relative flex min-h-screen flex-col bg-background text-foreground">
+				<SiteHeader pathName={pathName} client:load />
 
-				<Footer client:load />
-			</main>
+				<main class="relative z-20 grow">
+					<slot />
+				</main>
+
+				<SiteFooter client:load />
+			</div>
 		</ObserverProvider>
 	</body>
 </html>
