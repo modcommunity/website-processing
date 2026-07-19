@@ -4,8 +4,7 @@ import InDevelopmentWarning from "./heading/InDevelopmentWarning"
 import Card from "../helper/Card.astro"
 import CLink from "../helper/CLink"
 
-import { FaGithub } from "react-icons/fa";
-import { FaCode } from "react-icons/fa";
+import { FaGithub, FaCode, FaHeart, FaPeopleGroup } from "react-icons/fa6";
 ---
 
 <section class="relative isolate overflow-hidden px-4 py-24 sm:py-32">
@@ -32,46 +31,65 @@ import { FaCode } from "react-icons/fa";
     </div>
 </section>
 
-<section class="py-10 px-4 container mx-auto flex flex-col gap-10">
-    <div class="grid gap-x-0 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-x-15 2xl:gap-x-30 gap-y-15">
-        <Card className="intersect-once intersect:motion-preset-slide-right-lg">
-            <div class="flex justify-center">
-                <h3>Who Are We?</h3>
-            </div>
-            <div>
-                <p>We are a <span class="italic">welcoming</span> and <span class="italic">inclusive</span> <span class="special">modding</span> and <span class="special">game development</span> community. We currently offer a <CLink href="/servers">server browser</CLink>, <CLink href="https://moddingcommunity.com/blog/">blog</CLink>, and <CLink href="https://forum.moddingcommunity.com">forum</CLink>, with plans to launch a <span class="special">mod workshop</span> and more in the future!</p>
-            </div>
+<section class="py-10 px-4 container mx-auto">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <Card className="flex flex-col gap-4 intersect-once intersect:motion-preset-slide-right-lg">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                <FaPeopleGroup className="h-6 w-6" />
+            </span>
+            <h3 class="text-xl">Who Are We?</h3>
+            <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
+                We're a <span class="special">modding</span> and
+                <span class="special">game development</span> community building one
+                platform for the things that usually live in a dozen different places.
+                Today that's a <CLink href="/servers">server browser</CLink>, a
+                <CLink href="https://moddingcommunity.com/blog/">blog</CLink> and a
+                <CLink href="https://forum.moddingcommunity.com">forum</CLink>, with
+                <span class="special">assets</span>, <span class="special">mods</span> and
+                <span class="special">communities</span> rolling out next.
+            </p>
         </Card>
-        <Card className="intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
-            <div class="flex justify-center">
-                <h3>Inclusiveness</h3>
-            </div>
-            <div>
-                <p>One big thing we're pushing for is <span class="special">inclusiveness</span>. Our goal is to provide mod authors and server administrators with all of the <span class="special">tools</span> and <span class="special">insights</span> they need. This includes supporting both <span class="special">singleplayer</span> and <span class="special">multiplayer</span> modding!</p>
-            </div>
+        <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                <FaHeart className="h-6 w-6" />
+            </span>
+            <h3 class="text-xl">Built For Everyone</h3>
+            <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
+                Whether you ship a <span class="special">singleplayer</span> mod, maintain
+                a <span class="special">multiplayer</span> server or are writing your very
+                first script, you get the same <span class="special">tools</span> and
+                <span class="special">insights</span>. No gatekeeping, no
+                pay-to-be-seen, and a <span class="special">welcoming</span> place to ask
+                questions.
+            </p>
         </Card>
-        <Card className="intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
-            <div class="flex justify-center">
-                <h3>Open Source</h3>
-            </div>
-            <div>
-                <p>We are a big <span class="special">supporter</span> of <span class="special">open source</span>! We have an active <CLink href="https://github.com/modcommunity" target="_blank">GitHub organization</CLink> and have created our own custom integration systems with the website and GitHub organization.</p>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-evenly [&>*]:w-40 mt-10">
+        <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                <FaGithub className="h-6 w-6" />
+            </span>
+            <h3 class="text-xl">Open Source</h3>
+            <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
+                We build in the open. Our
+                <CLink href="https://github.com/modcommunity" target="_blank">GitHub organization</CLink>
+                hosts the platform itself along with the tooling behind it, so you can read
+                the code, <span class="special">report issues</span> and
+                <span class="special">contribute</span> to anything you rely on.
+            </p>
+            <div class="mt-auto flex flex-wrap gap-3 pt-2">
                 <a
                     href="https://github.com/modcommunity"
                     target="_blank"
                     class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <FaGithub className="w-5 h-5 fill-text-default group-hover:fill-text-primary group-hover:duration-300" />
+                    <FaGithub className="w-5 h-5" />
                     <span>GitHub Org</span>
                 </a>
                 <a
                     href="https://github.com/modcommunity/website-processing"
                     target="_blank"
-                    class="flex items-center justify-center  gap-2 group btn btn-primary"
+                    class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <FaCode className="w-5 h-5 fill-text-default group-hover:fill-text-primary group-hover:duration-300" />
+                    <FaCode className="w-5 h-5" />
                     <span>Source</span>
                 </a>
             </div>
