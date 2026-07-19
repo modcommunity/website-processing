@@ -1,0 +1,46 @@
+---
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+
+import {
+    FaGamepad,
+    FaLayerGroup,
+    FaChartLine,
+    FaUsers,
+} from "react-icons/fa6";
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow="Communities">
+        <h2 slot="title">Bring It All Together In <span class="special">Communities</span></h2>
+        <p>
+            Communities are <span class="special">hubs</span> that span multiple games and
+            gather your mods, servers, assets and articles in one place, with a live
+            dashboard tracking the whole thing.
+        </p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <FeatureCard icon={FaGamepad} title="Multi-Game Hubs" class="intersect-once intersect:motion-preset-slide-up">
+            Group your content across <span class="special">several games</span> under a
+            single community.
+        </FeatureCard>
+        <FeatureCard icon={FaLayerGroup} title="Everything In One Place" class="intersect-once intersect:motion-preset-slide-up">
+            <span class="special">Mods</span>, <span class="special">servers</span>,
+            <span class="special">assets</span> and articles, all under your community's
+            roof.
+        </FeatureCard>
+        <FeatureCard icon={FaChartLine} title="Aggregate Dashboard" class="intersect-once intersect:motion-preset-slide-up">
+            A live dashboard rolls up <span class="special">reach</span>,
+            <span class="special">contributors</span> and engagement over time.
+        </FeatureCard>
+        <FeatureCard icon={FaUsers} title="Live Player Counts" class="intersect-once intersect:motion-preset-slide-up">
+            See <span class="special">combined player counts</span> across every server
+            your community runs.
+        </FeatureCard>
+    </div>
+
+    <div class="flex justify-center">
+        <a href="/communities" class="btn btn-special">Discover Communities</a>
+    </div>
+</section>

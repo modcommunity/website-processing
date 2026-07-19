@@ -1,75 +1,117 @@
 ---
-import Card from "../helper/Card.astro";
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
 
-import { FaSearch } from "react-icons/fa";
-import { FaNetworkWired } from "react-icons/fa";
-import { FaGears } from "react-icons/fa6";
-import { IoMdAnalytics } from "react-icons/io";
-import { FaLink } from "react-icons/fa";
+import {
+    FaMagnifyingGlass,
+    FaShieldHalved,
+    FaTags,
+    FaPhotoFilm,
+    FaScaleBalanced,
+    FaDiagramProject,
+    FaKey,
+    FaCode,
+    FaBoxOpen,
+    FaClockRotateLeft,
+} from "react-icons/fa6";
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
-    <div class="flex flex-col gap-4">
-        <h2>Developing A <span class="text-special-1">Mod Workshop</span></h2>
-        <span>We are in the process of <span class="italic">developing</span> our own <span class="special">mod workshop</span>! While we don't have all of the details yet (since we're still under development), we will be supporting the following features!</span>
+    <SectionIntro eyebrow="Mods">
+        <h2 slot="title">A Full-Featured <span class="special">Mod Workshop</span></h2>
+        <p>
+            We're building a home for mods where creators stay in control, from a
+            polished upload experience to a <span class="special">developer API</span>
+            that automates the whole thing. Here's what's coming.
+        </p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <FeatureCard icon={FaMagnifyingGlass} title="Browse &amp; Search" class="intersect-once intersect:motion-preset-slide-up">
+            <span class="special">Browse</span> and <span class="special">search</span>
+            mods uploaded by the community across every supported game.
+        </FeatureCard>
+        <FeatureCard icon={FaShieldHalved} title="Secure Uploads &amp; Downloads" class="intersect-once intersect:motion-preset-slide-up">
+            Securely <span class="special">upload</span> your own mods and
+            <span class="special">download</span> others', with unique download
+            tracking built in.
+        </FeatureCard>
+        <FeatureCard icon={FaTags} title="Versioned Releases" class="intersect-once intersect:motion-preset-slide-up">
+            Ship <span class="special">versioned releases</span> with rich changelogs
+            and attached mod files for every build.
+        </FeatureCard>
+        <FeatureCard icon={FaPhotoFilm} title="Screenshots &amp; Video" class="intersect-once intersect:motion-preset-slide-up">
+            Add <span class="special">image &amp; video</span> media so players know
+            exactly what they're getting before they install.
+        </FeatureCard>
+        <FeatureCard icon={FaScaleBalanced} title="Licenses &amp; Install Guides" class="intersect-once intersect:motion-preset-slide-up">
+            Pick a <span class="special">license</span> and write clear
+            <span class="special">install instructions</span> right on the mod page.
+        </FeatureCard>
+        <FeatureCard icon={FaDiagramProject} title="Dependencies" class="intersect-once intersect:motion-preset-slide-up">
+            Link required mods and assets as <span class="special">dependencies</span>
+            so nothing is missing.
+        </FeatureCard>
     </div>
-    <div class="p-6">
-        <div class="grid gap-x-0 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-x-15 2xl:gap-x-30 gap-y-15">
-            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
-                    <div class="flex flex-col justify-center items-center">
-                        <FaSearch className="w-15 h-15 fill-white" />
-                    </div>
-                    <div class="flex flex-col gap-2 grow">
-                        <h4 class="text-base">Browse</h4>
-                        <p>You will be able to <span class="special">browse</span> and <span class="special">search</span> for mods that are uploaded by others.</p>
-                    </div>
+
+    {/* Developer API / CI-CD panel */}
+    <div class="rounded-2xl border border-border bg-surface/50 p-6 sm:p-8 flex flex-col gap-8">
+        <SectionIntro eyebrow="Developer API">
+            <h3 slot="title" class="text-2xl">Automate Uploads With The <span class="special">Content API</span></h3>
+            <p>
+                Generate a <span class="special">personal access token</span> and script
+                everything you can do in the browser. Perfect for
+                <span class="special">CI/CD</span> pipelines &mdash; build your mod, cut a
+                release, and upload its files automatically on every commit.
+            </p>
+        </SectionIntro>
+
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <FeatureCard icon={FaKey} title="Access Tokens">
+                    Bearer <span class="special">tmc_</span> tokens with read / write /
+                    delete scopes, expiry, IP allow-lists and per-key rate limits.
+                </FeatureCard>
+                <FeatureCard icon={FaCode} title="REST Endpoints">
+                    Create, update and delete mods with simple JSON at
+                    <span class="special">/api/content/mod</span>.
+                </FeatureCard>
+                <FeatureCard icon={FaBoxOpen} title="Upload Relations">
+                    Push <span class="special">releases</span>,
+                    <span class="special">mod files</span>,
+                    <span class="special">images &amp; media</span>, links and installers
+                    through the relations API.
+                </FeatureCard>
+                <FeatureCard icon={FaClockRotateLeft} title="Safe By Default">
+                    Every request is <span class="special">rate-limited</span> and
+                    <span class="special">audit-logged</span>, and can never do more than
+                    you can.
+                </FeatureCard>
+            </div>
+
+            {/* Terminal snippet */}
+            <div class="overflow-hidden rounded-xl border border-border bg-background/70">
+                <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
+                    <span class="h-3 w-3 rounded-full bg-danger/70"></span>
+                    <span class="h-3 w-3 rounded-full bg-warning/70"></span>
+                    <span class="h-3 w-3 rounded-full bg-success/70"></span>
+                    <span class="ml-2 text-xs text-muted">release.sh</span>
                 </div>
-            </Card>
-            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
-                    <div class="flex flex-col justify-center items-center">
-                        <FaNetworkWired className="w-15 h-15 fill-white" />
-                    </div>
-                    <div class="flex flex-col gap-2 grow">
-                        <h4 class="text-base">Mod Downloads & Uploads</h4>
-                        <p>Users will be able to <span class="special">securely</span> download mods uploaded by others along with upload their <span class="special">own mods</span>!</p>
-                    </div>
-                </div>
-            </Card>
-            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
-                    <div class="flex flex-col justify-center items-center">
-                        <FaGears className="w-15 h-15 fill-white" />
-                    </div>
-                    <div class="flex flex-col gap-2 grow">
-                        <h4 class="text-base">Git & CI/CD Pipeline Support</h4>
-                        <p>Mod owners will be able to upload and update their own mods through <span class="special">CI/CD pipelines</span> and <span class="special">Git</span> support.</p>
-                    </div>
-                </div>
-            </Card>
-            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
-                    <div class="flex flex-col justify-center items-center">
-                        <IoMdAnalytics className="w-15 h-15 fill-white" />
-                    </div>
-                    <div class="flex flex-col gap-2 grow">
-                        <h4 class="text-base">Statistics</h4>
-                        <p><span class="special">Views</span> and <span class="special">downloads</span> will be tracked for every mod and publicly shown. We will also be offering mod owners <span class="special">deeper insights</span> on the type of traffic that views and downloads their mods!</p>
-                    </div>
-                </div>
-            </Card>
-            <Card className="intersect-once intersect:sm:motion-preset-focus-lg">
-                <div class="flex flex-col sm:flex-row sm:justify-between gap-8 h-full">
-                    <div class="flex flex-col justify-center items-center">
-                        <FaLink className="w-15 h-15 fill-white" />
-                    </div>
-                    <div class="flex flex-col gap-2 grow">
-                        <h4 class="text-base">Mod Manager</h4>
-                        <p>At some point, we will be developing our own official <span class="special">TMC App</span> that'll allow users to manage mods in games we support. This includes functionality to automatically <span class="special">download</span>, <span class="special">install</span>, and <span class="special">update</span> your mods!</p>
-                    </div>
-                </div>
-            </Card>
+                <pre class="overflow-x-auto p-4 text-[12.5px] leading-relaxed font-mono text-foreground/90"><code><span class="text-muted"># 1. Create a mod</span>
+<span class="text-accent">curl</span> -X POST https://moddingcommunity.com/api/content/mod \
+  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
+  -d <span class="text-success-2">'&lbrace;"name":"My Mod","appId":42&rbrace;'</span>
+
+<span class="text-muted"># 2. Cut a release &amp; upload its files</span>
+<span class="text-accent">curl</span> -X POST \
+  <span class="text-success-2">"…/api/content/file?releaseId=123"</span> \
+  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
+  -F <span class="text-success-2">"files=@MyMod-1.2.0.zip"</span></code></pre>
+            </div>
         </div>
+    </div>
+
+    <div class="flex justify-center">
+        <a href="/mods" class="btn btn-special">Explore Mods</a>
     </div>
 </section>

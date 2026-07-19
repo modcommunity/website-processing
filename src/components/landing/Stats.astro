@@ -1,0 +1,83 @@
+---
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import StatArea from "./helper/StatArea.astro";
+import StatDonut from "./helper/StatDonut.astro";
+
+import {
+    FaChartLine,
+    FaClockRotateLeft,
+    FaChartPie,
+    FaFingerprint,
+} from "react-icons/fa6";
+
+// Content-mix donut — dark-mode categorical hues from the data-viz reference
+// palette (colourblind-safe as a set; every slice is direct-labelled).
+const contentMix = [
+    { label: "Mods", value: 42, color: "#3987e5" },
+    { label: "Assets", value: 28, color: "#008300" },
+    { label: "Servers", value: 18, color: "#d55181" },
+    { label: "Collections", value: 12, color: "#c98500" },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow="Insights">
+        <h2 slot="title">Track Everything With <span class="special">Beautiful Stats</span></h2>
+        <p>
+            Every asset, mod, server and community ships with real analytics, views,
+            downloads and engagement over <span class="special">time</span>, live and
+            historical <span class="special">player graphs</span>, and a
+            <span class="special">breakdown</span> of your whole library, all
+            de-duplicated so the numbers are honest.
+        </p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
+        {/* Trend / line + area chart */}
+        <div class="card lg:col-span-3">
+            <div class="flex flex-col gap-1">
+                <h4 class="text-base">Views &amp; Downloads Over Time</h4>
+                <p class="text-sm text-muted">
+                    Line &amp; area graphs for views, downloads, favorites and ratings,
+                    bucketed by day, week, month or year.
+                </p>
+            </div>
+            <div class="mt-4">
+                <StatArea id="stats-trend" data={[24, 30, 27, 41, 38, 55, 50, 63, 68, 82, 90, 96]} label="Downloads" value="Last 30 days" />
+            </div>
+        </div>
+
+        {/* Content-mix donut / pie chart */}
+        <div class="card lg:col-span-2">
+            <div class="flex flex-col gap-1">
+                <h4 class="text-base">Your Library At A Glance</h4>
+                <p class="text-sm text-muted">
+                    A pie breakdown of everything you've published across the platform.
+                </p>
+            </div>
+            <div class="mt-4 grow flex items-center">
+                <StatDonut segments={contentMix} centerLabel="1.2k" centerSub="Items" class="w-full" />
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <FeatureCard icon={FaChartLine} title="Live Player Timelines" class="intersect-once intersect:motion-preset-slide-up">
+            Watch <span class="special">current</span>, <span class="special">max</span>
+            and new players on every server in real time.
+        </FeatureCard>
+        <FeatureCard icon={FaClockRotateLeft} title="Historical Data" class="intersect-once intersect:motion-preset-slide-up">
+            We keep <span class="special">historical</span> server and content data for
+            up to a year or more.
+        </FeatureCard>
+        <FeatureCard icon={FaChartPie} title="Top Maps &amp; Traffic" class="intersect-once intersect:motion-preset-slide-up">
+            <span class="special">Pie</span> and <span class="special">bar</span>
+            breakdowns of top maps, traffic and content mix.
+        </FeatureCard>
+        <FeatureCard icon={FaFingerprint} title="Accurate &amp; Deduped" class="intersect-once intersect:motion-preset-slide-up">
+            Unique views and downloads are <span class="special">de-duplicated</span> per
+            user, so the numbers are real.
+        </FeatureCard>
+    </div>
+</section>

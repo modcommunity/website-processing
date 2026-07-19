@@ -1,14 +1,14 @@
 ---
 import Card from "../helper/Card.astro";
 import CLink from "../helper/CLink";
-
-
+import SectionIntro from "./helper/SectionIntro.astro";
 ---
 
 <section class="px-4 py-20 container mx-auto flex flex-col gap-10">
-    <div class="flex flex-col gap-4">
-        <h2>Join A <span class="special">Growing</span> Community</h2>
-    </div>
+    <SectionIntro eyebrow="Get Involved">
+        <h2 slot="title">Join A <span class="special">Growing</span> Community</h2>
+        <p>Thousands of modders, server owners and players hang out on our forum and Discord. Come say hi!</p>
+    </SectionIntro>
     <div class="p-6">
         <div class="flex flex-col sm:flex-row justify-evenly gap-y-10 sm:gap-30 [&>*]w-full [&>*]:sm:w-120">
             <Card className="intersect-once intersect:sm:motion-preset-slide-right-lg">
