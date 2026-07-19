@@ -1,0 +1,23 @@
+---
+type Props = {
+    eyebrow?: string
+    class?: string
+}
+
+const { eyebrow, class: className } = Astro.props as Props
+---
+
+<div class={`flex flex-col gap-4 ${className ?? ""}`}>
+    {eyebrow && (
+        <span
+            class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent"
+        >
+            <span class="h-1 w-6 rounded-full bg-gradient-to-r from-accent to-[#5577f0]"></span>
+            {eyebrow}
+        </span>
+    )}
+    <slot name="title" />
+    <div class="max-w-3xl text-muted [&_.special]:text-accent [&_a]:text-accent">
+        <slot />
+    </div>
+</div>

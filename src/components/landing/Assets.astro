@@ -1,0 +1,82 @@
+---
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+
+import {
+    FaTags,
+    FaImages,
+    FaDownload,
+    FaCode,
+    FaDiagramProject,
+    FaGithub,
+    FaCube,
+} from "react-icons/fa6";
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow="Assets">
+        <h2 slot="title">Share Game <span class="special">Assets</span> &amp; <span class="special">Tools</span></h2>
+        <p>
+            From SourcePawn and Lua plugins to full toolkits, upload, version, and
+            showcase the <span class="special">game assets</span> and
+            <span class="special">tools</span> that power your favorite games. Every
+            asset gets a rich page with media, categories, dependencies and one-click
+            installs.
+        </p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <FeatureCard icon={FaTags} title="Versioned Releases" class="intersect-once intersect:motion-preset-slide-up">
+            Cut <span class="special">versioned releases</span> with changelogs and attach
+            files up to <span class="special">100&nbsp;MB</span> each, so people always
+            grab the right build.
+        </FeatureCard>
+        <FeatureCard icon={FaImages} title="Media Galleries" class="intersect-once intersect:motion-preset-slide-up">
+            Show off your work with <span class="special">image &amp; video</span>
+            galleries, plus custom icon, banner and card art.
+        </FeatureCard>
+        <FeatureCard icon={FaDownload} title="One-Click Installs" class="intersect-once intersect:motion-preset-slide-up">
+            Deep-link installers (<span class="special">CurseForge</span>,
+            <span class="special">NexusMods</span> and more) turn the download button
+            into an instant install.
+        </FeatureCard>
+        <FeatureCard icon={FaCode} title="Source, Lua &amp; Beyond" class="intersect-once intersect:motion-preset-slide-up">
+            First-class support for <span class="special">SourceMod</span>
+            (SourcePawn &amp; compiled), <span class="special">Lua</span>, archives and
+            more, uploaded securely.
+        </FeatureCard>
+        <FeatureCard icon={FaDiagramProject} title="Dependencies" class="intersect-once intersect:motion-preset-slide-up">
+            Declare <span class="special">dependencies</span> between assets so users
+            pull in everything they need in one place.
+        </FeatureCard>
+        <FeatureCard icon={FaGithub} title="Open-Source Friendly" class="intersect-once intersect:motion-preset-slide-up">
+            Link a <span class="special">source repository</span> and gather ratings,
+            reviews and questions from the community.
+        </FeatureCard>
+    </div>
+
+    {/* Godot roadmap highlight */}
+    <div class="relative overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-surface to-surface p-6 sm:p-8">
+        <span class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent/20 blur-3xl"></span>
+        <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent/15 text-accent ring-1 ring-accent/30">
+                <FaCube className="h-7 w-7" />
+            </span>
+            <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-3">
+                    <h3 class="text-xl">Open-Source Assets for Godot</h3>
+                    <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">Planned</span>
+                </div>
+                <p class="text-muted">
+                    We're planning a library of <span class="text-accent">free, open-source
+                    assets for Godot</span> &mdash; built by the community, for the community &mdash;
+                    to help new developers ship their games faster.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center">
+        <a href="/assets" class="btn btn-special">Browse Assets</a>
+    </div>
+</section>
