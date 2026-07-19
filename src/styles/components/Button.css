@@ -1,10 +1,10 @@
 @layer components {
   .btn {
-    @apply px-4 py-2 rounded text-center text-text-primary cursor-pointer font-bold shadow !font-pjs;
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-center font-bold text-foreground cursor-pointer transition-all duration-200 !font-pjs;
   }
 
   .btn-primary {
-    @apply bg-btn-primary hover:bg-btn-primary-hover ring-1 ring-border-secondary hover:ring-border-primary;
+    @apply bg-surface-secondary hover:bg-surface-hover ring-1 ring-border hover:ring-accent;
   }
 
   .btn-secondary {
@@ -12,7 +12,7 @@
   }
 
   .btn-special {
-    @apply bg-btn-special hover:bg-btn-special-hover ring-1 ring-border-secondary hover:ring-border-primary shadow-black;
+    @apply bg-gradient-to-br from-accent to-[#5577f0] text-white shadow-lg shadow-accent/25 hover:brightness-110;
   }
 
   .btn-warning {
