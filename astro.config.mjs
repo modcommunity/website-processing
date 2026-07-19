@@ -16,6 +16,12 @@ export default defineConfig({
     mode: "standalone", // or "middleware"
   }),
   */
+  // Astro's HTML compressor collapses a newline between text and an inline
+  // element ("... and\n<span class="special">insights</span>") into nothing
+  // rather than a single space, so wrapped markup renders words jammed
+  // together. Gzip makes the size difference negligible.
+  compressHTML: false,
+
   vite: {
     plugins: [tailwindcss()],
     server: {
