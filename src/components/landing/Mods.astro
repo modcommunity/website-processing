@@ -9,10 +9,6 @@ import {
     FaPhotoFilm,
     FaScaleBalanced,
     FaDiagramProject,
-    FaKey,
-    FaCode,
-    FaBoxOpen,
-    FaClockRotateLeft,
 } from "react-icons/fa6";
 ---
 
@@ -20,9 +16,10 @@ import {
     <SectionIntro eyebrow="Mods">
         <h2 slot="title">A Full-Featured <span class="special">Mod Workshop</span></h2>
         <p>
-            We're building a home for mods where creators stay in control, from a
-            polished upload experience to a <span class="special">developer API</span>
-            that automates the whole thing. Here's what's coming.
+            We're building a home for mods where creators stay in control &mdash; a
+            polished upload experience, rich mod pages, and releases you can cut by hand
+            or automate from your own <span class="special">CI/CD</span> pipeline. Here's
+            what's coming.
         </p>
     </SectionIntro>
 
@@ -38,7 +35,8 @@ import {
         </FeatureCard>
         <FeatureCard icon={FaTags} title="Versioned Releases" class="intersect-once intersect:motion-preset-slide-up">
             Ship <span class="special">versioned releases</span> with rich changelogs
-            and attached mod files for every build.
+            and attached mod files for every build &mdash; by hand, or straight from
+            <span class="special">CI/CD</span> via the developer API.
         </FeatureCard>
         <FeatureCard icon={FaPhotoFilm} title="Screenshots &amp; Video" class="intersect-once intersect:motion-preset-slide-up">
             Add <span class="special">image &amp; video</span> media so players know
@@ -52,63 +50,6 @@ import {
             Link required mods and assets as <span class="special">dependencies</span>
             so nothing is missing.
         </FeatureCard>
-    </div>
-
-    {/* Developer API / CI-CD panel */}
-    <div class="rounded-2xl border border-border bg-surface/50 p-6 sm:p-8 flex flex-col gap-8">
-        <SectionIntro eyebrow="Developer API">
-            <h3 slot="title" class="text-2xl">Automate Uploads With The <span class="special">Content API</span></h3>
-            <p>
-                Generate a <span class="special">personal access token</span> and script
-                everything you can do in the browser. Perfect for
-                <span class="special">CI/CD</span> pipelines &mdash; build your mod, cut a
-                release, and upload its files automatically on every commit.
-            </p>
-        </SectionIntro>
-
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                <FeatureCard icon={FaKey} title="Access Tokens">
-                    Bearer <span class="special">tmc_</span> tokens with read / write /
-                    delete scopes, expiry, IP allow-lists and per-key rate limits.
-                </FeatureCard>
-                <FeatureCard icon={FaCode} title="REST Endpoints">
-                    Create, update and delete mods with simple JSON at
-                    <span class="special">/api/content/mod</span>.
-                </FeatureCard>
-                <FeatureCard icon={FaBoxOpen} title="Upload Relations">
-                    Push <span class="special">releases</span>,
-                    <span class="special">mod files</span>,
-                    <span class="special">images &amp; media</span>, links and installers
-                    through the relations API.
-                </FeatureCard>
-                <FeatureCard icon={FaClockRotateLeft} title="Safe By Default">
-                    Every request is <span class="special">rate-limited</span> and
-                    <span class="special">audit-logged</span>, and can never do more than
-                    you can.
-                </FeatureCard>
-            </div>
-
-            {/* Terminal snippet */}
-            <div class="overflow-hidden rounded-xl border border-border bg-background/70">
-                <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
-                    <span class="h-3 w-3 rounded-full bg-danger/70"></span>
-                    <span class="h-3 w-3 rounded-full bg-warning/70"></span>
-                    <span class="h-3 w-3 rounded-full bg-success/70"></span>
-                    <span class="ml-2 text-xs text-muted">release.sh</span>
-                </div>
-                <pre class="overflow-x-auto p-4 text-[12.5px] leading-relaxed font-mono text-foreground/90"><code><span class="text-muted"># 1. Create a mod</span>
-<span class="text-accent">curl</span> -X POST https://moddingcommunity.com/api/content/mod \
-  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
-  -d <span class="text-success-2">'&lbrace;"name":"My Mod","appId":42&rbrace;'</span>
-
-<span class="text-muted"># 2. Cut a release &amp; upload its files</span>
-<span class="text-accent">curl</span> -X POST \
-  <span class="text-success-2">"…/api/content/file?releaseId=123"</span> \
-  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
-  -F <span class="text-success-2">"files=@MyMod-1.2.0.zip"</span></code></pre>
-            </div>
-        </div>
     </div>
 
     <div class="flex justify-center">
