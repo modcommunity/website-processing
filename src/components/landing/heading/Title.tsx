@@ -1,12 +1,16 @@
 import { TypeAnimation } from "react-type-animation";
 
-export default function HeadingTitle() {
+type Props = {
+    sequence?: (string | number)[]
+}
+
+export default function HeadingTitle({ sequence = ["A Modding & Game Dev Community"] }: Props) {
     return (
         <TypeAnimation
-            sequence={["A Modding & Game Dev Community"]}
+            sequence={sequence}
             speed={5}
             wrapper="h2"
-            className="text-white text-lg lg:text-3xl font-bold "
+            className="text-foreground text-3xl sm:text-4xl lg:text-5xl font-extrabold drop-shadow"
         />
     )
 }

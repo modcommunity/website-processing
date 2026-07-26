@@ -1,0 +1,16 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Tos from '../../../components/Tos.astro';
+import { NON_DEFAULT_LOCALES } from '../../../i18n/config';
+
+export function getStaticPaths() {
+    return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout pathName={Astro.url.pathname} meta={{
+    title: "Terms of Service",
+    titleMain: "Terms of Service - The Modding Community"
+}}>
+    <Tos />
+</Layout>

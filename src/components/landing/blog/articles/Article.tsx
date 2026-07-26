@@ -31,7 +31,7 @@ export default function Article(props: ArticleType & HTMLAttributes<HTMLDivEleme
                 <a
                     href={url}
                     target="_blank"
-                    className="p-2 px-4 rounded-lg bg-btn-primary ring-1 ring-border-secondary hover:bg-btn-primary-hover hover:ring-border-primary hover:duration-300"
+                    className="btn btn-primary text-sm"
                 >View</a>
             </div>
             {tags.length > 0 && (

@@ -1,17 +1,21 @@
 "use client"
 
-import { IoIosWarning } from "react-icons/io"
-import CLink from "../../helper/CLink"
+import { TriangleAlert } from "lucide-react"
 import IconAndText from "../../helper/IconAndText"
 import type { HTMLAttributes } from "react"
 
-export default function InDevelopmentWarning(props: HTMLAttributes<HTMLDivElement>) {
+const DEFAULT_HTML =
+    'We are currently under <span class="special">heavy development</span>. Community updates are often posted on our <a href="https://forum.moddingcommunity.com" class="special hover:!text-special-2 hover:duration-300">forum</a>!'
+
+type Props = HTMLAttributes<HTMLDivElement> & { html?: string }
+
+export default function InDevelopmentWarning({ html, ...props }: Props) {
     return (
         <IconAndText
-            icon={<IoIosWarning className="w-5 h-5 fill-yellow-500" />}
+            icon={<TriangleAlert className="w-5 h-5 text-yellow-500" />}
             {...props}
         >
-            <span>We are currently under <span className="special">heavy development</span>. Community updates are often posted on our <CLink href="https://forum.moddingcommunity.com">forum</CLink>!</span>
+            <span dangerouslySetInnerHTML={{ __html: html ?? DEFAULT_HTML }} />
         </IconAndText>
     )
 }

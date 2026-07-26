@@ -2,7 +2,7 @@
 
 import { type HTMLAttributes, type ReactNode, useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
-import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io"
+import { ChevronDown, ChevronUp } from "lucide-react"
 
 export function DropdownMenu(props : {
     title: string | ReactNode
@@ -32,7 +32,9 @@ export function DropdownMenu(props : {
         }
     }, [menuOpen, fixed, topOff])
 
-    const closeTimeout = useRef<NodeJS.Timeout | null>(null)
+    // `ReturnType<typeof setTimeout>` rather than `NodeJS.Timeout`: this runs in
+    // the browser and the site has no @types/node.
+    const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null)
 
     const handleMouseEnter = () => {
         if (closeTimeout.current)
@@ -66,9 +68,9 @@ export function DropdownMenu(props : {
                 )}
                 <span>
                     {menuOpen ? (
-                        <IoIosArrowUp />
+                        <ChevronUp />
                     ) : (
-                        <IoIosArrowDown />
+                        <ChevronDown />
                     )}
                 </span>
             </div>

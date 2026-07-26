@@ -1,0 +1,53 @@
+---
+import { Code2, History, Key, PackageOpen } from 'lucide-react';
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.api.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.api.titleHtml')}></h2>
+        <p set:html={t('landing.api.introHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <FeatureCard icon={Key} title={t('landing.api.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c1b')} />
+            </FeatureCard>
+            <FeatureCard icon={Code2} title={t('landing.api.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c2b')} />
+            </FeatureCard>
+            <FeatureCard icon={PackageOpen} title={t('landing.api.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c3b')} />
+            </FeatureCard>
+            <FeatureCard icon={History} title={t('landing.api.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c4b')} />
+            </FeatureCard>
+        </div>
+
+        {/* Terminal snippet */}
+        <div class="overflow-hidden rounded-xl border border-border bg-background/70">
+            <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
+                <span class="h-3 w-3 rounded-full bg-danger/70"></span>
+                <span class="h-3 w-3 rounded-full bg-warning/70"></span>
+                <span class="h-3 w-3 rounded-full bg-success/70"></span>
+                <span class="ml-2 text-xs text-muted">release.sh</span>
+            </div>
+            <pre class="overflow-x-auto p-4 text-[12.5px] leading-relaxed font-mono text-foreground/90"><code><span class="text-muted"># 1. Create a mod (or asset, community, collection…)</span>
+<span class="text-accent">curl</span> -X POST https://moddingcommunity.com/api/content/mod \
+  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
+  -d <span class="text-success-2">'&lbrace;"name":"My Mod","appId":42&rbrace;'</span>
+
+<span class="text-muted"># 2. Cut a release &amp; upload its files</span>
+<span class="text-accent">curl</span> -X POST \
+  <span class="text-success-2">"…/api/content/file?releaseId=123"</span> \
+  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
+  -F <span class="text-success-2">"files=@MyMod-1.2.0.zip"</span></code></pre>
+        </div>
+    </div>
+</section>
