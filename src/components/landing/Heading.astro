@@ -1,10 +1,12 @@
 ---
+import { Code2, Github, Heart, Users } from 'lucide-react';
 import HeadingTitle from "./heading/Title"
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
 import Card from "../helper/Card.astro"
-import CLink from "../helper/CLink"
+import { getT } from "../../i18n/t";
 
-import { FaGithub, FaCode, FaHeart, FaPeopleGroup } from "react-icons/fa6";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="relative isolate overflow-hidden px-4 py-24 sm:py-32">
@@ -20,14 +22,12 @@ import { FaGithub, FaCode, FaHeart, FaPeopleGroup } from "react-icons/fa6";
 
         {/* Need to add minimum height since HeadingTitle loads after first render (makes other elements shift up then down which looks weird without the minimum height) */}
         <div class="min-h-14 sm:min-h-16">
-            <HeadingTitle client:load />
+            <HeadingTitle sequence={[t('landing.hero.titleAnim1')]} client:load />
         </div>
 
-        <p class="max-w-2xl text-balance text-muted">
-            A <span class="text-accent">welcoming</span> and <span class="text-accent">inclusive</span> home for modding and game development &mdash; browse <span class="text-accent">assets</span>, <span class="text-accent">mods</span> and <span class="text-accent">servers</span>, build communities, and curate collections, all in one platform.
-        </p>
+        <p class="max-w-2xl text-balance text-muted" set:html={t('landing.hero.paraHtml')}></p>
 
-        <InDevelopmentWarning client:load />
+        <InDevelopmentWarning html={t('landing.hero.devWarningHtml')} client:load />
     </div>
 </section>
 
@@ -35,45 +35,29 @@ import { FaGithub, FaCode, FaHeart, FaPeopleGroup } from "react-icons/fa6";
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         <Card className="flex flex-col gap-4 intersect-once intersect:motion-preset-slide-right-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
-                <FaPeopleGroup className="h-6 w-6" />
+                <Users className="h-6 w-6" />
             </span>
-            <h3 class="text-xl">Who Are We?</h3>
+            <h3 class="text-xl">{t('landing.hero.card1Title')}</h3>
             <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
-                We're a <span class="special">modding</span> and
-                <span class="special">game development</span> community building one
-                platform for the things that usually live in a dozen different places.
-                Today that's a <CLink href="/servers">server browser</CLink>, a
-                <CLink href="https://moddingcommunity.com/blog/">blog</CLink> and a
-                <CLink href="https://forum.moddingcommunity.com">forum</CLink>, with
-                <span class="special">assets</span>, <span class="special">mods</span> and
-                <span class="special">communities</span> rolling out next.
+                <Fragment set:html={t('landing.hero.card1Html')} />
             </p>
         </Card>
         <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
-                <FaHeart className="h-6 w-6" />
+                <Heart className="h-6 w-6" />
             </span>
-            <h3 class="text-xl">Built For Everyone</h3>
+            <h3 class="text-xl">{t('landing.hero.card2Title')}</h3>
             <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
-                Whether you ship a <span class="special">singleplayer</span> mod, maintain
-                a <span class="special">multiplayer</span> server or are writing your very
-                first script, you get the same <span class="special">tools</span> and
-                <span class="special">insights</span>. No gatekeeping, no
-                pay-to-be-seen, and a <span class="special">welcoming</span> place to ask
-                questions.
+                <Fragment set:html={t('landing.hero.card2Html')} />
             </p>
         </Card>
         <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
-                <FaGithub className="h-6 w-6" />
+                <Github className="h-6 w-6" />
             </span>
-            <h3 class="text-xl">Open Source</h3>
+            <h3 class="text-xl">{t('landing.hero.card3Title')}</h3>
             <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
-                We build in the open. Our
-                <CLink href="https://github.com/modcommunity" target="_blank">GitHub organization</CLink>
-                hosts the platform itself along with the tooling behind it, so you can read
-                the code, <span class="special">report issues</span> and
-                <span class="special">contribute</span> to anything you rely on.
+                <Fragment set:html={t('landing.hero.card3Html')} />
             </p>
             <div class="mt-auto flex flex-wrap gap-3 pt-2">
                 <a
@@ -81,16 +65,16 @@ import { FaGithub, FaCode, FaHeart, FaPeopleGroup } from "react-icons/fa6";
                     target="_blank"
                     class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <FaGithub className="w-5 h-5" />
-                    <span>GitHub Org</span>
+                    <Github className="w-5 h-5" />
+                    <span>{t('landing.hero.ghButton')}</span>
                 </a>
                 <a
                     href="https://github.com/modcommunity/website-processing"
                     target="_blank"
                     class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <FaCode className="w-5 h-5" />
-                    <span>Source</span>
+                    <Code2 className="w-5 h-5" />
+                    <span>{t('landing.hero.sourceButton')}</span>
                 </a>
             </div>
         </Card>

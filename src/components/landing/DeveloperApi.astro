@@ -1,50 +1,32 @@
 ---
+import { Code2, History, Key, PackageOpen } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
 
-import {
-    FaKey,
-    FaCode,
-    FaBoxOpen,
-    FaClockRotateLeft,
-} from "react-icons/fa6";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
-    <SectionIntro eyebrow="Developer API">
-        <h2 slot="title">Automate Everything With The <span class="special">Content API</span></h2>
-        <p>
-            Every kind of content on the platform &mdash;
-            <span class="special">assets</span>, <span class="special">mods</span>,
-            <span class="special">communities</span> and
-            <span class="special">collections</span> &mdash; is reachable through one API.
-            Generate a <span class="special">personal access token</span> and script
-            anything you can do in the browser. Perfect for
-            <span class="special">CI/CD</span> pipelines: build your project, cut a
-            release, and upload its files automatically on every commit.
-        </p>
+    <SectionIntro eyebrow={t('landing.api.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.api.titleHtml')}></h2>
+        <p set:html={t('landing.api.introHtml')}></p>
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <FeatureCard icon={FaKey} title="Access Tokens" class="intersect-once intersect:motion-preset-slide-up">
-                Bearer <span class="special">tmc_</span> tokens with read / write /
-                delete scopes, expiry, IP allow-lists and per-key rate limits.
+            <FeatureCard icon={Key} title={t('landing.api.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c1b')} />
             </FeatureCard>
-            <FeatureCard icon={FaCode} title="REST Endpoints" class="intersect-once intersect:motion-preset-slide-up">
-                Create, update and delete any content type with simple JSON under
-                <span class="special">/api/content</span>.
+            <FeatureCard icon={Code2} title={t('landing.api.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c2b')} />
             </FeatureCard>
-            <FeatureCard icon={FaBoxOpen} title="Upload Relations" class="intersect-once intersect:motion-preset-slide-up">
-                Push <span class="special">releases</span>,
-                <span class="special">files</span>,
-                <span class="special">images &amp; media</span>, links and installers
-                through the relations API.
+            <FeatureCard icon={PackageOpen} title={t('landing.api.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c3b')} />
             </FeatureCard>
-            <FeatureCard icon={FaClockRotateLeft} title="Safe By Default" class="intersect-once intersect:motion-preset-slide-up">
-                Every request is <span class="special">rate-limited</span> and
-                <span class="special">audit-logged</span>, and can never do more than
-                you can.
+            <FeatureCard icon={History} title={t('landing.api.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.api.c4b')} />
             </FeatureCard>
         </div>
 

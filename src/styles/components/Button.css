@@ -1,6 +1,9 @@
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-center font-bold text-foreground cursor-pointer transition-all duration-200 !font-pjs;
+    /* Font-family deliberately omitted so buttons inherit the body font (DM
+       Sans), matching website-city — which dropped its own .btn/!font-pjs rule
+       in the HeroUI migration. */
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-center font-bold text-foreground cursor-pointer transition-all duration-200;
   }
 
   .btn-primary {
