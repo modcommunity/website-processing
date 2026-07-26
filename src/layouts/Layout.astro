@@ -5,17 +5,22 @@ import ObserverProvider from '../components/Observer';
 import SiteHeader from "../components/SiteHeader";
 import SiteSidebar from "../components/SiteSidebar";
 import SiteFooter from "../components/SiteFooter";
+import { LOCALES, localizeUrl, stripLocale, type LocaleT } from "../i18n/config";
+
 import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
 import UmamiAnalytics from "../components/helper/UmamiAnalytics.astro";
 
-import '@fontsource/dm-sans/400.css';
-import '@fontsource/dm-sans/700.css';
-
-import '@fontsource/plus-jakarta-sans/400.css';
-import '@fontsource/plus-jakarta-sans/700.css';
+// The *variable* fonts, not the static weight cuts. website-city loads these
+// families through next/font, which serves the variable font with the weight
+// axis; @fontsource's static files are cut at the 9pt optical size and render
+// as a visibly different design ("DM Sans 9pt Medium" is its own family), which
+// is why the two shells looked mismatched even at identical weights. One file
+// per family also covers every weight the shared components ask for.
+import '@fontsource-variable/dm-sans/index.css';
+import '@fontsource-variable/plus-jakarta-sans/index.css';
 
 // Orbitron powers the shared TMC logo wordmark.
-import '@fontsource/orbitron/700.css';
+import '@fontsource-variable/orbitron/index.css';
 
 // Plausible Analytics
 const paSrc: string | undefined = import.meta.env.PUBLIC_PA_SRC
@@ -37,6 +42,10 @@ type Props = {
 
 const { pathName = "/", meta } = Astro.props as Props
 
+// Astro derives the locale from the URL's leading segment against the configured
+// i18n locales (`/es/...` -> "es"; bare domain -> the default "en").
+const locale = Astro.currentLocale ?? "en"
+
 const {
 	title: titleMeta,
 	titleMain: titleMainMeta,
@@ -49,19 +58,61 @@ const titleMain = titleMainMeta ?? import.meta.env.PUBLIC_TITLE_MAIN ?? "The Mod
 const favIcon = import.meta.env.PUBLIC_FAV_ICON ?? "/favicon.ico"
 const socialMediaImg = import.meta.env.PUBLIC_SOCIAL_MEDIA_IMAGE ?? "/images/banner-filled.png"
 const url = import.meta.env.PUBLIC_URL ?? "https://moddingcommunity.com"
+
+// Canonical + hreflang. Every locale serves the same page at its own prefix, so
+// without these the 9 copies compete as duplicate content and every page claims
+// to be the home page in Open Graph. Built off the real request path (Astro's
+// directory output means it always ends in "/"), stripped back to the bare
+// route and then re-localized for each language.
+const routePath = (Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`)
+const basePath = stripLocale(routePath)
+const canonical = new URL(localizeUrl(basePath, locale as LocaleT), url).href
+const alternates = LOCALES.map((l) => ({
+	locale: l,
+	href: new URL(localizeUrl(basePath, l), url).href
+}))
 const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive modding and game development community. We currently offer a server browser, blog and forum, with plans to launch a mod workshop and more in the future!"
 ---
 
 <!doctype html>
-<html lang="en" class="dark">
+<html lang={locale} class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+
+		<!--
+			Apply the stored/OS-default theme before first paint, so toggling to
+			light (via the shared <ThemeToggle/>) has no flash on the next load.
+			Defaults to dark (the site's identity) when no choice is stored; only
+			a stored "light" flips it. Uses the same `tmc:theme` key + `dark`
+			class / `data-theme` signals the shared ThemeToggle writes.
+		-->
+		<script is:inline>
+			(function () {
+				try {
+					var t = localStorage.getItem('tmc:theme')
+					if (t !== 'light' && t !== 'dark') t = 'dark'
+					document.documentElement.classList.toggle('dark', t === 'dark')
+					document.documentElement.setAttribute('data-theme', t)
+				} catch (e) {}
+			})()
+		</script>
 		<link rel="icon" type="image/svg+xml" href={favIcon} />
 		<meta name="generator" content={Astro.generator} />
 
 		<title>{titleMain}</title>
 		<meta name="description" content={desc} />
+
+		<!--
+			Canonical + one alternate per locale (plus x-default pointing at the
+			unprefixed English page), so search engines treat the 9 localized
+			copies of a page as one page in many languages.
+		-->
+		<link rel="canonical" href={canonical} />
+		{alternates.map(({ locale: l, href }) => (
+			<link rel="alternate" hreflang={l} href={href} />
+		))}
+		<link rel="alternate" hreflang="x-default" href={new URL(basePath, url).href} />
 
 		<!-- Open Graph -->
 		<meta property="og:site_name" content={title}>
@@ -70,15 +121,19 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 		<meta property="og:image" content={url + socialMediaImg}>
 		<meta property="og:image:width" content="1200">
 		<meta property="og:image:height" content="675">
-		<meta property="og:url" content={url}>
+		<meta property="og:url" content={canonical}>
 		<meta property="og:type" content="website">
+		<meta property="og:locale" content={locale}>
+		{alternates.filter(({ locale: l }) => l !== locale).map(({ locale: l }) => (
+			<meta property="og:locale:alternate" content={l}>
+		))}
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:title" content={title}>
 		<meta name="twitter:description" content={desc}>
 		<meta name="twitter:image" content={url + socialMediaImg}>
-		<meta name="twitter:url" content={url}>
+		<meta name="twitter:url" content={canonical}>
 		<meta name="twitter:site" content="@modcommunity_">
 
 		{(paSrc && paDomain) && (
@@ -100,17 +155,17 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 	<body>
 		<ObserverProvider client:load>
 			<div class="relative flex min-h-screen flex-col bg-background text-foreground">
-				<SiteHeader pathName={pathName} client:load />
+				<SiteHeader pathName={pathName} locale={locale} client:load />
 
 				<div class="flex flex-1">
-					<SiteSidebar pathName={pathName} client:load />
+					<SiteSidebar pathName={pathName} locale={locale} client:load />
 
 					<main class="relative z-20 min-w-0 grow">
 						<slot />
 					</main>
 				</div>
 
-				<SiteFooter client:load />
+				<SiteFooter locale={locale} client:load />
 			</div>
 		</ObserverProvider>
 	</body>

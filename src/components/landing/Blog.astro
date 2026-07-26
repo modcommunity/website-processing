@@ -1,13 +1,19 @@
 ---
-import CLink from "../helper/CLink"
 import Articles from "./blog/Articles"
 import SectionIntro from "./helper/SectionIntro.astro"
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="px-4 py-20 container mx-auto flex flex-col gap-10">
-    <SectionIntro eyebrow="Blog">
-        <h2 slot="title">Check Out Our <span class="special">Blog</span></h2>
-        <p>Our blog serves as a <span class="italic">growing</span> resource for modding and server <span class="special">guides</span> in games such as <CLink client:load href="https://moddingcommunity.com/blog/tag/minecraft/" target="_blank">Minecraft</CLink>, <CLink client:load href="https://moddingcommunity.com/blog/tag/gta/" target="_blank">Grand Theft Auto</CLink>, <CLink client:load href="https://moddingcommunity.com/blog/tag/l4d2/" target="_blank">Left 4 Dead 2</CLink>, and more!</p>
+    <SectionIntro eyebrow={t('landing.blog.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.blog.titleHtml')}></h2>
+        <p set:html={t('landing.blog.introHtml')}></p>
     </SectionIntro>
-    <Articles client:load />
+    <Articles
+        client:load
+        moddingGuidesHtml={t('landing.blog.moddingGuidesHtml')}
+        serverGuidesHtml={t('landing.blog.serverGuidesHtml')}
+    />
 </section>

@@ -1,58 +1,38 @@
 ---
+import { Box, Code2, Github, Images, Star, Tags, Workflow } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
 
-import {
-    FaTags,
-    FaImages,
-    FaStar,
-    FaCode,
-    FaDiagramProject,
-    FaGithub,
-    FaCube,
-} from "react-icons/fa6";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
-    <SectionIntro eyebrow="Assets">
-        <h2 slot="title">Share Game <span class="special">Assets</span> &amp; <span class="special">Tools</span></h2>
-        <p>
-            From models, maps and textures to plugins, libraries and full toolkits,
-            upload, version and showcase the <span class="special">game assets</span> and
-            <span class="special">tools</span> that power your favorite games. Every asset
-            gets a rich page with media, categories, dependencies and
-            <span class="special">versioned downloads</span>.
-        </p>
+    <SectionIntro eyebrow={t('landing.assets.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.assets.titleHtml')}></h2>
+        <p set:html={t('landing.assets.introHtml')}></p>
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-        <FeatureCard icon={FaTags} title="Versioned Releases" class="intersect-once intersect:motion-preset-slide-up">
-            Cut <span class="special">versioned releases</span> with changelogs and attach
-            files up to <span class="special">100&nbsp;MB</span> each, so people always
-            grab the right build.
+        <FeatureCard icon={Tags} title={t('landing.assets.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.assets.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={FaImages} title="Media Galleries" class="intersect-once intersect:motion-preset-slide-up">
-            Show off your work with <span class="special">image &amp; video</span>
-            galleries, plus custom icon, banner and card art.
+        <FeatureCard icon={Images} title={t('landing.assets.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.assets.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={FaStar} title="Ratings &amp; Reviews" class="intersect-once intersect:motion-preset-slide-up">
-            Collect <span class="special">ratings</span>,
-            <span class="special">reviews</span> and questions so people can see what an
-            asset is actually like before downloading it.
+        <FeatureCard icon={Star} title={t('landing.assets.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.assets.c3b')} />
         </FeatureCard>
-        <FeatureCard icon={FaCode} title="Any File You Need" class="intersect-once intersect:motion-preset-slide-up">
-            Models, textures, maps, audio, scripts, binaries and archives &mdash; upload
-            whatever format your <span class="special">game</span> or
-            <span class="special">engine</span> expects, securely.
+        <FeatureCard icon={Code2} title={t('landing.assets.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.assets.c4b')} />
         </FeatureCard>
-        <FeatureCard icon={FaDiagramProject} title="Dependencies" class="intersect-once intersect:motion-preset-slide-up">
-            Declare <span class="special">dependencies</span> between assets so users
-            pull in everything they need in one place.
+        <FeatureCard icon={Workflow} title={t('landing.assets.c5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.assets.c5b')} />
         </FeatureCard>
-        <FeatureCard icon={FaGithub} title="Open-Source Badge" class="intersect-once intersect:motion-preset-slide-up">
-            Link a <span class="special">source repository</span> to earn an
-            <span class="special">open-source badge</span> on your asset page, showing
-            people exactly what they're installing.
+        <FeatureCard icon={Github} title={t('landing.assets.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.assets.c6b')} />
         </FeatureCard>
     </div>
 
@@ -61,24 +41,19 @@ import {
         <span class="pointer-events-none absolute -right-8 -top-8 h-32 w-32 rounded-full bg-accent/20 blur-3xl"></span>
         <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
             <span class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-accent/15 text-accent ring-1 ring-accent/30">
-                <FaCube className="h-7 w-7" />
+                <Box className="h-7 w-7" />
             </span>
             <div class="flex flex-col gap-1">
                 <div class="flex items-center gap-3">
-                    <h3 class="text-xl">Free &amp; Open-Source Assets</h3>
-                    <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">Available Now</span>
+                    <h3 class="text-xl" set:html={t('landing.assets.highlightTitle')}></h3>
+                    <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">{t('landing.assets.highlightBadge')}</span>
                 </div>
-                <p class="text-muted">
-                    We already publish our own <span class="text-accent">free, open-source
-                    assets</span> &mdash; built by the community, for the community &mdash; and
-                    we're creating <span class="text-accent">many more</span> across the engines
-                    and games our members use, to help new developers ship faster.
-                </p>
+                <p class="text-muted" set:html={t('landing.assets.highlightHtml')}></p>
             </div>
         </div>
     </div>
 
     <div class="flex justify-center">
-        <a href="/assets" class="btn btn-special">Browse Assets</a>
+        <a href={localizePath("/assets", Astro.currentLocale)} class="btn btn-special">{t('landing.assets.button')}</a>
     </div>
 </section>

@@ -1,18 +1,16 @@
 ---
-import {
-    FaCubes,
-    FaHammer,
-    FaServer,
-    FaUsers,
-    FaLayerGroup,
-} from "react-icons/fa6";
+import { Boxes, Hammer, Layers, Server, Users } from 'lucide-react';
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+
+const t = getT(Astro.currentLocale);
 
 const pillars = [
-    { icon: FaCubes, title: "Assets", href: "/assets", desc: "Game assets & tools" },
-    { icon: FaHammer, title: "Mods", href: "/mods", desc: "A full mod workshop" },
-    { icon: FaServer, title: "Servers", href: "/servers", desc: "Live server browser" },
-    { icon: FaUsers, title: "Communities", href: "/communities", desc: "Multi-game hubs" },
-    { icon: FaLayerGroup, title: "Collections", href: "/collections", desc: "Curated lists" },
+    { icon: Boxes, title: t('landing.pillars.p1Title'), href: localizePath("/assets", Astro.currentLocale), desc: t('landing.pillars.p1Desc') },
+    { icon: Hammer, title: t('landing.pillars.p2Title'), href: localizePath("/mods", Astro.currentLocale), desc: t('landing.pillars.p2Desc') },
+    { icon: Server, title: t('landing.pillars.p3Title'), href: localizePath("/servers", Astro.currentLocale), desc: t('landing.pillars.p3Desc') },
+    { icon: Users, title: t('landing.pillars.p4Title'), href: localizePath("/communities", Astro.currentLocale), desc: t('landing.pillars.p4Desc') },
+    { icon: Layers, title: t('landing.pillars.p5Title'), href: localizePath("/collections", Astro.currentLocale), desc: t('landing.pillars.p5Desc') },
 ];
 ---
 

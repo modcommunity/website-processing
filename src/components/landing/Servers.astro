@@ -1,54 +1,42 @@
 ---
-import CLink from "../helper/CLink";
+import { Globe, Heart, LineChart, RefreshCw, Search, Users } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
 
-import {
-    FaMagnifyingGlass,
-    FaArrowsRotate,
-    FaChartLine,
-    FaUserGroup,
-    FaHeart,
-    FaGlobe,
-} from "react-icons/fa6";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
-    <SectionIntro eyebrow="Servers">
-        <h2 slot="title">Explore Over <span class="special italic">50,000</span> Servers Across <span class="special italic">15+</span> Games</h2>
-        <p>We <span class="italic">track</span> over <span class="special">50,000</span> game servers across <span class="special">15+</span> games including <CLink client:load href="/app/rust">Rust</CLink>, <CLink client:load href="/app/cs2">Counter-Strike 2</CLink>, <CLink client:load href="/app/gmod">Garry's Mod</CLink>, <CLink client:load href="app/project-zomboid">Project Zomboid</CLink>, and others!</p>
+    <SectionIntro eyebrow={t('landing.servers.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.servers.titleHtml')}></h2>
+        <p set:html={t('landing.servers.introHtml')}></p>
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-        <FeatureCard icon={FaMagnifyingGlass} title="A Unique Browser" class="intersect-once intersect:motion-preset-slide-up">
-            Search <span class="special">50,000+</span> servers in a smooth,
-            purpose-built interface and filter by game, name, map,
-            <span class="special">game mode</span> and location.
+        <FeatureCard icon={Search} title={t('landing.servers.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.servers.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={FaArrowsRotate} title="Up-To-Date Info" class="intersect-once intersect:motion-preset-slide-up">
-            We re-query tracked servers every <span class="special">ten minutes</span> or
-            sooner, surfacing live player counts, map names and connection info.
+        <FeatureCard icon={RefreshCw} title={t('landing.servers.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.servers.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={FaChartLine} title="Historical Data" class="intersect-once intersect:motion-preset-slide-up">
-            Store and <span class="special">chart</span> historical data, player counts,
-            maps and newcomers, for up to a <span class="special">year</span> or more.
+        <FeatureCard icon={LineChart} title={t('landing.servers.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.servers.c3b')} />
         </FeatureCard>
-        <FeatureCard icon={FaUserGroup} title="Player Tracking" class="intersect-once intersect:motion-preset-slide-up">
-            Track and save player <span class="special">score</span> and
-            <span class="special">play time</span>; search online and offline players and
-            sort however you like.
+        <FeatureCard icon={Users} title={t('landing.servers.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.servers.c4b')} />
         </FeatureCard>
-        <FeatureCard icon={FaHeart} title="Favorites &amp; Hiding" class="intersect-once intersect:motion-preset-slide-up">
-            <span class="special">Favorite</span> the servers you love and
-            <span class="special">hide</span> the ones you never want to see again.
+        <FeatureCard icon={Heart} title={t('landing.servers.c5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.servers.c5b')} />
         </FeatureCard>
-        <FeatureCard icon={FaGlobe} title="Broad Game Support" class="intersect-once intersect:motion-preset-slide-up">
-            From Rust and CS2 to Minecraft and Garry's Mod, powered by
-            <span class="special">17 query protocols</span> under the hood.
+        <FeatureCard icon={Globe} title={t('landing.servers.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.servers.c6b')} />
         </FeatureCard>
     </div>
 
     <div class="flex justify-center">
-        <a href="/servers" class="btn btn-special">Browse Servers</a>
+        <a href={localizePath("/servers", Astro.currentLocale)} class="btn btn-special">{t('landing.servers.browse')}</a>
     </div>
 </section>

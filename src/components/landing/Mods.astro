@@ -1,58 +1,60 @@
 ---
+import { Images, Scale, Search, ShieldCheck, Tags, Workflow } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
 
-import {
-    FaMagnifyingGlass,
-    FaShieldHalved,
-    FaTags,
-    FaPhotoFilm,
-    FaScaleBalanced,
-    FaDiagramProject,
-} from "react-icons/fa6";
+
+import { TriangleAlert } from "lucide-react";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
-    <SectionIntro eyebrow="Mods">
-        <h2 slot="title">A Full-Featured <span class="special">Mod Workshop</span></h2>
-        <p>
-            We're building a home for mods where creators stay in control &mdash; a
-            polished upload experience, rich mod pages, and releases you can cut by hand
-            or automate from your own <span class="special">CI/CD</span> pipeline. Here's
-            what's coming.
-        </p>
+    <SectionIntro eyebrow={t('landing.mods.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.mods.titleHtml')}></h2>
+        <p set:html={t('landing.mods.introHtml')}></p>
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-        <FeatureCard icon={FaMagnifyingGlass} title="Browse &amp; Search" class="intersect-once intersect:motion-preset-slide-up">
-            <span class="special">Browse</span> and <span class="special">search</span>
-            mods uploaded by the community across every supported game.
+        <FeatureCard icon={Search} title={t('landing.mods.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.mods.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={FaShieldHalved} title="Secure Uploads &amp; Downloads" class="intersect-once intersect:motion-preset-slide-up">
-            Securely <span class="special">upload</span> your own mods and
-            <span class="special">download</span> others', with unique download
-            tracking built in.
+        <FeatureCard icon={ShieldCheck} title={t('landing.mods.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.mods.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={FaTags} title="Versioned Releases" class="intersect-once intersect:motion-preset-slide-up">
-            Ship <span class="special">versioned releases</span> with rich changelogs
-            and attached mod files for every build &mdash; by hand, or straight from
-            <span class="special">CI/CD</span> via the developer API.
+        <FeatureCard icon={Tags} title={t('landing.mods.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.mods.c3b')} />
         </FeatureCard>
-        <FeatureCard icon={FaPhotoFilm} title="Screenshots &amp; Video" class="intersect-once intersect:motion-preset-slide-up">
-            Add <span class="special">image &amp; video</span> media so players know
-            exactly what they're getting before they install.
+        <FeatureCard icon={Images} title={t('landing.mods.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.mods.c4b')} />
         </FeatureCard>
-        <FeatureCard icon={FaScaleBalanced} title="Licenses &amp; Install Guides" class="intersect-once intersect:motion-preset-slide-up">
-            Pick a <span class="special">license</span> and write clear
-            <span class="special">install instructions</span> right on the mod page.
+        <FeatureCard icon={Scale} title={t('landing.mods.c5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.mods.c5b')} />
         </FeatureCard>
-        <FeatureCard icon={FaDiagramProject} title="Dependencies" class="intersect-once intersect:motion-preset-slide-up">
-            Link required mods and assets as <span class="special">dependencies</span>
-            so nothing is missing.
+        <FeatureCard icon={Workflow} title={t('landing.mods.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.mods.c6b')} />
         </FeatureCard>
+    </div>
+    <div class="relative overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-surface to-surface p-6 sm:p-8">
+        <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+            <span
+            class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-colors group-hover:bg-accent/15">
+                <TriangleAlert className="h-10 w-10 text-yellow-500" />
+            </span>
+
+            <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-3">
+                    <h3 class="text-base text-xl" set:html={t('landing.mods.highlightTitle')}></h3>
+                    <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">{t('landing.mods.highlightBadge')}</span>
+                </div>
+                <p class="text-muted" set:html={t('landing.mods.highlightHtml')}></p>
+            </div>
+        </div>
     </div>
 
     <div class="flex justify-center">
-        <a href="/mods" class="btn btn-special">Explore Mods</a>
+        <a href={localizePath("/mods", Astro.currentLocale)} class="btn btn-special">{t('landing.mods.button')}</a>
     </div>
 </section>

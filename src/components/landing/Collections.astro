@@ -1,45 +1,36 @@
 ---
+import { Heart, PackageOpen, PenTool, Search } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
 
-import {
-    FaBoxOpen,
-    FaPenNib,
-    FaHeart,
-    FaMagnifyingGlass,
-} from "react-icons/fa6";
+
+const t = getT(Astro.currentLocale);
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
-    <SectionIntro eyebrow="Collections">
-        <h2 slot="title">Curate The Best With <span class="special">Collections</span></h2>
-        <p>
-            Collections let anyone hand-pick <span class="special">assets</span>,
-            <span class="special">mods</span>, <span class="special">servers</span> and
-            articles, or any link on the web, into a shareable, favoritable list.
-        </p>
+    <SectionIntro eyebrow={t('landing.collections.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.collections.titleHtml')}></h2>
+        <p set:html={t('landing.collections.introHtml')}></p>
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
-        <FeatureCard icon={FaBoxOpen} title="Mix Anything" class="intersect-once intersect:motion-preset-slide-up">
-            Add assets, mods, servers or articles, or drop in any
-            <span class="special">external link</span>.
+        <FeatureCard icon={PackageOpen} title={t('landing.collections.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.collections.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={FaPenNib} title="Curate &amp; Annotate" class="intersect-once intersect:motion-preset-slide-up">
-            Give each item its own <span class="special">title</span> and
-            <span class="special">description</span> to tell a story.
+        <FeatureCard icon={PenTool} title={t('landing.collections.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.collections.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={FaHeart} title="Favorite &amp; Follow" class="intersect-once intersect:motion-preset-slide-up">
-            Others can <span class="special">favorite</span> your collections and come
-            back for updates.
+        <FeatureCard icon={Heart} title={t('landing.collections.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.collections.c3b')} />
         </FeatureCard>
-        <FeatureCard icon={FaMagnifyingGlass} title="Searchable &amp; Tagged" class="intersect-once intersect:motion-preset-slide-up">
-            <span class="special">Tag</span>, <span class="special">filter</span> and
-            search every collection in a dedicated browser.
+        <FeatureCard icon={Search} title={t('landing.collections.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.collections.c4b')} />
         </FeatureCard>
     </div>
 
     <div class="flex justify-center">
-        <a href="/collections" class="btn btn-special">Explore Collections</a>
+        <a href={localizePath("/collections", Astro.currentLocale)} class="btn btn-special">{t('landing.collections.button')}</a>
     </div>
 </section>

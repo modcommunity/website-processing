@@ -4,7 +4,7 @@
         {
             "label": "startdev",
             "type": "shell",
-            "command": "npm run dev -- --host 0.0.0.0"
+            "command": "npm run dev -- --host 0.0.0.0 --port 3003",
         }
     ]
 }

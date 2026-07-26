@@ -1,0 +1,16 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import Licenses from '../../../components/Licenses.astro';
+import { NON_DEFAULT_LOCALES } from '../../../i18n/config';
+
+export function getStaticPaths() {
+    return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout pathName={Astro.url.pathname} meta={{
+    title: "Licenses",
+    titleMain: "Licenses - The Modding Community"
+}}>
+    <Licenses />
+</Layout>
