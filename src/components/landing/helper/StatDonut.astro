@@ -1,0 +1,99 @@
+---
+/**
+ * Decorative donut/pie chart for the stats section. Segment hues come from the
+ * data-viz reference categorical palette (dark-mode steps), which is
+ * colourblind-safe as a set; every segment is also direct-labelled in the
+ * legend (secondary encoding), so identity never rests on colour alone.
+ */
+type Segment = {
+    label: string
+    value: number
+    color: string
+}
+
+type Props = {
+    segments: Segment[]
+    centerLabel?: string
+    centerSub?: string
+    class?: string
+}
+
+const { segments, centerLabel, centerSub, class: className } = Astro.props as Props
+
+const R = 54
+const C = 2 * Math.PI * R
+const GAP = 3 // px gap between segments, drawn against the surface
+const total = segments.reduce((sum, s) => sum + s.value, 0)
+
+let cursor = 0
+const arcs = segments.map((s) => {
+    const frac = s.value / total
+    const len = Math.max(frac * C - GAP, 0)
+    const dashoffset = -(cursor * C)
+    cursor += frac
+    return { ...s, len, dashoffset, pct: Math.round(frac * 100) }
+})
+---
+
+<div class={`flex flex-col items-center gap-5 sm:flex-row sm:gap-8 ${className ?? ""}`}>
+    <svg viewBox="0 0 140 140" class="h-40 w-40 shrink-0 -rotate-90">
+        <circle
+            cx="70"
+            cy="70"
+            r={R}
+            fill="none"
+            stroke="var(--color-surface-secondary)"
+            stroke-width="16"
+        />
+        {arcs.map((a) => (
+            <circle
+                cx="70"
+                cy="70"
+                r={R}
+                fill="none"
+                stroke={a.color}
+                stroke-width="16"
+                stroke-dasharray={`${a.len} ${C - a.len}`}
+                stroke-dashoffset={a.dashoffset}
+                stroke-linecap="butt"
+            />
+        ))}
+        {centerLabel && (
+            <text
+                x="70"
+                y="66"
+                text-anchor="middle"
+                transform="rotate(90 70 70)"
+                fill="var(--color-foreground)"
+                style="font-size: 20px; font-weight: 800;"
+            >
+                {centerLabel}
+            </text>
+        )}
+        {centerSub && (
+            <text
+                x="70"
+                y="84"
+                text-anchor="middle"
+                transform="rotate(90 70 70)"
+                fill="var(--color-muted)"
+                style="font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase;"
+            >
+                {centerSub}
+            </text>
+        )}
+    </svg>
+
+    <ul class="flex w-full flex-col gap-2.5">
+        {arcs.map((a) => (
+            <li class="flex items-center gap-3 text-sm">
+                <span
+                    class="h-2.5 w-2.5 shrink-0 rounded-sm"
+                    style={`background:${a.color}`}
+                ></span>
+                <span class="text-foreground">{a.label}</span>
+                <span class="ml-auto font-semibold text-muted">{a.pct}%</span>
+            </li>
+        ))}
+    </ul>
+</div>

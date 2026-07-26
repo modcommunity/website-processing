@@ -1,0 +1,36 @@
+---
+import { Gamepad2, Layers, LineChart, Users } from 'lucide-react';
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.communities.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.communities.titleHtml')}></h2>
+        <p set:html={t('landing.communities.introHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <FeatureCard icon={Gamepad2} title={t('landing.communities.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.communities.c1b')} />
+        </FeatureCard>
+        <FeatureCard icon={Layers} title={t('landing.communities.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.communities.c2b')} />
+        </FeatureCard>
+        <FeatureCard icon={LineChart} title={t('landing.communities.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.communities.c3b')} />
+        </FeatureCard>
+        <FeatureCard icon={Users} title={t('landing.communities.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.communities.c4b')} />
+        </FeatureCard>
+    </div>
+
+    <div class="flex justify-center">
+        <a href={localizePath("/communities", Astro.currentLocale)} class="btn btn-special">{t('landing.communities.button')}</a>
+    </div>
+</section>

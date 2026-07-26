@@ -1,0 +1,32 @@
+---
+import { Boxes, Hammer, Layers, Server, Users } from 'lucide-react';
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+
+const t = getT(Astro.currentLocale);
+
+const pillars = [
+    { icon: Boxes, title: t('landing.pillars.p1Title'), href: localizePath("/assets", Astro.currentLocale), desc: t('landing.pillars.p1Desc') },
+    { icon: Hammer, title: t('landing.pillars.p2Title'), href: localizePath("/mods", Astro.currentLocale), desc: t('landing.pillars.p2Desc') },
+    { icon: Server, title: t('landing.pillars.p3Title'), href: localizePath("/servers", Astro.currentLocale), desc: t('landing.pillars.p3Desc') },
+    { icon: Users, title: t('landing.pillars.p4Title'), href: localizePath("/communities", Astro.currentLocale), desc: t('landing.pillars.p4Desc') },
+    { icon: Layers, title: t('landing.pillars.p5Title'), href: localizePath("/collections", Astro.currentLocale), desc: t('landing.pillars.p5Desc') },
+];
+---
+
+<section class="px-4 pb-6 container mx-auto">
+    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {pillars.map((p) => (
+            <a
+                href={p.href}
+                class="card group items-center text-center hover:!border-accent"
+            >
+                <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                    <p.icon className="h-6 w-6" />
+                </span>
+                <span class="font-pjs font-bold text-foreground">{p.title}</span>
+                <span class="text-xs text-muted">{p.desc}</span>
+            </a>
+        ))}
+    </div>
+</section>

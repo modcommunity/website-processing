@@ -9,13 +9,19 @@ const Carousel = CarouselComponent.default || CarouselComponent;
 import Article from "./articles/Article"
 import type { HTMLAttributes } from "react"
 
-import { FaHammer } from "react-icons/fa";
-import { FaServer } from "react-icons/fa";
+import { Hammer, Server } from "lucide-react";
 import IconAndText from "../../helper/IconAndText";
 
 
 type Props = {
     itemClassName?: string
+
+    // User-visible labels, translated + passed in from Blog.astro (which has
+    // access to Astro.currentLocale). English defaults keep the island usable
+    // on its own. Values are HTML fragments (they carry an inline
+    // <span class="special">…</span>), so they render via dangerouslySetInnerHTML.
+    moddingGuidesHtml?: string
+    serverGuidesHtml?: string
 }
 
 export type ArticleType = {
@@ -28,7 +34,12 @@ export type ArticleType = {
 }
 
 export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>) {
-    const { itemClassName, className } = props
+    const {
+        itemClassName,
+        className,
+        moddingGuidesHtml = 'Check out some of our modding <span class="special">how-to</span> guides!',
+        serverGuidesHtml = 'Check out some of our server <span class="special">setup</span> guides!',
+    } = props
 
     // Responsive settings for carousel.
     const responsive = {
@@ -150,9 +161,9 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
         <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-2">
                 <IconAndText
-                    icon={<FaHammer className="w-4 h-4 fill-text-primary" />}
+                    icon={<Hammer className="w-4 h-4 text-text-primary" />}
                 >
-                    <span>Check out some of our modding <span className="special">how-to</span> guides!</span>
+                    <span dangerouslySetInnerHTML={{ __html: moddingGuidesHtml }} />
                 </IconAndText>
                 <Carousel
                     suppressHydrationWarning
@@ -169,9 +180,9 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
             </div>
             <div className="flex flex-col gap-2">
                 <IconAndText
-                    icon={<FaServer className="w-4 h-4 fill-text-primary" />}
+                    icon={<Server className="w-4 h-4 text-text-primary" />}
                 >
-                    <span>Check out some of our server <span className="special">setup</span> guides!</span>
+                    <span dangerouslySetInnerHTML={{ __html: serverGuidesHtml }} />
                 </IconAndText>
                 <Carousel
                     suppressHydrationWarning

@@ -1,63 +1,80 @@
 ---
+import { Code2, Github, Heart, Users } from 'lucide-react';
 import HeadingTitle from "./heading/Title"
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
 import Card from "../helper/Card.astro"
-import CLink from "../helper/CLink"
+import { getT } from "../../i18n/t";
 
-import { FaGithub } from "react-icons/fa";
-import { FaCode } from "react-icons/fa";
+
+const t = getT(Astro.currentLocale);
 ---
 
-<section class="py-20 min-h-screen px-4 container mx-auto flex flex-col gap-10">
-    <div class="flex justify-center w-full">
-        <div class="flex flex-col gap-2 items-center">
-            {/* Need to add minimum height since HeadingTitle loads after first render (makes other elements shift up then down which looks weird without the minimum height) */}
-            <div class="min-h-10">
-                <HeadingTitle client:load />
-            </div>
-            <InDevelopmentWarning client:load />
+<section class="relative isolate overflow-hidden px-4 py-24 sm:py-32">
+    {/* Accent gradient wash + glow, mirroring website-city's hero treatment. */}
+    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-accent/10 via-background to-background"></div>
+    <div class="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[46rem] max-w-full -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"></div>
+
+    <div class="container mx-auto flex flex-col items-center gap-6 text-center">
+        <span class="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs font-medium text-muted backdrop-blur">
+            <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+            The Modding Community
+        </span>
+
+        {/* Need to add minimum height since HeadingTitle loads after first render (makes other elements shift up then down which looks weird without the minimum height) */}
+        <div class="min-h-14 sm:min-h-16">
+            <HeadingTitle sequence={[t('landing.hero.titleAnim1')]} client:load />
         </div>
-	</div>
-    <div class="mt-30 grid gap-x-0 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-x-15 2xl:gap-x-30 gap-y-15">
-        <Card className="intersect-once intersect:motion-preset-slide-right-lg">
-            <div class="flex justify-center">
-                <h3>Who Are We?</h3>
-            </div>
-            <div>
-                <p>We are a <span class="italic">welcoming</span> and <span class="italic">inclusive</span> <span class="special">modding</span> and <span class="special">game development</span> community. We currently offer a <CLink href="/servers">server browser</CLink>, <CLink href="https://moddingcommunity.com/blog/">blog</CLink>, and <CLink href="https://forum.moddingcommunity.com">forum</CLink>, with plans to launch a <span class="special">mod workshop</span> and more in the future!</p>
-            </div>
+
+        <p class="max-w-2xl text-balance text-muted" set:html={t('landing.hero.paraHtml')}></p>
+
+        <InDevelopmentWarning html={t('landing.hero.devWarningHtml')} client:load />
+    </div>
+</section>
+
+<section class="py-10 px-4 container mx-auto">
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <Card className="flex flex-col gap-4 intersect-once intersect:motion-preset-slide-right-lg">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                <Users className="h-6 w-6" />
+            </span>
+            <h3 class="text-xl">{t('landing.hero.card1Title')}</h3>
+            <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
+                <Fragment set:html={t('landing.hero.card1Html')} />
+            </p>
         </Card>
-        <Card className="intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
-            <div class="flex justify-center">
-                <h3>Inclusiveness</h3>
-            </div>
-            <div>
-                <p>One big thing we're pushing for is <span class="special">inclusiveness</span>. Our goal is to provide mod authors and server administrators with all of the <span class="special">tools</span> and <span class="special">insights</span> they need. This includes supporting both <span class="special">singleplayer</span> and <span class="special">multiplayer</span> modding!</p>
-            </div>
+        <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                <Heart className="h-6 w-6" />
+            </span>
+            <h3 class="text-xl">{t('landing.hero.card2Title')}</h3>
+            <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
+                <Fragment set:html={t('landing.hero.card2Html')} />
+            </p>
         </Card>
-        <Card className="intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
-            <div class="flex justify-center">
-                <h3>Open Source</h3>
-            </div>
-            <div>
-                <p>We are a big <span class="special">supporter</span> of <span class="special">open source</span>! We have an active <CLink href="https://github.com/modcommunity" target="_blank">GitHub organization</CLink> and have created our own custom integration systems with the website and GitHub organization.</p>
-            </div>
-            <div class="flex flex-wrap gap-4 justify-evenly [&>*]:w-40 mt-10">
+        <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
+            <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
+                <Github className="h-6 w-6" />
+            </span>
+            <h3 class="text-xl">{t('landing.hero.card3Title')}</h3>
+            <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
+                <Fragment set:html={t('landing.hero.card3Html')} />
+            </p>
+            <div class="mt-auto flex flex-wrap gap-3 pt-2">
                 <a
                     href="https://github.com/modcommunity"
                     target="_blank"
                     class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <FaGithub className="w-5 h-5 fill-text-default group-hover:fill-text-primary group-hover:duration-300" />
-                    <span>GitHub Org</span>
+                    <Github className="w-5 h-5" />
+                    <span>{t('landing.hero.ghButton')}</span>
                 </a>
                 <a
                     href="https://github.com/modcommunity/website-processing"
                     target="_blank"
-                    class="flex items-center justify-center  gap-2 group btn btn-primary"
+                    class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <FaCode className="w-5 h-5 fill-text-default group-hover:fill-text-primary group-hover:duration-300" />
-                    <span>Source</span>
+                    <Code2 className="w-5 h-5" />
+                    <span>{t('landing.hero.sourceButton')}</span>
                 </a>
             </div>
         </Card>

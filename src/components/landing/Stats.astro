@@ -1,0 +1,70 @@
+---
+import { Fingerprint, History, LineChart, PieChart } from 'lucide-react';
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import StatArea from "./helper/StatArea.astro";
+import StatDonut from "./helper/StatDonut.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+
+// Content-mix donut — dark-mode categorical hues from the data-viz reference
+// palette (colourblind-safe as a set; every slice is direct-labelled).
+const contentMix = [
+    { label: t('landing.stats.mixMods'), value: 42, color: "#3987e5" },
+    { label: t('landing.stats.mixAssets'), value: 28, color: "#008300" },
+    { label: t('landing.stats.mixServers'), value: 18, color: "#d55181" },
+    { label: t('landing.stats.mixCollections'), value: 12, color: "#c98500" },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.stats.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.stats.titleHtml')}></h2>
+        <p set:html={t('landing.stats.introHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
+        {/* Trend / line + area chart */}
+        <div class="card lg:col-span-3">
+            <div class="flex flex-col gap-1">
+                <h4 class="text-base">{t('landing.stats.trendTitle')}</h4>
+                <p class="text-sm text-muted">
+                    {t('landing.stats.trendDesc')}
+                </p>
+            </div>
+            <div class="mt-4">
+                <StatArea id="stats-trend" data={[24, 30, 27, 41, 38, 55, 50, 63, 68, 82, 90, 96]} label={t('landing.stats.trendLabel')} value={t('landing.stats.trendValue')} />
+            </div>
+        </div>
+
+        {/* Content-mix donut / pie chart */}
+        <div class="card lg:col-span-2">
+            <div class="flex flex-col gap-1">
+                <h4 class="text-base">{t('landing.stats.libraryTitle')}</h4>
+                <p class="text-sm text-muted">
+                    {t('landing.stats.libraryDesc')}
+                </p>
+            </div>
+            <div class="mt-4 grow flex items-center">
+                <StatDonut segments={contentMix} centerLabel="1.2k" centerSub={t('landing.stats.centerSub')} class="w-full" />
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <FeatureCard icon={LineChart} title={t('landing.stats.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.stats.c1b')} />
+        </FeatureCard>
+        <FeatureCard icon={History} title={t('landing.stats.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.stats.c2b')} />
+        </FeatureCard>
+        <FeatureCard icon={PieChart} title={t('landing.stats.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.stats.c3b')} />
+        </FeatureCard>
+        <FeatureCard icon={Fingerprint} title={t('landing.stats.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.stats.c4b')} />
+        </FeatureCard>
+    </div>
+</section>
