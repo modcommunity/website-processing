@@ -55,6 +55,13 @@ export const en = {
         expand: 'Expand sidebar',
         collapse: 'Collapse sidebar',
     },
+    // Labels for the mobile drawer trigger, ported verbatim from website-city's
+    // `nav.mobile.*` so both shells announce the menu identically.
+    mobile: {
+        open: 'Open navigation menu',
+        close: 'Close menu',
+        title: 'Navigation menu',
+    },
     account: {
         signIn: 'Sign In',
         myAccount: 'My Account',
@@ -109,6 +116,11 @@ const es: DeepPartial<Messages> = {
         expand: 'Expandir barra lateral',
         collapse: 'Contraer barra lateral',
     },
+    mobile: {
+        open: 'Abrir menú de navegación',
+        close: 'Cerrar menú',
+        title: 'Menú de navegación',
+    },
     account: { signIn: 'Iniciar sesión', myAccount: 'Mi cuenta' },
     theme: {
         toLight: 'Cambiar a modo claro',
@@ -149,6 +161,11 @@ const fr: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Développer la barre latérale',
         collapse: 'Réduire la barre latérale',
+    },
+    mobile: {
+        open: 'Ouvrir le menu de navigation',
+        close: 'Fermer le menu',
+        title: 'Menu de navigation',
     },
     account: { signIn: 'Se connecter', myAccount: 'Mon compte' },
     theme: {
@@ -194,6 +211,11 @@ const de: DeepPartial<Messages> = {
         expand: 'Seitenleiste ausklappen',
         collapse: 'Seitenleiste einklappen',
     },
+    mobile: {
+        open: 'Navigationsmenü öffnen',
+        close: 'Menü schließen',
+        title: 'Navigationsmenü',
+    },
     account: { signIn: 'Anmelden', myAccount: 'Mein Konto' },
     theme: {
         toLight: 'Zum hellen Modus wechseln',
@@ -238,6 +260,11 @@ const ru: DeepPartial<Messages> = {
         expand: 'Развернуть боковую панель',
         collapse: 'Свернуть боковую панель',
     },
+    mobile: {
+        open: 'Открыть меню навигации',
+        close: 'Закрыть меню',
+        title: 'Меню навигации',
+    },
     account: { signIn: 'Войти', myAccount: 'Мой аккаунт' },
     theme: {
         toLight: 'Переключить на светлую тему',
@@ -280,6 +307,11 @@ const nl: DeepPartial<Messages> = {
         expand: 'Zijbalk uitklappen',
         collapse: 'Zijbalk inklappen',
     },
+    mobile: {
+        open: 'Navigatiemenu openen',
+        close: 'Menu sluiten',
+        title: 'Navigatiemenu',
+    },
     account: { signIn: 'Inloggen', myAccount: 'Mijn account' },
     theme: {
         toLight: 'Schakel naar lichte modus',
@@ -320,6 +352,11 @@ const ja: DeepPartial<Messages> = {
     sidebar: {
         expand: 'サイドバーを展開',
         collapse: 'サイドバーを折りたたむ',
+    },
+    mobile: {
+        open: 'ナビゲーションメニューを開く',
+        close: 'メニューを閉じる',
+        title: 'ナビゲーションメニュー',
     },
     account: { signIn: 'ログイン', myAccount: 'マイアカウント' },
     theme: {
@@ -362,6 +399,11 @@ const zh: DeepPartial<Messages> = {
         expand: '展开侧边栏',
         collapse: '折叠侧边栏',
     },
+    mobile: {
+        open: '打开导航菜单',
+        close: '关闭菜单',
+        title: '导航菜单',
+    },
     account: { signIn: '登录', myAccount: '我的账户' },
     theme: {
         toLight: '切换到浅色模式',
@@ -403,6 +445,11 @@ const pt: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Expandir barra lateral',
         collapse: 'Recolher barra lateral',
+    },
+    mobile: {
+        open: 'Abrir menu de navegação',
+        close: 'Fechar menu',
+        title: 'Menu de navegação',
     },
     account: { signIn: 'Entrar', myAccount: 'Minha conta' },
     theme: {

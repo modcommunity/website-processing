@@ -9,7 +9,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mods',
         titleHtml: 'A Full-Featured <span class="special">Mod Workshop</span>',
         introHtml:
-            'We\'re building a home for mods where creators stay in control &mdash; a polished upload experience, rich mod pages, and releases you can cut by hand or automate from your own <span class="special">CI/CD</span> pipeline. Here\'s what\'s coming.',
+            'Mods have a home here where creators stay in control &mdash; a polished upload experience, rich mod pages, and releases you can cut by hand or automate from your own <span class="special">CI/CD</span> pipeline. Here\'s what you get.',
         c1t: 'Browse & Search',
         c1b: '<span class="special">Browse</span> and <span class="special">search</span> mods uploaded by the community across every supported game.',
         c2t: 'Secure Uploads & Downloads',
@@ -31,7 +31,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mods',
         titleHtml: 'Un <span class="special">Taller de Mods</span> Completo',
         introHtml:
-            'Estamos construyendo un hogar para los mods donde los creadores mantienen el control &mdash; una experiencia de subida pulida, páginas de mod ricas y lanzamientos que puedes crear a mano o automatizar desde tu propia canalización <span class="special">CI/CD</span>. Esto es lo que viene.',
+            'Los mods tienen aquí un hogar donde los creadores mantienen el control &mdash; una experiencia de subida pulida, páginas de mod ricas y lanzamientos que puedes crear a mano o automatizar desde tu propia canalización <span class="special">CI/CD</span>. Esto es lo que obtienes.',
         c1t: 'Explorar y Buscar',
         c1b: '<span class="special">Explora</span> y <span class="special">busca</span> mods subidos por la comunidad en todos los juegos compatibles.',
         c2t: 'Subidas y Descargas Seguras',
@@ -53,7 +53,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mods',
         titleHtml: 'Un <span class="special">Atelier de Mods</span> Complet',
         introHtml:
-            'Nous construisons un foyer pour les mods où les créateurs gardent le contrôle &mdash; une expérience d\'envoi soignée, des pages de mod riches et des versions que vous pouvez publier à la main ou automatiser depuis votre propre pipeline <span class="special">CI/CD</span>. Voici ce qui arrive.',
+            'Les mods ont ici un foyer où les créateurs gardent le contrôle &mdash; une expérience d\'envoi soignée, des pages de mod riches et des versions que vous pouvez publier à la main ou automatiser depuis votre propre pipeline <span class="special">CI/CD</span>. Voici ce dont vous disposez.',
         c1t: 'Parcourir et Rechercher',
         c1b: '<span class="special">Parcourez</span> et <span class="special">recherchez</span> les mods envoyés par la communauté pour tous les jeux pris en charge.',
         c2t: 'Envois et Téléchargements Sécurisés',
@@ -75,7 +75,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mods',
         titleHtml: 'Eine Voll Ausgestattete <span class="special">Mod-Werkstatt</span>',
         introHtml:
-            'Wir bauen ein Zuhause für Mods, in dem die Ersteller die Kontrolle behalten &mdash; ein ausgefeiltes Upload-Erlebnis, reichhaltige Mod-Seiten und Releases, die du von Hand erstellen oder aus deiner eigenen <span class="special">CI/CD</span>-Pipeline automatisieren kannst. Das kommt bald.',
+            'Mods haben hier ein Zuhause, in dem die Ersteller die Kontrolle behalten &mdash; ein ausgefeiltes Upload-Erlebnis, reichhaltige Mod-Seiten und Releases, die du von Hand erstellen oder aus deiner eigenen <span class="special">CI/CD</span>-Pipeline automatisieren kannst. Das bekommst du.',
         c1t: 'Durchsuchen & Suchen',
         c1b: '<span class="special">Durchsuche</span> und <span class="special">finde</span> von der Community hochgeladene Mods über alle unterstützten Spiele hinweg.',
         c2t: 'Sichere Uploads & Downloads',
@@ -97,7 +97,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Моды',
         titleHtml: 'Полнофункциональная <span class="special">Мастерская Модов</span>',
         introHtml:
-            'Мы создаём дом для модов, где авторы сохраняют контроль &mdash; отточенный процесс загрузки, насыщенные страницы модов и релизы, которые можно выпускать вручную или автоматизировать из собственного конвейера <span class="special">CI/CD</span>. Вот что нас ждёт.',
+            'У модов здесь есть дом, где авторы сохраняют контроль &mdash; отточенный процесс загрузки, насыщенные страницы модов и релизы, которые можно выпускать вручную или автоматизировать из собственного конвейера <span class="special">CI/CD</span>. Вот что вы получаете.',
         c1t: 'Просмотр и Поиск',
         c1b: '<span class="special">Просматривайте</span> и <span class="special">ищите</span> моды, загруженные сообществом, по всем поддерживаемым играм.',
         c2t: 'Безопасные Загрузки и Скачивания',
@@ -119,7 +119,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mods',
         titleHtml: 'Een Volwaardige <span class="special">Mod-Werkplaats</span>',
         introHtml:
-            'We bouwen een thuis voor mods waar makers de controle houden &mdash; een verzorgde uploadervaring, rijke mod-pagina\'s en releases die je met de hand kunt maken of kunt automatiseren vanuit je eigen <span class="special">CI/CD</span>-pijplijn. Dit is wat eraan komt.',
+            'Mods hebben hier een thuis waar makers de controle houden &mdash; een verzorgde uploadervaring, rijke mod-pagina\'s en releases die je met de hand kunt maken of kunt automatiseren vanuit je eigen <span class="special">CI/CD</span>-pijplijn. Dit is wat je krijgt.',
         c1t: 'Bladeren & Zoeken',
         c1b: '<span class="special">Blader</span> en <span class="special">zoek</span> door mods die door de community zijn geüpload voor elke ondersteunde game.',
         c2t: 'Veilige Uploads & Downloads',
@@ -141,7 +141,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mod',
         titleHtml: '本格的な<span class="special">Modワークショップ</span>',
         introHtml:
-            '私たちは、クリエイターが主導権を保てるmodの拠点を構築しています &mdash; 洗練されたアップロード体験、充実したmodページ、そして手動でも自分の <span class="special">CI/CD</span> パイプラインから自動化しても作成できるリリース。これから登場する機能をご紹介します。',
+            'クリエイターが主導権を保てるmodの拠点が、ここにあります &mdash; 洗練されたアップロード体験、充実したmodページ、そして手動でも自分の <span class="special">CI/CD</span> パイプラインから自動化しても作成できるリリース。今すぐ使える機能をご紹介します。',
         c1t: '閲覧と検索',
         c1b: '対応するすべてのゲームで、コミュニティがアップロードしたmodを<span class="special">閲覧</span>・<span class="special">検索</span>できます。',
         c2t: '安全なアップロードとダウンロード',
@@ -163,7 +163,7 @@ export const mods: SectionCatalog = {
         eyebrow: '模组',
         titleHtml: '功能齐全的<span class="special">模组工坊</span>',
         introHtml:
-            '我们正在打造一个让创作者掌握主动权的模组之家 &mdash; 精致的上传体验、内容丰富的模组页面，以及可以手动发布或从你自己的 <span class="special">CI/CD</span> 流水线自动发布的版本。以下是即将推出的功能。',
+            '模组在这里有了自己的家，创作者始终掌握主动权 &mdash; 精致的上传体验、内容丰富的模组页面，以及可以手动发布或从你自己的 <span class="special">CI/CD</span> 流水线自动发布的版本。以下是你现在就能用到的功能。',
         c1t: '浏览与搜索',
         c1b: '在每一款支持的游戏中<span class="special">浏览</span>和<span class="special">搜索</span>社区上传的模组。',
         c2t: '安全上传与下载',
@@ -185,7 +185,7 @@ export const mods: SectionCatalog = {
         eyebrow: 'Mods',
         titleHtml: 'Uma <span class="special">Oficina de Mods</span> Completa',
         introHtml:
-            'Estamos construindo um lar para mods onde os criadores permanecem no controle &mdash; uma experiência de envio refinada, páginas de mod ricas e lançamentos que você pode criar manualmente ou automatizar a partir do seu próprio pipeline <span class="special">CI/CD</span>. Veja o que está por vir.',
+            'Os mods têm aqui um lar onde os criadores permanecem no controle &mdash; uma experiência de envio refinada, páginas de mod ricas e lançamentos que você pode criar manualmente ou automatizar a partir do seu próprio pipeline <span class="special">CI/CD</span>. Veja o que você tem à disposição.',
         c1t: 'Navegar e Pesquisar',
         c1b: '<span class="special">Navegue</span> e <span class="special">pesquise</span> mods enviados pela comunidade em todos os jogos compatíveis.',
         c2t: 'Envios e Downloads Seguros',
