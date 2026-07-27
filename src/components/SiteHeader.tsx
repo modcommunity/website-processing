@@ -18,6 +18,10 @@ import { stripLocale } from '../i18n/config'
  * is `lg:flex` — so without it a phone gets no navigation at all. It is given the
  * same nav + sidebar sections those two render, so the drawer is the whole shell
  * in one panel.
+ *
+ * The account action is `sm`-and-up only: below 640px "My Account" overflows the
+ * bar (it wraps/clips under ~375px), so it moves into the drawer's footer slot
+ * instead. Exactly one of the two is visible at any width.
  */
 export default function SiteHeader({
     pathName = '/',
@@ -39,6 +43,14 @@ export default function SiteHeader({
                     nav={buildNav(t)}
                     sections={buildSidebarSections(t)}
                     linkComponent={localeLink(locale)}
+                    footer={
+                        <AccountButton
+                            signInLabel={t('account.signIn')}
+                            myAccountLabel={t('account.myAccount')}
+                            locale={locale}
+                            className="block sm:hidden"
+                        />
+                    }
                     labels={{
                         open: t('mobile.open'),
                         close: t('mobile.close'),
@@ -59,6 +71,7 @@ export default function SiteHeader({
                         signInLabel={t('account.signIn')}
                         myAccountLabel={t('account.myAccount')}
                         locale={locale}
+                        className="hidden sm:block"
                     />
                 </>
             }

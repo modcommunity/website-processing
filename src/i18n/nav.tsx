@@ -69,7 +69,7 @@ export function buildNav(t: TFunc): NavItem[] {
         },
         {
             label: t('nav.servers.label'),
-            href: '/servers/browse',
+            href: '/servers',
             icon: Server,
             desc: t('nav.servers.desc'),
         },
@@ -133,7 +133,7 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
                 { label: t('common.apps'), href: '/apps' },
                 { label: t('common.assets'), href: '/assets' },
                 { label: t('common.mods'), href: '/mods' },
-                { label: t('common.servers'), href: '/servers/browse' },
+                { label: t('common.servers'), href: '/servers' },
                 { label: t('common.communities'), href: '/communities' },
             ],
         },
@@ -167,7 +167,7 @@ export function buildSidebarSections(t: TFunc): NavSection[] {
                 { label: t('common.apps'), href: '/apps', icon: Boxes },
                 { label: t('common.assets'), href: '/assets', icon: Cog },
                 { label: t('common.mods'), href: '/mods', icon: Hammer },
-                { label: t('common.servers'), href: '/servers/browse', icon: Server },
+                { label: t('common.servers'), href: '/servers', icon: Server },
             ],
         },
         {
