@@ -1,80 +1,88 @@
 ---
+import {
+    Gavel,
+    History,
+    Lock,
+    Mail,
+    Server,
+    ShieldCheck,
+    UserCog,
+    Users,
+    FileText,
+    Wrench
+} from "lucide-react"
+
 import CLink from "./helper/CLink"
 import Special from "./helper/Special.astro"
+import LegalPage from "./legal/LegalPage.astro"
+import LegalSection from "./legal/LegalSection.astro"
+import LegalBlock from "./legal/LegalBlock.astro"
 
 const lastUpdated = "July 27, 2026"
 ---
 
-<section class="flex flex-col gap-8">
-    <div class="flex flex-col gap-2">
-        <h2>Terms of Service</h2>
+<LegalPage title="Terms of Service" eyebrow="Legal" lastUpdated={lastUpdated}>
+    <Fragment slot="lede">
         <p>These are the <strong>terms of service</strong> for <Special>The Modding Community</Special> (<span class="italic">TMC</span>). They explain what you can expect from us, and what we expect from you. We have tried to keep them readable rather than impenetrable.</p>
         <p>By using our services you agree to these terms. If you do not agree with them, please do not use our services.</p>
-        <p class="italic">Last updated: {lastUpdated}</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Who We Are</h3>
+    </Fragment>
+
+    <LegalSection title="Who We Are" icon={Users}>
         <p>The Modding Community is a <Special>modding and game development community</Special>. We provide a place to discover, share and manage <strong>mods</strong>, <strong>assets</strong> and <strong>game servers</strong>, alongside articles, communities, collections and discussion.</p>
         <p>These terms cover our main website at moddingcommunity.com, the landing and legal pages you are reading now, and our forum at <CLink href="https://forum.moddingcommunity.com" target="_blank">forum.moddingcommunity.com</CLink>. Our <CLink href="https://discord.moddingcommunity.com" target="_blank">Discord server</CLink> is additionally governed by its own rules and by Discord{"'"}s terms.</p>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Your Account</h3>
-            <p>Browsing our services does <Special>not</Special> require an account. You will need one to publish content or interact with the community.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Eligibility</h4>
+    </LegalSection>
+
+    <LegalSection title="Your Account" icon={UserCog}>
+        <p>Browsing our services does <Special>not</Special> require an account. You will need one to publish content or interact with the community.</p>
+
+        <LegalBlock title="Eligibility">
             <p>You must be at least <Special>13 years old</Special> to create an account. If the laws where you live set a higher minimum age for consenting to online services, you must meet that age instead.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Account Security</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Account Security">
             <p>You are responsible for what happens under your account. Keep your connected sign-in providers secure, do not share access, and enable <Special>two-factor authentication</Special> — it is available to every account and we strongly recommend it.</p>
             <p>API keys are <Special>credentials</Special>. Treat them like passwords: never commit them to a public repository, never paste them into a support channel, and revoke any key you believe has been exposed.</p>
             <p>If you suspect your account has been compromised, contact us immediately.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>One Person, One Account</h4>
+        </LegalBlock>
+
+        <LegalBlock title="One Person, One Account">
             <p>Do not create <Special>multiple accounts</Special> to inflate ratings, evade a moderation action, or otherwise misrepresent community sentiment. Do not impersonate another person, another creator, or a member of our staff.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Closing Your Account</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Closing Your Account">
             <p>You may delete your account at any time from the <span class="italic">Security</span> tab of your account settings. Deletion is <Special>permanent and irreversible</Special>, and removes the content you published along with it. If you want your work to remain available to the community afterwards, transfer ownership or publish it elsewhere first.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Your Content</h3>
-            <p><Special>You own what you make.</Special> Uploading a mod, asset, article, comment or any other content to TMC does not transfer ownership of it to us.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>The Licence You Grant Us</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Your Content" icon={FileText}>
+        <p><Special>You own what you make.</Special> Uploading a mod, asset, article, comment or any other content to TMC does not transfer ownership of it to us.</p>
+
+        <LegalBlock title="The Licence You Grant Us">
             <p>To operate the service, we need permission to actually show your work to people. By publishing content on TMC you grant us a <Special>non-exclusive</Special>, <Special>worldwide</Special>, <Special>royalty-free</Special> licence to <strong>host</strong>, <strong>store</strong>, <strong>reproduce</strong>, <strong>display</strong> and <strong>distribute</strong> that content, and to create the technical derivatives needed to serve it — thumbnails, previews, cached copies and format conversions.</p>
             <p>This licence exists <Special>solely to run the platform</Special>. We do not use it to sell your work, to sublicense it to third parties, or to claim credit for it. It ends when you remove the content, except for reasonable backup copies and for copies others have already legitimately obtained under the licence <span class="italic">you</span> chose.</p>
             <p>We may also feature your work in our own promotional material — a screenshot on the home page, a mention in a blog post, a highlight on social media — with attribution. If you would rather we did not, just tell us.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>The Licence You Grant Everyone Else</h4>
+        </LegalBlock>
+
+        <LegalBlock title="The Licence You Grant Everyone Else">
             <p>Every mod and asset published on TMC carries a <Special>licence</Special> that you select. That licence — not these terms — governs what other people may do with your work. Please read our <CLink href="/licenses">licences page</CLink> before publishing; choosing one is a real decision with real consequences.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>You Must Have the Right to Publish It</h4>
+        </LegalBlock>
+
+        <LegalBlock title="You Must Have the Right to Publish It">
             <p>You are responsible for making sure you actually have the right to upload what you upload. That means, at minimum:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li>You <Special>created</Special> the content, or you have <Special>permission</Special> from whoever did.</li>
                 <li>Any third-party code, models, textures, sounds or fonts you included are used in accordance with <Special>their</Special> licences, and are credited as those licences require.</li>
                 <li>You are not redistributing <Special>paid or proprietary game assets</Special>, ripped content, or material extracted from another game without permission.</li>
                 <li>Your work complies with the <Special>terms of the game or platform</Special> it targets. Some publishers restrict what may be modded, monetised or redistributed, and those restrictions apply regardless of what we allow.</li>
             </ul>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Acceptable Use</h3>
-            <p>We want TMC to be a <Special>welcoming and inclusive</Special> place. The rules below are what that requires in practice.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Do Not Post</h4>
-            <ul class="pl-10 list-disc">
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Acceptable Use" icon={ShieldCheck}>
+        <p>We want TMC to be a <Special>welcoming and inclusive</Special> place. The rules below are what that requires in practice.</p>
+
+        <LegalBlock title="Do Not Post">
+            <ul>
                 <li><Special>Malware</Special> of any kind — including keyloggers, miners, remote access tools, or code that is deliberately obfuscated to hide what it does.</li>
                 <li><Special>Cheats, exploits or griefing tools</Special> intended to ruin multiplayer games for other players.</li>
                 <li><Special>Pirated software</Special>, cracks, licence bypasses, or links to them.</li>
@@ -84,102 +92,95 @@ const lastUpdated = "July 27, 2026"
                 <li><Special>Someone else{"'"}s personal information</Special> shared without their consent.</li>
             </ul>
             <p>Adult or otherwise sensitive content that is <Special>legal</Special> is permitted where relevant, but must be marked <Special>NSFW</Special> so that members who have opted out do not see it.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Do Not Do</h4>
-            <ul class="pl-10 list-disc">
+        </LegalBlock>
+
+        <LegalBlock title="Do Not Do">
+            <ul>
                 <li><Special>Attack our infrastructure</Special> — denial of service, vulnerability scanning without permission, or attempting to access accounts, data or systems that are not yours.</li>
                 <li><Special>Scrape or overload our services</Special>. We provide an <Special>API</Special> for programmatic access; use it, respect its rate limits, and do not attempt to bypass them by rotating keys or addresses.</li>
                 <li><Special>Manipulate rankings</Special> through vote brigading, fake reviews, self-voting rings or artificially inflated download counts.</li>
                 <li><Special>Misrepresent your content</Special> — misleading titles, screenshots from a different project, or descriptions that hide what the download actually contains.</li>
                 <li><Special>Resell or relist</Special> our data as your own service without our written permission.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Security Research</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Security Research">
             <p>We <Special>welcome</Special> responsible security research. If you find a vulnerability, report it to us privately and give us reasonable time to fix it before disclosing it. Do not access, modify or exfiltrate data belonging to other members while testing. Researchers who follow this will not face action from us.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>The Server Browser</h3>
-            <p>Our server browser lists game servers discovered from <Special>public sources</Special>, primarily the <CLink href="https://developer.valvesoftware.com/wiki/Master_Server_Query_Protocol" target="_blank">Valve Master Server</CLink>, along with servers added manually by members. Server information — including names, maps, player counts and in-game player names — is <Special>broadcast publicly by the servers themselves</Special> over each game{"'"}s standard query protocol.</p>
-            <p>We do not operate, endorse or vet the servers we list, and we are <Special>not responsible</Special> for what happens on them. Their rules, moderation and conduct are their own.</p>
-            <p>If you own a listed server and want it <Special>removed</Special>, or you are a player who wants your in-game name and statistics removed, contact us and we will take care of it. Details are in our <CLink href="/privacy-policy">privacy policy</CLink>.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Claiming a Server</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="The Server Browser" icon={Server}>
+        <p>Our server browser lists game servers discovered from <Special>public sources</Special>, primarily the <CLink href="https://developer.valvesoftware.com/wiki/Master_Server_Query_Protocol" target="_blank">Valve Master Server</CLink>, along with servers added manually by members. Server information — including names, maps, player counts and in-game player names — is <Special>broadcast publicly by the servers themselves</Special> over each game{"'"}s standard query protocol.</p>
+        <p>We do not operate, endorse or vet the servers we list, and we are <Special>not responsible</Special> for what happens on them. Their rules, moderation and conduct are their own.</p>
+        <p>If you own a listed server and want it <Special>removed</Special>, or you are a player who wants your in-game name and statistics removed, contact us and we will take care of it. Details are in our <CLink href="/privacy-policy">privacy policy</CLink>.</p>
+
+        <LegalBlock title="Claiming a Server">
             <p>Claiming a server on TMC requires proving control of it through a short-lived <Special>claim token</Special>. Claiming a server you do not control, or attempting to seize a listing from its rightful owner, is a violation of these terms.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Moderation & Enforcement</h3>
-            <p>We would rather talk to you than ban you. Where a rule has been broken unintentionally, we will normally reach out first.</p>
-            <p>That said, we reserve the right to <Special>hide</Special>, <Special>edit</Special> or <Special>remove</Special> content, and to <Special>restrict</Special>, <Special>suspend</Special> or <Special>terminate</Special> accounts that violate these terms. Serious violations — malware, illegal content, attacks on our infrastructure — are acted on immediately and without warning.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Appeals</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Moderation & Enforcement" icon={Gavel}>
+        <p>We would rather talk to you than ban you. Where a rule has been broken unintentionally, we will normally reach out first.</p>
+        <p>That said, we reserve the right to <Special>hide</Special>, <Special>edit</Special> or <Special>remove</Special> content, and to <Special>restrict</Special>, <Special>suspend</Special> or <Special>terminate</Special> accounts that violate these terms. Serious violations — malware, illegal content, attacks on our infrastructure — are acted on immediately and without warning.</p>
+
+        <LegalBlock title="Appeals">
             <p>Every penalty we issue comes with a <Special>reason</Special> and an <Special>appeal thread</Special> where you can talk directly to our staff. If you believe an action was a mistake, use it. We do reverse decisions when we get them wrong.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Reporting</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Reporting">
             <p>If you see something that breaks these rules, <Special>report it</Special>. Reports go to our moderation staff and are not visible to the reported party{"'"}s audience. Filing reports in bad faith — to harass a creator or bury a competitor — is itself a violation.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Copyright Complaints</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Copyright Complaints">
             <p>If you believe content on TMC infringes your copyright, contact us with:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li>Identification of the <Special>work</Special> you say has been infringed.</li>
                 <li>A <Special>link</Special> to the infringing content on our services.</li>
                 <li>Your <Special>contact details</Special>.</li>
                 <li>A statement that you have a <Special>good-faith belief</Special> the use is not authorised, and that the information you have given is accurate.</li>
             </ul>
             <p>We take valid complaints seriously and act on them promptly. We also honour <Special>counter-notices</Special> — if your content was removed and you believe that was wrong, tell us. Members who repeatedly infringe others{"'"} copyright will lose their accounts.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>The Service Itself</h3>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Availability</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="The Service Itself" icon={Wrench}>
+        <LegalBlock title="Availability">
             <p>TMC is provided <Special>as is</Special> and <Special>as available</Special>. We are actively developing it, which means features will change, appear, and occasionally break. We do not guarantee uninterrupted availability, and we may modify or discontinue any part of the service.</p>
             <p>We make backups and we take reliability seriously, but you should <Special>keep your own copies</Special> of anything you cannot afford to lose. Do not treat TMC as your only backup of your work.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Downloads Are at Your Own Risk</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Downloads Are at Your Own Risk">
             <p>Mods and assets on TMC are <Special>created by community members</Special>, not by us. We moderate what we can and remove what we find, but we cannot review every file. Nothing we host should be treated as verified or endorsed by us.</p>
             <p>Modifying a game can break saves, violate a publisher{"'"}s terms, or get you banned from that game{"'"}s official services. That is <Special>your call to make</Special>, and your responsibility.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Third-Party Services & Links</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Third-Party Services & Links">
             <p>Our services link to and integrate with third parties — Discord, Steam, GitHub, Google, external repositories and game servers. We do <Special>not control</Special> those services and are not responsible for their content, availability or practices. Your use of them is governed by their own terms.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Trademarks & Non-Affiliation</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Trademarks & Non-Affiliation">
             <p>The Modding Community is an <Special>independent, community-run project</Special>. We are <Special>not affiliated with, endorsed by, sponsored by, or otherwise connected to</Special> any of the game developers or publishers whose titles we support.</p>
             <p>That includes — but is not limited to — <CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>, <CLink href="https://facepunch.com/" target="_blank">Facepunch Studios</CLink>, <CLink href="https://projectzomboid.com/blog/about-us/" target="_blank">The Indie Stone</CLink>, <CLink href="https://www.bohemia.net/" target="_blank">Bohemia Interactive</CLink> and <CLink href="https://tripwireinteractive.com/" target="_blank">Tripwire Interactive</CLink>. Their games, logos and trademarks belong to them, and are referenced here purely <Special>descriptively</Special> — to identify which game a mod, asset or server relates to. We hold these studios in <Special>high regard</Special>; their willingness to support modding is the reason communities like ours exist at all.</p>
             <p>The same applies to other <Special>modding platforms and install sources</Special>. TMC is not affiliated with <CLink href="https://www.nexusmods.com/" target="_blank">Nexus Mods</CLink>, <CLink href="https://www.curseforge.com/" target="_blank">CurseForge</CLink>, <CLink href="https://gamebanana.com/" target="_blank">GameBanana</CLink>, <CLink href="https://thunderstore.io/" target="_blank">Thunderstore</CLink>, the <CLink href="https://steamcommunity.com/workshop/" target="_blank">Steam Workshop</CLink> or any similar service. Where a mod or asset on TMC points at one of those platforms as an install source, that is a <Special>reference</Special>, not a partnership. We have <Special>enormous respect</Special> for the work those teams have done for modding over the years — we see them as peers in the same ecosystem, not competitors — and we make no claim over their content, branding or communities.</p>
             <p>If you represent a studio or platform named on our services and would like something changed, corrected or removed, contact us and we will work with you.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Liability</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Liability">
             <p>To the fullest extent permitted by law, TMC and its staff are <Special>not liable</Special> for indirect, incidental or consequential damages arising from your use of our services — including lost data, lost profits, damage caused by content you downloaded, or the conduct of any third party on or through our services.</p>
             <p>Nothing in these terms limits liability that cannot lawfully be limited, and nothing here affects consumer rights you have under the law where you live.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Privacy</h3>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Privacy" icon={Lock}>
         <p>How we handle your data is set out in our <CLink href="/privacy-policy">privacy policy</CLink>, which forms part of these terms. We recommend reading it — it is unusually detailed, on purpose.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Changes to These Terms</h3>
+    </LegalSection>
+
+    <LegalSection title="Changes to These Terms" icon={History}>
         <p>We may update these terms as our services grow. When we make a <Special>material</Special> change, we will update the date at the top of this page and, where it meaningfully affects you, announce it through our usual channels. Continued use of our services after a change means you accept the updated terms.</p>
         <p>If a provision of these terms is found unenforceable, the rest remains in effect.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Contact Us</h3>
+    </LegalSection>
+
+    <LegalSection title="Contact Us" icon={Mail}>
         <p>Questions, appeals, copyright complaints and removal requests can be sent to <CLink href="mailto:contact@moddingcommunity.com">contact@moddingcommunity.com</CLink>, or raised through our <CLink href="https://discord.moddingcommunity.com" target="_blank">Discord</CLink> or our <CLink href="https://forum.moddingcommunity.com" target="_blank">forum</CLink>. We are a small team and we read everything.</p>
-    </div>
-</section>
+    </LegalSection>
+</LegalPage>

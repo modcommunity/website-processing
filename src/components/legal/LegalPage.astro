@@ -1,0 +1,151 @@
+---
+import { CalendarClock } from "lucide-react"
+
+/**
+ * Shell for the legal pages (ToS, privacy policy, licenses).
+ *
+ * Supplies the page padding + measure that `<main>` deliberately does not, a
+ * hero block for the title/intro, and — on wide screens — a sticky "on this
+ * page" rail built from the <LegalSection> elements in the default slot.
+ */
+type Props = {
+    title: string
+    /** Small accent label above the title. */
+    eyebrow?: string
+    lastUpdated?: string
+    lastUpdatedLabel?: string
+}
+
+const {
+    title,
+    eyebrow,
+    lastUpdated,
+    lastUpdatedLabel = "Last updated"
+} = Astro.props as Props
+---
+
+<div class="container mx-auto px-4 py-10 sm:px-6 lg:py-14">
+    <div class="flex flex-col gap-8 xl:flex-row xl:items-start xl:gap-10">
+        <div class="flex min-w-0 max-w-4xl grow flex-col gap-6">
+            <header
+                class="relative overflow-hidden rounded-2xl border border-border bg-surface p-6 sm:p-8"
+            >
+                {/* Soft accent wash behind the title, matching the landing hero. */}
+                <div
+                    class="pointer-events-none absolute inset-x-0 -top-32 h-56 bg-gradient-to-b from-accent/20 to-transparent blur-2xl"
+                    aria-hidden="true"
+                >
+                </div>
+                <div class="relative flex flex-col gap-4">
+                    {eyebrow && (
+                        <span
+                            class="inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-accent uppercase"
+                        >
+                            <span
+                                class="h-1 w-6 rounded-full bg-gradient-to-r from-accent to-[#5577f0]"
+                            ></span>
+                            {eyebrow}
+                        </span>
+                    )}
+                    <h2 class="text-3xl sm:text-4xl">{title}</h2>
+                    <div class="legal-prose flex max-w-3xl flex-col gap-3">
+                        <slot name="lede" />
+                    </div>
+                    {lastUpdated && (
+                        <span
+                            class="inline-flex w-fit items-center gap-2 rounded-full border border-border bg-surface-secondary px-3 py-1 text-xs text-muted"
+                        >
+                            <CalendarClock className="h-3.5 w-3.5 text-accent" />
+                            {lastUpdatedLabel}: <span class="font-medium text-foreground">{lastUpdated}</span>
+                        </span>
+                    )}
+                </div>
+            </header>
+
+            <div class="flex flex-col gap-6">
+                <slot />
+            </div>
+        </div>
+
+        <aside class="hidden shrink-0 xl:block xl:w-64" data-legal-toc>
+            <div
+                class="sticky top-20 flex max-h-[calc(100vh-6rem)] flex-col gap-3 overflow-y-auto rounded-2xl border border-border bg-surface p-4"
+            >
+                <span class="text-xs font-semibold tracking-wider text-muted uppercase">
+                    On this page
+                </span>
+                <nav class="flex flex-col gap-0.5 text-sm" data-legal-toc-list></nav>
+            </div>
+        </aside>
+    </div>
+</div>
+
+<style>
+    /* Only reveal the rail once the script has actually filled it in. */
+    [data-legal-toc]:not([data-ready]) {
+        display: none;
+    }
+</style>
+
+<script>
+    const aside = document.querySelector<HTMLElement>("[data-legal-toc]")
+    const list = aside?.querySelector<HTMLElement>("[data-legal-toc-list]")
+    const sections = Array.from(
+        document.querySelectorAll<HTMLElement>("[data-legal-section]")
+    )
+
+    if (aside && list && sections.length) {
+        const activeClasses = ["border-accent", "bg-accent/10", "text-foreground", "font-medium"]
+
+        const links = sections.map((section) => {
+            const link = document.createElement("a")
+
+            link.href = `#${section.id}`
+            link.textContent = section.dataset.tocTitle ?? ""
+            link.className =
+                "rounded-r-lg border-l-2 border-transparent px-3 py-1.5 text-muted no-underline transition-colors hover:bg-surface-secondary hover:text-foreground"
+
+            list.appendChild(link)
+
+            return link
+        })
+
+        aside.dataset.ready = "1"
+
+        // Highlight whichever section the reader is currently inside.
+        let current = -1
+
+        const sync = () => {
+            let next = 0
+
+            sections.forEach((section, i) => {
+                if (section.getBoundingClientRect().top <= 96) next = i
+            })
+
+            if (next === current) return
+
+            if (current >= 0) links[current].classList.remove(...activeClasses)
+            links[next].classList.add(...activeClasses)
+
+            current = next
+        }
+
+        let queued = false
+
+        const onScroll = () => {
+            if (queued) return
+
+            queued = true
+
+            requestAnimationFrame(() => {
+                queued = false
+                sync()
+            })
+        }
+
+        sync()
+
+        window.addEventListener("scroll", onScroll, { passive: true })
+        window.addEventListener("resize", onScroll, { passive: true })
+    }
+</script>

@@ -1,0 +1,45 @@
+---
+import type { IconLike } from "@modcommunity/shared"
+
+import { slugify } from "./slug"
+
+/**
+ * One top-level block of a legal page: a bordered surface panel with an icon,
+ * a linkable heading, and the section's copy. Also what <LegalPage>'s table of
+ * contents is generated from (`data-legal-section` / `data-toc-title`).
+ */
+type Props = {
+    title: string
+    icon?: IconLike
+    /** Overrides the id derived from the title. */
+    id?: string
+    class?: string
+}
+
+const { title, icon: Icon, id, class: className } = Astro.props as Props
+
+const slug = id ?? slugify(title)
+---
+
+<section
+    id={slug}
+    data-legal-section
+    data-toc-title={title}
+    class={`flex scroll-mt-24 flex-col gap-5 rounded-2xl border border-border bg-surface p-6 transition-colors hover:border-accent/40 sm:p-8 ${className ?? ""}`}
+>
+    <div class="flex items-center gap-4">
+        {Icon && (
+            <span
+                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20"
+            >
+                <Icon className="h-5 w-5" />
+            </span>
+        )}
+        <h3 class="min-w-0 text-2xl">
+            <a href={`#${slug}`} class="transition-colors hover:text-accent">{title}</a>
+        </h3>
+    </div>
+    <div class="legal-prose flex flex-col gap-4">
+        <slot />
+    </div>
+</section>
