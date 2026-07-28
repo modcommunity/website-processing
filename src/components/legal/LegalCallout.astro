@@ -1,0 +1,38 @@
+---
+import { Info, TriangleAlert } from "lucide-react"
+
+/**
+ * A highlighted aside for the handful of points on a legal page that people
+ * really should not skim past.
+ */
+type Props = {
+    tone?: "info" | "warning"
+    title?: string
+    class?: string
+}
+
+const { tone = "info", title, class: className } = Astro.props as Props
+
+const Icon = tone === "warning" ? TriangleAlert : Info
+
+const tones = {
+    info: {
+        wrapper: "border-accent/30 bg-accent/5",
+        icon: "text-accent"
+    },
+    warning: {
+        wrapper: "border-warning/40 bg-warning/5",
+        icon: "text-warning"
+    }
+} as const
+
+const { wrapper, icon } = tones[tone]
+---
+
+<div class={`flex gap-3 rounded-xl border p-4 sm:p-5 ${wrapper} ${className ?? ""}`}>
+    <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${icon}`} />
+    <div class="legal-prose flex min-w-0 flex-col gap-2">
+        {title && <span class="font-semibold text-foreground">{title}</span>}
+        <slot />
+    </div>
+</div>

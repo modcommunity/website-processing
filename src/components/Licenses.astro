@@ -1,178 +1,181 @@
 ---
+import {
+    CircleHelp,
+    Code,
+    Copyright,
+    GitFork,
+    Handshake,
+    Heart,
+    ListChecks,
+    Palette,
+    Scale
+} from "lucide-react"
+
 import CLink from "./helper/CLink"
 import Special from "./helper/Special.astro"
+import LegalPage from "./legal/LegalPage.astro"
+import LegalSection from "./legal/LegalSection.astro"
+import LegalBlock from "./legal/LegalBlock.astro"
+import LegalCallout from "./legal/LegalCallout.astro"
 
 const lastUpdated = "July 27, 2026"
 ---
 
-<section class="flex flex-col gap-8">
-    <div class="flex flex-col gap-2">
-        <h2>Licenses</h2>
+<LegalPage title="Licenses" eyebrow="Legal" lastUpdated={lastUpdated}>
+    <Fragment slot="lede">
         <p>Every mod and asset published on <Special>The Modding Community</Special> carries a <strong>license</strong>. This page explains what that means, what the common licenses actually allow, and how to choose one that matches what you want people to do with your work.</p>
+    </Fragment>
+
+    <LegalCallout title="This is a summary, not legal advice.">
         <p>This page is written to be <Special>useful</Special>, not authoritative. It is a plain-language summary, not legal advice. If a licensing question genuinely matters to you — commercially, or in a dispute — talk to a lawyer.</p>
-        <p class="italic">Last updated: {lastUpdated}</p>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>How Licensing Works on TMC</h3>
-            <p>When you publish a mod or an asset, you keep <Special>full ownership</Special> of it. Uploading to TMC does not transfer your copyright to us. What the license does is tell <span class="italic">everyone else</span> what they may do with your work.</p>
-            <p>The license you select is displayed on your item{"'"}s page so that anyone downloading it knows where they stand. Without a stated license, the legal default in most of the world is <Special>all rights reserved</Special> — meaning nobody may legally redistribute, modify or reuse your work, even though you published it to a community built on doing exactly that. Choosing a license deliberately is almost always better than leaving it implied.</p>
-            <p>We currently offer <Special>MIT</Special> and <Special>GPL</Special> in the license selector, and we are expanding that list. If the license you want is not yet available, state it clearly in your item{"'"}s description and include the full license text in your download — that is what legally governs your work either way.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Two Kinds of Work, Two Kinds of License</h4>
+    </LegalCallout>
+
+    <LegalSection title="How Licensing Works on TMC" icon={Scale}>
+        <p>When you publish a mod or an asset, you keep <Special>full ownership</Special> of it. Uploading to TMC does not transfer your copyright to us. What the license does is tell <span class="italic">everyone else</span> what they may do with your work.</p>
+        <p>The license you select is displayed on your item{"'"}s page so that anyone downloading it knows where they stand. Without a stated license, the legal default in most of the world is <Special>all rights reserved</Special> — meaning nobody may legally redistribute, modify or reuse your work, even though you published it to a community built on doing exactly that. Choosing a license deliberately is almost always better than leaving it implied.</p>
+        <p>We currently offer <Special>MIT</Special> and <Special>GPL</Special> in the license selector, and we are expanding that list. If the license you want is not yet available, state it clearly in your item{"'"}s description and include the full license text in your download — that is what legally governs your work either way.</p>
+
+        <LegalBlock title="Two Kinds of Work, Two Kinds of License">
             <p>Modding covers two quite different things, and they want different licenses:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Code</Special> — plugins, scripts, tools, patches. Use a <span class="italic">software</span> license: MIT, Apache 2.0, BSD, GPL, LGPL, MPL.</li>
                 <li><Special>Creative assets</Special> — models, textures, sounds, music, maps, writing. Use a <span class="italic">Creative Commons</span> license, or a custom one.</li>
             </ul>
             <p>Software licenses are written around concepts like source code, linking and distribution, which do not map cleanly onto a texture pack. Creative Commons explicitly <Special>advises against</Special> using its licenses for software. A project containing both can license each part separately — that is normal, and worth saying plainly in your description.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Permissive Software Licenses</h3>
-            <p>Permissive licenses say, roughly: <span class="italic">do what you like, just keep my name on it and do not sue me.</span> They are the easiest for others to build on, and the most common choice in the modding world.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>MIT</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Permissive Software Licenses" icon={Code}>
+        <p>Permissive licenses say, roughly: <span class="italic">do what you like, just keep my name on it and do not sue me.</span> They are the easiest for others to build on, and the most common choice in the modding world.</p>
+
+        <LegalBlock title="MIT">
             <p>The <CLink href="https://opensource.org/license/mit" target="_blank">MIT License</CLink> is short, readable and permissive. Anyone may use, copy, modify, merge, publish, distribute, sublicense and sell your work, including in <Special>closed-source</Special> and <Special>commercial</Special> projects.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Requires</Special>: keeping the copyright notice and license text with copies of the code.</li>
                 <li><Special>Provides</Special>: no warranty, and no liability for you.</li>
                 <li><Special>Good for</Special>: plugins, libraries and tools you want adopted as widely as possible.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Apache License 2.0</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Apache License 2.0">
             <p>The <CLink href="https://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License 2.0</CLink> is MIT{"'"}s more thorough sibling. It permits the same things, but adds an <Special>explicit patent grant</Special> and requires contributors to state what they changed.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Requires</Special>: the license and notice file, plus a note of significant modifications.</li>
                 <li><Special>Provides</Special>: patent protection for both you and your users, and a trademark carve-out.</li>
                 <li><Special>Good for</Special>: larger tools and frameworks, or anything likely to be used commercially.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>BSD (2-Clause and 3-Clause)</h4>
+        </LegalBlock>
+
+        <LegalBlock title="BSD (2-Clause and 3-Clause)">
             <p>The <CLink href="https://opensource.org/license/bsd-3-clause" target="_blank">BSD licenses</CLink> are functionally very close to MIT. The <Special>3-clause</Special> variant adds one condition: your name may not be used to endorse derived works without permission.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Good for</Special>: the same cases as MIT, when you want that endorsement clause.</li>
             </ul>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Copyleft Software Licenses</h3>
-            <p>Copyleft licenses say, roughly: <span class="italic">build on my work freely, but what you build stays free too.</span> They are the right choice when you want improvements to come back to the community rather than disappear into a closed fork.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>GPL (v2 and v3)</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Copyleft Software Licenses" icon={GitFork}>
+        <p>Copyleft licenses say, roughly: <span class="italic">build on my work freely, but what you build stays free too.</span> They are the right choice when you want improvements to come back to the community rather than disappear into a closed fork.</p>
+
+        <LegalBlock title="GPL (v2 and v3)">
             <p>The <CLink href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank">GNU General Public License</CLink> is the classic strong copyleft. Anyone may use and modify your work, but if they <Special>distribute</Special> it — or anything built on it — they must release the <Special>complete source</Special> under the GPL as well.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Requires</Special>: source availability, license and copyright notices, and a statement of changes.</li>
                 <li><Special>Prevents</Special>: closed-source forks and proprietary repackaging of your work.</li>
                 <li><Special>Good for</Special>: mods and frameworks you want to remain permanently open.</li>
                 <li><Special>Note</Special>: <span class="italic">v3</span> adds protections against patent claims and hardware lock-out. <span class="italic">v2</span> remains common in older projects for compatibility reasons.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>LGPL</h4>
+        </LegalBlock>
+
+        <LegalBlock title="LGPL">
             <p>The <CLink href="https://www.gnu.org/licenses/lgpl-3.0.html" target="_blank">GNU Lesser General Public License</CLink> is a weaker copyleft designed for libraries. Changes <Special>to your library</Special> must be shared, but a closed-source project may still <Special>use</Special> it without becoming GPL itself.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Good for</Special>: shared libraries and APIs you want closed-source mods to be able to depend on.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Mozilla Public License 2.0</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Mozilla Public License 2.0">
             <p>The <CLink href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">MPL 2.0</CLink> applies copyleft at the level of <Special>individual files</Special>. Files you wrote stay open even inside a larger proprietary project; the rest of that project does not have to be.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Good for</Special>: a practical middle ground between MIT and GPL.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>AGPL v3</h4>
+        </LegalBlock>
+
+        <LegalBlock title="AGPL v3">
             <p>The <CLink href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank">GNU Affero General Public License</CLink> is the GPL plus one addition: running your software as a <Special>network service</Special> also counts as distribution, so a hosted version must publish its source too.</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Good for</Special>: server-side tools, web panels and backend services.</li>
             </ul>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Creative Commons Licenses</h3>
-            <p><CLink href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Creative Commons</CLink> licenses are built for <Special>creative assets</Special> — models, textures, audio, maps, artwork and writing. They are modular: each is a combination of a few conditions.</p>
-            <ul class="pl-10 list-disc">
-                <li><Special>CC0</Special> — you waive your rights entirely and place the work in the public domain. Anyone may do anything, with no attribution required.</li>
-                <li><Special>CC BY</Special> — anyone may use, modify and sell the work, as long as they <Special>credit you</Special>.</li>
-                <li><Special>CC BY-SA</Special> — as above, but derivatives must be shared under the <Special>same license</Special>. The creative equivalent of copyleft.</li>
-                <li><Special>CC BY-NC</Special> — credit required, and <Special>no commercial use</Special>. Note that this is not an open-source license, and &quot;commercial&quot; is fuzzier than most people expect.</li>
-                <li><Special>CC BY-ND</Special> — credit required, and <Special>no derivatives</Special>. The work may be shared but not modified, which makes it a poor fit for most modding.</li>
-            </ul>
-            <p>If you want your assets reused as widely as possible, <Special>CC0</Special> or <Special>CC BY</Special> are the usual choices. If you want your work to stay in the commons, <Special>CC BY-SA</Special>.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>All Rights Reserved & Custom Licenses</h3>
-            <p>You are not obliged to open your work. <Special>All Rights Reserved</Special> means people may download and use your mod as published, but may not redistribute, modify, repackage or fork it without your permission.</p>
-            <p>This is a legitimate choice — but if you make it, be explicit about it. Say what <Special>is</Special> allowed. Most disputes in modding start not with malice but with a creator who never stated their terms and a user who guessed wrong. A short, clear paragraph in your description prevents almost all of them.</p>
-            <p>Custom licenses are allowed, but be careful. Homemade terms are frequently ambiguous, unenforceable, or accidentally incompatible with the code they are built on. Prefer a standard license wherever one fits.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Choosing a License</h3>
-            <p>A quick way to narrow it down — what do you want to happen to your work?</p>
-            <ul class="pl-10 list-disc">
-                <li><span class="italic">&quot;Use it however you want, just credit me.&quot;</span> → <Special>MIT</Special> for code, <Special>CC BY</Special> for assets.</li>
-                <li><span class="italic">&quot;Use it however you want, no strings at all.&quot;</span> → <Special>CC0</Special>.</li>
-                <li><span class="italic">&quot;Improvements must come back to the community.&quot;</span> → <Special>GPL</Special> for code, <Special>CC BY-SA</Special> for assets.</li>
-                <li><span class="italic">&quot;Closed-source mods may depend on my library.&quot;</span> → <Special>LGPL</Special> or <Special>MPL 2.0</Special>.</li>
-                <li><span class="italic">&quot;It will likely be used commercially, and patents worry me.&quot;</span> → <Special>Apache 2.0</Special>.</li>
-                <li><span class="italic">&quot;People may play with it, but nobody forks or reuploads it.&quot;</span> → <Special>All Rights Reserved</Special>, stated clearly.</li>
-            </ul>
-            <p>Whichever you choose, <Special>include the full license text</Special> in your download — conventionally as a <span class="italic">LICENSE</span> file — and add a copyright line with your name and the year. The selector on your item page tells people what to expect; the file in the archive is what actually travels with your work.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Changing a License Later</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Creative Commons Licenses" icon={Palette}>
+        <p><CLink href="https://creativecommons.org/share-your-work/cclicenses/" target="_blank">Creative Commons</CLink> licenses are built for <Special>creative assets</Special> — models, textures, audio, maps, artwork and writing. They are modular: each is a combination of a few conditions.</p>
+        <ul>
+            <li><Special>CC0</Special> — you waive your rights entirely and place the work in the public domain. Anyone may do anything, with no attribution required.</li>
+            <li><Special>CC BY</Special> — anyone may use, modify and sell the work, as long as they <Special>credit you</Special>.</li>
+            <li><Special>CC BY-SA</Special> — as above, but derivatives must be shared under the <Special>same license</Special>. The creative equivalent of copyleft.</li>
+            <li><Special>CC BY-NC</Special> — credit required, and <Special>no commercial use</Special>. Note that this is not an open-source license, and &quot;commercial&quot; is fuzzier than most people expect.</li>
+            <li><Special>CC BY-ND</Special> — credit required, and <Special>no derivatives</Special>. The work may be shared but not modified, which makes it a poor fit for most modding.</li>
+        </ul>
+        <p>If you want your assets reused as widely as possible, <Special>CC0</Special> or <Special>CC BY</Special> are the usual choices. If you want your work to stay in the commons, <Special>CC BY-SA</Special>.</p>
+    </LegalSection>
+
+    <LegalSection title="All Rights Reserved & Custom Licenses" icon={Copyright}>
+        <p>You are not obliged to open your work. <Special>All Rights Reserved</Special> means people may download and use your mod as published, but may not redistribute, modify, repackage or fork it without your permission.</p>
+        <p>This is a legitimate choice — but if you make it, be explicit about it. Say what <Special>is</Special> allowed. Most disputes in modding start not with malice but with a creator who never stated their terms and a user who guessed wrong. A short, clear paragraph in your description prevents almost all of them.</p>
+        <p>Custom licenses are allowed, but be careful. Homemade terms are frequently ambiguous, unenforceable, or accidentally incompatible with the code they are built on. Prefer a standard license wherever one fits.</p>
+    </LegalSection>
+
+    <LegalSection title="Choosing a License" icon={ListChecks}>
+        <p>A quick way to narrow it down — what do you want to happen to your work?</p>
+        <ul>
+            <li><span class="italic">&quot;Use it however you want, just credit me.&quot;</span> → <Special>MIT</Special> for code, <Special>CC BY</Special> for assets.</li>
+            <li><span class="italic">&quot;Use it however you want, no strings at all.&quot;</span> → <Special>CC0</Special>.</li>
+            <li><span class="italic">&quot;Improvements must come back to the community.&quot;</span> → <Special>GPL</Special> for code, <Special>CC BY-SA</Special> for assets.</li>
+            <li><span class="italic">&quot;Closed-source mods may depend on my library.&quot;</span> → <Special>LGPL</Special> or <Special>MPL 2.0</Special>.</li>
+            <li><span class="italic">&quot;It will likely be used commercially, and patents worry me.&quot;</span> → <Special>Apache 2.0</Special>.</li>
+            <li><span class="italic">&quot;People may play with it, but nobody forks or reuploads it.&quot;</span> → <Special>All Rights Reserved</Special>, stated clearly.</li>
+        </ul>
+        <p>Whichever you choose, <Special>include the full license text</Special> in your download — conventionally as a <span class="italic">LICENSE</span> file — and add a copyright line with your name and the year. The selector on your item page tells people what to expect; the file in the archive is what actually travels with your work.</p>
+
+        <LegalBlock title="Changing a License Later">
             <p>You may relicense <Special>future</Special> versions of your own work at any time. What you cannot do is retroactively revoke a license already granted: copies people obtained under the old terms stay under those terms. If your project has <Special>multiple contributors</Special>, relicensing generally requires <Special>all of them</Special> to agree, so decide early.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Using Someone Else{"'"}s Work</h3>
-            <p>The same rules protect you when you publish and bind you when you download. Before including someone else{"'"}s work in yours:</p>
-            <ul class="pl-10 list-disc">
-                <li><Special>Read the license.</Special> Not the summary on this page — the actual license attached to the thing you are using.</li>
-                <li><Special>Attribute properly.</Special> Nearly every license short of CC0 requires it. Credit the author, name the license, and link back to the original.</li>
-                <li><Special>Check compatibility.</Special> Licenses combine in one direction only. Permissive code (MIT, BSD, Apache) can go into a GPL project; GPL code cannot go into an MIT-licensed one. Mixing <Special>CC BY-NC</Special> assets into a project you want others to sell does not work either.</li>
-                <li><Special>Respect &quot;no derivatives&quot; and &quot;no commercial use&quot;.</Special> These are not suggestions.</li>
-                <li><Special>Ask when unsure.</Special> Most creators are happy to grant permission if you simply ask. A short message costs nothing and resolves the issue permanently.</li>
-            </ul>
-            <p>When a license requires you to pass conditions on — as GPL and CC BY-SA do — the resulting work must carry those conditions too. You cannot make a strong-copyleft dependency more permissive by wrapping it.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Game & Platform Terms Come First</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Using Someone Else's Work" icon={Handshake}>
+        <p>The same rules protect you when you publish and bind you when you download. Before including someone else{"'"}s work in yours:</p>
+        <ul>
+            <li><Special>Read the license.</Special> Not the summary on this page — the actual license attached to the thing you are using.</li>
+            <li><Special>Attribute properly.</Special> Nearly every license short of CC0 requires it. Credit the author, name the license, and link back to the original.</li>
+            <li><Special>Check compatibility.</Special> Licenses combine in one direction only. Permissive code (MIT, BSD, Apache) can go into a GPL project; GPL code cannot go into an MIT-licensed one. Mixing <Special>CC BY-NC</Special> assets into a project you want others to sell does not work either.</li>
+            <li><Special>Respect &quot;no derivatives&quot; and &quot;no commercial use&quot;.</Special> These are not suggestions.</li>
+            <li><Special>Ask when unsure.</Special> Most creators are happy to grant permission if you simply ask. A short message costs nothing and resolves the issue permanently.</li>
+        </ul>
+        <p>When a license requires you to pass conditions on — as GPL and CC BY-SA do — the resulting work must carry those conditions too. You cannot make a strong-copyleft dependency more permissive by wrapping it.</p>
+
+        <LegalBlock title="Game & Platform Terms Come First">
             <p>A license you choose only governs <Special>your own work</Special>. It cannot grant rights over content you do not own. In particular:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Game assets belong to their publisher.</Special> Extracted models, textures, sounds or code from a game are not yours to relicense, no matter what license you apply to your mod.</li>
                 <li><Special>Publisher modding terms apply regardless.</Special> Many studios publish EULAs or modding policies that restrict what may be modified, monetised or redistributed. Those terms override anything permitted here.</li>
                 <li><Special>Decompiled or reverse-engineered code</Special> is a legal grey area at best and is usually prohibited outright by the game{"'"}s EULA.</li>
             </ul>
             <p>Content that violates a publisher{"'"}s rights will be removed from TMC when we are made aware of it. See our <CLink href="/tos">terms of service</CLink> for how copyright complaints are handled.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Content Hosted Elsewhere</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Content Hosted Elsewhere">
             <p>A mod or asset on TMC may point at an <Special>external install source</Special> — <CLink href="https://www.nexusmods.com/" target="_blank">Nexus Mods</CLink>, <CLink href="https://www.curseforge.com/" target="_blank">CurseForge</CLink>, the <CLink href="https://steamcommunity.com/workshop/" target="_blank">Steam Workshop</CLink> or a Git repository — rather than hosting the files here. When it does, that platform{"'"}s <Special>own terms</Special> govern the download, in addition to the license the author chose.</p>
             <p>TMC is an <Special>independent project</Special> and is not affiliated with any of those platforms. We reference them because our members use them, and because we have a great deal of <Special>respect</Special> for what they have built for modding. Listing a mod here does not move it out from under their rules, and it does not place it under ours.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Open Source We Rely On</h3>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Open Source We Rely On" icon={Heart}>
         <p>The Modding Community is itself built on a great deal of open-source software, and on the goodwill of the people who wrote it. The licenses described on this page are what makes a community like ours possible — we take them seriously, and we ask that you do too.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Questions</h3>
+    </LegalSection>
+
+    <LegalSection title="Questions" icon={CircleHelp}>
         <p>If you are unsure which license fits your project, or you believe your work has been used on TMC in a way its license does not permit, email us at <CLink href="mailto:contact@moddingcommunity.com">contact@moddingcommunity.com</CLink> or reach out through our <CLink href="https://discord.moddingcommunity.com" target="_blank">Discord</CLink> or our <CLink href="https://forum.moddingcommunity.com" target="_blank">forum</CLink>. We are happy to help you think it through.</p>
-    </div>
-</section>
+    </LegalSection>
+</LegalPage>

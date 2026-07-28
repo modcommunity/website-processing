@@ -1,57 +1,72 @@
 ---
+import {
+    Baby,
+    Boxes,
+    ChartColumn,
+    Cookie,
+    Database,
+    Globe,
+    Mail,
+    MessageSquare,
+    MessagesSquare,
+    ScrollText,
+    Server,
+    ShieldCheck,
+    UserCheck,
+    UserCog
+} from "lucide-react"
+
 import CLink from "./helper/CLink"
 import Special from "./helper/Special.astro"
+import LegalPage from "./legal/LegalPage.astro"
+import LegalSection from "./legal/LegalSection.astro"
+import LegalBlock from "./legal/LegalBlock.astro"
+import LegalCallout from "./legal/LegalCallout.astro"
 
 const lastUpdated = "July 27, 2026"
 ---
 
-<section class="flex flex-col gap-8">
-    <div class="flex flex-col gap-2">
-        <h2>Privacy Policy</h2>
+<LegalPage title="Privacy Policy" eyebrow="Legal" lastUpdated={lastUpdated}>
+    <Fragment slot="lede">
         <p>This is our <strong>privacy policy</strong>. We aim to be as transparent as possible regarding what we do with any and all personal data we store from users.</p>
-        <p class="italic">Last updated: {lastUpdated}</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Scope</h3>
+    </Fragment>
+
+    <LegalSection title="Scope" icon={ScrollText}>
         <p>This policy covers <Special>The Modding Community</Special> (<span class="italic">TMC</span>, &quot;we&quot;, &quot;us&quot;) and the services we operate, which include:</p>
-        <ul class="pl-10 list-disc">
+        <ul>
             <li>Our <Special>main website</Special> at moddingcommunity.com, including accounts, the server browser, mods, assets, communities, collections, articles and the blog.</li>
             <li>Our <Special>landing and legal pages</Special>, which is the site you are reading right now.</li>
             <li>Our <Special>forum</Special> at <CLink href="https://forum.moddingcommunity.com" target="_blank">forum.moddingcommunity.com</CLink>.</li>
         </ul>
         <p>It does <Special>not</Special> cover third-party services we link to, such as <CLink href="https://discord.com/" target="_blank">Discord</CLink>, <CLink href="https://github.com/" target="_blank">GitHub</CLink>, other modding platforms like <CLink href="https://www.nexusmods.com/" target="_blank">Nexus Mods</CLink> and <CLink href="https://www.curseforge.com/" target="_blank">CurseForge</CLink>, or the game servers listed in our server browser. Those services have their own privacy policies, and we encourage you to read them.</p>
         <p>The Modding Community is an <Special>independent, community-run project</Special>. We are <Special>not affiliated with</Special> the game developers and publishers whose titles we support, nor with any other modding platform — see our <CLink href="/tos">terms of service</CLink> for the full statement.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Global Analytics</h3>
+    </LegalSection>
+
+    <LegalSection title="Global Analytics" icon={ChartColumn}>
         <p>We <Special>track every visit</Special> to our website using <CLink href="https://umami.is/" target="_blank">Umami</CLink> and <CLink href="https://plausible.io/" target="_blank">Plausible</CLink>. We also track <span class="italic">events</span> such as <Special>clicks</Special> on buttons and links, <Special>scroll events</Special>, and general activity (e.g. page views, browser view and sorting changes, and search usage). <Special>ALL</Special> of this data is <Special>anonymous</Special> and not personally stored.</p>
         <p>We want to note that our analytics services do process your <Special>IP address</Special> to provide us with data on what country and city the IP address is <Special>geo-located</Special> to. This is <Special>not your direct address</Special>, but typically the <span class="italic">nearest</span> <Special>city</Special> or <Special>town</Special> depending on your <Special>ISP</Special> (Internet Service Provider). As stated above, this information is kept <Special>anonymous</Special> and we do <Special>not store</Special> your IP address.</p>
         <p>Neither service uses <Special>cross-site tracking</Special>, advertising identifiers, or sells your data. We do not run advertising networks on any of our services.</p>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Cookies & Local Storage</h3>
-            <p>We use a small number of cookies and browser storage keys. None of them are used for advertising. The following may be set:</p>
-            <ul class="pl-10 list-disc">
-                <li><Special>tmc_settings</Special> - Your browsing preferences (layout, sorting, filters and server browser options). Stored as <Special>JSON</Special>; described in detail further below.</li>
-                <li><Special>sid</Special> - A random, <span class="italic">httpOnly</span> session identifier used to count a page view or a file download <Special>once</Special> per visitor rather than once per refresh. It is not tied to your identity and carries no personal data.</li>
-                <li><Special>tmc_auth</Special> - A simple &quot;you are signed in&quot; hint shared across our subdomains so pages like this one can show <span class="italic">My Account</span> instead of <span class="italic">Sign In</span>. It contains no identity and grants no access.</li>
-                <li><Special>tmc_locale</Special> - The language you selected, so your choice carries between our sites.</li>
-                <li><Special>Session token</Special> - The <span class="italic">httpOnly</span> authentication cookie issued when you sign in. This is what keeps you logged in.</li>
-                <li><Special>MFA ticket</Special> - A short-lived, <span class="italic">httpOnly</span> cookie issued between your first and second authentication factor when two-factor authentication is enabled. It expires as soon as the challenge is completed.</li>
-            </ul>
-            <p>In <Special>local storage</Special>, we may also keep unsaved form drafts (so a long mod or article description survives an accidental tab close) and small interface preferences such as whether the sidebar is collapsed. Both stay <Special>on your device</Special> and are never transmitted to us.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Accounts</h3>
-            <p>Creating an account is <Special>entirely optional</Special>. You can browse our sites, use the server browser and read every public page without signing in. An account is only required to <strong>publish</strong> content and <strong>interact</strong> with the community.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Sign-In Methods</h4>
+    </LegalSection>
+
+    <LegalSection title="Cookies & Local Storage" icon={Cookie}>
+        <p>We use a small number of cookies and browser storage keys. None of them are used for advertising. The following may be set:</p>
+        <ul>
+            <li><Special>tmc_settings</Special> - Your browsing preferences (layout, sorting, filters and server browser options). Stored as <Special>JSON</Special>; described in detail further below.</li>
+            <li><Special>sid</Special> - A random, <span class="italic">httpOnly</span> session identifier used to count a page view or a file download <Special>once</Special> per visitor rather than once per refresh. It is not tied to your identity and carries no personal data.</li>
+            <li><Special>tmc_auth</Special> - A simple &quot;you are signed in&quot; hint shared across our subdomains so pages like this one can show <span class="italic">My Account</span> instead of <span class="italic">Sign In</span>. It contains no identity and grants no access.</li>
+            <li><Special>tmc_locale</Special> - The language you selected, so your choice carries between our sites.</li>
+            <li><Special>Session token</Special> - The <span class="italic">httpOnly</span> authentication cookie issued when you sign in. This is what keeps you logged in.</li>
+            <li><Special>MFA ticket</Special> - A short-lived, <span class="italic">httpOnly</span> cookie issued between your first and second authentication factor when two-factor authentication is enabled. It expires as soon as the challenge is completed.</li>
+        </ul>
+        <p>In <Special>local storage</Special>, we may also keep unsaved form drafts (so a long mod or article description survives an accidental tab close) and small interface preferences such as whether the sidebar is collapsed. Both stay <Special>on your device</Special> and are never transmitted to us.</p>
+    </LegalSection>
+
+    <LegalSection title="Accounts" icon={UserCog}>
+        <p>Creating an account is <Special>entirely optional</Special>. You can browse our sites, use the server browser and read every public page without signing in. An account is only required to <strong>publish</strong> content and <strong>interact</strong> with the community.</p>
+
+        <LegalBlock title="Sign-In Methods">
             <p>You may sign in with any of the following, available on the <CLink href="/login">login page</CLink>:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><CLink href="https://discord.com/" target="_blank">Discord</CLink></li>
                 <li><CLink href="https://www.google.com/" target="_blank">Google</CLink></li>
                 <li><CLink href="https://github.com/" target="_blank">GitHub</CLink></li>
@@ -60,54 +75,52 @@ const lastUpdated = "July 27, 2026"
             </ul>
             <p>We <Special>never store a password</Special>. Email sign-in is passwordless: the code we send is short-lived, single-use, and discarded once it is checked or expires.</p>
             <p>When you sign in through an external provider, we store the data that provider returns to us, which may include:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Email</Special> (Steam does not provide one, and other providers may withhold it)</li>
                 <li><Special>Username</Special> and <Special>display name</Special></li>
                 <li><Special>Avatar</Special> (image)</li>
                 <li>The provider's <Special>account identifier</Special> and the <Special>access tokens</Special> needed to keep the connection working</li>
             </ul>
             <p>You may link or unlink additional providers at any time from your account's <Special>Connections</Special> page.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Profile Information</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Profile Information">
             <p>Everything on your profile is <Special>optional</Special> and supplied by you. This includes your <Special>username</Special>, <Special>display name</Special>, <Special>biography</Special>, <Special>avatar</Special> and any <Special>social links</Special> you choose to add (website, Discord, Steam, GitHub, X, Facebook or Instagram).</p>
             <p>You control who can see you:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Public listing</Special> - whether you appear in the public users browser. This is <Special>off by default</Special>; we never list a member without their consent.</li>
                 <li><Special>Profile visibility</Special> - whether your public profile page is visible to everyone.</li>
                 <li><Special>Activity visibility</Special> - whether other members can see your presence indicator, and whether it is derived from your activity or pinned manually to <span class="italic">Idle</span> or <span class="italic">Away</span>.</li>
             </ul>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Security Data</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Security Data">
             <p>To keep accounts safe we store:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Sessions</Special> - a session token and its expiry, so you stay signed in.</li>
                 <li><Special>Two-factor authentication</Special> - if you enable it, your <Special>TOTP secret</Special> and the date it was armed. Recovery codes are stored only as <Special>SHA-256 hashes</Special> and are consumed on use, so we can never read them back.</li>
                 <li><Special>Verification tokens</Special> - short-lived sign-in and verification codes, along with a failed-attempt counter that burns a code after a handful of wrong guesses.</li>
                 <li><Special>Rate-limit counters</Special> - keyed to an IP address or email address, kept only for as long as the limit window lasts.</li>
             </ul>
             <p>Sign-in and other sensitive forms are protected by <CLink href="https://www.cloudflare.com/products/turnstile/" target="_blank">Cloudflare Turnstile</CLink>, a privacy-focused CAPTCHA alternative. Turnstile receives your IP address in order to score the request.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Account Settings</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Account Settings">
             <p>Your account settings are stored alongside your account and include your <Special>time zone</Special>, <Special>language</Special>, and your <Special>notification preferences</Special> (email and push channels, plus per-category opt-ins for system messages, comments, reviews, releases, mentions and moderation notices). You can also mute mention notifications for individual items you own, or for an entire content type.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Activity Timestamps</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Activity Timestamps">
             <p>We record when you <Special>registered</Special>, when you <Special>last signed in</Special>, and when you were <Special>last seen</Special>. The last of these is refreshed by a lightweight heartbeat while you are actually using the site. It powers presence indicators and lets our staff identify dormant accounts; it is not shared with anyone if you have disabled activity visibility.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Content & Interactions</h3>
-            <p>Anything you <Special>publish</Special> is stored with your account as the owner, and is <Special>public</Special> unless you mark it hidden. This includes mods, assets, game servers, communities, collections, articles, releases, media, comments, reviews, ratings, questions and answers, groups, and the tags and categories you assign to them.</p>
-            <p>Published content keeps an <Special>author attribution</Special> and <Special>creation and edit timestamps</Special>. Editing history is not exposed publicly, but the fact that an item was edited, and when, is.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Engagement</h4>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Content & Interactions" icon={MessageSquare}>
+        <p>Anything you <Special>publish</Special> is stored with your account as the owner, and is <Special>public</Special> unless you mark it hidden. This includes mods, assets, game servers, communities, collections, articles, releases, media, comments, reviews, ratings, questions and answers, groups, and the tags and categories you assign to them.</p>
+        <p>Published content keeps an <Special>author attribution</Special> and <Special>creation and edit timestamps</Special>. Editing history is not exposed publicly, but the fact that an item was edited, and when, is.</p>
+
+        <LegalBlock title="Engagement">
             <p>We store the following interaction data:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Favorites</Special> and <Special>filters</Special> (hidden items) - stored against your account when signed in, or in the <Special>tmc_settings</Special> cookie when you are not. Neither list is publicly visible.</li>
                 <li><Special>Views</Special> - a single row per item per visitor, keyed to your account when signed in or the anonymous <Special>sid</Special> cookie when you are not. This is what produces view counts; it is a count, not a browsing history.</li>
                 <li><Special>Downloads</Special> - recorded the same way, once per file per visitor, to produce download counts.</li>
@@ -115,33 +128,31 @@ const lastUpdated = "July 27, 2026"
                 <li><Special>Notifications</Special> - the notifications delivered to you, their read state, and the link they point at.</li>
             </ul>
             <p>Aggregate statistics (view, download and favorite totals over time) are stored as <Special>periodic snapshots per item</Special>, not per user, and are retained for up to <Special>three years</Special>.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Uploads</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Uploads">
             <p>Files you upload — images, archives, plugins and scripts — are stored with an object storage provider (<Special>S3-compatible</Special>). We record the file's <Special>owner</Special>, <Special>type</Special>, <Special>size</Special>, <Special>storage key</Special>, any <Special>title and description</Special> you supply, and its <Special>upload and edit timestamps</Special>. We do <Special>not</Special> read or index the contents of your archives beyond what is needed to serve and moderate them.</p>
             <p>Please be aware that <Special>files you upload may contain personal data you did not intend to share</Special> — image EXIF metadata, paths containing your name, or configuration files containing credentials. We do not strip this for you. Review what you upload.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>API Keys</h4>
+        </LegalBlock>
+
+        <LegalBlock title="API Keys">
             <p>If you create an <Special>API key</Special>, we store its name, a short public <Special>prefix</Special>, and a <Special>SHA-256 hash</Special> of the secret. The plaintext key is shown to you <Special>once</Special> at creation and is never recoverable afterwards. We also store the key's scope, permissions, expiry, revocation state, optional <Special>IP allowlist</Special> and rate limit.</p>
             <p>Requests made with an API key are logged. Those logs contain the <Special>request method</Special>, <Special>path</Special>, <Special>response status</Special>, the item involved, and the <Special>IP address</Special> the request came from. This is a security and abuse-prevention measure, and the logs are visible to you for your own keys and to our staff.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h4>Moderation Records</h4>
+        </LegalBlock>
+
+        <LegalBlock title="Moderation Records">
             <p>When you <Special>report</Special> content, we store the report, its contents, and who filed it. Reports are visible to our moderation staff, not to the reported party's audience.</p>
             <p>When a <Special>penalty</Special> (a restriction or ban) is applied to an account or an item, we store its type, reason, expiry, the staff member who issued it, and any <Special>appeal conversation</Special> between the affected member and staff. Moderation records are retained even after the penalty expires so that repeat behaviour can be assessed fairly.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-4">
-        <div class="flex flex-col gap-2">
-            <h3>Server Browser</h3>
-            <p>Our <Special>server browser</Special> is a <Special>core</Special> service in our organization. Users are able to <strong>explore</strong> and <strong>discover</strong> game servers across various games and applications.</p>
-            <p>Our <Special>primary</Special> server browser is located <CLink href="/servers">here</CLink> (moddingcommunity.com/servers). There are also <Special>application-specific</Special> server browsers at <span class="italic">moddingcommunity.com/{"<"}app url{">"}/servers</span> (these pages are also listed on our <strong>Games & Apps</strong> page <CLink href="/apps">here</CLink>).</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h5>Settings Storage</h5>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Server Browser" icon={Server}>
+        <p>Our <Special>server browser</Special> is a <Special>core</Special> service in our organization. Users are able to <strong>explore</strong> and <strong>discover</strong> game servers across various games and applications.</p>
+        <p>Our <Special>primary</Special> server browser is located <CLink href="/servers">here</CLink> (moddingcommunity.com/servers). There are also <Special>application-specific</Special> server browsers at <span class="italic">moddingcommunity.com/{"<"}app url{">"}/servers</span> (these pages are also listed on our <strong>Games & Apps</strong> page <CLink href="/apps">here</CLink>).</p>
+
+        <LegalBlock title="Settings Storage">
             <p>We <Special>store</Special> and rely on <Special>site cookies</Special> for persistent settings across our browsers. The cookie name and key we use is <Special>tmc_settings</Special>, and settings are stored in <Special>JSON</Special> format. Preferences are kept <Special>per content type</Special> (apps, assets, mods, servers, server maps, communities, collections, groups, articles, categories and users), and cover:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li><Special>Layout</Special> - grid or table view, pagination style, and how many results to show per page.</li>
                 <li><Special>Sorting</Special> - the current sort column and direction.</li>
                 <li><Special>Filters</Special> - the apps, categories and tags you are filtering by, plus your favorited and filtered item IDs when you are <Special>not signed in</Special>.</li>
@@ -149,28 +160,28 @@ const lastUpdated = "July 27, 2026"
                 <li><Special>Appearance</Special> - whether background images are enabled.</li>
             </ul>
             <p>The <Special>server browser</Special> stores a few additional options of its own, including showing only online servers, minimum and maximum user and slot counts, hiding full or empty servers, showing password-protected or insecure servers, showing only official servers, filtering by country, auto-refreshing the list, color-coding user counts, and whether to show ping.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h5>Favorites & Filters</h5>
+        </LegalBlock>
+
+        <LegalBlock title="Favorites & Filters">
             <p>All users can <Special>favorite</Special> and <Special>filter</Special> (hide) servers in our server browser. The storage method depends on whether the user is <Special>signed in</Special> or not:</p>
-            <ul class="pl-10 list-disc">
+            <ul>
                 <li>Users who are <Special>not signed in</Special> use cookie storage as described above.</li>
                 <li>Users who <Special>are signed in</Special> use our <Special>database</Special> (we map user IDs to server IDs in a database table).</li>
             </ul>
             <p>Favorite and filtered server lists are <Special>not publicly visible</Special> to other users.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h5>Show Ping Feature & Geo Location</h5>
+        </LegalBlock>
+
+        <LegalBlock title="Show Ping Feature & Geo Location">
             <p>If you enable the <Special>Show Ping</Special> setting, you will most likely need to give <Special>access</Special> to our website to access your <Special>location</Special>. This is just your <Special>geo location</Special> and we do <Special>not</Special> store any of this information.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h5>Claiming a Server</h5>
+        </LegalBlock>
+
+        <LegalBlock title="Claiming a Server">
             <p>If you <Special>claim</Special> a game server, we generate a short-lived <Special>claim token</Special> that you place on the live server (for example, in its name or description) so our query system can verify you control it. The token is valid for <Special>15 minutes</Special> and is stored with your account and the server it targets.</p>
-        </div>
-        <div class="flex flex-col gap-2">
-            <h5>Tracked Servers</h5>
+        </LegalBlock>
+
+        <LegalBlock title="Tracked Servers">
             <p>We <Special>track</Special> and <Special>display</Special> servers in our server browser. We currently track servers in the following games (this list will expand over time):</p>
-            <ul class="pl-10 list-disc">
+            <ul class="legal-chips">
                 <li>Counter-Strike 2 (<CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>)</li>
                 <li>Rust (<CLink href="https://facepunch.com/" target="_blank">FacePunch</CLink>)</li>
                 <li>Project Zomboid (<CLink href="https://projectzomboid.com/blog/about-us/" target="_blank">The Indie Stone</CLink>)</li>
@@ -199,7 +210,7 @@ const lastUpdated = "July 27, 2026"
                 <li>Half-Life DeathMatch: Source</li>
             </ul>
             <p>We <Special>track</Special>, <Special>store</Special>, and <Special>display</Special> the following information from each server:</p>
-            <ul class="pl-10 list-disc">
+            <ul class="legal-chips">
                 <li>Name</li>
                 <li>IP address and hostname</li>
                 <li>Port number (game and query)</li>
@@ -211,7 +222,7 @@ const lastUpdated = "July 27, 2026"
                 <li>Publicly exposed server variables and rules</li>
             </ul>
             <p>Additionally, we also <Special>track</Special>, <Special>store</Special>, and <Special>display</Special> user information from servers. This includes:</p>
-            <ul class="pl-10 list-disc">
+            <ul class="legal-chips">
                 <li>Name (usually Steam display name)</li>
                 <li>Steam ID, when the server exposes it</li>
                 <li>Score (current session and cumulative)</li>
@@ -221,17 +232,17 @@ const lastUpdated = "July 27, 2026"
             <p>This information is <Special>broadcast publicly by the game server itself</Special> over the game's standard query protocol. It is the same data any player sees in their in-game server browser. We do not join servers, read chat, or collect anything a server does not already publish.</p>
             <p>We also <Special>automatically</Special> add servers to our server browser <CLink href="https://developer.valvesoftware.com/wiki/Master_Server_Query_Protocol" target="_blank">without permission</CLink> from server owners. This is because these servers are already listed in <Special>public server browsers</Special>. We retrieve them from the <Special>Valve Master Server</Special>. Users can also <Special>manually add</Special> servers by IP and port.</p>
             <p>If you are a server owner and would like your server <Special>removed</Special>, or an in-game player who would like your <Special>name and statistics removed</Special>, please reach out to us and we will take care of it.</p>
-        </div>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Forum</h3>
+        </LegalBlock>
+    </LegalSection>
+
+    <LegalSection title="Forum" icon={MessagesSquare}>
         <p>Our forum is located at <CLink href="https://forum.moddingcommunity.com" target="_blank">forum.moddingcommunity.com</CLink>. We use <CLink href="https://discourse.org" target="_blank">Discourse</CLink> as our forum software. Users can sign up using an <Special>email</Special> and <Special>password</Special>, or use alternative sign-in methods such as <CLink href="https://discord.com" target="_blank">Discord</CLink> or <CLink href="https://store.steampowered.com/" target="_blank">Steam</CLink>. Email and password storage is handled securely by <CLink href="https://discourse.org" target="_blank">Discourse</CLink>, and we keep the forum software <Special>up-to-date</Special>.</p>
         <p>The forum keeps its <Special>own account system</Special> separate from the main website. Deleting one does not delete the other.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Service Providers</h3>
+    </LegalSection>
+
+    <LegalSection title="Service Providers" icon={Boxes}>
         <p>We rely on a small number of third parties to operate our services. Each receives only what it needs to do its job:</p>
-        <ul class="pl-10 list-disc">
+        <ul>
             <li><CLink href="https://www.cloudflare.com/" target="_blank">Cloudflare</CLink> - network protection, and <Special>Turnstile</Special> for CAPTCHA.</li>
             <li><Special>S3-compatible object storage</Special> - hosting of uploaded files and images.</li>
             <li><Special>SMTP email delivery</Special> - transactional email only (sign-in codes and the notifications you opted into). We do not run marketing mailing lists.</li>
@@ -240,11 +251,11 @@ const lastUpdated = "July 27, 2026"
             <li><CLink href="https://discourse.org" target="_blank">Discourse</CLink> - our forum software.</li>
         </ul>
         <p>We do <Special>not sell</Special> your personal data, and we do not share it with advertisers or data brokers. We will only disclose data to others where it is <Special>legally required</Special> of us, or where it is necessary to protect our services and our members from abuse.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Data Retention</h3>
+    </LegalSection>
+
+    <LegalSection title="Data Retention" icon={Database}>
         <p>We keep data for as long as it serves the purpose it was collected for:</p>
-        <ul class="pl-10 list-disc">
+        <ul>
             <li><Special>Account data</Special> - until you delete your account.</li>
             <li><Special>Sign-in and verification codes</Special> - minutes. They are destroyed as soon as they are used or expire.</li>
             <li><Special>Sessions</Special> - until they expire or you sign out.</li>
@@ -253,11 +264,11 @@ const lastUpdated = "July 27, 2026"
             <li><Special>Moderation records</Special> - retained after expiry so that repeat behaviour can be assessed fairly.</li>
             <li><Special>Server and in-game player data</Special> - retained while we track the server, and on request for removal.</li>
         </ul>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Your Rights & Choices</h3>
+    </LegalSection>
+
+    <LegalSection title="Your Rights & Choices" icon={UserCheck}>
         <p>You are in control of your data. Specifically, you may:</p>
-        <ul class="pl-10 list-disc">
+        <ul>
             <li><Special>Access and correct</Special> your information at any time from your account pages.</li>
             <li><Special>Delete your account</Special> yourself from the <span class="italic">Security</span> tab of your account. This is <Special>permanent and irreversible</Special>. It removes your profile, settings, sessions, connected providers, API keys, uploads, favorites, filters, notifications and the content you published.</li>
             <li><Special>Control your visibility</Special> using the public listing, profile and activity toggles described above.</li>
@@ -266,23 +277,26 @@ const lastUpdated = "July 27, 2026"
             <li><Special>Clear cookies</Special> at any time through your browser. Doing so resets your preferences but does not affect your account.</li>
         </ul>
         <p>If you need a <Special>copy of your data</Special>, want something corrected that you cannot change yourself, or want your data removed without deleting your whole account, contact us and we will help.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Security</h3>
+    </LegalSection>
+
+    <LegalSection title="Security" icon={ShieldCheck}>
         <p>We take reasonable technical measures to protect your data. Passwords are never stored, recovery codes and API keys are stored only as hashes, sensitive cookies are <span class="italic">httpOnly</span> and marked secure in production, and authentication endpoints are rate limited and CAPTCHA protected. Two-factor authentication is available to every account and we strongly recommend enabling it.</p>
         <p>That said, <Special>no online service can promise perfect security</Special>. If we ever become aware of a breach affecting your personal data, we will notify affected members promptly and describe what happened.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Children</h3>
+    </LegalSection>
+
+    <LegalSection title="Children" icon={Baby}>
         <p>Our services are <Special>not directed at children under 13</Special>, and we do not knowingly collect personal data from them. If you believe a child has created an account with us, please contact us and we will remove it.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>International Users</h3>
+    </LegalSection>
+
+    <LegalSection title="International Users" icon={Globe}>
         <p>We operate from, and store data on, servers that may be located in a different country than your own. By using our services you understand that your data may be processed outside your country of residence.</p>
-    </div>
-    <div class="flex flex-col gap-2">
-        <h3>Contact Us</h3>
+    </LegalSection>
+
+    <LegalSection title="Contact Us" icon={Mail}>
         <p>Questions about this policy, requests for your data, or requests to remove a server or an in-game name can be sent to <CLink href="mailto:contact@moddingcommunity.com">contact@moddingcommunity.com</CLink>, or raised through our <CLink href="https://discord.moddingcommunity.com" target="_blank">Discord</CLink> or our <CLink href="https://forum.moddingcommunity.com" target="_blank">forum</CLink>. We are a small team and we read everything.</p>
-    </div>
-    <p>This Privacy Policy <Special>may be updated</Special> from time to time. When we make a material change we will update the date at the top of this page. Continued use of our services means you accept the latest version.</p>
-</section>
+    </LegalSection>
+
+    <LegalCallout>
+        <p>This Privacy Policy <Special>may be updated</Special> from time to time. When we make a material change we will update the date at the top of this page. Continued use of our services means you accept the latest version.</p>
+    </LegalCallout>
+</LegalPage>
