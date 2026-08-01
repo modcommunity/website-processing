@@ -4,8 +4,9 @@ import {
     Cog,
     Hammer,
     Server,
+    Gamepad2,
     MessagesSquare,
-    Newspaper,
+    Images,
     Map,
     Search,
     Compass,
@@ -32,7 +33,7 @@ const KB = 'https://forum.moddingcommunity.com/c/server-browser/knowledgebase/81
 const DEV_TRACKER = 'https://github.com/modcommunity/dev-issue-tracker/issues'
 
 /**
- * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same five
+ * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same six
  * top-level links plus the hrefless "Resources" dropdown, in the same order,
  * with the same icons and the same sub-labels. Labels/descriptions come from
  * `nav.*`, ported verbatim from city's `locales/<lang>/nav.json`, so both
@@ -74,24 +75,22 @@ export function buildNav(t: TFunc): NavItem[] {
             desc: t('nav.servers.desc'),
         },
         {
+            label: t('nav.parties.label'),
+            href: '/parties',
+            icon: Gamepad2,
+            desc: t('nav.parties.desc'),
+        },
+        {
             // No href: a dropdown-only trigger, exactly as in website-city.
             label: t('nav.resources.label'),
             icon: FolderKey,
             desc: t('nav.resources.desc'),
             children: [
-                {
-                    label: t('nav.blog.label'),
-                    href: '/blog/',
-                    icon: Newspaper,
-                    desc: t('nav.blog.desc'),
-                },
-                {
-                    label: t('nav.forum.label'),
-                    href: FORUM,
-                    icon: MessagesSquare,
-                    desc: t('nav.forum.desc'),
-                    external: true,
-                },
+                /*
+                 * The Forum is deliberately absent, mirroring city: it is
+                 * reachable from the footer and the sidebar's Community section
+                 * instead.
+                 */
                 {
                     label: t('nav.discord.label'),
                     href: DISCORD,
@@ -100,10 +99,24 @@ export function buildNav(t: TFunc): NavItem[] {
                     external: true,
                 },
                 {
-                    label: t('nav.users.label'),
-                    href: '/users',
+                    label: t('nav.blog.label'),
+                    href: '/blog/',
+                    icon: NotebookPen,
+                    desc: t('nav.blog.desc'),
+                },
+                // The member directory. City renamed this from "Users" and moved
+                // the route to `/community` with it.
+                {
+                    label: t('nav.community.label'),
+                    href: '/community',
                     icon: Users,
-                    desc: t('nav.users.desc'),
+                    desc: t('nav.community.desc'),
+                },
+                {
+                    label: t('nav.banners.label'),
+                    href: '/banners',
+                    icon: Images,
+                    desc: t('nav.banners.desc'),
                 },
                 {
                     label: t('nav.roadmap.label'),

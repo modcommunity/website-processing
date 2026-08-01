@@ -8,6 +8,13 @@ import type { LocaleT } from '../config'
  *
  * Keep in sync with website-city's PRIMARY_NAV — that config is the source of
  * truth for which entries the header shows and in what order.
+ *
+ * `community` and `banners` are English-only on purpose: city's own
+ * `locales/<lang>/nav.json` only carries them in English too, and its request
+ * pipeline merges English under every locale. Translating them here would make
+ * processing's header read differently from city's in the other eight
+ * languages, which is exactly what this catalogue exists to prevent. `getT`
+ * falls back to English per key, so the rest of a locale still renders.
  */
 export type NavCatalog = Record<LocaleT, Record<string, { label: string; desc: string }>>
 
@@ -33,25 +40,29 @@ export const shellNav: NavCatalog = {
             label: 'Servers',
             desc: 'Find & track game servers',
         },
+        parties: {
+            label: 'Parties',
+            desc: 'Find a game to jump into or start your own',
+        },
         resources: {
             label: 'Resources',
-            desc: 'Blog, forum, and community links',
-        },
-        blog: {
-            label: 'Blog',
-            desc: 'News & write-ups',
-        },
-        forum: {
-            label: 'Forum',
-            desc: 'Discuss with the community',
+            desc: 'Community links, roadmap and dev tracker',
         },
         discord: {
             label: 'Discord Server',
             desc: 'Join our Discord community',
         },
-        users: {
-            label: 'Users',
-            desc: 'Browse community members',
+        blog: {
+            label: 'Blog',
+            desc: 'News & write-ups',
+        },
+        community: {
+            label: 'Community',
+            desc: "What's new with the community",
+        },
+        banners: {
+            label: 'Banners',
+            desc: 'Embeddable banner images for the site and your content',
         },
         roadmap: {
             label: 'Roadmap',
@@ -83,25 +94,21 @@ export const shellNav: NavCatalog = {
             label: 'Servidores',
             desc: 'Encuentra y monitoriza servidores de juego',
         },
+        parties: {
+            label: 'Partidas',
+            desc: 'Encuentra una partida a la que unirte o crea la tuya',
+        },
         resources: {
             label: 'Recursos',
             desc: 'Blog, foro y enlaces de la comunidad',
-        },
-        blog: {
-            label: 'Blog',
-            desc: 'Noticias y artículos',
-        },
-        forum: {
-            label: 'Foro',
-            desc: 'Debate con la comunidad',
         },
         discord: {
             label: 'Servidor de Discord',
             desc: 'Únete a nuestra comunidad de Discord',
         },
-        users: {
-            label: 'Usuarios',
-            desc: 'Explora los miembros de la comunidad',
+        blog: {
+            label: 'Blog',
+            desc: 'Noticias y artículos',
         },
         roadmap: {
             label: 'Hoja de ruta',
@@ -133,25 +140,21 @@ export const shellNav: NavCatalog = {
             label: 'Serveurs',
             desc: 'Trouver et suivre des serveurs de jeu',
         },
+        parties: {
+            label: 'Sessions',
+            desc: 'Trouvez une partie à rejoindre ou lancez la vôtre',
+        },
         resources: {
             label: 'Ressources',
             desc: 'Blog, forum et liens de la communauté',
-        },
-        blog: {
-            label: 'Blog',
-            desc: 'Actualités et articles',
-        },
-        forum: {
-            label: 'Forum',
-            desc: 'Échangez avec la communauté',
         },
         discord: {
             label: 'Serveur Discord',
             desc: 'Rejoignez notre communauté Discord',
         },
-        users: {
-            label: 'Utilisateurs',
-            desc: 'Parcourir les membres de la communauté',
+        blog: {
+            label: 'Blog',
+            desc: 'Actualités et articles',
         },
         roadmap: {
             label: 'Feuille de route',
@@ -183,25 +186,21 @@ export const shellNav: NavCatalog = {
             label: 'Server',
             desc: 'Game-Server finden & verfolgen',
         },
+        parties: {
+            label: 'Partys',
+            desc: 'Finde eine Runde zum Mitspielen oder starte deine eigene',
+        },
         resources: {
             label: 'Ressourcen',
             desc: 'Blog, Forum und Community-Links',
-        },
-        blog: {
-            label: 'Blog',
-            desc: 'News & Berichte',
-        },
-        forum: {
-            label: 'Forum',
-            desc: 'Mit der Community diskutieren',
         },
         discord: {
             label: 'Discord-Server',
             desc: 'Treten Sie unserer Discord-Community bei',
         },
-        users: {
-            label: 'Benutzer',
-            desc: 'Community-Mitglieder durchsuchen',
+        blog: {
+            label: 'Blog',
+            desc: 'News & Berichte',
         },
         roadmap: {
             label: 'Roadmap',
@@ -233,25 +232,21 @@ export const shellNav: NavCatalog = {
             label: 'Серверы',
             desc: 'Поиск и отслеживание игровых серверов',
         },
+        parties: {
+            label: 'Пати',
+            desc: 'Найдите игру, к которой можно присоединиться, или создайте свою',
+        },
         resources: {
             label: 'Ресурсы',
             desc: 'Блог, форум и ссылки сообщества',
-        },
-        blog: {
-            label: 'Блог',
-            desc: 'Новости и статьи',
-        },
-        forum: {
-            label: 'Форум',
-            desc: 'Обсуждения с сообществом',
         },
         discord: {
             label: 'Сервер Discord',
             desc: 'Присоединяйтесь к нашему сообществу в Discord',
         },
-        users: {
-            label: 'Пользователи',
-            desc: 'Просмотр участников сообщества',
+        blog: {
+            label: 'Блог',
+            desc: 'Новости и статьи',
         },
         roadmap: {
             label: 'Планы развития',
@@ -283,25 +278,21 @@ export const shellNav: NavCatalog = {
             label: 'Servers',
             desc: 'Vind en volg game servers',
         },
+        parties: {
+            label: "Party's",
+            desc: 'Vind een spel om aan mee te doen of start je eigen party',
+        },
         resources: {
             label: 'Bronnen',
             desc: 'Blog, forum en communitylinks',
-        },
-        blog: {
-            label: 'Blog',
-            desc: 'Nieuws en artikelen',
-        },
-        forum: {
-            label: 'Forum',
-            desc: 'Praat mee met de community',
         },
         discord: {
             label: 'Discord-server',
             desc: 'Word lid van onze Discord-community',
         },
-        users: {
-            label: 'Gebruikers',
-            desc: 'Blader door communityleden',
+        blog: {
+            label: 'Blog',
+            desc: 'Nieuws en artikelen',
         },
         roadmap: {
             label: 'Roadmap',
@@ -333,25 +324,21 @@ export const shellNav: NavCatalog = {
             label: 'サーバー',
             desc: 'ゲームサーバーを検索・追跡',
         },
+        parties: {
+            label: 'パーティー',
+            desc: '参加できるゲームを探す、または自分で立てる',
+        },
         resources: {
             label: 'リソース',
             desc: 'ブログ、フォーラム、コミュニティリンク',
-        },
-        blog: {
-            label: 'ブログ',
-            desc: 'ニュースと記事',
-        },
-        forum: {
-            label: 'フォーラム',
-            desc: 'コミュニティで語り合う',
         },
         discord: {
             label: 'Discord サーバー',
             desc: 'Discord コミュニティに参加',
         },
-        users: {
-            label: 'ユーザー',
-            desc: 'コミュニティメンバーを見る',
+        blog: {
+            label: 'ブログ',
+            desc: 'ニュースと記事',
         },
         roadmap: {
             label: 'ロードマップ',
@@ -383,25 +370,21 @@ export const shellNav: NavCatalog = {
             label: '服务器',
             desc: '查找并追踪游戏服务器',
         },
+        parties: {
+            label: '组队',
+            desc: '找一局加入，或者自己开一局',
+        },
         resources: {
             label: '资源',
             desc: '博客、论坛和社区链接',
-        },
-        blog: {
-            label: '博客',
-            desc: '新闻与文章',
-        },
-        forum: {
-            label: '论坛',
-            desc: '与社区一起讨论',
         },
         discord: {
             label: 'Discord 服务器',
             desc: '加入我们的 Discord 社区',
         },
-        users: {
-            label: '用户',
-            desc: '浏览社区成员',
+        blog: {
+            label: '博客',
+            desc: '新闻与文章',
         },
         roadmap: {
             label: '路线图',
@@ -433,25 +416,21 @@ export const shellNav: NavCatalog = {
             label: 'Servidores',
             desc: 'Encontre e acompanhe servidores de jogo',
         },
+        parties: {
+            label: 'Partidas',
+            desc: 'Encontre um jogo para entrar ou crie a sua',
+        },
         resources: {
             label: 'Recursos',
             desc: 'Blog, fórum e links da comunidade',
-        },
-        blog: {
-            label: 'Blog',
-            desc: 'Notícias e artigos',
-        },
-        forum: {
-            label: 'Fórum',
-            desc: 'Discuta com a comunidade',
         },
         discord: {
             label: 'Servidor Discord',
             desc: 'Junte-se à nossa comunidade no Discord',
         },
-        users: {
-            label: 'Utilizadores',
-            desc: 'Explore os membros da comunidade',
+        blog: {
+            label: 'Blog',
+            desc: 'Notícias e artigos',
         },
         roadmap: {
             label: 'Roteiro',
