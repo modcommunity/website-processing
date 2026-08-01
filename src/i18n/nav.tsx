@@ -5,22 +5,29 @@ import {
     Hammer,
     Server,
     Gamepad2,
-    MessagesSquare,
     Images,
     Map,
     Search,
     Compass,
-    Scroll,
     Code2,
     Users,
     BookOpen,
     NotebookPen,
     FolderKey,
+    Package,
+    Plus,
+    User,
+    Newspaper,
+    Group,
+    Puzzle,
+    Activity,
+    MessageSquare,
+    UserCheck,
 } from 'lucide-react'
 // lucide dropped brand marks, so Discord stays on react-icons — website-city
 // makes the same exception.
 import { FaDiscord } from 'react-icons/fa6'
-import type { NavItem, NavSection, FooterColumn } from '@modcommunity/shared'
+import type { NavItem, NavLeaf, NavSection, FooterColumn } from '@modcommunity/shared'
 import type { TFunc } from './t'
 
 // All destinations live on website-city, served under the same domain, so
@@ -169,40 +176,355 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
     ]
 }
 
-/** Primary sidebar sections, translated via `t`. */
-export function buildSidebarSections(t: TFunc): NavSection[] {
+/**
+ * A sidebar leaf, plus the one thing the shared `NavLeaf` has no notion of:
+ * whether it is a signed-in-only destination.
+ *
+ * website-city hides those from signed-out visitors using the real session.
+ * We only have the non-HttpOnly `tmc_auth` hint cookie (see `AccountButton`),
+ * which is enough — the flag is read in `SiteSidebar` and the leaves are
+ * dropped before the list ever reaches the shared <Sidebar>.
+ */
+export type SidebarLeaf = NavLeaf & { requiresAuth?: boolean }
+
+export type SidebarSection = Omit<NavSection, 'items'> & {
+    items: SidebarLeaf[]
+}
+
+/**
+ * Primary sidebar sections — a mirror of website-city's `SIDEBAR_SECTIONS`
+ * (`src/app/_components/ui/shell/nav-config.ts`), which is the source of truth
+ * for the entries, their order and their icons. Labels come from `rail.*`,
+ * ported verbatim from city's `locales/<lang>/nav.json`.
+ *
+ * Three deliberate differences from city, all of them structural rather than
+ * editorial:
+ *
+ * 1. **No Admin section.** City role-gates it to staff; the `tmc_auth` cookie
+ *    carries a yes/no and no role, so there is nothing to gate on here. Staff
+ *    reach `/admin` from the app.
+ * 2. **"Add" leaves are plain links to the dedicated `/{plural}/add` pages.**
+ *    In city they are buttons that open a create pop-up in place. This is a
+ *    static build with no session and no tRPC client, so a pop-up asking for a
+ *    name and an app has nothing to submit to — the dedicated page (which city
+ *    already had behind every one of those modals) is the working destination.
+ *    The same reasoning applies to the "Share your work" call-to-action, which
+ *    points at `/share`.
+ * 3. **No Legal section.** City has none either; ToS / Privacy / Licenses are
+ *    footer links in both shells.
+ */
+export function buildSidebarSections(t: TFunc): SidebarSection[] {
     return [
-        { items: [{ label: t('common.home'), href: '/', icon: Home }] },
         {
-            label: t('sections.discover'),
-            icon: Compass,
+            label: t('rail.sections.apps'),
+            icon: Package,
             items: [
-                { label: t('common.apps'), href: '/apps', icon: Boxes },
-                { label: t('common.assets'), href: '/assets', icon: Cog },
-                { label: t('common.mods'), href: '/mods', icon: Hammer },
-                { label: t('common.servers'), href: '/servers', icon: Server },
+                {
+                    label: t('rail.items.overview'),
+                    href: '/apps',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/apps/browse',
+                    icon: Search,
+                },
             ],
         },
         {
-            label: t('sections.community'),
+            label: t('rail.sections.assets'),
+            icon: Cog,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/assets',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.add'),
+                    href: '/assets/add',
+                    icon: Plus,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/assets/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.myAssets'),
+                    href: '/assets/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            label: t('rail.sections.mods'),
+            icon: Hammer,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/mods',
+                    icon: Compass,
+                },
+                { label: t('rail.items.add'), href: '/mods/add', icon: Plus },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/mods/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.myMods'),
+                    href: '/mods/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            label: t('rail.sections.servers'),
+            icon: Server,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/servers',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.add'),
+                    href: '/servers/add',
+                    icon: Plus,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/servers/browse',
+                    icon: Search,
+                },
+                // Just "Maps" — it already sits under the Servers section, and
+                // the maps landing page carries its own browse button.
+                {
+                    label: t('rail.items.maps'),
+                    href: '/servers/maps',
+                    icon: Map,
+                },
+                {
+                    label: t('rail.items.knowledgebase'),
+                    href: KB,
+                    icon: BookOpen,
+                    external: true,
+                },
+                {
+                    label: t('rail.items.myServers'),
+                    href: '/servers/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            label: t('rail.sections.parties'),
+            icon: Gamepad2,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/parties',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.add'),
+                    href: '/parties/add',
+                    icon: Plus,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/parties/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.liveParties'),
+                    href: '/parties/browse/?live=live',
+                    icon: Gamepad2,
+                },
+                {
+                    label: t('rail.items.friendParties'),
+                    href: '/parties/browse/?friends=1&live=live',
+                    icon: Users,
+                    requiresAuth: true,
+                },
+                {
+                    label: t('rail.items.myParties'),
+                    href: '/parties/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            label: t('rail.sections.communities'),
             icon: Users,
             items: [
-                // website-city's sidebar uses NotebookPen for the blog entry and
-                // Newspaper in the header dropdown; mirrored here so both shells
-                // read identically.
-                { label: t('common.blog'), href: '/blog/', icon: NotebookPen },
-                { label: t('common.forum'), href: FORUM, icon: MessagesSquare, external: true },
-                { label: t('common.discord'), href: DISCORD, icon: FaDiscord, external: true },
-                { label: t('common.roadmap'), href: ROADMAP, icon: Map, external: true },
+                {
+                    label: t('rail.items.overview'),
+                    href: '/communities',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.add'),
+                    href: '/communities/add',
+                    icon: Plus,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/communities/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.myCommunities'),
+                    href: '/communities/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
             ],
         },
         {
-            label: t('sections.legal'),
-            icon: Scroll,
+            label: t('rail.sections.articles'),
+            icon: Newspaper,
             items: [
-                { label: t('common.tos'), href: '/tos', icon: Scroll },
-                { label: t('common.privacy'), href: '/privacy-policy', icon: Scroll },
-                { label: t('common.licenses'), href: '/licenses', icon: Code2 },
+                {
+                    label: t('rail.items.overview'),
+                    href: '/articles',
+                    icon: Compass,
+                },
+                // The blog lives on this site, so it keeps the trailing slash
+                // Astro's directory output serves it under.
+                {
+                    label: t('rail.items.blog'),
+                    href: '/blog/',
+                    icon: NotebookPen,
+                },
+                {
+                    label: t('rail.items.add'),
+                    href: '/articles/add',
+                    icon: Plus,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/articles/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.myArticles'),
+                    href: '/articles/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            label: t('rail.sections.collections'),
+            icon: Group,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/collections',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.add'),
+                    href: '/collections/add',
+                    icon: Plus,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/collections/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.myCollections'),
+                    href: '/collections/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            label: t('rail.sections.groups'),
+            icon: Users,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/groups',
+                    icon: Compass,
+                },
+                { label: t('rail.items.add'), href: '/groups/add', icon: Plus },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/groups/browse',
+                    icon: Search,
+                },
+                {
+                    label: t('rail.items.myGroups'),
+                    href: '/groups/browse/?mine=1',
+                    icon: User,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            // The people pillar. "Users" is the member directory inside it, and
+            // it sits BELOW Activity — the feed is what a reader opens this
+            // section for.
+            label: t('rail.sections.community'),
+            icon: Users,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/community',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.activity'),
+                    href: '/community/activity',
+                    icon: Activity,
+                },
+                {
+                    label: t('rail.items.users'),
+                    href: '/community/browse',
+                    icon: Users,
+                },
+                {
+                    label: t('rail.items.media'),
+                    href: '/media/browse',
+                    icon: Images,
+                },
+                {
+                    label: t('rail.items.messages'),
+                    href: '/messages',
+                    icon: MessageSquare,
+                    requiresAuth: true,
+                },
+                {
+                    label: t('rail.items.myFriends'),
+                    href: '/account/friends',
+                    icon: UserCheck,
+                    requiresAuth: true,
+                },
+            ],
+        },
+        {
+            /*
+             * External sources sit at the bottom on their own rather than under
+             * Assets and Mods: one `ContentSource` table serves both kinds, so a
+             * leaf under each would point at the same page twice.
+             */
+            label: t('rail.sections.sources'),
+            icon: Puzzle,
+            items: [
+                {
+                    label: t('rail.items.browse'),
+                    href: '/sources',
+                    icon: Search,
+                },
             ],
         },
     ]

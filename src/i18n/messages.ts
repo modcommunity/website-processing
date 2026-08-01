@@ -11,6 +11,7 @@ import { api } from './sections/api'
 import { blog } from './sections/blog'
 import { joinCommunity } from './sections/joinCommunity'
 import { shellNav } from './sections/shellNav'
+import { shellSidebar } from './sections/shellSidebar'
 
 /**
  * The landing site's message catalogue. `en` is the reference (complete) shape;
@@ -507,6 +508,14 @@ for (const loc of LOCALES) {
         landing: landingFor(loc),
         // Header nav labels/descriptions, shared verbatim with website-city.
         nav: shellNav[loc],
+        /*
+         * Primary-sidebar labels, likewise ported from city. Its own namespace
+         * rather than a merge into `common.*`: the rail needs ~35 strings, most
+         * of which (Overview, My Mods, Live now, …) mean nothing outside it, and
+         * keeping them together is what makes "does this match city's
+         * SIDEBAR_SECTIONS?" answerable by reading one file.
+         */
+        rail: shellSidebar[loc],
     }
 }
 
