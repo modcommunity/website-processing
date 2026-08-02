@@ -23,6 +23,7 @@ import {
     Activity,
     MessageSquare,
     UserCheck,
+    Lightbulb,
 } from 'lucide-react'
 // lucide dropped brand marks, so Discord stays on react-icons — website-city
 // makes the same exception.
@@ -34,7 +35,10 @@ import type { TFunc } from './t'
 // internal links are plain relative paths.
 const FORUM = 'https://forum.moddingcommunity.com/'
 const DISCORD = 'https://discord.moddingcommunity.com'
-const ROADMAP = 'https://github.com/modcommunity/roadmap/milestones'
+// Our own roadmap board on website-city, not the GitHub milestones page it used
+// to be — city moved to it and this catalogue mirrors city.
+const ROADMAP = '/roadmap'
+const FEEDBACK = '/feedback'
 const KB = 'https://forum.moddingcommunity.com/c/server-browser/knowledgebase/81'
 
 const DEV_TRACKER = 'https://github.com/modcommunity/dev-issue-tracker/issues'
@@ -46,10 +50,34 @@ const DEV_TRACKER = 'https://github.com/modcommunity/dev-issue-tracker/issues'
  * `nav.*`, ported verbatim from city's `locales/<lang>/nav.json`, so both
  * headers read identically in every locale.
  *
+ * Each content pillar carries its sidebar section as a hover dropdown, exactly
+ * as city does — the menu under "Assets" IS the rail's Assets section, so the
+ * header and the rail cannot drift. The pillar itself still links to its landing
+ * page; the menu only ever opens on hover.
+ *
+ * `signedIn` drops the signed-in-only leaves ("My Mods", "Messages", …) from
+ * those dropdowns, mirroring what <SiteSidebar/> does to the rail. Pass the
+ * `tmc_auth` hint (see `lib/auth-hint`).
+ *
  * If city's PRIMARY_NAV changes, change this with it — that config is the
  * source of truth.
  */
-export function buildNav(t: TFunc): NavItem[] {
+export function buildNav(t: TFunc, signedIn = false): NavItem[] {
+    // The rail's own sections, minus the leaves this visitor cannot use. The
+    // shared `NavLeaf` has no notion of `requiresAuth`, so it is stripped here.
+    const sections = buildSidebarSections(t)
+
+    const pillar = (label: string): NavLeaf[] => {
+        const section = sections.find((s) => s.label === label)
+
+        if (!section)
+            throw new Error(`nav: no sidebar section "${label}"`)
+
+        return section.items
+            .filter((item) => !item.requiresAuth || signedIn)
+            .map(({ requiresAuth: _requiresAuth, ...leaf }) => leaf)
+    }
+
     return [
         {
             label: t('nav.home.label'),
@@ -62,30 +90,35 @@ export function buildNav(t: TFunc): NavItem[] {
             href: '/apps',
             icon: Boxes,
             desc: t('nav.apps.desc'),
+            children: pillar(t('rail.sections.apps')),
         },
         {
             label: t('nav.assets.label'),
             href: '/assets',
             icon: Cog,
             desc: t('nav.assets.desc'),
+            children: pillar(t('rail.sections.assets')),
         },
         {
             label: t('nav.mods.label'),
             href: '/mods',
             icon: Hammer,
             desc: t('nav.mods.desc'),
+            children: pillar(t('rail.sections.mods')),
         },
         {
             label: t('nav.servers.label'),
             href: '/servers',
             icon: Server,
             desc: t('nav.servers.desc'),
+            children: pillar(t('rail.sections.servers')),
         },
         {
             label: t('nav.parties.label'),
             href: '/parties',
             icon: Gamepad2,
             desc: t('nav.parties.desc'),
+            children: pillar(t('rail.sections.parties')),
         },
         {
             // No href: a dropdown-only trigger, exactly as in website-city.
@@ -130,7 +163,15 @@ export function buildNav(t: TFunc): NavItem[] {
                     href: ROADMAP,
                     icon: Map,
                     desc: t('nav.roadmap.desc'),
-                    external: true,
+                },
+                {
+                    // City's own feedback board — suggestions, bug reports and
+                    // votes. Beside the roadmap on purpose: one says what is
+                    // planned, the other is where people ask for things to be.
+                    label: t('nav.feedback.label'),
+                    href: FEEDBACK,
+                    icon: Lightbulb,
+                    desc: t('nav.feedback.desc'),
                 },
                 {
                     label: t('nav.devTracker.label'),
@@ -213,6 +254,27 @@ export type SidebarSection = Omit<NavSection, 'items'> & {
  * 3. **No Legal section.** City has none either; ToS / Privacy / Licenses are
  *    footer links in both shells.
  */
+/**
+ * {@link buildSidebarSections} reduced to the plain shared contract: the
+ * signed-in-only leaves are dropped for signed-out visitors and `requiresAuth`
+ * — which is ours, not the shared type's — is stripped off the rest.
+ *
+ * Every surface that renders the rail's sections (the desktop rail, the mobile
+ * drawer, the header's pillar dropdowns) goes through this, so none of them can
+ * offer a destination the others hide.
+ */
+export function buildVisibleSidebarSections(
+    t: TFunc,
+    signedIn: boolean
+): NavSection[] {
+    return buildSidebarSections(t).map((section) => ({
+        ...section,
+        items: section.items
+            .filter((item) => !item.requiresAuth || signedIn)
+            .map(({ requiresAuth: _requiresAuth, ...leaf }) => leaf),
+    }))
+}
+
 export function buildSidebarSections(t: TFunc): SidebarSection[] {
     return [
         {

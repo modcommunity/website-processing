@@ -68,6 +68,13 @@ export const shellNav: NavCatalog = {
             label: 'Roadmap',
             desc: 'Where we\'re headed',
         },
+        // English-only, like `community` and `banners` above: city's own
+        // nav.json carries it in English alone and merges English under every
+        // locale, so translating it here would make the two headers disagree.
+        feedback: {
+            label: 'Feedback',
+            desc: 'Suggest, report and vote',
+        },
         devTracker: {
             label: 'Dev Tracker',
             desc: 'Track development issues',
