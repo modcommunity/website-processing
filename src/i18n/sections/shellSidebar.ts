@@ -29,6 +29,13 @@ export type SidebarCatalog = Record<
     {
         sections?: Record<string, string>
         items?: Record<string, string>
+        /**
+         * Sub-labels for the header's pillar dropdowns, keyed
+         * `<section>.<leaf>` — "Browse" reads the same in every section but
+         * means something different in each, so the copy cannot hang off the
+         * shared `items.*` label. Mirrors city's `nav.pillars.*`.
+         */
+        pillars?: Record<string, Record<string, string>>
         share?: Record<string, string>
     }
 >
@@ -70,6 +77,41 @@ export const shellSidebar: SidebarCatalog = {
             myCollections: 'My Collections',
             myGroups: 'My Groups',
             myFriends: 'My Friends',
+        },
+        // English-only, like the other keys city carries in English alone.
+        // Copied verbatim from city's `nav.pillars.*`.
+        pillars: {
+            apps: {
+                overview: 'Stats and highlights across every app',
+                browse: 'Search every game, engine and app we track',
+            },
+            assets: {
+                overview: "What's new, top and trending in assets",
+                add: 'Share your work with the community',
+                browse: 'Find something for your game',
+                mine: "Assets you've published",
+            },
+            mods: {
+                overview: "What's new, top and trending in mods",
+                add: 'Publish your mod',
+                browse: 'Discover the latest mods',
+                mine: "Mods you've published",
+            },
+            servers: {
+                overview: 'Live player counts and the servers people are on',
+                add: 'Get your server tracked',
+                browse: 'Live server browser',
+                maps: 'Maps played across our tracked servers',
+                mine: 'Servers you manage',
+            },
+            parties: {
+                overview: "Who's playing right now",
+                add: 'Start a party and pick a game',
+                browse: 'Every party, open and in progress',
+                live: 'Parties playing at this moment',
+                friends: 'Parties your friends are in',
+                mine: "Parties you've created or joined",
+            },
         },
         share: {
             title: 'Share your work',

@@ -118,6 +118,16 @@ activates the shared theme's `.dark` token block. There is no theme toggle here.
   `fill-*` (a `fill-` class leaves them invisible).
 - Stack: `astro` 7, `@astrojs/react`, Tailwind v4 via `@tailwindcss/vite`,
   `react-icons`, `react-multi-carousel`. No HeroUI, no Mantine.
+- **`react-multi-carousel` is pinned to an exact `2.8.5` — do not change it to
+  `^2.8.5` or bump it to `2.8.6`.** 2.8.6 accidentally ships `npm`, `install` and
+  `core-js` as *runtime* dependencies (the classic `npm install install npm`
+  slip), which drags the entire 19 MB npm CLI into `node_modules` and makes
+  `npm audit` report ~17 advisories — all of them from npm's own vendored deps,
+  none from code this site ever loads. The two releases are otherwise
+  byte-identical: `2.8.5` vs `2.8.6` differ *only* in `package.json`, so the pin
+  costs nothing functionally. A caret range would silently resolve back to 2.8.6
+  and bring the noise back. Revisit only if upstream publishes a 2.8.7 that drops
+  those deps.
 
 ## Build / dev
 

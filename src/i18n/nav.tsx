@@ -9,9 +9,7 @@ import {
     Map,
     Search,
     Compass,
-    Code2,
     Users,
-    BookOpen,
     NotebookPen,
     FolderKey,
     Package,
@@ -39,9 +37,6 @@ const DISCORD = 'https://discord.moddingcommunity.com'
 // to be — city moved to it and this catalogue mirrors city.
 const ROADMAP = '/roadmap'
 const FEEDBACK = '/feedback'
-const KB = 'https://forum.moddingcommunity.com/c/server-browser/knowledgebase/81'
-
-const DEV_TRACKER = 'https://github.com/modcommunity/dev-issue-tracker/issues'
 
 /**
  * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same six
@@ -173,13 +168,10 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     icon: Lightbulb,
                     desc: t('nav.feedback.desc'),
                 },
-                {
-                    label: t('nav.devTracker.label'),
-                    href: DEV_TRACKER,
-                    icon: Code2,
-                    desc: t('nav.devTracker.desc'),
-                    external: true,
-                },
+                // The GitHub dev-issue tracker used to sit here, and is gone
+                // from city's Resources menu too: feedback and the roadmap
+                // above it are the two boards we want people on, and both live
+                // on the site.
             ],
         },
     ]
@@ -285,11 +277,13 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.overview'),
                     href: '/apps',
                     icon: Compass,
+                    desc: t('rail.pillars.apps.overview'),
                 },
                 {
                     label: t('rail.items.browse'),
                     href: '/apps/browse',
                     icon: Search,
+                    desc: t('rail.pillars.apps.browse'),
                 },
             ],
         },
@@ -301,21 +295,25 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.overview'),
                     href: '/assets',
                     icon: Compass,
+                    desc: t('rail.pillars.assets.overview'),
                 },
                 {
                     label: t('rail.items.add'),
                     href: '/assets/add',
                     icon: Plus,
+                    desc: t('rail.pillars.assets.add'),
                 },
                 {
                     label: t('rail.items.browse'),
                     href: '/assets/browse',
                     icon: Search,
+                    desc: t('rail.pillars.assets.browse'),
                 },
                 {
                     label: t('rail.items.myAssets'),
                     href: '/assets/browse/?mine=1',
                     icon: User,
+                    desc: t('rail.pillars.assets.mine'),
                     requiresAuth: true,
                 },
             ],
@@ -328,17 +326,25 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.overview'),
                     href: '/mods',
                     icon: Compass,
+                    desc: t('rail.pillars.mods.overview'),
                 },
-                { label: t('rail.items.add'), href: '/mods/add', icon: Plus },
+                {
+                    label: t('rail.items.add'),
+                    href: '/mods/add',
+                    icon: Plus,
+                    desc: t('rail.pillars.mods.add'),
+                },
                 {
                     label: t('rail.items.browse'),
                     href: '/mods/browse',
                     icon: Search,
+                    desc: t('rail.pillars.mods.browse'),
                 },
                 {
                     label: t('rail.items.myMods'),
                     href: '/mods/browse/?mine=1',
                     icon: User,
+                    desc: t('rail.pillars.mods.mine'),
                     requiresAuth: true,
                 },
             ],
@@ -351,16 +357,19 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.overview'),
                     href: '/servers',
                     icon: Compass,
+                    desc: t('rail.pillars.servers.overview'),
                 },
                 {
                     label: t('rail.items.add'),
                     href: '/servers/add',
                     icon: Plus,
+                    desc: t('rail.pillars.servers.add'),
                 },
                 {
                     label: t('rail.items.browse'),
                     href: '/servers/browse',
                     icon: Search,
+                    desc: t('rail.pillars.servers.browse'),
                 },
                 // Just "Maps" — it already sits under the Servers section, and
                 // the maps landing page carries its own browse button.
@@ -368,17 +377,16 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.maps'),
                     href: '/servers/maps',
                     icon: Map,
+                    desc: t('rail.pillars.servers.maps'),
                 },
-                {
-                    label: t('rail.items.knowledgebase'),
-                    href: KB,
-                    icon: BookOpen,
-                    external: true,
-                },
+                // The forum Knowledgebase leaf used to sit here, and is gone
+                // from city's rail too until the FAQ section replacing it
+                // exists.
                 {
                     label: t('rail.items.myServers'),
                     href: '/servers/browse/?mine=1',
                     icon: User,
+                    desc: t('rail.pillars.servers.mine'),
                     requiresAuth: true,
                 },
             ],
@@ -391,32 +399,38 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.overview'),
                     href: '/parties',
                     icon: Compass,
+                    desc: t('rail.pillars.parties.overview'),
                 },
                 {
                     label: t('rail.items.add'),
                     href: '/parties/add',
                     icon: Plus,
+                    desc: t('rail.pillars.parties.add'),
                 },
                 {
                     label: t('rail.items.browse'),
                     href: '/parties/browse',
                     icon: Search,
+                    desc: t('rail.pillars.parties.browse'),
                 },
                 {
                     label: t('rail.items.liveParties'),
                     href: '/parties/browse/?live=live',
                     icon: Gamepad2,
+                    desc: t('rail.pillars.parties.live'),
                 },
                 {
                     label: t('rail.items.friendParties'),
                     href: '/parties/browse/?friends=1&live=live',
                     icon: Users,
+                    desc: t('rail.pillars.parties.friends'),
                     requiresAuth: true,
                 },
                 {
                     label: t('rail.items.myParties'),
                     href: '/parties/browse/?mine=1',
                     icon: User,
+                    desc: t('rail.pillars.parties.mine'),
                     requiresAuth: true,
                 },
             ],
