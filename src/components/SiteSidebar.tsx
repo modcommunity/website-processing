@@ -1,24 +1,10 @@
-import { useEffect, useState } from 'react'
-import { Sidebar, type NavSection } from '@modcommunity/shared'
+import { Sidebar } from '@modcommunity/shared'
 import { Sparkles } from 'lucide-react'
 import { getT } from '../i18n/t'
-import { buildSidebarSections } from '../i18n/nav'
+import { buildVisibleSidebarSections } from '../i18n/nav'
 import { localeLink } from '../i18n/link'
 import { stripLocale, localizeUrl, isLocale, type LocaleT } from '../i18n/config'
-
-/**
- * The non-HttpOnly `tmc_auth` hint cookie website-city's middleware keeps in
- * sync with the (unreadable) auth session — the same one `AccountButton` reads.
- * It carries no identity, just a yes/no, which is all the rail needs to decide
- * whether to show the "My X" leaves.
- */
-function isSignedIn(): boolean {
-    if (typeof document === 'undefined') return false
-    return document.cookie.split('; ').some((c) => {
-        const [name, value] = c.split('=')
-        return name === 'tmc_auth' && value === '1'
-    })
-}
+import { useSignedIn } from '../lib/auth-hint'
 
 /**
  * The landing site's primary sidebar — the shared website-city <Sidebar>,
@@ -34,6 +20,11 @@ function isSignedIn(): boolean {
  * - **Renders the "Share your work" call-to-action** at the bottom. In city it
  *   opens the new-item wizard pop-up; a static build has no modal to open, so it
  *   links to `/share`, which is that same wizard as a real page.
+ * - **Starts every section folded.** City unfolds the section holding the page
+ *   you are on, which is the point of the rail there. Here the rail's
+ *   destinations all live on city — none of this site's own routes is inside a
+ *   section — so an unfolded section would only ever be an accident of a shared
+ *   path prefix, not a place the reader actually is.
  */
 export default function SiteSidebar({
     pathName = '/',
@@ -45,17 +36,8 @@ export default function SiteSidebar({
     const t = getT(locale)
     const lang: LocaleT = isLocale(locale) ? locale : 'en'
 
-    const [signedIn, setSignedIn] = useState(false)
-    useEffect(() => setSignedIn(isSignedIn()), [])
-
-    // `requiresAuth` is ours, not the shared contract's, so it is filtered out
-    // here and the shared component only ever sees plain NavSections.
-    const sections: NavSection[] = buildSidebarSections(t).map((section) => ({
-        ...section,
-        items: section.items
-            .filter((item) => !item.requiresAuth || signedIn)
-            .map(({ requiresAuth: _requiresAuth, ...leaf }) => leaf),
-    }))
+    const signedIn = useSignedIn()
+    const sections = buildVisibleSidebarSections(t, signedIn)
 
     const shareHref = localizeUrl('/share', lang)
     const shareTitle = t('rail.share.title')
@@ -64,6 +46,7 @@ export default function SiteSidebar({
         <Sidebar
             activePath={stripLocale(pathName)}
             sections={sections}
+            expandActiveSection={false}
             linkComponent={localeLink(locale)}
             labels={{
                 expand: t('sidebar.expand'),

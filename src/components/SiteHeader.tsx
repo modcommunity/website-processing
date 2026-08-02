@@ -2,9 +2,10 @@ import { Header, MobileNav, ThemeToggle } from '@modcommunity/shared'
 import AccountButton from './AccountButton'
 import LanguagePicker from './LanguagePicker'
 import { getT } from '../i18n/t'
-import { buildNav, buildSidebarSections } from '../i18n/nav'
+import { buildNav, buildVisibleSidebarSections } from '../i18n/nav'
 import { localeLink } from '../i18n/link'
 import { stripLocale } from '../i18n/config'
+import { useSignedIn } from '../lib/auth-hint'
 
 /**
  * The landing site's header — the shared website-city <Header> with a translated
@@ -32,16 +33,23 @@ export default function SiteHeader({
 }) {
     const t = getT(locale)
 
+    // Drops the signed-in-only leaves from the pillar dropdowns, matching what
+    // <SiteSidebar/> does to the rail. First paint renders the signed-out set
+    // deterministically and reconciles after mount, so there is no hydration
+    // mismatch — the same trick `AccountButton` uses.
+    const signedIn = useSignedIn()
+    const nav = buildNav(t, signedIn)
+
     return (
         <Header
             activePath={stripLocale(pathName)}
-            nav={buildNav(t)}
+            nav={nav}
             linkComponent={localeLink(locale)}
             left={
                 <MobileNav
                     activePath={stripLocale(pathName)}
-                    nav={buildNav(t)}
-                    sections={buildSidebarSections(t)}
+                    nav={nav}
+                    sections={buildVisibleSidebarSections(t, signedIn)}
                     linkComponent={localeLink(locale)}
                     footer={
                         <AccountButton
