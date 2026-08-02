@@ -69,22 +69,31 @@
     @apply bg-item ring-1 ring-border-secondary focus-visible:ring-border-primary focus-visible:border-0 focus:border-0 text-foreground rounded py-1 px-2 outline-none;
   }
 
+  /*
+   * Scrollbar chrome, mirroring website-city's `src/styles/Base.css` — that
+   * file is the source of truth, keep the two in step. This used to be a grey
+   * thumb on the header colour, which is the one piece of shell chrome that
+   * still looked like the old bespoke palette after the theme move.
+   *
+   * `w-2` only sizes the vertical bar; without a height the horizontal one
+   * keeps the platform default and reads as a thick grey band.
+   */
   ::-webkit-scrollbar {
-    @apply w-2;
+    @apply h-2 w-2;
     @apply rounded;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-header;
+    @apply bg-background;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-border-secondary;
+    @apply bg-accent;
 
     @apply rounded-lg;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-border-primary;
+    @apply bg-accent-hover;
   }
 }
