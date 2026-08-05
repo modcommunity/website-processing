@@ -160,7 +160,17 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and 
 				<div class="flex flex-1">
 					<SiteSidebar pathName={pathName} locale={locale} client:load />
 
-					<main class="relative z-20 min-w-0 grow">
+					<!--
+						`@container`: the page content sizes itself off THIS
+						element's width, not the viewport's. It has to, because
+						the two differ by the sidebar — <SiteSidebar/> appears at
+						`lg` and takes 16rem, so a plain `lg:grid-cols-2` fires
+						exactly when the space to lay out in drops by 256px. That
+						is how a 1100px window ended up with four 180px columns
+						and a horizontal scrollbar. Sections use the `@…`
+						variants (`@3xl:grid-cols-2`, …) throughout.
+					-->
+					<main class="@container relative z-20 min-w-0 grow">
 						<slot />
 					</main>
 				</div>

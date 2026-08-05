@@ -60,7 +60,7 @@ const columns = [
             </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-3">
+        <div class="grid grid-cols-1 gap-4 p-4 @3xl:grid-cols-3">
             {columns.map((col) => (
                 <div class="flex flex-col gap-3 rounded-lg border border-border/70 bg-surface/40 p-3">
                     <div class="flex items-center justify-between gap-2">
@@ -83,7 +83,7 @@ const columns = [
         </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-4">
         <FeatureCard icon={Columns3} title={t('landing.roadmap.c1t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.roadmap.c1b')} />
         </FeatureCard>

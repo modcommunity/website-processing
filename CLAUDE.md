@@ -147,6 +147,38 @@ activates the shared theme's `.dark` token block. There is no theme toggle here.
   `linkComponent`, a `nav` config). Keep those on the client: use the shared
   component defaults, or wrap them in a local React component (as `SiteHeader`
   does) that supplies the non-serializable bits internally.
+- **Responsive layout goes through container queries, not `sm:`/`md:`/`lg:`.**
+  `Layout.astro` marks `<main>` as `@container`; page content sizes itself off
+  *that* element, and sections use `@3xl:grid-cols-2`, `@5xl:grid-cols-3`, … .
+
+  This is not a style preference — the viewport variants are actively wrong
+  here. `<SiteSidebar/>` appears at `lg` and takes 16rem, so `lg:grid-cols-2`
+  fires at precisely the moment the space available to lay out in *drops* by
+  256px, and every viewport breakpoint above it is off by that much. The
+  symptom was a 1024–1280px window rendering four ~180px columns with a
+  horizontal scrollbar, while the same page at 390px was fine.
+
+  Rules of thumb:
+  - Container sizes are content widths, so they are much smaller than the
+    viewport names: `@3xl` = 768px, `@5xl` = 1024px. The rough conversion for
+    old code is `md:` → `@3xl:`, `xl:` → `@5xl:`, `sm:` → `@2xl:`.
+  - **A component laid out inside a column needs its own `@container`.** The
+    `@…` variants measure the nearest container ancestor, which by default is
+    the whole of `<main>` — so a card grid inside a half-width column would
+    still be sized against the full page. `Feedback.astro`, `DeveloperApi.astro`
+    and `StatDonut.astro` each open one; copy that pattern.
+  - Anything that can be squeezed wants `min-w-0`. A grid/flex item's automatic
+    minimum size is its content's, so one long unbreakable line (the `curl`
+    snippet in `DeveloperApi.astro`) will widen its column and push a scrollbar
+    onto the entire page rather than scroll inside its own `overflow-x-auto`.
+  - Purely decorative viewport variants (`intersect:md:motion-preset-*`, which
+    only pick an entrance animation) are deliberately left as-is.
+
+  To check a change: `npm run build`, serve `dist/`, then compare
+  `document.documentElement.scrollWidth` against `clientWidth` at a spread of
+  widths — 320 / 390 / 768 / **1024 / 1100** / 1440 / 1920. The two in bold are
+  the sidebar-transition widths where this class of bug lives, and they are the
+  ones nobody tests by hand.
 - **New colours** should be added to the shared theme in `../tmc-global`, not
   hard-coded here, so website-city and the app stay in sync.
 - Keep `.astro` files for page structure and React (`.tsx`) for interactive

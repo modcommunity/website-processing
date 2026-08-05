@@ -17,7 +17,7 @@ const t = getT(Astro.currentLocale);
         <p set:html={t('landing.mods.introHtml')}></p>
     </SectionIntro>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
         <FeatureCard icon={Search} title={t('landing.mods.c1t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.mods.c1b')} />
         </FeatureCard>
@@ -37,15 +37,15 @@ const t = getT(Astro.currentLocale);
             <Fragment set:html={t('landing.mods.c6b')} />
         </FeatureCard>
     </div>
-    <div class="relative overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-surface to-surface p-6 sm:p-8">
-        <div class="flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+    <div class="relative overflow-hidden rounded-2xl border border-accent/30 bg-gradient-to-br from-accent/10 via-surface to-surface p-6 @2xl:p-8">
+        <div class="flex flex-col items-start gap-4 @2xl:flex-row @2xl:items-center">
             <span
             class="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-colors group-hover:bg-accent/15">
                 <TriangleAlert className="h-10 w-10 text-yellow-500" />
             </span>
 
             <div class="flex flex-col gap-2">
-                <div class="flex items-center gap-3">
+                <div class="flex flex-wrap items-center gap-3">
                     <h3 class="text-base text-xl" set:html={t('landing.mods.highlightTitle')}></h3>
                     <span class="rounded-full border border-accent/30 bg-accent/10 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">{t('landing.mods.highlightBadge')}</span>
                 </div>

@@ -9,7 +9,7 @@ import { getT } from "../../i18n/t";
 const t = getT(Astro.currentLocale);
 ---
 
-<section class="relative isolate overflow-hidden px-4 py-24 sm:py-32">
+<section class="relative isolate overflow-hidden px-4 py-24 @2xl:py-32">
     {/* Accent gradient wash + glow, mirroring website-city's hero treatment. */}
     <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-accent/10 via-background to-background"></div>
     <div class="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[46rem] max-w-full -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"></div>
@@ -21,7 +21,7 @@ const t = getT(Astro.currentLocale);
         </span>
 
         {/* Need to add minimum height since HeadingTitle loads after first render (makes other elements shift up then down which looks weird without the minimum height) */}
-        <div class="min-h-14 sm:min-h-16">
+        <div class="min-h-14 @2xl:min-h-16">
             <HeadingTitle sequence={[t('landing.hero.titleAnim1')]} client:load />
         </div>
 
@@ -32,7 +32,7 @@ const t = getT(Astro.currentLocale);
 </section>
 
 <section class="py-10 px-4 container mx-auto">
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
         <Card className="flex flex-col gap-4 intersect-once intersect:motion-preset-slide-right-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
                 <Users className="h-6 w-6" />

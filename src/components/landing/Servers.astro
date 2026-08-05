@@ -15,7 +15,7 @@ const t = getT(Astro.currentLocale);
         <p set:html={t('landing.servers.introHtml')}></p>
     </SectionIntro>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
         <FeatureCard icon={Search} title={t('landing.servers.c1t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.servers.c1b')} />
         </FeatureCard>

@@ -33,8 +33,8 @@ const STEAM_PATH = "M11.98 2C6.53 2 2.06 6.2 2 11.52l5.29 2.18a2.9 2.9 0 0 1 1.6
         <p>{t('landing.joinCommunity.intro')}</p>
     </SectionIntro>
     <div class="p-6">
-        <div class="flex flex-col sm:flex-row justify-center gap-y-10 sm:gap-30 [&>*]w-full [&>*]:sm:w-120">
-            <Card className="intersect-once intersect:sm:motion-preset-slide-up-lg">
+        <div class="flex flex-col @2xl:flex-row justify-center gap-y-10 @2xl:gap-30 *:w-full *:@2xl:max-w-120">
+            <Card className="min-w-0 intersect-once intersect:sm:motion-preset-slide-up-lg">
                 <div class="w-full h-48">
                     <a href="https://discord.moddingcommunity.com">
                         <img
@@ -56,7 +56,7 @@ const STEAM_PATH = "M11.98 2C6.53 2 2.06 6.2 2 11.52l5.29 2.18a2.9 2.9 0 0 1 1.6
         </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2">
         {/* Social accounts */}
         <div class="card intersect-once intersect:motion-preset-slide-up">
             <div class="flex flex-col gap-1">

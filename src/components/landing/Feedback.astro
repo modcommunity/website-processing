@@ -26,7 +26,7 @@ const sorts = [
         <p set:html={t('landing.feedback.introHtml')}></p>
     </SectionIntro>
 
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+    <div class="grid grid-cols-1 gap-8 @5xl:grid-cols-2">
         {/* Board mock-up */}
         <div class="overflow-hidden rounded-xl border border-border bg-background/70 intersect-once intersect:motion-preset-slide-up">
             <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
@@ -100,19 +100,24 @@ const sorts = [
             </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <FeatureCard icon={ChevronUp} title={t('landing.feedback.c1t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.feedback.c1b')} />
-            </FeatureCard>
-            <FeatureCard icon={Tags} title={t('landing.feedback.c2t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.feedback.c2b')} />
-            </FeatureCard>
-            <FeatureCard icon={ListChecks} title={t('landing.feedback.c3t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.feedback.c3b')} />
-            </FeatureCard>
-            <FeatureCard icon={ScrollText} title={t('landing.feedback.c4t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.feedback.c4b')} />
-            </FeatureCard>
+        {/* Its own container: once the section splits in two these cards get
+            half the width, and a grid sized off the page would still be laying
+            them out two-up in a 250px column. */}
+        <div class="@container">
+            <div class="grid grid-cols-1 gap-6 @2xl:grid-cols-2">
+                <FeatureCard icon={ChevronUp} title={t('landing.feedback.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.feedback.c1b')} />
+                </FeatureCard>
+                <FeatureCard icon={Tags} title={t('landing.feedback.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.feedback.c2b')} />
+                </FeatureCard>
+                <FeatureCard icon={ListChecks} title={t('landing.feedback.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.feedback.c3b')} />
+                </FeatureCard>
+                <FeatureCard icon={ScrollText} title={t('landing.feedback.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.feedback.c4b')} />
+                </FeatureCard>
+            </div>
         </div>
     </div>
 
