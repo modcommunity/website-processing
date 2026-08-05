@@ -25,7 +25,7 @@ export const assets: SectionCatalog = {
         c6b: 'Link a <span class="special">source repository</span> to earn an <span class="special">open-source badge</span> on your asset page, showing people exactly what they\'re installing.',
         highlightTitle: 'Free &amp; Open-Source Assets',
         highlightBadge: 'Available Now',
-        highlightHtml: `We already publish our own <span class="text-accent">free, open-source assets</span> &mdash; built by the community, for the community &mdash; and we're creating <span class="text-accent">many more</span> across engines such as <a href="https://godotengine.org" class="${A}">Godot</a>, to help developers integrate gameplay features, multiplayer networking, modding support, and more into their games. We're aiming to build our own open source <span class="special">gaming platform</span>!`,
+        highlightHtml: `We already publish our own <span class="text-accent">free, open-source assets</span> &mdash; built by the community, for the community &mdash; and we're creating <span class="text-accent">many more</span> across engines such as <a href="https://godotengine.org" class="${A}">Godot</a>, to help developers integrate gameplay features, multiplayer networking, modding support, and more into their games. We're aiming to build our own open source <a href="#gaming-platform" class="${A}">gaming platform</a>!`,
         button: 'Browse Assets',
     },
     es: {
@@ -48,7 +48,7 @@ export const assets: SectionCatalog = {
         c6b: 'Enlaza un <span class="special">repositorio de código fuente</span> para ganar una <span class="special">insignia de código abierto</span> en la página de tu recurso, mostrando a la gente exactamente qué están instalando.',
         highlightTitle: 'Recursos Gratuitos y de Código Abierto',
         highlightBadge: 'Disponible Ya',
-        highlightHtml: `Ya publicamos nuestros propios <span class="text-accent">recursos gratuitos y de código abierto</span> &mdash; creados por la comunidad, para la comunidad &mdash; y estamos creando <span class="text-accent">muchos más</span> en motores como <a href="https://godotengine.org" class="${A}">Godot</a>, para ayudar a los desarrolladores a integrar funciones de juego, redes multijugador, soporte de mods y más en sus juegos. ¡Nuestro objetivo es construir nuestra propia <span class="special">plataforma de juegos</span> de código abierto!`,
+        highlightHtml: `Ya publicamos nuestros propios <span class="text-accent">recursos gratuitos y de código abierto</span> &mdash; creados por la comunidad, para la comunidad &mdash; y estamos creando <span class="text-accent">muchos más</span> en motores como <a href="https://godotengine.org" class="${A}">Godot</a>, para ayudar a los desarrolladores a integrar funciones de juego, redes multijugador, soporte de mods y más en sus juegos. ¡Nuestro objetivo es construir nuestra propia <a href="#gaming-platform" class="${A}">plataforma de juegos</a> de código abierto!`,
         button: 'Explorar Recursos',
     },
     fr: {
@@ -71,7 +71,7 @@ export const assets: SectionCatalog = {
         c6b: 'Reliez un <span class="special">dépôt de code source</span> pour obtenir un <span class="special">badge open-source</span> sur la page de votre ressource, montrant à chacun exactement ce qu\'il installe.',
         highlightTitle: 'Ressources Gratuites et Open-Source',
         highlightBadge: 'Disponible Maintenant',
-        highlightHtml: `Nous publions déjà nos propres <span class="text-accent">ressources gratuites et open-source</span> &mdash; créées par la communauté, pour la communauté &mdash; et nous en créons <span class="text-accent">bien d'autres</span> sur des moteurs comme <a href="https://godotengine.org" class="${A}">Godot</a>, pour aider les développeurs à intégrer des fonctionnalités de gameplay, du réseau multijoueur, la prise en charge du modding et plus encore dans leurs jeux. Notre objectif est de construire notre propre <span class="special">plateforme de jeu</span> open source !`,
+        highlightHtml: `Nous publions déjà nos propres <span class="text-accent">ressources gratuites et open-source</span> &mdash; créées par la communauté, pour la communauté &mdash; et nous en créons <span class="text-accent">bien d'autres</span> sur des moteurs comme <a href="https://godotengine.org" class="${A}">Godot</a>, pour aider les développeurs à intégrer des fonctionnalités de gameplay, du réseau multijoueur, la prise en charge du modding et plus encore dans leurs jeux. Notre objectif est de construire notre propre <a href="#gaming-platform" class="${A}">plateforme de jeu</a> open source !`,
         button: 'Parcourir les Ressources',
     },
     de: {
@@ -94,7 +94,7 @@ export const assets: SectionCatalog = {
         c6b: 'Verknüpfe ein <span class="special">Quellcode-Repository</span>, um ein <span class="special">Open-Source-Abzeichen</span> auf deiner Asset-Seite zu erhalten, das den Leuten genau zeigt, was sie installieren.',
         highlightTitle: 'Kostenlose &amp; Open-Source-Assets',
         highlightBadge: 'Jetzt Verfügbar',
-        highlightHtml: `Wir veröffentlichen bereits unsere eigenen <span class="text-accent">kostenlosen, quelloffenen Assets</span> &mdash; von der Community, für die Community &mdash; und wir erstellen <span class="text-accent">viele weitere</span> für Engines wie <a href="https://godotengine.org" class="${A}">Godot</a>, um Entwicklern zu helfen, Gameplay-Funktionen, Multiplayer-Netzwerke, Modding-Unterstützung und mehr in ihre Spiele zu integrieren. Unser Ziel ist es, unsere eigene quelloffene <span class="special">Gaming-Plattform</span> aufzubauen!`,
+        highlightHtml: `Wir veröffentlichen bereits unsere eigenen <span class="text-accent">kostenlosen, quelloffenen Assets</span> &mdash; von der Community, für die Community &mdash; und wir erstellen <span class="text-accent">viele weitere</span> für Engines wie <a href="https://godotengine.org" class="${A}">Godot</a>, um Entwicklern zu helfen, Gameplay-Funktionen, Multiplayer-Netzwerke, Modding-Unterstützung und mehr in ihre Spiele zu integrieren. Unser Ziel ist es, unsere eigene quelloffene <a href="#gaming-platform" class="${A}">Gaming-Plattform</a> aufzubauen!`,
         button: 'Assets Durchsuchen',
     },
     ru: {
@@ -117,7 +117,7 @@ export const assets: SectionCatalog = {
         c6b: 'Свяжите <span class="special">репозиторий исходного кода</span>, чтобы получить <span class="special">значок открытого кода</span> на странице ресурса, показывая людям, что именно они устанавливают.',
         highlightTitle: 'Бесплатные Ресурсы с Открытым Кодом',
         highlightBadge: 'Уже Доступно',
-        highlightHtml: `Мы уже публикуем собственные <span class="text-accent">бесплатные ресурсы с открытым кодом</span> &mdash; созданные сообществом и для сообщества &mdash; и создаём <span class="text-accent">множество новых</span> для таких движков, как <a href="https://godotengine.org" class="${A}">Godot</a>, чтобы помочь разработчикам внедрять игровые механики, сетевой мультиплеер, поддержку модов и многое другое в свои игры. Мы стремимся построить собственную <span class="special">игровую платформу</span> с открытым кодом!`,
+        highlightHtml: `Мы уже публикуем собственные <span class="text-accent">бесплатные ресурсы с открытым кодом</span> &mdash; созданные сообществом и для сообщества &mdash; и создаём <span class="text-accent">множество новых</span> для таких движков, как <a href="https://godotengine.org" class="${A}">Godot</a>, чтобы помочь разработчикам внедрять игровые механики, сетевой мультиплеер, поддержку модов и многое другое в свои игры. Мы стремимся построить собственную <a href="#gaming-platform" class="${A}">игровую платформу</a> с открытым кодом!`,
         button: 'Смотреть Ресурсы',
     },
     nl: {
@@ -140,7 +140,7 @@ export const assets: SectionCatalog = {
         c6b: 'Koppel een <span class="special">broncode-repository</span> om een <span class="special">open-source-badge</span> op je asset-pagina te verdienen, zodat mensen precies zien wat ze installeren.',
         highlightTitle: 'Gratis &amp; Open-Source Assets',
         highlightBadge: 'Nu Beschikbaar',
-        highlightHtml: `We publiceren al onze eigen <span class="text-accent">gratis, open-source assets</span> &mdash; gemaakt door de community, voor de community &mdash; en we maken er <span class="text-accent">veel meer</span> voor engines zoals <a href="https://godotengine.org" class="${A}">Godot</a>, om ontwikkelaars te helpen gameplayfuncties, multiplayer-netwerken, modding-ondersteuning en meer in hun games te integreren. Ons doel is om ons eigen open source <span class="special">gamingplatform</span> te bouwen!`,
+        highlightHtml: `We publiceren al onze eigen <span class="text-accent">gratis, open-source assets</span> &mdash; gemaakt door de community, voor de community &mdash; en we maken er <span class="text-accent">veel meer</span> voor engines zoals <a href="https://godotengine.org" class="${A}">Godot</a>, om ontwikkelaars te helpen gameplayfuncties, multiplayer-netwerken, modding-ondersteuning en meer in hun games te integreren. Ons doel is om ons eigen open source <a href="#gaming-platform" class="${A}">gamingplatform</a> te bouwen!`,
         button: 'Assets Bekijken',
     },
     ja: {
@@ -163,7 +163,7 @@ export const assets: SectionCatalog = {
         c6b: '<span class="special">ソースリポジトリ</span>をリンクすると、アセットページに<span class="special">オープンソースバッジ</span>が付与され、何をインストールするのかを正確に示せます。',
         highlightTitle: '無料＆オープンソースのアセット',
         highlightBadge: '提供中',
-        highlightHtml: `私たちはすでに独自の<span class="text-accent">無料でオープンソースのアセット</span>を公開しています &mdash; コミュニティによって、コミュニティのために作られています &mdash; さらに <a href="https://godotengine.org" class="${A}">Godot</a> などのエンジン向けに<span class="text-accent">さらに多く</span>を制作中で、開発者がゲームプレイ機能、マルチプレイヤーネットワーク、modサポートなどを自分のゲームに組み込めるよう支援します。私たちは独自のオープンソース<span class="special">ゲーミングプラットフォーム</span>の構築を目指しています！`,
+        highlightHtml: `私たちはすでに独自の<span class="text-accent">無料でオープンソースのアセット</span>を公開しています &mdash; コミュニティによって、コミュニティのために作られています &mdash; さらに <a href="https://godotengine.org" class="${A}">Godot</a> などのエンジン向けに<span class="text-accent">さらに多く</span>を制作中で、開発者がゲームプレイ機能、マルチプレイヤーネットワーク、modサポートなどを自分のゲームに組み込めるよう支援します。私たちは独自のオープンソース<a href="#gaming-platform" class="${A}">ゲーミングプラットフォーム</a>の構築を目指しています！`,
         button: 'アセットを見る',
     },
     zh: {
@@ -186,7 +186,7 @@ export const assets: SectionCatalog = {
         c6b: '关联<span class="special">源代码仓库</span>即可在你的资源页面上获得<span class="special">开源徽章</span>，让大家清楚地看到他们正在安装的内容。',
         highlightTitle: '免费与开源资源',
         highlightBadge: '现已推出',
-        highlightHtml: `我们已经发布了自己的<span class="text-accent">免费开源资源</span> &mdash; 由社区打造，服务社区 &mdash; 并且正在为诸如 <a href="https://godotengine.org" class="${A}">Godot</a> 等引擎创建<span class="text-accent">更多资源</span>，帮助开发者将游戏玩法功能、多人联网、模组支持等集成到他们的游戏中。我们的目标是打造属于我们自己的开源<span class="special">游戏平台</span>！`,
+        highlightHtml: `我们已经发布了自己的<span class="text-accent">免费开源资源</span> &mdash; 由社区打造，服务社区 &mdash; 并且正在为诸如 <a href="https://godotengine.org" class="${A}">Godot</a> 等引擎创建<span class="text-accent">更多资源</span>，帮助开发者将游戏玩法功能、多人联网、模组支持等集成到他们的游戏中。我们的目标是打造属于我们自己的开源<a href="#gaming-platform" class="${A}">游戏平台</a>！`,
         button: '浏览资源',
     },
     pt: {
@@ -209,7 +209,7 @@ export const assets: SectionCatalog = {
         c6b: 'Vincule um <span class="special">repositório de código-fonte</span> para ganhar um <span class="special">selo de código aberto</span> na página do seu recurso, mostrando às pessoas exatamente o que estão instalando.',
         highlightTitle: 'Recursos Gratuitos e de Código Aberto',
         highlightBadge: 'Disponível Agora',
-        highlightHtml: `Já publicamos nossos próprios <span class="text-accent">recursos gratuitos e de código aberto</span> &mdash; feitos pela comunidade, para a comunidade &mdash; e estamos criando <span class="text-accent">muitos mais</span> em engines como a <a href="https://godotengine.org" class="${A}">Godot</a>, para ajudar os desenvolvedores a integrar recursos de jogabilidade, rede multijogador, suporte a mods e mais em seus jogos. Nosso objetivo é construir nossa própria <span class="special">plataforma de jogos</span> de código aberto!`,
+        highlightHtml: `Já publicamos nossos próprios <span class="text-accent">recursos gratuitos e de código aberto</span> &mdash; feitos pela comunidade, para a comunidade &mdash; e estamos criando <span class="text-accent">muitos mais</span> em engines como a <a href="https://godotengine.org" class="${A}">Godot</a>, para ajudar os desenvolvedores a integrar recursos de jogabilidade, rede multijogador, suporte a mods e mais em seus jogos. Nosso objetivo é construir nossa própria <a href="#gaming-platform" class="${A}">plataforma de jogos</a> de código aberto!`,
         button: 'Explorar Recursos',
     },
 }

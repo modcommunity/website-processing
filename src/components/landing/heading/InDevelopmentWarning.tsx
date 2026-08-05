@@ -5,7 +5,7 @@ import IconAndText from "../../helper/IconAndText"
 import type { HTMLAttributes } from "react"
 
 const DEFAULT_HTML =
-    'We are currently under <span class="special">heavy development</span>. Community updates are often posted on our <a href="https://forum.moddingcommunity.com" class="special hover:!text-special-2 hover:duration-300">forum</a>!'
+    'We are currently under <span class="special">heavy development</span>. Community updates are often posted on our <a href="https://moddingcommunity.com/blog/" class="special hover:!text-special-2 hover:duration-300">blog</a>!'
 
 type Props = HTMLAttributes<HTMLDivElement> & { html?: string }
 

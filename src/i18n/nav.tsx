@@ -20,8 +20,10 @@ import {
     Puzzle,
     Activity,
     MessageSquare,
+    MessagesSquare,
     UserCheck,
     Lightbulb,
+    Mail,
 } from 'lucide-react'
 // lucide dropped brand marks, so Discord stays on react-icons — website-city
 // makes the same exception.
@@ -31,12 +33,14 @@ import type { TFunc } from './t'
 
 // All destinations live on website-city, served under the same domain, so
 // internal links are plain relative paths.
-const FORUM = 'https://forum.moddingcommunity.com/'
 const DISCORD = 'https://discord.moddingcommunity.com'
 // Our own roadmap board on website-city, not the GitHub milestones page it used
 // to be — city moved to it and this catalogue mirrors city.
 const ROADMAP = '/roadmap'
 const FEEDBACK = '/feedback'
+// City's own contact page (`CONTACT_URL` there), not a mailto — the page
+// carries the address, the Discord invite and the staff directory.
+const CONTACT = '/contact'
 
 /**
  * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same six
@@ -121,11 +125,6 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
             icon: FolderKey,
             desc: t('nav.resources.desc'),
             children: [
-                /*
-                 * The Forum is deliberately absent, mirroring city: it is
-                 * reachable from the footer and the sidebar's Community section
-                 * instead.
-                 */
                 {
                     label: t('nav.discord.label'),
                     href: DISCORD,
@@ -148,6 +147,15 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     desc: t('nav.community.desc'),
                 },
                 {
+                    // The site-wide board. Sits right after the member
+                    // directory, as in city: both are the people side of the
+                    // site, one the who and the other the what-they-are-saying.
+                    label: t('nav.discussions.label'),
+                    href: '/discussions',
+                    icon: MessagesSquare,
+                    desc: t('nav.discussions.desc'),
+                },
+                {
                     label: t('nav.banners.label'),
                     href: '/banners',
                     icon: Images,
@@ -167,6 +175,15 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     href: FEEDBACK,
                     icon: Lightbulb,
                     desc: t('nav.feedback.desc'),
+                },
+                {
+                    // City's contact page — email, Discord and the staff
+                    // directory. Lives on website-city like everything else
+                    // under this menu, so a plain relative path.
+                    label: t('nav.contact.label'),
+                    href: CONTACT,
+                    icon: Mail,
+                    desc: t('nav.contact.desc'),
                 },
                 // The GitHub dev-issue tracker used to sit here, and is gone
                 // from city's Resources menu too: feedback and the roadmap
@@ -194,7 +211,6 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
             heading: t('sections.community'),
             links: [
                 { label: t('common.blog'), href: '/blog/' },
-                { label: t('common.forum'), href: FORUM, external: true },
                 { label: t('common.discord'), href: DISCORD, external: true },
             ],
         },
@@ -379,8 +395,8 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     icon: Map,
                     desc: t('rail.pillars.servers.maps'),
                 },
-                // The forum Knowledgebase leaf used to sit here, and is gone
-                // from city's rail too until the FAQ section replacing it
+                // The forum's Knowledgebase leaf used to sit here, and is
+                // gone from city's rail too until the FAQ section replacing it
                 // exists.
                 {
                     label: t('rail.items.myServers'),

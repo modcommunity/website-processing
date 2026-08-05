@@ -1,0 +1,92 @@
+---
+import { Gamepad2, Globe, KeyRound, Package, Search, Server, ShieldCheck } from 'lucide-react';
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+
+
+const t = getT(Astro.currentLocale);
+
+// Middle tier of the stack diagram — what the assets themselves bring.
+const chips = [
+    t('landing.platform.chip1'),
+    t('landing.platform.chip2'),
+    t('landing.platform.chip3'),
+    t('landing.platform.chip4'),
+];
+---
+
+<section id="gaming-platform" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.platform.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.platform.titleHtml')}></h2>
+        <p set:html={t('landing.platform.introHtml')}></p>
+    </SectionIntro>
+
+    {/*
+      * Stack diagram: the game on top, our open-source assets in the middle,
+      * the platform underneath — read top-down, it says what plugs into what.
+      */}
+    <div class="mx-auto flex w-full max-w-3xl flex-col items-center intersect-once intersect:motion-preset-slide-up">
+        <div class="w-full rounded-xl border border-border bg-surface p-4 text-center">
+            <div class="flex items-center justify-center gap-2">
+                <Gamepad2 className="h-4 w-4 text-accent" />
+                <span class="font-semibold text-foreground">{t('landing.platform.stackGameTitle')}</span>
+            </div>
+            <p class="mt-1 text-sm text-muted">{t('landing.platform.stackGameSub')}</p>
+        </div>
+
+        <span class="h-6 w-px bg-gradient-to-b from-border to-accent"></span>
+
+        <div class="w-full rounded-xl border border-accent/40 bg-accent/5 p-4 text-center shadow-lg shadow-accent/10">
+            <div class="flex items-center justify-center gap-2">
+                <Package className="h-4 w-4 text-accent" />
+                <span class="font-semibold text-foreground">{t('landing.platform.stackSdkTitle')}</span>
+                <span class="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">
+                    {t('landing.platform.tagPlanned')}
+                </span>
+            </div>
+            <p class="mt-1 text-sm text-muted">{t('landing.platform.stackSdkSub')}</p>
+            <div class="mt-3 flex flex-wrap justify-center gap-2">
+                {chips.map((chip) => (
+                    <span class="rounded-lg border border-border bg-surface px-2.5 py-1 text-xs text-foreground">{chip}</span>
+                ))}
+            </div>
+        </div>
+
+        <span class="h-6 w-px bg-gradient-to-b from-accent to-border"></span>
+
+        <div class="w-full rounded-xl border border-border bg-surface p-4 text-center">
+            <div class="flex items-center justify-center gap-2">
+                <Globe className="h-4 w-4 text-accent" />
+                <span class="font-semibold text-foreground">{t('landing.platform.stackTmcTitle')}</span>
+            </div>
+            <p class="mt-1 text-sm text-muted">{t('landing.platform.stackTmcSub')}</p>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <FeatureCard icon={Package} title={t('landing.platform.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.platform.c1b')} />
+        </FeatureCard>
+        <FeatureCard icon={Server} title={t('landing.platform.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.platform.c2b')} />
+        </FeatureCard>
+        <FeatureCard icon={ShieldCheck} title={t('landing.platform.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.platform.c3b')} />
+        </FeatureCard>
+        <FeatureCard icon={Globe} title={t('landing.platform.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.platform.c4b')} />
+        </FeatureCard>
+        <FeatureCard icon={Search} title={t('landing.platform.c5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.platform.c5b')} />
+        </FeatureCard>
+        <FeatureCard icon={KeyRound} title={t('landing.platform.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.platform.c6b')} />
+        </FeatureCard>
+    </div>
+
+    <div class="flex justify-center">
+        <a href={localizePath("/roadmap", Astro.currentLocale)} class="btn btn-special">{t('landing.platform.button')}</a>
+    </div>
+</section>

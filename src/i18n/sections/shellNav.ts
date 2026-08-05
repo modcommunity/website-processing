@@ -60,6 +60,12 @@ export const shellNav: NavCatalog = {
             label: 'Community',
             desc: "What's new with the community",
         },
+        // English-only for the same reason as `community` and `banners`: city's
+        // nav.json carries `items.discussions` in English alone.
+        discussions: {
+            label: 'Discussions',
+            desc: 'The site-wide board, plus every app that runs one.',
+        },
         banners: {
             label: 'Banners',
             desc: 'Embeddable banner images for the site and your content',
@@ -74,6 +80,13 @@ export const shellNav: NavCatalog = {
         feedback: {
             label: 'Feedback',
             desc: 'Suggest, report and vote',
+        },
+        // English-only for the same reason as `community`, `banners` and
+        // `feedback` above: city's nav.json carries `items.contact` in English
+        // alone and merges English under every locale.
+        contact: {
+            label: 'Contact Us',
+            desc: 'Reach the team by email, Discord or staff directory',
         },
         devTracker: {
             label: 'Dev Tracker',
@@ -107,7 +120,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'Recursos',
-            desc: 'Blog, foro y enlaces de la comunidad',
+            desc: 'Enlaces de la comunidad, hoja de ruta y seguimiento del desarrollo',
         },
         discord: {
             label: 'Servidor de Discord',
@@ -153,7 +166,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'Ressources',
-            desc: 'Blog, forum et liens de la communauté',
+            desc: 'Liens de la communauté, feuille de route et suivi du développement',
         },
         discord: {
             label: 'Serveur Discord',
@@ -199,7 +212,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'Ressourcen',
-            desc: 'Blog, Forum und Community-Links',
+            desc: 'Community-Links, Roadmap und Dev-Tracker',
         },
         discord: {
             label: 'Discord-Server',
@@ -245,7 +258,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'Ресурсы',
-            desc: 'Блог, форум и ссылки сообщества',
+            desc: 'Ссылки сообщества, дорожная карта и трекер разработки',
         },
         discord: {
             label: 'Сервер Discord',
@@ -291,7 +304,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'Bronnen',
-            desc: 'Blog, forum en communitylinks',
+            desc: 'Communitylinks, roadmap en dev-tracker',
         },
         discord: {
             label: 'Discord-server',
@@ -337,7 +350,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'リソース',
-            desc: 'ブログ、フォーラム、コミュニティリンク',
+            desc: 'コミュニティリンク、ロードマップ、開発トラッカー',
         },
         discord: {
             label: 'Discord サーバー',
@@ -383,7 +396,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: '资源',
-            desc: '博客、论坛和社区链接',
+            desc: '社区链接、路线图和开发进度',
         },
         discord: {
             label: 'Discord 服务器',
@@ -429,7 +442,7 @@ export const shellNav: NavCatalog = {
         },
         resources: {
             label: 'Recursos',
-            desc: 'Blog, fórum e links da comunidade',
+            desc: 'Links da comunidade, roteiro e acompanhamento do desenvolvimento',
         },
         discord: {
             label: 'Servidor Discord',

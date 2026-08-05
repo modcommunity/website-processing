@@ -13,6 +13,8 @@ export const blog: SectionCatalog = {
             'Check out some of our modding <span class="special">how-to</span> guides!',
         serverGuidesHtml:
             'Check out some of our server <span class="special">setup</span> guides!',
+        prev: 'Previous articles',
+        next: 'Next articles',
     },
     es: {
         eyebrow: 'Blog',
@@ -22,6 +24,8 @@ export const blog: SectionCatalog = {
             '¡Echa un vistazo a algunas de nuestras <span class="special">guías prácticas</span> de modding!',
         serverGuidesHtml:
             '¡Echa un vistazo a algunas de nuestras <span class="special">guías de configuración</span> de servidores!',
+        prev: 'Artículos anteriores',
+        next: 'Artículos siguientes',
     },
     fr: {
         eyebrow: 'Blog',
@@ -31,6 +35,8 @@ export const blog: SectionCatalog = {
             'Découvrez quelques-uns de nos <span class="special">guides pratiques</span> de modding !',
         serverGuidesHtml:
             'Découvrez quelques-uns de nos <span class="special">guides de configuration</span> de serveurs !',
+        prev: 'Articles précédents',
+        next: 'Articles suivants',
     },
     de: {
         eyebrow: 'Blog',
@@ -40,6 +46,8 @@ export const blog: SectionCatalog = {
             'Wirf einen Blick auf einige unserer Modding-<span class="special">Anleitungen</span>!',
         serverGuidesHtml:
             'Wirf einen Blick auf einige unserer Server-<span class="special">Einrichtungsanleitungen</span>!',
+        prev: 'Vorherige Artikel',
+        next: 'Nächste Artikel',
     },
     ru: {
         eyebrow: 'Блог',
@@ -49,6 +57,8 @@ export const blog: SectionCatalog = {
             'Ознакомьтесь с некоторыми из наших <span class="special">пошаговых руководств</span> по моддингу!',
         serverGuidesHtml:
             'Ознакомьтесь с некоторыми из наших <span class="special">руководств по настройке</span> серверов!',
+        prev: 'Предыдущие статьи',
+        next: 'Следующие статьи',
     },
     nl: {
         eyebrow: 'Blog',
@@ -58,6 +68,8 @@ export const blog: SectionCatalog = {
             'Bekijk enkele van onze modding-<span class="special">handleidingen</span>!',
         serverGuidesHtml:
             'Bekijk enkele van onze server-<span class="special">installatiehandleidingen</span>!',
+        prev: 'Vorige artikelen',
+        next: 'Volgende artikelen',
     },
     ja: {
         eyebrow: 'ブログ',
@@ -67,6 +79,8 @@ export const blog: SectionCatalog = {
             'モッディングの<span class="special">ハウツー</span>ガイドをいくつかチェックしてみてください！',
         serverGuidesHtml:
             'サーバーの<span class="special">セットアップ</span>ガイドをいくつかチェックしてみてください！',
+        prev: '前の記事',
+        next: '次の記事',
     },
     zh: {
         eyebrow: '博客',
@@ -76,6 +90,8 @@ export const blog: SectionCatalog = {
             '来看看我们的一些模组制作<span class="special">教程</span>指南！',
         serverGuidesHtml:
             '来看看我们的一些服务器<span class="special">搭建</span>指南！',
+        prev: '上一批文章',
+        next: '下一批文章',
     },
     pt: {
         eyebrow: 'Blog',
@@ -85,5 +101,7 @@ export const blog: SectionCatalog = {
             'Confira alguns dos nossos <span class="special">guias práticos</span> de modding!',
         serverGuidesHtml:
             'Confira alguns dos nossos <span class="special">guias de configuração</span> de servidores!',
+        prev: 'Artigos anteriores',
+        next: 'Próximos artigos',
     },
 }
