@@ -25,9 +25,9 @@ const contentMix = [
         <p set:html={t('landing.stats.introHtml')}></p>
     </SectionIntro>
 
-    <div class="grid grid-cols-1 gap-6 lg:grid-cols-5">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-5">
         {/* Trend / line + area chart */}
-        <div class="card lg:col-span-3">
+        <div class="card min-w-0 @3xl:col-span-3">
             <div class="flex flex-col gap-1">
                 <h4 class="text-base">{t('landing.stats.trendTitle')}</h4>
                 <p class="text-sm text-muted">
@@ -40,7 +40,7 @@ const contentMix = [
         </div>
 
         {/* Content-mix donut / pie chart */}
-        <div class="card lg:col-span-2">
+        <div class="card min-w-0 @3xl:col-span-2">
             <div class="flex flex-col gap-1">
                 <h4 class="text-base">{t('landing.stats.libraryTitle')}</h4>
                 <p class="text-sm text-muted">
@@ -53,7 +53,7 @@ const contentMix = [
         </div>
     </div>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-4">
         <FeatureCard icon={LineChart} title={t('landing.stats.c1t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.stats.c1b')} />
         </FeatureCard>

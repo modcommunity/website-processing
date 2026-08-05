@@ -14,24 +14,35 @@ const t = getT(Astro.currentLocale);
         <p set:html={t('landing.api.introHtml')}></p>
     </SectionIntro>
 
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <FeatureCard icon={Key} title={t('landing.api.c1t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.api.c1b')} />
-            </FeatureCard>
-            <FeatureCard icon={Code2} title={t('landing.api.c2t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.api.c2b')} />
-            </FeatureCard>
-            <FeatureCard icon={PackageOpen} title={t('landing.api.c3t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.api.c3b')} />
-            </FeatureCard>
-            <FeatureCard icon={History} title={t('landing.api.c4t')} class="intersect-once intersect:motion-preset-slide-up">
-                <Fragment set:html={t('landing.api.c4b')} />
-            </FeatureCard>
+    <div class="grid grid-cols-1 gap-8 @5xl:grid-cols-2">
+        {/* Own container — see Feedback.astro: half-width cards must be laid
+            out against the half, not against the page. */}
+        <div class="@container">
+            <div class="grid grid-cols-1 gap-6 @2xl:grid-cols-2">
+                <FeatureCard icon={Key} title={t('landing.api.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.api.c1b')} />
+                </FeatureCard>
+                <FeatureCard icon={Code2} title={t('landing.api.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.api.c2b')} />
+                </FeatureCard>
+                <FeatureCard icon={PackageOpen} title={t('landing.api.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.api.c3b')} />
+                </FeatureCard>
+                <FeatureCard icon={History} title={t('landing.api.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.api.c4b')} />
+                </FeatureCard>
+            </div>
         </div>
 
-        {/* Terminal snippet */}
-        <div class="overflow-hidden rounded-xl border border-border bg-background/70">
+        {/*
+          * Terminal snippet. `min-w-0` is load-bearing: a grid item's automatic
+          * minimum size is its content's, and the <pre> below is one long
+          * unbreakable curl line — without it the column grows to ~440px and
+          * drags a horizontal scrollbar onto the whole page on a phone. With
+          * it, the `overflow-x-auto` on the <pre> does its job and the snippet
+          * scrolls by itself.
+          */}
+        <div class="min-w-0 overflow-hidden rounded-xl border border-border bg-background/70">
             <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
                 <span class="h-3 w-3 rounded-full bg-danger/70"></span>
                 <span class="h-3 w-3 rounded-full bg-warning/70"></span>

@@ -35,7 +35,16 @@ const arcs = segments.map((s) => {
 })
 ---
 
-<div class={`flex flex-col items-center gap-5 sm:flex-row sm:gap-8 ${className ?? ""}`}>
+{/*
+  * A query container of its own: this sits in a 2/5 column of the stats grid, so
+  * its width bears no relation to the viewport's — sized off the page it would
+  * put the 10rem dial and the legend side by side inside a 280px card and push
+  * the percentages off the edge. `className` goes here rather than on the row
+  * because it carries the caller's `w-full`, and it is the container that has to
+  * fill the card for the row inside it to be measured against anything real.
+  */}
+<div class={`@container ${className ?? ""}`}>
+<div class="flex flex-col items-center gap-5 @md:flex-row @md:gap-8">
     <svg viewBox="0 0 140 140" class="h-40 w-40 shrink-0 -rotate-90">
         <circle
             cx="70"
@@ -84,16 +93,17 @@ const arcs = segments.map((s) => {
         )}
     </svg>
 
-    <ul class="flex w-full flex-col gap-2.5">
+    <ul class="flex w-full min-w-0 flex-col gap-2.5">
         {arcs.map((a) => (
             <li class="flex items-center gap-3 text-sm">
                 <span
                     class="h-2.5 w-2.5 shrink-0 rounded-sm"
                     style={`background:${a.color}`}
                 ></span>
-                <span class="text-foreground">{a.label}</span>
-                <span class="ml-auto font-semibold text-muted">{a.pct}%</span>
+                <span class="min-w-0 truncate text-foreground">{a.label}</span>
+                <span class="ml-auto shrink-0 font-semibold text-muted">{a.pct}%</span>
             </li>
         ))}
     </ul>
+</div>
 </div>

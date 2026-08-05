@@ -10,7 +10,7 @@ export default function HeadingTitle({ sequence = ["A Modding & Game Dev Communi
             sequence={sequence}
             speed={5}
             wrapper="h2"
-            className="text-foreground text-3xl sm:text-4xl lg:text-5xl font-extrabold drop-shadow"
+            className="text-foreground text-3xl @2xl:text-4xl @5xl:text-5xl font-extrabold drop-shadow"
         />
     )
 }
