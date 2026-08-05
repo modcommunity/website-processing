@@ -9,6 +9,9 @@ import { communities } from './sections/communities'
 import { collections } from './sections/collections'
 import { api } from './sections/api'
 import { blog } from './sections/blog'
+import { roadmap } from './sections/roadmap'
+import { feedback } from './sections/feedback'
+import { platform } from './sections/platform'
 import { joinCommunity } from './sections/joinCommunity'
 import { shellNav } from './sections/shellNav'
 import { shellSidebar } from './sections/shellSidebar'
@@ -33,7 +36,6 @@ export const en = {
         communities: 'Communities',
         collections: 'Collections',
         blog: 'Blog',
-        forum: 'Forum',
         discord: 'Discord',
         roadmap: 'Roadmap',
         knowledgebase: 'Knowledgebase',
@@ -93,7 +95,6 @@ const es: DeepPartial<Messages> = {
         communities: 'Comunidades',
         collections: 'Colecciones',
         blog: 'Blog',
-        forum: 'Foro',
         discord: 'Discord',
         roadmap: 'Hoja de ruta',
         knowledgebase: 'Base de conocimientos',
@@ -140,7 +141,6 @@ const fr: DeepPartial<Messages> = {
         communities: 'Communautés',
         collections: 'Collections',
         blog: 'Blog',
-        forum: 'Forum',
         discord: 'Discord',
         roadmap: 'Feuille de route',
         knowledgebase: 'Base de connaissances',
@@ -189,7 +189,6 @@ const de: DeepPartial<Messages> = {
         communities: 'Communitys',
         collections: 'Sammlungen',
         blog: 'Blog',
-        forum: 'Forum',
         discord: 'Discord',
         roadmap: 'Roadmap',
         knowledgebase: 'Wissensdatenbank',
@@ -238,7 +237,6 @@ const ru: DeepPartial<Messages> = {
         communities: 'Сообщества',
         collections: 'Коллекции',
         blog: 'Блог',
-        forum: 'Форум',
         discord: 'Discord',
         roadmap: 'Дорожная карта',
         knowledgebase: 'База знаний',
@@ -284,7 +282,6 @@ const nl: DeepPartial<Messages> = {
         communities: 'Gemeenschappen',
         collections: 'Collecties',
         blog: 'Blog',
-        forum: 'Forum',
         discord: 'Discord',
         roadmap: 'Roadmap',
         knowledgebase: 'Kennisbank',
@@ -331,7 +328,6 @@ const ja: DeepPartial<Messages> = {
         communities: 'コミュニティ',
         collections: 'コレクション',
         blog: 'ブログ',
-        forum: 'フォーラム',
         discord: 'Discord',
         roadmap: 'ロードマップ',
         knowledgebase: 'ナレッジベース',
@@ -377,7 +373,6 @@ const zh: DeepPartial<Messages> = {
         communities: '社区',
         collections: '合集',
         blog: '博客',
-        forum: '论坛',
         discord: 'Discord',
         roadmap: '路线图',
         knowledgebase: '知识库',
@@ -423,7 +418,6 @@ const pt: DeepPartial<Messages> = {
         communities: 'Comunidades',
         collections: 'Coleções',
         blog: 'Blog',
-        forum: 'Fórum',
         discord: 'Discord',
         roadmap: 'Roteiro',
         knowledgebase: 'Base de conhecimento',
@@ -485,7 +479,10 @@ const SECTIONS = {
     communities,
     collections,
     api,
+    roadmap,
+    feedback,
     blog,
+    platform,
     joinCommunity,
 }
 

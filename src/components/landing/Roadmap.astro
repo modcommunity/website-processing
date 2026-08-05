@@ -1,0 +1,104 @@
+---
+import { Bell, CalendarClock, Columns3, Map } from 'lucide-react';
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+
+
+const t = getT(Astro.currentLocale);
+
+/*
+ * A miniature of the real board (website-city's `/roadmap`): one column per
+ * `RoadmapItemStatus`, cards carrying their type chip. Static markup on
+ * purpose — it is an illustration of the feature, not a live feed.
+ */
+const columns = [
+    {
+        label: t('landing.roadmap.sPlanned'),
+        dot: "bg-muted",
+        items: [
+            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i1') },
+            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i2') },
+        ],
+    },
+    {
+        label: t('landing.roadmap.sProgress'),
+        dot: "bg-accent",
+        items: [
+            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i3') },
+            { type: t('landing.roadmap.tImprovement'), title: t('landing.roadmap.i4') },
+        ],
+    },
+    {
+        label: t('landing.roadmap.sCompleted'),
+        dot: "bg-success",
+        items: [
+            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i5') },
+            { type: t('landing.roadmap.tImprovement'), title: t('landing.roadmap.i6') },
+        ],
+    },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.roadmap.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.roadmap.titleHtml')}></h2>
+        <p set:html={t('landing.roadmap.introHtml')}></p>
+    </SectionIntro>
+
+    {/* Board mock-up */}
+    <div class="overflow-hidden rounded-xl border border-border bg-background/70 intersect-once intersect:motion-preset-slide-up">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
+            <div class="flex items-center gap-2 text-sm font-semibold text-foreground">
+                <Map className="h-4 w-4 text-accent" />
+                {t('landing.roadmap.boardTitle')}
+            </div>
+            <div class="flex items-center gap-1 rounded-lg border border-border bg-surface p-1 text-xs">
+                <span class="rounded-md px-2 py-1 text-muted">{t('landing.roadmap.viewTimeline')}</span>
+                <span class="rounded-md bg-accent/15 px-2 py-1 font-semibold text-accent ring-1 ring-accent/25">{t('landing.roadmap.viewColumns')}</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4 p-4 md:grid-cols-3">
+            {columns.map((col) => (
+                <div class="flex flex-col gap-3 rounded-lg border border-border/70 bg-surface/40 p-3">
+                    <div class="flex items-center justify-between gap-2">
+                        <span class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
+                            <span class={`h-2 w-2 rounded-full ${col.dot}`}></span>
+                            {col.label}
+                        </span>
+                        <span class="rounded-full border border-border px-1.5 text-[10px] text-muted">{col.items.length}</span>
+                    </div>
+                    {col.items.map((item) => (
+                        <div class="flex flex-col gap-2 rounded-lg border border-border bg-surface p-3">
+                            <span class="w-fit rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">
+                                {item.type}
+                            </span>
+                            <span class="text-sm text-foreground">{item.title}</span>
+                        </div>
+                    ))}
+                </div>
+            ))}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <FeatureCard icon={Columns3} title={t('landing.roadmap.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.roadmap.c1b')} />
+        </FeatureCard>
+        <FeatureCard icon={CalendarClock} title={t('landing.roadmap.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.roadmap.c2b')} />
+        </FeatureCard>
+        <FeatureCard icon={Map} title={t('landing.roadmap.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.roadmap.c3b')} />
+        </FeatureCard>
+        <FeatureCard icon={Bell} title={t('landing.roadmap.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.roadmap.c4b')} />
+        </FeatureCard>
+    </div>
+
+    <div class="flex justify-center">
+        <a href={localizePath("/roadmap", Astro.currentLocale)} class="btn btn-special">{t('landing.roadmap.button')}</a>
+    </div>
+</section>

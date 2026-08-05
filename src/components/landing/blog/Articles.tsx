@@ -9,8 +9,44 @@ const Carousel = CarouselComponent.default || CarouselComponent;
 import Article from "./articles/Article"
 import type { HTMLAttributes } from "react"
 
-import { Hammer, Server } from "lucide-react";
+import { ChevronLeft, ChevronRight, Hammer, Server } from "lucide-react";
 import IconAndText from "../../helper/IconAndText";
+
+
+/**
+ * Carousel arrow.
+ *
+ * react-multi-carousel's built-in arrows are a translucent black disc whose
+ * glyph comes from a bundled icon font ("revicons") — they read as a smudge
+ * over the card underneath and match nothing else on the site. These are plain
+ * themed buttons with the same lucide chevrons the rest of the shell uses; the
+ * library clones the element and injects `onClick`, so the props arrive from it
+ * rather than from the call site.
+ */
+function Arrow({
+    dir,
+    label,
+    onClick,
+}: {
+    dir: "left" | "right"
+    label: string
+    onClick?: () => void
+}) {
+    const Icon = dir === "left" ? ChevronLeft : ChevronRight
+
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            aria-label={label}
+            className={`absolute top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-surface/95 text-foreground shadow-lg backdrop-blur transition-colors hover:border-accent hover:text-accent ${
+                dir === "left" ? "left-0" : "right-0"
+            }`}
+        >
+            <Icon className="h-5 w-5" />
+        </button>
+    )
+}
 
 
 type Props = {
@@ -22,6 +58,10 @@ type Props = {
     // <span class="special">…</span>), so they render via dangerouslySetInnerHTML.
     moddingGuidesHtml?: string
     serverGuidesHtml?: string
+
+    // Accessible names for the carousel arrows.
+    prevLabel?: string
+    nextLabel?: string
 }
 
 export type ArticleType = {
@@ -39,43 +79,37 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
         className,
         moddingGuidesHtml = 'Check out some of our modding <span class="special">how-to</span> guides!',
         serverGuidesHtml = 'Check out some of our server <span class="special">setup</span> guides!',
+        prevLabel = 'Previous articles',
+        nextLabel = 'Next articles',
     } = props
 
-    // Responsive settings for carousel.
+    /*
+     * Responsive settings for the carousel.
+     *
+     * The top entry is deliberately *unbounded*. react-multi-carousel picks a
+     * breakpoint with `window.innerWidth >= min && <= max` and, when nothing
+     * matches, leaves slidesToShow at 0 — which makes it render no slides at
+     * all, i.e. the whole carousel silently disappears. The old map stopped at
+     * `max: 4000`, so any viewport wider than that (an ultra-wide monitor, or a
+     * zoomed-out window) got a blank gap where the articles should be.
+     *
+     * The tiers below collapse the old nine breakpoints, which only ever
+     * resolved to four distinct item counts.
+     */
     const responsive = {
-        'xl5': {
-            breakpoint: { max: 4000, min: 3167 },
+        'ultrawide': {
+            breakpoint: { max: Number.MAX_SAFE_INTEGER, min: 2160 },
             items: 4
         },
-        'xl4': {
-            breakpoint: { max: 3167, min: 2832 },
-            items: 4
-        },
-        'xl3': {
-            breakpoint: { max: 2832, min: 2496 },
-            items: 4
-        },
-        'xl2': {
-            breakpoint: { max: 2496, min: 2160 },
-            items: 4
-        },
-        'xl': {
-            breakpoint: { max: 2160, min: 1844 },
+        'desktop': {
+            breakpoint: { max: 2160, min: 1278 },
             items: 3
         },
-        'lg': {
-            breakpoint: { max: 1844, min: 1488 },
-            items: 3
-        },
-        'md': {
-            breakpoint: { max: 1488, min: 1278 },
-            items: 3
-        },
-        'sm': {
+        'tablet': {
             breakpoint: { max: 1278, min: 1030 },
             items: 2
         },
-        'xs': {
+        'mobile': {
             breakpoint: { max: 1030, min: 0 },
             items: 1
         }
@@ -173,6 +207,8 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
                     autoPlay={true}
                     autoPlaySpeed={14000}
                     ssr={true}
+                    customLeftArrow={<Arrow dir="left" label={prevLabel} />}
+                    customRightArrow={<Arrow dir="right" label={nextLabel} />}
                     itemClass={`p-6 ${itemClassName ?? ""} intersect-once intersect:sm:motion-preset-pop`}
                 >
                     {articlesModding.map((a, k) => <Article key={`article-${k}`} {...a} /> )}
@@ -192,6 +228,8 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
                     autoPlay={true}
                     autoPlaySpeed={10000}
                     ssr={true}
+                    customLeftArrow={<Arrow dir="left" label={prevLabel} />}
+                    customRightArrow={<Arrow dir="right" label={nextLabel} />}
                     itemClass={`p-6 ${itemClassName ?? ""} intersect-once intersect:sm:motion-preset-pop`}
                 >
                     {articlesServer.map((a, k) => <Article key={`article-${k}`} {...a} /> )}

@@ -1,0 +1,122 @@
+---
+import { ChevronDown, ChevronUp, ListChecks, MessagesSquare, ScrollText, Tags } from 'lucide-react';
+import SectionIntro from "./helper/SectionIntro.astro";
+import FeatureCard from "./helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+
+
+const t = getT(Astro.currentLocale);
+
+/*
+ * A miniature of website-city's `/feedback` board: the vote column, a type and
+ * status chip per row, the moderator's decision note and an attached changelog
+ * entry. Static markup — an illustration of the feature, not a live feed.
+ */
+const sorts = [
+    { label: t('landing.feedback.sortHot'), active: true },
+    { label: t('landing.feedback.sortTop'), active: false },
+    { label: t('landing.feedback.sortNew'), active: false },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.feedback.eyebrow')}>
+        <h2 slot="title" set:html={t('landing.feedback.titleHtml')}></h2>
+        <p set:html={t('landing.feedback.introHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {/* Board mock-up */}
+        <div class="overflow-hidden rounded-xl border border-border bg-background/70 intersect-once intersect:motion-preset-slide-up">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
+                <div class="flex items-center gap-2 text-sm font-semibold text-foreground">
+                    <MessagesSquare className="h-4 w-4 text-accent" />
+                    {t('landing.feedback.boardTitle')}
+                </div>
+                <div class="flex items-center gap-1 rounded-lg border border-border bg-surface p-1 text-xs">
+                    {sorts.map((s) => (
+                        <span class={s.active
+                            ? "rounded-md bg-accent/15 px-2 py-1 font-semibold text-accent ring-1 ring-accent/25"
+                            : "rounded-md px-2 py-1 text-muted"}>{s.label}</span>
+                    ))}
+                </div>
+            </div>
+
+            <div class="flex flex-col divide-y divide-border">
+                {/* Expanded row — status, decision note and its changelog entry */}
+                <div class="flex gap-4 p-4">
+                    <div class="flex w-10 shrink-0 self-start flex-col items-center gap-0.5 rounded-lg border border-border bg-surface py-2">
+                        <ChevronUp className="h-4 w-4 text-accent" />
+                        <span class="text-sm font-bold text-foreground">248</span>
+                        <ChevronDown className="h-4 w-4 text-muted" />
+                    </div>
+                    <div class="flex min-w-0 grow flex-col gap-2">
+                        <span class="text-sm font-semibold text-foreground">{t('landing.feedback.f1')}</span>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">
+                                {t('landing.feedback.tFeature')}
+                            </span>
+                            <span class="rounded-full border border-warning/30 bg-warning/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-warning">
+                                {t('landing.feedback.sPlanned')}
+                            </span>
+                        </div>
+                        <p class="text-xs text-muted">
+                            <span class="font-semibold text-foreground/80">{t('landing.feedback.noteLabel')}:</span>
+                            {t('landing.feedback.note')}
+                        </p>
+
+                        {/* "What changed" — the changelog entries moderators+ attach */}
+                        <div class="mt-1 rounded-lg border border-border bg-surface/60 p-3">
+                            <div class="flex items-center gap-2">
+                                <ScrollText className="h-3.5 w-3.5 text-accent" />
+                                <span class="text-xs font-semibold text-foreground">{t('landing.feedback.changelogTitle')}</span>
+                                <span class="rounded-full border border-success/30 bg-success/10 px-2 py-0.5 text-[10px] font-semibold text-success">v1.4.0</span>
+                            </div>
+                            <p class="mt-1.5 text-xs text-muted">{t('landing.feedback.clDesc')}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Collapsed row */}
+                <div class="flex gap-4 p-4">
+                    <div class="flex w-10 shrink-0 self-start flex-col items-center gap-0.5 rounded-lg border border-border bg-surface py-2">
+                        <ChevronUp className="h-4 w-4 text-muted" />
+                        <span class="text-sm font-bold text-foreground">86</span>
+                        <ChevronDown className="h-4 w-4 text-muted" />
+                    </div>
+                    <div class="flex min-w-0 grow flex-col gap-2">
+                        <span class="text-sm font-semibold text-foreground">{t('landing.feedback.f2')}</span>
+                        <div class="flex flex-wrap items-center gap-2">
+                            <span class="rounded-full border border-danger/30 bg-danger/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-danger">
+                                {t('landing.feedback.tBug')}
+                            </span>
+                            <span class="rounded-full border border-border bg-surface-secondary px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted">
+                                {t('landing.feedback.sOpen')}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <FeatureCard icon={ChevronUp} title={t('landing.feedback.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.feedback.c1b')} />
+            </FeatureCard>
+            <FeatureCard icon={Tags} title={t('landing.feedback.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.feedback.c2b')} />
+            </FeatureCard>
+            <FeatureCard icon={ListChecks} title={t('landing.feedback.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.feedback.c3b')} />
+            </FeatureCard>
+            <FeatureCard icon={ScrollText} title={t('landing.feedback.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t('landing.feedback.c4b')} />
+            </FeatureCard>
+        </div>
+    </div>
+
+    <div class="flex justify-center">
+        <a href={localizePath("/feedback", Astro.currentLocale)} class="btn btn-special">{t('landing.feedback.button')}</a>
+    </div>
+</section>

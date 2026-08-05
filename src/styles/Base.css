@@ -1,4 +1,19 @@
 @layer base {
+  /*
+   * In-page anchors (the Assets callout → the gaming-platform section) glide
+   * instead of jumping. Honour a reduced-motion preference, where a long
+   * animated scroll is exactly what the user asked not to have.
+   */
+  html {
+    @apply scroll-smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
   body,
   main {
     @apply !text-text-default font-dm-sans;
