@@ -2,7 +2,7 @@ import type { SectionCatalog } from './types'
 
 // Link class matching the site's <CLink> (accent text + hover). Inlined into the
 // HTML fragments below so translated prose keeps its links.
-const A = 'special hover:!text-special-2 hover:duration-300'
+const A = 'special hover:!text-special-1-light hover:duration-300'
 
 export const servers: SectionCatalog = {
     en: {
