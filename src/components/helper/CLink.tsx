@@ -7,7 +7,7 @@ export default function CLink (props : AnchorHTMLAttributes<HTMLAnchorElement>) 
 
     return (
         <a
-            className={`special hover:!text-special-2 hover:duration-300 ${className ?? ""}`}
+            className={`special hover:!text-special-1-light hover:duration-300 ${className ?? ""}`}
             {...rest}
         >
             {children}

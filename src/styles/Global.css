@@ -44,6 +44,14 @@
   --color-special-0: var(--accent);
   --color-special-1: var(--accent);
   --color-special-1-hover: var(--accent-hover);
+  /*
+   * Inline links (`.special`, `CLink`, the legal prose) used to flip to
+   * `--success` on hover, which reads as an unrelated green against an
+   * otherwise blue link. The hover is now the same link colour, lightened —
+   * matching the `p a` rule in Base.css, which already mixes 80% accent at
+   * rest and 70% on hover.
+   */
+  --color-special-1-light: color-mix(in srgb, var(--accent) 70%, white);
   --color-special-1-ring: var(--accent);
   --color-special-1-ring-hover: var(--accent-hover);
   --color-special-2: var(--success);

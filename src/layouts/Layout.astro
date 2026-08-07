@@ -71,7 +71,13 @@ const alternates = LOCALES.map((l) => ({
 	locale: l,
 	href: new URL(localizeUrl(basePath, l), url).href
 }))
-const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming and inclusive modding and game development community. We currently offer a server browser and blog, with plans to launch a mod workshop and more in the future!"
+// The mod workshop and the game-dev asset library are LIVE, not planned. This
+// string said "with plans to launch a mod workshop and more in the future",
+// which is what every search result and every social unfurl for the site was
+// still saying about features that shipped — the single worst place to
+// undersell them, since it is the copy people read before deciding to click.
+// Kept under 160 characters, which is roughly where a desktop SERP truncates.
+const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming modding and game development community. Browse and share mods, game dev assets and game servers — the mod workshop and asset library are live now."
 ---
 
 <!doctype html>

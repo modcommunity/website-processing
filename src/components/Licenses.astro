@@ -18,7 +18,7 @@ import LegalSection from "./legal/LegalSection.astro"
 import LegalBlock from "./legal/LegalBlock.astro"
 import LegalCallout from "./legal/LegalCallout.astro"
 
-const lastUpdated = "July 27, 2026"
+const lastUpdated = "August 6, 2026"
 ---
 
 <LegalPage title="Licenses" eyebrow="Legal" lastUpdated={lastUpdated}>
@@ -33,7 +33,12 @@ const lastUpdated = "July 27, 2026"
     <LegalSection title="How Licensing Works on TMC" icon={Scale}>
         <p>When you publish a mod or an asset, you keep <Special>full ownership</Special> of it. Uploading to TMC does not transfer your copyright to us. What the license does is tell <span class="italic">everyone else</span> what they may do with your work.</p>
         <p>The license you select is displayed on your item{"'"}s page so that anyone downloading it knows where they stand. Without a stated license, the legal default in most of the world is <Special>all rights reserved</Special> — meaning nobody may legally redistribute, modify or reuse your work, even though you published it to a community built on doing exactly that. Choosing a license deliberately is almost always better than leaving it implied.</p>
-        <p>We currently offer <Special>MIT</Special> and <Special>GPL</Special> in the license selector, and we are expanding that list. If the license you want is not yet available, state it clearly in your item{"'"}s description and include the full license text in your download — that is what legally governs your work either way.</p>
+        <p>The license selector on a mod or asset currently offers <Special>MIT</Special>, <Special>Apache 2.0</Special>, <Special>BSD 3-Clause</Special>, <Special>GPL</Special>, <Special>CC0</Special>, <Special>CC BY</Special>, <Special>CC BY-NC</Special> and <Special>All Rights Reserved</Special>. It is a deliberately short, curated list rather than the whole SPDX catalogue, because every entry on it carries a plain-English explanation of what it actually permits. If the license you want is not on it, state it clearly in your item{"'"}s description and include the full license text in your download — that is what legally governs your work either way.</p>
+
+        <LegalBlock title="The License and the Permissions Tab Are Not the Same Thing">
+            <p>Alongside the license, an item carries a set of <Special>owner policies</Special> — whether redistribution, modification and commercial use are allowed, and whether credit or share-alike is required. These sit next to the license on the item{"'"}s page and speak the same vocabulary on purpose.</p>
+            <p>They are not a substitute for it. The <Special>license is the legal instrument</Special>; the policies are the owner saying what they will and will not object to on top of it. Where the two disagree, a reader should assume the more restrictive one applies and <Special>ask the author</Special>. If you are the author, make sure they agree — granting MIT and then stating &quot;no commercial use&quot; is a contradiction, and MIT is the half that is enforceable against you.</p>
+        </LegalBlock>
 
         <LegalBlock title="Two Kinds of Work, Two Kinds of License">
             <p>Modding covers two quite different things, and they want different licenses:</p>
@@ -125,6 +130,12 @@ const lastUpdated = "July 27, 2026"
         <p>You are not obliged to open your work. <Special>All Rights Reserved</Special> means people may download and use your mod as published, but may not redistribute, modify, repackage or fork it without your permission.</p>
         <p>This is a legitimate choice — but if you make it, be explicit about it. Say what <Special>is</Special> allowed. Most disputes in modding start not with malice but with a creator who never stated their terms and a user who guessed wrong. A short, clear paragraph in your description prevents almost all of them.</p>
         <p>Custom licenses are allowed, but be careful. Homemade terms are frequently ambiguous, unenforceable, or accidentally incompatible with the code they are built on. Prefer a standard license wherever one fits.</p>
+
+        <LegalBlock title="Charging for an Item">
+            <p>TMC lets a creator charge <Special>credits</Special> for access to an item. Charging for something and open-sourcing it are <Special>not</Special> mutually exclusive — you may sell a GPL mod, and the GPL does not stop you. What it does mean is that whoever pays for it receives the GPL{"'"}s rights, including the right to redistribute it themselves, for free, to anybody they like.</p>
+            <p>So decide honestly what you are selling. If the answer is &quot;convenience, support and my continued attention&quot;, a permissive or copyleft license is perfectly compatible with a price. If the answer is &quot;exclusive access&quot;, then <Special>All Rights Reserved</Special> is the license that matches, and choosing MIT instead undoes the paywall the same afternoon somebody re-uploads it.</p>
+            <p>You may not charge for content whose underlying license, or whose game{"'"}s terms, prohibit monetisation — see our <CLink href="/tos">terms of service</CLink>.</p>
+        </LegalBlock>
     </LegalSection>
 
     <LegalSection title="Choosing a License" icon={ListChecks}>
