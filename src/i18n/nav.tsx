@@ -24,6 +24,8 @@ import {
     UserCheck,
     Lightbulb,
     Mail,
+    Bug,
+    ScrollText,
 } from 'lucide-react'
 // lucide dropped brand marks, so Discord stays on react-icons — website-city
 // makes the same exception.
@@ -38,6 +40,11 @@ const DISCORD = 'https://discord.moddingcommunity.com'
 // to be — city moved to it and this catalogue mirrors city.
 const ROADMAP = '/roadmap'
 const FEEDBACK = '/feedback'
+// City's own changelog (what shipped) and bug tracker (defect reports, which
+// used to be a feedback type). Both sit beside the roadmap and the feedback
+// board in city's Resources menu and in its footer, so they do here too.
+const CHANGELOG = '/changelog'
+const BUGS = '/bugs'
 // City's own contact page (`CONTACT_URL` there), not a mailto — the page
 // carries the address, the Discord invite and the staff directory.
 const CONTACT = '/contact'
@@ -168,13 +175,32 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     desc: t('nav.roadmap.desc'),
                 },
                 {
-                    // City's own feedback board — suggestions, bug reports and
-                    // votes. Beside the roadmap on purpose: one says what is
-                    // planned, the other is where people ask for things to be.
+                    // City's own feedback board — suggestions and votes. Beside
+                    // the roadmap on purpose: one says what is planned, the
+                    // other is where people ask for things to be.
                     label: t('nav.feedback.label'),
                     href: FEEDBACK,
                     icon: Lightbulb,
                     desc: t('nav.feedback.desc'),
+                },
+                {
+                    // The site's own changelog — what actually shipped. It sits
+                    // with the roadmap (what is planned) and feedback (what is
+                    // asked for), which is the order those three are read in.
+                    label: t('nav.changelog.label'),
+                    href: CHANGELOG,
+                    icon: ScrollText,
+                    desc: t('nav.changelog.desc'),
+                },
+                {
+                    // The bug tracker, which is where defect reports go now:
+                    // they were previously a feedback type, and a report that
+                    // needs steps to reproduce, a severity and a confirmed queue
+                    // has nothing in common with "please add dark mode".
+                    label: t('nav.bugs.label'),
+                    href: BUGS,
+                    icon: Bug,
+                    desc: t('nav.bugs.desc'),
                 },
                 {
                     // City's contact page — email, Discord and the staff
@@ -194,32 +220,93 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
     ]
 }
 
-/** Footer quick-link columns, translated via `t`. */
+/**
+ * Footer quick-link columns — a mirror of website-city's `FOOTER_LINKS`
+ * (`src/app/_components/ui/shell/nav-config.ts`), which is the source of truth
+ * for the columns, their entries and their order. Labels come from `footer.*`,
+ * ported verbatim from city's `locales/<lang>/footer.json`, so both footers read
+ * identically in every locale.
+ *
+ * The socials row and the brand mark beside these columns are the shared
+ * <Footer/>'s own defaults, which already carry city's accounts and hover
+ * colours — so neither is passed here.
+ *
+ * If city's FOOTER_LINKS changes, change this with it.
+ */
 export function buildFooterColumns(t: TFunc): FooterColumn[] {
     return [
         {
-            heading: t('sections.explore'),
+            heading: t('footer.headings.explore'),
             links: [
-                { label: t('common.apps'), href: '/apps' },
-                { label: t('common.assets'), href: '/assets' },
-                { label: t('common.mods'), href: '/mods' },
-                { label: t('common.servers'), href: '/servers' },
-                { label: t('common.communities'), href: '/communities' },
+                { label: t('footer.links.apps'), href: '/apps' },
+                { label: t('footer.links.assets'), href: '/assets' },
+                { label: t('footer.links.mods'), href: '/mods' },
+                { label: t('footer.links.servers'), href: '/servers' },
+                { label: t('footer.links.parties'), href: '/parties' },
+                {
+                    label: t('footer.links.communities'),
+                    href: '/communities',
+                },
+                {
+                    label: t('footer.links.collections'),
+                    href: '/collections',
+                },
+                { label: t('footer.links.groups'), href: '/groups' },
+                // The member directory, not the column heading above it — city
+                // names this link "Community" as well.
+                { label: t('footer.links.community'), href: '/community' },
+                { label: t('footer.links.banners'), href: '/banners' },
             ],
         },
         {
-            heading: t('sections.community'),
+            heading: t('footer.headings.community'),
             links: [
-                { label: t('common.blog'), href: '/blog/' },
-                { label: t('common.discord'), href: DISCORD, external: true },
+                {
+                    label: t('footer.links.discord'),
+                    href: DISCORD,
+                    external: true,
+                },
+                // The blog lives on this site, so it keeps the trailing slash
+                // Astro's directory output serves it under.
+                { label: t('footer.links.blog'), href: '/blog/' },
+                {
+                    label: t('footer.links.activity'),
+                    href: '/community/activity',
+                },
+                {
+                    label: t('footer.links.discussions'),
+                    href: '/discussions',
+                },
+                { label: t('footer.links.media'), href: '/media/browse' },
+                { label: t('footer.links.contact'), href: CONTACT },
             ],
         },
         {
-            heading: t('sections.legal'),
+            /*
+             * The header's Resources menu, in the footer.
+             *
+             * Everything under that menu was reachable from the header and from
+             * nowhere else — the changelog, the roadmap, the feedback board and
+             * the bug tracker are the four pages a reader goes looking for once
+             * they want to know what shipped, what is planned, ask for
+             * something or report something. The menu's other entries (Discord,
+             * blog, community, discussions, banners, contact) are already in the
+             * columns beside this one.
+             */
+            heading: t('footer.headings.resources'),
             links: [
-                { label: t('common.tos'), href: '/tos' },
-                { label: t('common.privacy'), href: '/privacy-policy' },
-                { label: t('common.licenses'), href: '/licenses' },
+                { label: t('footer.links.changelog'), href: CHANGELOG },
+                { label: t('footer.links.roadmap'), href: ROADMAP },
+                { label: t('footer.links.feedback'), href: FEEDBACK },
+                { label: t('footer.links.bugs'), href: BUGS },
+            ],
+        },
+        {
+            heading: t('footer.headings.legal'),
+            links: [
+                { label: t('footer.links.tos'), href: '/tos' },
+                { label: t('footer.links.privacy'), href: '/privacy-policy' },
+                { label: t('footer.links.licenses'), href: '/licenses' },
             ],
         },
     ]

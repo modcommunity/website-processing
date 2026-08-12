@@ -45,6 +45,11 @@ export default function SiteHeader({
             activePath={stripLocale(pathName)}
             nav={nav}
             linkComponent={localeLink(locale)}
+            // Entries that no longer fit collapse into this dropdown as the bar
+            // narrows (see the shared <HeaderNav/>). Without it the trigger
+            // reads "More" in all nine languages; city passes its own `nav.more`
+            // here for the same reason.
+            moreLabel={t('nav.more')}
             left={
                 <MobileNav
                     activePath={stripLocale(pathName)}
