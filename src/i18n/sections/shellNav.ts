@@ -16,10 +16,19 @@ import type { LocaleT } from '../config'
  * languages, which is exactly what this catalogue exists to prevent. `getT`
  * falls back to English per key, so the rest of a locale still renders.
  */
-export type NavCatalog = Record<LocaleT, Record<string, { label: string; desc: string }>>
+export type NavEntry = { label: string; desc: string }
+
+/**
+ * A locale's header strings: one `{ label, desc }` per nav entry, plus the bare
+ * `more` string the shared <Header/> labels its overflow dropdown with (city
+ * passes its `nav.more` there, so it is a header string like the rest and lives
+ * with them rather than in the generic shell catalogue).
+ */
+export type NavCatalog = Record<LocaleT, Record<string, NavEntry | string>>
 
 export const shellNav: NavCatalog = {
     en: {
+        more: 'More',
         home: {
             label: 'Home',
             desc: 'Back to the community hub',
@@ -81,6 +90,18 @@ export const shellNav: NavCatalog = {
             label: 'Feedback',
             desc: 'Suggest, report and vote',
         },
+        // The site's own changelog — what actually shipped. English-only for the
+        // same reason as the entries above it.
+        changelog: {
+            label: 'Changelog',
+            desc: "What we've shipped, newest first",
+        },
+        // The bug tracker, which is where defect reports go now that they are
+        // no longer a feedback type. English-only, like its neighbours.
+        bugs: {
+            label: 'Bug Tracker',
+            desc: "Report a defect, or say you're hitting one too",
+        },
         // English-only for the same reason as `community`, `banners` and
         // `feedback` above: city's nav.json carries `items.contact` in English
         // alone and merges English under every locale.
@@ -94,6 +115,7 @@ export const shellNav: NavCatalog = {
         },
     },
     es: {
+        more: 'Más',
         home: {
             label: 'Inicio',
             desc: 'Volver al centro de la comunidad',
@@ -140,6 +162,7 @@ export const shellNav: NavCatalog = {
         },
     },
     fr: {
+        more: 'Plus',
         home: {
             label: 'Accueil',
             desc: 'Retour au hub de la communauté',
@@ -186,6 +209,7 @@ export const shellNav: NavCatalog = {
         },
     },
     de: {
+        more: 'Mehr',
         home: {
             label: 'Startseite',
             desc: 'Zurück zum Community-Hub',
@@ -232,6 +256,7 @@ export const shellNav: NavCatalog = {
         },
     },
     ru: {
+        more: 'Ещё',
         home: {
             label: 'Главная',
             desc: 'Вернуться на главную сообщества',
@@ -278,6 +303,7 @@ export const shellNav: NavCatalog = {
         },
     },
     nl: {
+        more: 'Meer',
         home: {
             label: 'Home',
             desc: 'Terug naar de community-hub',
@@ -324,6 +350,7 @@ export const shellNav: NavCatalog = {
         },
     },
     ja: {
+        more: 'その他',
         home: {
             label: 'ホーム',
             desc: 'コミュニティハブに戻る',
@@ -370,6 +397,7 @@ export const shellNav: NavCatalog = {
         },
     },
     zh: {
+        more: '更多',
         home: {
             label: '首页',
             desc: '返回社区主页',
@@ -416,6 +444,7 @@ export const shellNav: NavCatalog = {
         },
     },
     pt: {
+        more: 'Mais',
         home: {
             label: 'Início',
             desc: 'Voltar ao centro da comunidade',

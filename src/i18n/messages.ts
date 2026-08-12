@@ -15,6 +15,7 @@ import { platform } from './sections/platform'
 import { joinCommunity } from './sections/joinCommunity'
 import { shellNav } from './sections/shellNav'
 import { shellSidebar } from './sections/shellSidebar'
+import { shellFooter } from './sections/shellFooter'
 
 /**
  * The landing site's message catalogue. `en` is the reference (complete) shape;
@@ -27,33 +28,6 @@ import { shellSidebar } from './sections/shellSidebar'
  * section by section.
  */
 export const en = {
-    common: {
-        home: 'Home',
-        apps: 'Apps',
-        assets: 'Assets',
-        mods: 'Mods',
-        servers: 'Servers',
-        communities: 'Communities',
-        collections: 'Collections',
-        blog: 'Blog',
-        discord: 'Discord',
-        roadmap: 'Roadmap',
-        knowledgebase: 'Knowledgebase',
-        browse: 'Browse',
-        tos: 'Terms of Service',
-        privacy: 'Privacy Policy',
-        licenses: 'Licenses',
-    },
-    sections: {
-        explore: 'Explore',
-        discover: 'Discover',
-        community: 'Community',
-        legal: 'Legal',
-    },
-    footer: {
-        slogan: 'Taking modding to the next level.',
-        copyright: '© {year} The Modding Community. All rights reserved.',
-    },
     sidebar: {
         expand: 'Expand sidebar',
         collapse: 'Collapse sidebar',
@@ -86,34 +60,6 @@ type DeepPartial<T> = {
 }
 
 const es: DeepPartial<Messages> = {
-    common: {
-        home: 'Inicio',
-        apps: 'Aplicaciones',
-        assets: 'Recursos',
-        mods: 'Mods',
-        servers: 'Servidores',
-        communities: 'Comunidades',
-        collections: 'Colecciones',
-        blog: 'Blog',
-        discord: 'Discord',
-        roadmap: 'Hoja de ruta',
-        knowledgebase: 'Base de conocimientos',
-        browse: 'Explorar',
-        tos: 'Términos del servicio',
-        privacy: 'Política de privacidad',
-        licenses: 'Licencias',
-    },
-    sections: {
-        explore: 'Explorar',
-        discover: 'Descubrir',
-        community: 'Comunidad',
-        legal: 'Legal',
-    },
-    footer: {
-        slogan: 'Llevando el modding al siguiente nivel.',
-        copyright:
-            '© {year} The Modding Community. Todos los derechos reservados.',
-    },
     sidebar: {
         expand: 'Expandir barra lateral',
         collapse: 'Contraer barra lateral',
@@ -132,33 +78,6 @@ const es: DeepPartial<Messages> = {
 }
 
 const fr: DeepPartial<Messages> = {
-    common: {
-        home: 'Accueil',
-        apps: 'Applications',
-        assets: 'Ressources',
-        mods: 'Mods',
-        servers: 'Serveurs',
-        communities: 'Communautés',
-        collections: 'Collections',
-        blog: 'Blog',
-        discord: 'Discord',
-        roadmap: 'Feuille de route',
-        knowledgebase: 'Base de connaissances',
-        browse: 'Parcourir',
-        tos: "Conditions d'utilisation",
-        privacy: 'Politique de confidentialité',
-        licenses: 'Licences',
-    },
-    sections: {
-        explore: 'Explorer',
-        discover: 'Découvrir',
-        community: 'Communauté',
-        legal: 'Mentions légales',
-    },
-    footer: {
-        slogan: 'Le modding passe à la vitesse supérieure.',
-        copyright: '© {year} The Modding Community. Tous droits réservés.',
-    },
     sidebar: {
         expand: 'Développer la barre latérale',
         collapse: 'Réduire la barre latérale',
@@ -180,33 +99,6 @@ const fr: DeepPartial<Messages> = {
 }
 
 const de: DeepPartial<Messages> = {
-    common: {
-        home: 'Startseite',
-        apps: 'Apps',
-        assets: 'Ressourcen',
-        mods: 'Mods',
-        servers: 'Server',
-        communities: 'Communitys',
-        collections: 'Sammlungen',
-        blog: 'Blog',
-        discord: 'Discord',
-        roadmap: 'Roadmap',
-        knowledgebase: 'Wissensdatenbank',
-        browse: 'Durchsuchen',
-        tos: 'Nutzungsbedingungen',
-        privacy: 'Datenschutzerklärung',
-        licenses: 'Lizenzen',
-    },
-    sections: {
-        explore: 'Erkunden',
-        discover: 'Entdecken',
-        community: 'Community',
-        legal: 'Rechtliches',
-    },
-    footer: {
-        slogan: 'Modding auf das nächste Level bringen.',
-        copyright: '© {year} The Modding Community. Alle Rechte vorbehalten.',
-    },
     sidebar: {
         expand: 'Seitenleiste ausklappen',
         collapse: 'Seitenleiste einklappen',
@@ -228,33 +120,6 @@ const de: DeepPartial<Messages> = {
 }
 
 const ru: DeepPartial<Messages> = {
-    common: {
-        home: 'Главная',
-        apps: 'Приложения',
-        assets: 'Ресурсы',
-        mods: 'Моды',
-        servers: 'Серверы',
-        communities: 'Сообщества',
-        collections: 'Коллекции',
-        blog: 'Блог',
-        discord: 'Discord',
-        roadmap: 'Дорожная карта',
-        knowledgebase: 'База знаний',
-        browse: 'Обзор',
-        tos: 'Условия использования',
-        privacy: 'Политика конфиденциальности',
-        licenses: 'Лицензии',
-    },
-    sections: {
-        explore: 'Обзор',
-        discover: 'Найти',
-        community: 'Сообщество',
-        legal: 'Правовая информация',
-    },
-    footer: {
-        slogan: 'Моддинг на новом уровне.',
-        copyright: '© {year} The Modding Community. Все права защищены.',
-    },
     sidebar: {
         expand: 'Развернуть боковую панель',
         collapse: 'Свернуть боковую панель',
@@ -273,34 +138,6 @@ const ru: DeepPartial<Messages> = {
 }
 
 const nl: DeepPartial<Messages> = {
-    common: {
-        home: 'Home',
-        apps: 'Apps',
-        assets: 'Assets',
-        mods: 'Mods',
-        servers: 'Servers',
-        communities: 'Gemeenschappen',
-        collections: 'Collecties',
-        blog: 'Blog',
-        discord: 'Discord',
-        roadmap: 'Roadmap',
-        knowledgebase: 'Kennisbank',
-        browse: 'Bladeren',
-        tos: 'Servicevoorwaarden',
-        privacy: 'Privacybeleid',
-        licenses: 'Licenties',
-    },
-    sections: {
-        explore: 'Verkennen',
-        discover: 'Ontdekken',
-        community: 'Community',
-        legal: 'Juridisch',
-    },
-    footer: {
-        slogan: 'Modding naar een hoger niveau tillen.',
-        copyright:
-            '© {year} The Modding Community. Alle rechten voorbehouden.',
-    },
     sidebar: {
         expand: 'Zijbalk uitklappen',
         collapse: 'Zijbalk inklappen',
@@ -319,33 +156,6 @@ const nl: DeepPartial<Messages> = {
 }
 
 const ja: DeepPartial<Messages> = {
-    common: {
-        home: 'ホーム',
-        apps: 'アプリ',
-        assets: 'アセット',
-        mods: 'Mod',
-        servers: 'サーバー',
-        communities: 'コミュニティ',
-        collections: 'コレクション',
-        blog: 'ブログ',
-        discord: 'Discord',
-        roadmap: 'ロードマップ',
-        knowledgebase: 'ナレッジベース',
-        browse: '閲覧',
-        tos: '利用規約',
-        privacy: 'プライバシーポリシー',
-        licenses: 'ライセンス',
-    },
-    sections: {
-        explore: '探索',
-        discover: '見つける',
-        community: 'コミュニティ',
-        legal: '法的情報',
-    },
-    footer: {
-        slogan: 'モッディングを次のレベルへ。',
-        copyright: '© {year} The Modding Community. 無断複写・転載を禁じます。',
-    },
     sidebar: {
         expand: 'サイドバーを展開',
         collapse: 'サイドバーを折りたたむ',
@@ -364,33 +174,6 @@ const ja: DeepPartial<Messages> = {
 }
 
 const zh: DeepPartial<Messages> = {
-    common: {
-        home: '主页',
-        apps: '应用',
-        assets: '资源',
-        mods: '模组',
-        servers: '服务器',
-        communities: '社区',
-        collections: '合集',
-        blog: '博客',
-        discord: 'Discord',
-        roadmap: '路线图',
-        knowledgebase: '知识库',
-        browse: '浏览',
-        tos: '服务条款',
-        privacy: '隐私政策',
-        licenses: '许可证',
-    },
-    sections: {
-        explore: '探索',
-        discover: '发现',
-        community: '社区',
-        legal: '法律',
-    },
-    footer: {
-        slogan: '将模组制作提升到新高度。',
-        copyright: '© {year} The Modding Community. 保留所有权利。',
-    },
     sidebar: {
         expand: '展开侧边栏',
         collapse: '折叠侧边栏',
@@ -409,34 +192,6 @@ const zh: DeepPartial<Messages> = {
 }
 
 const pt: DeepPartial<Messages> = {
-    common: {
-        home: 'Início',
-        apps: 'Aplicativos',
-        assets: 'Recursos',
-        mods: 'Mods',
-        servers: 'Servidores',
-        communities: 'Comunidades',
-        collections: 'Coleções',
-        blog: 'Blog',
-        discord: 'Discord',
-        roadmap: 'Roteiro',
-        knowledgebase: 'Base de conhecimento',
-        browse: 'Explorar',
-        tos: 'Termos de Serviço',
-        privacy: 'Política de Privacidade',
-        licenses: 'Licenças',
-    },
-    sections: {
-        explore: 'Explorar',
-        discover: 'Descobrir',
-        community: 'Comunidade',
-        legal: 'Jurídico',
-    },
-    footer: {
-        slogan: 'Levando o modding para o próximo nível.',
-        copyright:
-            '© {year} The Modding Community. Todos os direitos reservados.',
-    },
     sidebar: {
         expand: 'Expandir barra lateral',
         collapse: 'Recolher barra lateral',
@@ -507,12 +262,21 @@ for (const loc of LOCALES) {
         nav: shellNav[loc],
         /*
          * Primary-sidebar labels, likewise ported from city. Its own namespace
-         * rather than a merge into `common.*`: the rail needs ~35 strings, most
-         * of which (Overview, My Mods, Live now, …) mean nothing outside it, and
-         * keeping them together is what makes "does this match city's
-         * SIDEBAR_SECTIONS?" answerable by reading one file.
+         * rather than a merge into the shell strings above: the rail needs ~35
+         * strings, most of which (Overview, My Mods, Live now, …) mean nothing
+         * outside it, and keeping them together is what makes "does this match
+         * city's SIDEBAR_SECTIONS?" answerable by reading one file.
          */
         rail: shellSidebar[loc],
+        /*
+         * Footer slogan, copyright, headings and link labels, ported from
+         * city's `locales/<lang>/footer.json`. Its own namespace for the same
+         * reason as `rail`: it mirrors ONE of city's catalogues one-to-one, so
+         * "does this match city's footer?" is a single-file diff. The labels
+         * used to be spread through a generic `common.*` block that no other
+         * surface read, which is how the two footers drifted apart.
+         */
+        footer: shellFooter[loc],
     }
 }
 
