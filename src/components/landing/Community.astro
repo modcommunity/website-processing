@@ -1,6 +1,17 @@
 ---
-import { Facebook, Github, Mail, MessagesSquare, Twitter } from 'lucide-react';
-import { FaDiscord } from 'react-icons/fa6';
+import { Mail, MessagesSquare } from 'lucide-react';
+/*
+ * Brand marks come from react-icons, which is the exception this repo already
+ * made for Discord: lucide dropped its brand glyphs. Github / Twitter /
+ * Facebook lingered as deprecated aliases (13 ts(6385) hints across this repo)
+ * and are removed upstream in ~0.475, so they were a build break waiting for a
+ * bump. FaSteam also retires the hand-inlined Steam path below — lucide never
+ * had a Steam glyph, which is why it was inlined in the first place.
+ *
+ * The shared <Footer/> made the same swap in @modcommunity/shared 4.2.3, so the
+ * two social rows still render the same glyphs.
+ */
+import { FaDiscord, FaFacebookF, FaGithub, FaSteam, FaXTwitter } from 'react-icons/fa6';
 import Card from "../helper/Card.astro";
 import SectionIntro from "./helper/SectionIntro.astro";
 import { getT } from "../../i18n/t";
@@ -16,15 +27,11 @@ const t = getT(Astro.currentLocale);
  */
 const socials = [
     { label: 'Discord', href: 'https://discord.moddingcommunity.com', icon: FaDiscord },
-    { label: 'X (Twitter)', href: 'https://x.com/modcommunity_', icon: Twitter },
-    { label: 'GitHub', href: 'https://github.com/modcommunity', icon: Github },
-    { label: 'Steam', href: 'https://steamcommunity.com/groups/moddingcommunity', icon: null },
-    { label: 'Facebook', href: 'https://facebook.com/modcommunity', icon: Facebook },
+    { label: 'X (Twitter)', href: 'https://x.com/modcommunity_', icon: FaXTwitter },
+    { label: 'GitHub', href: 'https://github.com/modcommunity', icon: FaGithub },
+    { label: 'Steam', href: 'https://steamcommunity.com/groups/moddingcommunity', icon: FaSteam },
+    { label: 'Facebook', href: 'https://facebook.com/modcommunity', icon: FaFacebookF },
 ];
-
-// lucide has no Steam glyph, so the shared Footer inlines this path — kept
-// byte-identical here rather than reaching into the package's internals.
-const STEAM_PATH = "M11.98 2C6.53 2 2.06 6.2 2 11.52l5.29 2.18a2.9 2.9 0 0 1 1.63-.5l2.35-3.4v-.05a3.86 3.86 0 1 1 3.86 3.86h-.09l-3.35 2.39a2.9 2.9 0 0 1-5.76.44l-3.78-1.56A10 10 0 1 0 11.98 2Zm-3.4 15.18-1.21-.5a2.18 2.18 0 0 0 4-.24 2.18 2.18 0 0 0-2.9-2.62l1.25.52a1.6 1.6 0 1 1-1.23 2.95l-.01-.11ZM15.13 12a2.57 2.57 0 1 0 0-5.15 2.57 2.57 0 0 0 0 5.15Zm0-.8a1.77 1.77 0 1 1 0-3.54 1.77 1.77 0 0 1 0 3.55Z";
 ---
 
 <section class="px-4 py-20 container mx-auto flex flex-col gap-10">
@@ -73,13 +80,7 @@ const STEAM_PATH = "M11.98 2C6.53 2 2.06 6.2 2 11.52l5.29 2.18a2.9 2.9 0 0 1 1.6
                         title={label}
                         class="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-surface-secondary text-muted transition-colors hover:border-accent hover:text-accent"
                     >
-                        {Icon
-                            ? <Icon className="h-5 w-5" />
-                            : (
-                                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
-                                    <path d={STEAM_PATH} />
-                                </svg>
-                            )}
+                        <Icon className="h-5 w-5" />
                     </a>
                 ))}
             </div>

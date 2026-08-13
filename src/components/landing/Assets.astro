@@ -1,5 +1,7 @@
 ---
-import { Box, Code2, Github, Images, Star, Tags, Workflow } from 'lucide-react';
+import { Box, Code2, Images, Star, Tags, Workflow } from 'lucide-react';
+// lucide dropped its brand marks; see Community.astro.
+import { FaGithub } from 'react-icons/fa6';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
 import { getT } from "../../i18n/t";
@@ -31,7 +33,7 @@ const t = getT(Astro.currentLocale);
         <FeatureCard icon={Workflow} title={t('landing.assets.c5t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.assets.c5b')} />
         </FeatureCard>
-        <FeatureCard icon={Github} title={t('landing.assets.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={FaGithub} title={t('landing.assets.c6t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.assets.c6b')} />
         </FeatureCard>
     </div>

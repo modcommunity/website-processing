@@ -1,5 +1,7 @@
 ---
-import { Code2, Github, Heart, Users } from 'lucide-react';
+import { Code2, Heart, Users } from 'lucide-react';
+// lucide dropped its brand marks; see Community.astro.
+import { FaGithub } from 'react-icons/fa6';
 import HeadingTitle from "./heading/Title"
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
 import Card from "../helper/Card.astro"
@@ -53,7 +55,7 @@ const t = getT(Astro.currentLocale);
         </Card>
         <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
-                <Github className="h-6 w-6" />
+                <FaGithub className="h-6 w-6" />
             </span>
             <h3 class="text-xl">{t('landing.hero.card3Title')}</h3>
             <p class="text-muted [&_a]:text-accent [&_.special]:text-accent">
@@ -65,7 +67,7 @@ const t = getT(Astro.currentLocale);
                     target="_blank"
                     class="flex items-center justify-center gap-2 group btn btn-primary"
                 >
-                    <Github className="w-5 h-5" />
+                    <FaGithub className="w-5 h-5" />
                     <span>{t('landing.hero.ghButton')}</span>
                 </a>
                 <a

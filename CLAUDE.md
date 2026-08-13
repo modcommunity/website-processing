@@ -107,9 +107,19 @@ activates the shared theme's `.dark` token block. There is no theme toggle here.
   wordmark) are loaded via `@fontsource/*` imports in `Layout.astro`.
 - **Icons: `lucide-react` is the house set** — it is what website-city uses, so
   matching it is what keeps the two shells visually identical. `react-icons` is
-  kept *only* for brand marks lucide dropped (Discord); Steam is a small inline
-  SVG in the shared `Footer` for the same reason. Do not add new `react-icons`
-  imports. When an icon has a website-city counterpart, use **the same glyph**
+  kept *only* for **brand marks**, and that now means all of them: Discord, X,
+  GitHub, Steam and Facebook, from `react-icons/fa6`.
+
+  lucide dropped its brand glyphs. `Github`, `Twitter` and `Facebook` survived
+  as deprecated aliases — 13 `ts(6385)` hints in `astro check` — and are removed
+  upstream in ~0.475, so they were a build break waiting for a version bump.
+  Steam never had a lucide glyph at all, which is why `Community.astro` used to
+  carry a hand-inlined SVG path copied out of the shared `Footer`; `FaSteam`
+  retires both copies. The shared `Footer` made the same swap in
+  `@modcommunity/shared` 4.2.3, so the two social rows still match.
+
+  **Do not add new `react-icons` imports for anything that is not a brand mark**
+  — everything else has a lucide glyph and should use it. When an icon has a website-city counterpart, use **the same glyph**
   city uses (Apps→`Boxes`, Assets→`Cog`, Mods→`Hammer`, Servers→`Server`,
   Browse→`Search`, Knowledgebase→`BookOpen`, Blog→`Newspaper` in the header /
   `NotebookPen` in the sidebar) — see `../website-city`'s
