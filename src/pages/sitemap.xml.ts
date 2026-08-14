@@ -4,10 +4,13 @@ import { LOCALES, DEFAULT_LOCALE, localizeUrl, type LocaleT } from '../i18n/conf
 import { SITE_URL } from '../lib/site'
 
 /**
- * Routes that exist in every locale, as bare (default-locale) paths. Kept as a
- * hand-maintained list rather than a glob over `src/pages` because the two page
- * trees are not symmetric: `[lang]/community` has no unprefixed counterpart, so
- * globbing would emit URLs that 404 for English.
+ * Routes that exist in every locale, as bare (default-locale) paths.
+ *
+ * Hand-maintained rather than globbed over `src/pages` so that what the sitemap
+ * advertises is a deliberate choice. A glob would also sweep up `404.astro`,
+ * which must never be listed, and it would silently start publishing any route
+ * added to only one of the two page trees — the asymmetry that used to exist
+ * for `[lang]/community`, before that page moved to website-city.
  */
 const ROUTES = ['/', '/tos/', '/privacy-policy/', '/licenses/'] as const
 
