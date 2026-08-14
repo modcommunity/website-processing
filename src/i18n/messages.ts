@@ -16,6 +16,7 @@ import { joinCommunity } from './sections/joinCommunity'
 import { shellNav } from './sections/shellNav'
 import { shellSidebar } from './sections/shellSidebar'
 import { shellFooter } from './sections/shellFooter'
+import { notFound } from './sections/notFound'
 
 /**
  * The landing site's message catalogue. `en` is the reference (complete) shape;
@@ -277,6 +278,13 @@ for (const loc of LOCALES) {
          * surface read, which is how the two footers drifted apart.
          */
         footer: shellFooter[loc],
+        /*
+         * The 404 copy. Also its own namespace because 404.astro ships the
+         * whole catalogue to the browser and picks a locale at runtime — the
+         * static build cannot know which language an unmatched URL was meant
+         * to be.
+         */
+        notFound: notFound[loc],
     }
 }
 
