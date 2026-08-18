@@ -36,6 +36,27 @@
   h5,
   h6 {
     @apply font-bold text-text-primary font-pjs;
+
+    /*
+     * Let a heading break a word rather than widen the page.
+     *
+     * Headings are the largest type on the site and the most likely to meet a
+     * word longer than the column. English rarely produces one; Russian and
+     * German routinely do — "Полнофункциональная" is 350px of unbreakable text
+     * in a 288px column at 320px viewport, and the whole document then scrolls
+     * sideways by 46px on every page carrying that heading.
+     *
+     * It was invisible to the overflow audit for two runs because the *element*
+     * fits perfectly: the h2's box is 288px wide and well inside the viewport,
+     * and only its scrollWidth gives it away. An audit that asks which element
+     * sticks out finds nothing to blame.
+     *
+     * break-word rather than break-all: it only ever breaks a word that cannot
+     * fit on a line of its own, so nothing that already fits is re-wrapped and
+     * no other language is affected. Same fix, same reason, as the shared
+     * Footer's labels and CLink's text.
+     */
+    overflow-wrap: break-word;
   }
 
   h1 {
