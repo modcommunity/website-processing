@@ -14,7 +14,9 @@
     "//shared:flush": "Escape hatch only. Vite no longer pre-bundles the shared package (see optimizeDeps.exclude in astro.config.mjs), so this should not be needed. Never run it while `npm run dev` is up: it deletes the cache underneath the server and every client module then 404s/504s until you restart.",
     "shared:flush": "rm -rf node_modules/.vite",
     "shared:watch": "npm --prefix ../tmc-global/shared run dev",
-    "shared:status": "node -e \"const p=require('path'),f=require('fs'),d='node_modules/@modcommunity/shared',r=f.realpathSync(d);console.log(f.lstatSync(d).isSymbolicLink()?'local  -> '+p.relative(process.cwd(),r):'registry -> '+require(p.join(r,'package.json')).version)\""
+    "shared:status": "node -e \"const p=require('path'),f=require('fs'),d='node_modules/@modcommunity/shared',r=f.realpathSync(d);console.log(f.lstatSync(d).isSymbolicLink()?'local  -> '+p.relative(process.cwd(),r):'registry -> '+require(p.join(r,'package.json')).version)\"",
+    "audit:overflow": "node scripts/overflow-audit.mjs",
+    "audit:overflow:bisect": "node scripts/overflow-bisect.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^11.0.2",
