@@ -6,7 +6,11 @@ import { localeLink } from '../i18n/link'
 /** The landing site's footer — the shared website-city <Footer>, translated. */
 export default function SiteFooter({ locale = 'en' }: { locale?: string }) {
     const t = getT(locale)
-    const year = new Date().getFullYear()
+    // UTC, matching website-city's footer. `getFullYear()` reads the runtime's
+    // local zone — the build machine's when the page is generated, the viewer's
+    // when this island hydrates — and around New Year those disagree, so the
+    // copyright text node changes under the reader for no reason.
+    const year = new Date().getUTCFullYear()
 
     return (
         <Footer

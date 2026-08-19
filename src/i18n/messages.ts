@@ -32,6 +32,11 @@ export const en = {
     sidebar: {
         expand: 'Expand sidebar',
         collapse: 'Collapse sidebar',
+        // The rail rests collapsed and opens on hover, so its toggle PINS
+        // rather than expands — these are the labels the shared <Sidebar/>
+        // uses for it then, and city carries the same pair.
+        pin: 'Keep sidebar open',
+        unpin: 'Unpin sidebar',
     },
     // Labels for the mobile drawer trigger, ported verbatim from website-city's
     // `nav.mobile.*` so both shells announce the menu identically.
@@ -49,8 +54,8 @@ export const en = {
         toDark: 'Switch to dark mode',
     },
     picker: {
-        select: 'Select language',
-        current: 'Current language: {name}',
+        select: 'Select a language',
+        current: 'Language: {name}',
     },
 }
 
@@ -64,6 +69,8 @@ const es: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Expandir barra lateral',
         collapse: 'Contraer barra lateral',
+        pin: 'Mantener la barra lateral abierta',
+        unpin: 'Desanclar la barra lateral',
     },
     mobile: {
         open: 'Abrir menú de navegación',
@@ -72,16 +79,18 @@ const es: DeepPartial<Messages> = {
     },
     account: { signIn: 'Iniciar sesión', myAccount: 'Mi cuenta' },
     theme: {
-        toLight: 'Cambiar a modo claro',
-        toDark: 'Cambiar a modo oscuro',
+        toLight: 'Cambiar al modo claro',
+        toDark: 'Cambiar al modo oscuro',
     },
-    picker: { select: 'Seleccionar idioma', current: 'Idioma actual: {name}' },
+    picker: { select: 'Selecciona un idioma', current: 'Idioma: {name}' },
 }
 
 const fr: DeepPartial<Messages> = {
     sidebar: {
-        expand: 'Développer la barre latérale',
-        collapse: 'Réduire la barre latérale',
+        expand: 'Déplier la barre latérale',
+        collapse: 'Replier la barre latérale',
+        pin: 'Garder la barre latérale ouverte',
+        unpin: 'Détacher la barre latérale',
     },
     mobile: {
         open: 'Ouvrir le menu de navigation',
@@ -90,12 +99,12 @@ const fr: DeepPartial<Messages> = {
     },
     account: { signIn: 'Se connecter', myAccount: 'Mon compte' },
     theme: {
-        toLight: 'Passer en mode clair',
-        toDark: 'Passer en mode sombre',
+        toLight: 'Passer au mode clair',
+        toDark: 'Passer au mode sombre',
     },
     picker: {
-        select: 'Choisir la langue',
-        current: 'Langue actuelle : {name}',
+        select: 'Sélectionner une langue',
+        current: 'Langue : {name}',
     },
 }
 
@@ -103,6 +112,8 @@ const de: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Seitenleiste ausklappen',
         collapse: 'Seitenleiste einklappen',
+        pin: 'Seitenleiste offen halten',
+        unpin: 'Seitenleiste lösen',
     },
     mobile: {
         open: 'Navigationsmenü öffnen',
@@ -111,12 +122,12 @@ const de: DeepPartial<Messages> = {
     },
     account: { signIn: 'Anmelden', myAccount: 'Mein Konto' },
     theme: {
-        toLight: 'Zum hellen Modus wechseln',
-        toDark: 'Zum dunklen Modus wechseln',
+        toLight: 'Zu hellem Modus wechseln',
+        toDark: 'Zu dunklem Modus wechseln',
     },
     picker: {
         select: 'Sprache auswählen',
-        current: 'Aktuelle Sprache: {name}',
+        current: 'Sprache: {name}',
     },
 }
 
@@ -124,6 +135,8 @@ const ru: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Развернуть боковую панель',
         collapse: 'Свернуть боковую панель',
+        pin: 'Закрепить боковую панель',
+        unpin: 'Открепить боковую панель',
     },
     mobile: {
         open: 'Открыть меню навигации',
@@ -135,13 +148,15 @@ const ru: DeepPartial<Messages> = {
         toLight: 'Переключить на светлую тему',
         toDark: 'Переключить на тёмную тему',
     },
-    picker: { select: 'Выбрать язык', current: 'Текущий язык: {name}' },
+    picker: { select: 'Выберите язык', current: 'Язык: {name}' },
 }
 
 const nl: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Zijbalk uitklappen',
         collapse: 'Zijbalk inklappen',
+        pin: 'Zijbalk open houden',
+        unpin: 'Zijbalk losmaken',
     },
     mobile: {
         open: 'Navigatiemenu openen',
@@ -150,16 +165,18 @@ const nl: DeepPartial<Messages> = {
     },
     account: { signIn: 'Inloggen', myAccount: 'Mijn account' },
     theme: {
-        toLight: 'Schakel naar lichte modus',
-        toDark: 'Schakel naar donkere modus',
+        toLight: 'Overschakelen naar lichte modus',
+        toDark: 'Overschakelen naar donkere modus',
     },
-    picker: { select: 'Taal kiezen', current: 'Huidige taal: {name}' },
+    picker: { select: 'Kies een taal', current: 'Taal: {name}' },
 }
 
 const ja: DeepPartial<Messages> = {
     sidebar: {
-        expand: 'サイドバーを展開',
-        collapse: 'サイドバーを折りたたむ',
+        expand: 'サイドバーを開く',
+        collapse: 'サイドバーを閉じる',
+        pin: 'サイドバーを開いたままにする',
+        unpin: 'サイドバーの固定を解除',
     },
     mobile: {
         open: 'ナビゲーションメニューを開く',
@@ -168,16 +185,18 @@ const ja: DeepPartial<Messages> = {
     },
     account: { signIn: 'ログイン', myAccount: 'マイアカウント' },
     theme: {
-        toLight: 'ライトモードに切り替える',
-        toDark: 'ダークモードに切り替える',
+        toLight: 'ライトモードに切り替え',
+        toDark: 'ダークモードに切り替え',
     },
-    picker: { select: '言語を選択', current: '現在の言語: {name}' },
+    picker: { select: '言語を選択', current: '言語: {name}' },
 }
 
 const zh: DeepPartial<Messages> = {
     sidebar: {
         expand: '展开侧边栏',
-        collapse: '折叠侧边栏',
+        collapse: '收起侧边栏',
+        pin: '保持侧边栏展开',
+        unpin: '取消固定侧边栏',
     },
     mobile: {
         open: '打开导航菜单',
@@ -189,13 +208,15 @@ const zh: DeepPartial<Messages> = {
         toLight: '切换到浅色模式',
         toDark: '切换到深色模式',
     },
-    picker: { select: '选择语言', current: '当前语言：{name}' },
+    picker: { select: '选择语言', current: '语言：{name}' },
 }
 
 const pt: DeepPartial<Messages> = {
     sidebar: {
         expand: 'Expandir barra lateral',
         collapse: 'Recolher barra lateral',
+        pin: 'Manter a barra lateral aberta',
+        unpin: 'Desafixar a barra lateral',
     },
     mobile: {
         open: 'Abrir menu de navegação',
@@ -207,7 +228,7 @@ const pt: DeepPartial<Messages> = {
         toLight: 'Mudar para o modo claro',
         toDark: 'Mudar para o modo escuro',
     },
-    picker: { select: 'Selecionar idioma', current: 'Idioma atual: {name}' },
+    picker: { select: 'Selecione um idioma', current: 'Idioma: {name}' },
 }
 
 const SHELL: Record<LocaleT, DeepPartial<Messages>> = {

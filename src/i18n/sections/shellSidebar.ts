@@ -15,14 +15,15 @@ import type { LocaleT } from '../config'
  * truth for which entries the rail shows and in what order; this file only
  * carries their text.
  *
- * Several keys are English-only here (`overview`, `maps`, `activity`, `media`,
- * `messages`, `myFriends`, `myGroups`, and the Groups / Community / External
- * Sources headings). That is not an omission: city's own `locales/<lang>/nav.json`
- * carries them in English too — its request pipeline merges English under every
- * locale — so translating them here would make the landing site's rail read
- * DIFFERENTLY from the app's in the other eight languages, which is exactly what
- * this catalogue exists to prevent. `getT` falls back to English per key, so the
- * rest of a locale still renders. When city translates one of them, copy it across.
+ * City now translates every one of these keys itself, so nothing here is
+ * English-only any more (`overview`, `maps`, `activity`, `media`, `messages`,
+ * `myFriends`, `myGroups` and the Groups / Community / External Sources
+ * headings used to be, because city carried them in English alone). A key city
+ * ever carries in English alone must STAY English here too: its request
+ * pipeline merges English under every locale, so translating one on this side
+ * alone would make the landing site's rail read DIFFERENTLY from the app's in
+ * the other eight languages, which is exactly what this catalogue exists to
+ * prevent. `getT` falls back to English per key, so a gap never leaks a raw key.
  */
 export type SidebarCatalog = Record<
     LocaleT,
@@ -51,6 +52,7 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Communities',
             articles: 'Articles',
             collections: 'Collections',
+            categories: 'Categories',
             groups: 'Groups',
             community: 'Community',
             sources: 'External Sources',
@@ -60,9 +62,9 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Add',
             browse: 'Browse',
             maps: 'Maps',
-            knowledgebase: 'Knowledgebase',
             blog: 'Blog',
             activity: 'Activity',
+            discussions: 'Discussions',
             users: 'Users',
             media: 'Media',
             messages: 'Messages',
@@ -78,8 +80,6 @@ export const shellSidebar: SidebarCatalog = {
             myGroups: 'My Groups',
             myFriends: 'My Friends',
         },
-        // English-only, like the other keys city carries in English alone.
-        // Copied verbatim from city's `nav.pillars.*`.
         pillars: {
             apps: {
                 overview: 'Stats and highlights across every app',
@@ -128,13 +128,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Comunidades',
             articles: 'Artículos',
             collections: 'Colecciones',
+            categories: 'Categorías',
+            groups: 'Grupos',
+            community: 'Comunidad',
+            sources: 'Fuentes externas',
         },
         items: {
+            overview: 'Resumen',
             add: 'Añadir',
             browse: 'Explorar',
-            knowledgebase: 'Base de conocimiento',
+            maps: 'Mapas',
             blog: 'Blog',
+            activity: 'Actividad',
+            discussions: 'Debates',
             users: 'Usuarios',
+            media: 'Multimedia',
+            messages: 'Mensajes',
             liveParties: 'En directo',
             friendParties: 'Partidas de amigos',
             myAssets: 'Mis recursos',
@@ -144,6 +153,43 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'Mis comunidades',
             myArticles: 'Mis artículos',
             myCollections: 'Mis colecciones',
+            myGroups: 'Mis grupos',
+            myFriends: 'Mis amigos',
+        },
+        pillars: {
+            apps: {
+                overview: 'Estadísticas y destacados de todas las aplicaciones',
+                browse:
+                    'Busca entre todos los juegos, motores y aplicaciones que seguimos',
+            },
+            assets: {
+                overview: 'Novedades, lo mejor y las tendencias en recursos',
+                add: 'Comparte tu trabajo con la comunidad',
+                browse: 'Encuentra algo para tu juego',
+                mine: 'Recursos que has publicado',
+            },
+            mods: {
+                overview: 'Novedades, lo mejor y las tendencias en mods',
+                add: 'Publica tu mod',
+                browse: 'Descubre los mods más recientes',
+                mine: 'Mods que has publicado',
+            },
+            servers: {
+                overview:
+                    'Jugadores en directo y los servidores donde está la gente',
+                add: 'Haz que sigamos tu servidor',
+                browse: 'Explorador de servidores en directo',
+                maps: 'Mapas jugados en los servidores que seguimos',
+                mine: 'Servidores que administras',
+            },
+            parties: {
+                overview: 'Quién está jugando ahora mismo',
+                add: 'Crea una partida y elige un juego',
+                browse: 'Todas las partidas, abiertas y en curso',
+                live: 'Partidas que se están jugando ahora',
+                friends: 'Partidas en las que están tus amigos',
+                mine: 'Partidas que has creado o a las que te has unido',
+            },
         },
         share: {
             title: 'Comparte tu trabajo',
@@ -160,13 +206,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Communautés',
             articles: 'Articles',
             collections: 'Collections',
+            categories: 'Catégories',
+            groups: 'Groupes',
+            community: 'Communauté',
+            sources: 'Sources externes',
         },
         items: {
+            overview: 'Aperçu',
             add: 'Ajouter',
             browse: 'Parcourir',
-            knowledgebase: 'Base de connaissances',
+            maps: 'Cartes',
             blog: 'Blog',
+            activity: 'Activité',
+            discussions: 'Discussions',
             users: 'Utilisateurs',
+            media: 'Médias',
+            messages: 'Messages',
             liveParties: 'En direct',
             friendParties: "Sessions d'amis",
             myAssets: 'Mes ressources',
@@ -176,6 +231,42 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'Mes communautés',
             myArticles: 'Mes articles',
             myCollections: 'Mes collections',
+            myGroups: 'Mes groupes',
+            myFriends: 'Mes amis',
+        },
+        pillars: {
+            apps: {
+                overview: 'Statistiques et temps forts de toutes les applis',
+                browse:
+                    'Parcourez tous les jeux, moteurs et applis que nous suivons',
+            },
+            assets: {
+                overview: 'Nouveautés, meilleures ressources et tendances',
+                add: 'Partagez votre travail avec la communauté',
+                browse: 'Trouvez de quoi enrichir votre jeu',
+                mine: 'Ressources que vous avez publiées',
+            },
+            mods: {
+                overview: 'Nouveautés, meilleurs mods et tendances',
+                add: 'Publiez votre mod',
+                browse: 'Découvrez les derniers mods',
+                mine: 'Mods que vous avez publiés',
+            },
+            servers: {
+                overview: 'Nombre de joueurs en direct et serveurs fréquentés',
+                add: 'Faites suivre votre serveur',
+                browse: 'Navigateur de serveurs en direct',
+                maps: 'Cartes jouées sur les serveurs que nous suivons',
+                mine: 'Serveurs que vous gérez',
+            },
+            parties: {
+                overview: 'Qui joue en ce moment',
+                add: 'Lancez une session et choisissez un jeu',
+                browse: 'Toutes les sessions, ouvertes et en cours',
+                live: 'Sessions en cours à cet instant',
+                friends: 'Sessions auxquelles participent vos amis',
+                mine: 'Sessions que vous avez créées ou rejointes',
+            },
         },
         share: {
             title: 'Partagez votre travail',
@@ -192,13 +283,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Communitys',
             articles: 'Artikel',
             collections: 'Sammlungen',
+            categories: 'Kategorien',
+            groups: 'Gruppen',
+            community: 'Community',
+            sources: 'Externe Quellen',
         },
         items: {
+            overview: 'Übersicht',
             add: 'Hinzufügen',
             browse: 'Durchsuchen',
-            knowledgebase: 'Wissensdatenbank',
+            maps: 'Maps',
             blog: 'Blog',
+            activity: 'Aktivität',
+            discussions: 'Diskussionen',
             users: 'Benutzer',
+            media: 'Medien',
+            messages: 'Nachrichten',
             liveParties: 'Jetzt live',
             friendParties: 'Partys von Freunden',
             myAssets: 'Meine Assets',
@@ -208,6 +308,44 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'Meine Communitys',
             myArticles: 'Meine Artikel',
             myCollections: 'Meine Sammlungen',
+            myGroups: 'Meine Gruppen',
+            myFriends: 'Meine Freunde',
+        },
+        pillars: {
+            apps: {
+                overview: 'Statistiken und Highlights aus allen Apps',
+                browse:
+                    'Durchsuche jedes Spiel, jede Engine und jede App, die wir erfassen',
+            },
+            assets: {
+                overview: 'Was es Neues, Bestes und Angesagtes bei Assets gibt',
+                add: 'Teilen Sie Ihre Arbeit mit der Community',
+                browse: 'Finden Sie etwas für Ihr Spiel',
+                mine: 'Assets, die Sie veröffentlicht haben',
+            },
+            mods: {
+                overview: 'Was es Neues, Bestes und Angesagtes bei Mods gibt',
+                add: 'Veröffentlichen Sie Ihren Mod',
+                browse: 'Entdecke die neuesten Mods',
+                mine: 'Mods, die Sie veröffentlicht haben',
+            },
+            servers: {
+                overview:
+                    'Live-Spielerzahlen und die Server, auf denen gespielt wird',
+                add: 'Lassen Sie Ihren Server erfassen',
+                browse: 'Live-Serverbrowser',
+                maps:
+                    'Maps, die auf den von uns erfassten Servern gespielt werden',
+                mine: 'Server, die Sie verwalten',
+            },
+            parties: {
+                overview: 'Wer gerade spielt',
+                add: 'Starte eine Party und wähle ein Spiel',
+                browse: 'Alle Partys, offen und laufend',
+                live: 'Partys, die gerade laufen',
+                friends: 'Partys, in denen Ihre Freunde sind',
+                mine: 'Partys, die Sie erstellt haben oder in denen Sie sind',
+            },
         },
         share: {
             title: 'Teilen Sie Ihre Arbeit',
@@ -224,13 +362,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Сообщества',
             articles: 'Статьи',
             collections: 'Коллекции',
+            categories: 'Категории',
+            groups: 'Группы',
+            community: 'Сообщество',
+            sources: 'Внешние источники',
         },
         items: {
+            overview: 'Обзор',
             add: 'Добавить',
             browse: 'Обзор',
-            knowledgebase: 'База знаний',
+            maps: 'Карты',
             blog: 'Блог',
+            activity: 'Активность',
+            discussions: 'Обсуждения',
             users: 'Пользователи',
+            media: 'Медиа',
+            messages: 'Сообщения',
             liveParties: 'Сейчас в игре',
             friendParties: 'Пати друзей',
             myAssets: 'Мои ресурсы',
@@ -240,6 +387,42 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'Мои сообщества',
             myArticles: 'Мои статьи',
             myCollections: 'Мои коллекции',
+            myGroups: 'Мои группы',
+            myFriends: 'Мои друзья',
+        },
+        pillars: {
+            apps: {
+                overview: 'Статистика и лучшее по всем играм',
+                browse:
+                    'Ищите среди всех игр, движков и приложений, что мы отслеживаем',
+            },
+            assets: {
+                overview: 'Новинки, лучшее и популярное среди ресурсов',
+                add: 'Поделитесь своей работой с сообществом',
+                browse: 'Найдите что-нибудь для своей игры',
+                mine: 'Ресурсы, которые вы опубликовали',
+            },
+            mods: {
+                overview: 'Новинки, лучшее и популярное среди модов',
+                add: 'Опубликуйте свой мод',
+                browse: 'Откройте для себя новейшие моды',
+                mine: 'Моды, которые вы опубликовали',
+            },
+            servers: {
+                overview: 'Онлайн игроков и серверы, где сейчас играют',
+                add: 'Добавьте свой сервер в отслеживание',
+                browse: 'Живой браузер серверов',
+                maps: 'Карты, на которых играют на отслеживаемых серверах',
+                mine: 'Серверы, которыми вы управляете',
+            },
+            parties: {
+                overview: 'Кто играет прямо сейчас',
+                add: 'Создайте пати и выберите игру',
+                browse: 'Все пати — открытые и идущие',
+                live: 'Пати, играющие прямо сейчас',
+                friends: 'Пати, где сейчас ваши друзья',
+                mine: 'Пати, созданные вами или с вашим участием',
+            },
         },
         share: {
             title: 'Поделитесь своей работой',
@@ -256,13 +439,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Communities',
             articles: 'Artikelen',
             collections: 'Collecties',
+            categories: 'Categorieën',
+            groups: 'Groepen',
+            community: 'Community',
+            sources: 'Externe bronnen',
         },
         items: {
+            overview: 'Overzicht',
             add: 'Toevoegen',
             browse: 'Bekijken',
-            knowledgebase: 'Kennisbank',
+            maps: 'Maps',
             blog: 'Blog',
+            activity: 'Activiteit',
+            discussions: 'Discussies',
             users: 'Gebruikers',
+            media: 'Media',
+            messages: 'Berichten',
             liveParties: 'Nu live',
             friendParties: "Party's van vrienden",
             myAssets: 'Mijn assets',
@@ -272,6 +464,43 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'Mijn communities',
             myArticles: 'Mijn artikelen',
             myCollections: 'Mijn collecties',
+            myGroups: 'Mijn groepen',
+            myFriends: 'Mijn vrienden',
+        },
+        pillars: {
+            apps: {
+                overview: 'Statistieken en hoogtepunten uit alle apps',
+                browse:
+                    'Doorzoek elk spel, elke engine en elke app die we volgen',
+            },
+            assets: {
+                overview: 'Wat nieuw, top en trending is bij assets',
+                add: 'Deel je werk met de community',
+                browse: 'Vind iets voor je spel',
+                mine: 'Assets die je hebt gepubliceerd',
+            },
+            mods: {
+                overview: 'Wat nieuw, top en trending is bij mods',
+                add: 'Publiceer je mod',
+                browse: 'Ontdek de nieuwste mods',
+                mine: 'Mods die je hebt gepubliceerd',
+            },
+            servers: {
+                overview:
+                    'Live spelersaantallen en de servers waar mensen op zitten',
+                add: 'Laat je server volgen',
+                browse: 'Live serverbrowser',
+                maps: 'Maps die op onze gevolgde servers worden gespeeld',
+                mine: 'Servers die je beheert',
+            },
+            parties: {
+                overview: 'Wie er nu aan het spelen is',
+                add: 'Start een party en kies een spel',
+                browse: 'Elke party, open en bezig',
+                live: "Party's die op dit moment spelen",
+                friends: "Party's waar je vrienden in zitten",
+                mine: "Party's die je hebt aangemaakt of waaraan je meedoet",
+            },
         },
         share: {
             title: 'Deel je werk',
@@ -288,13 +517,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'コミュニティ',
             articles: '記事',
             collections: 'コレクション',
+            categories: 'カテゴリ',
+            groups: 'グループ',
+            community: 'コミュニティ',
+            sources: '外部ソース',
         },
         items: {
+            overview: '概要',
             add: '追加',
             browse: '探す',
-            knowledgebase: 'ナレッジベース',
+            maps: 'マップ',
             blog: 'ブログ',
+            activity: 'アクティビティ',
+            discussions: 'ディスカッション',
             users: 'ユーザー',
+            media: 'メディア',
+            messages: 'メッセージ',
             liveParties: '進行中',
             friendParties: 'フレンドのパーティー',
             myAssets: 'マイアセット',
@@ -304,6 +542,41 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'マイコミュニティ',
             myArticles: 'マイ記事',
             myCollections: 'マイコレクション',
+            myGroups: '自分のグループ',
+            myFriends: 'フレンド',
+        },
+        pillars: {
+            apps: {
+                overview: '全アプリの統計とハイライト',
+                browse: '追跡中のゲーム・エンジン・アプリをすべて検索',
+            },
+            assets: {
+                overview: 'アセットの新着・人気・急上昇',
+                add: '自分の作品をコミュニティに共有',
+                browse: '自分のゲームに合うものを探す',
+                mine: '自分が公開したアセット',
+            },
+            mods: {
+                overview: 'MOD の新着・人気・急上昇',
+                add: '自分の MOD を公開',
+                browse: '最新の MOD を見つける',
+                mine: '自分が公開した MOD',
+            },
+            servers: {
+                overview: 'リアルタイムのプレイヤー数と人が集まっているサーバー',
+                add: '自分のサーバーを追跡対象にする',
+                browse: 'ライブサーバーブラウザー',
+                maps: '追跡中のサーバーでプレイされているマップ',
+                mine: '自分が管理しているサーバー',
+            },
+            parties: {
+                overview: 'いま遊んでいる人',
+                add: 'パーティーを立てて、ゲームを選ぶ',
+                browse: '募集中・進行中を含むすべてのパーティー',
+                live: 'いまプレイ中のパーティー',
+                friends: 'フレンドが参加しているパーティー',
+                mine: '自分が作成または参加したパーティー',
+            },
         },
         share: {
             title: '作品を共有しよう',
@@ -320,13 +593,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: '社区',
             articles: '文章',
             collections: '合集',
+            categories: '分类',
+            groups: '群组',
+            community: '社区',
+            sources: '外部来源',
         },
         items: {
+            overview: '概览',
             add: '添加',
             browse: '浏览',
-            knowledgebase: '知识库',
+            maps: '地图',
             blog: '博客',
+            activity: '动态',
+            discussions: '讨论',
             users: '用户',
+            media: '媒体',
+            messages: '私信',
             liveParties: '进行中',
             friendParties: '好友的组队',
             myAssets: '我的资源',
@@ -336,6 +618,41 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: '我的社区',
             myArticles: '我的文章',
             myCollections: '我的合集',
+            myGroups: '我的群组',
+            myFriends: '我的好友',
+        },
+        pillars: {
+            apps: {
+                overview: '所有应用的统计与亮点',
+                browse: '搜索我们追踪的每一款游戏、引擎与应用',
+            },
+            assets: {
+                overview: '资源的最新、最热与流行趋势',
+                add: '与社区分享你的作品',
+                browse: '为你的游戏找点东西',
+                mine: '你发布的资源',
+            },
+            mods: {
+                overview: '模组的最新、最热与流行趋势',
+                add: '发布你的模组',
+                browse: '发现最新的模组',
+                mine: '你发布的模组',
+            },
+            servers: {
+                overview: '实时在线人数与玩家所在的服务器',
+                add: '让我们追踪你的服务器',
+                browse: '实时服务器浏览器',
+                maps: '我们追踪的服务器上正在游玩的地图',
+                mine: '你管理的服务器',
+            },
+            parties: {
+                overview: '此刻谁在游戏中',
+                add: '创建组队并选择游戏',
+                browse: '所有组队，开放中与进行中',
+                live: '此刻正在进行的组队',
+                friends: '你的好友所在的组队',
+                mine: '你创建或加入的组队',
+            },
         },
         share: {
             title: '分享你的作品',
@@ -352,13 +669,22 @@ export const shellSidebar: SidebarCatalog = {
             communities: 'Comunidades',
             articles: 'Artigos',
             collections: 'Coleções',
+            categories: 'Categorias',
+            groups: 'Grupos',
+            community: 'Comunidade',
+            sources: 'Fontes externas',
         },
         items: {
+            overview: 'Visão geral',
             add: 'Adicionar',
             browse: 'Explorar',
-            knowledgebase: 'Base de conhecimento',
+            maps: 'Mapas',
             blog: 'Blog',
+            activity: 'Atividade',
+            discussions: 'Discussões',
             users: 'Utilizadores',
+            media: 'Multimédia',
+            messages: 'Mensagens',
             liveParties: 'Ao vivo',
             friendParties: 'Partidas de amigos',
             myAssets: 'Os meus recursos',
@@ -368,6 +694,43 @@ export const shellSidebar: SidebarCatalog = {
             myCommunities: 'As minhas comunidades',
             myArticles: 'Os meus artigos',
             myCollections: 'As minhas coleções',
+            myGroups: 'Os meus grupos',
+            myFriends: 'Os meus amigos',
+        },
+        pillars: {
+            apps: {
+                overview: 'Estatísticas e destaques de todas as aplicações',
+                browse:
+                    'Pesquise todos os jogos, motores e aplicações que acompanhamos',
+            },
+            assets: {
+                overview: 'Novidades, destaques e tendências em recursos',
+                add: 'Partilhe o seu trabalho com a comunidade',
+                browse: 'Encontre algo para o seu jogo',
+                mine: 'Recursos que publicou',
+            },
+            mods: {
+                overview: 'Novidades, destaques e tendências em mods',
+                add: 'Publique o seu mod',
+                browse: 'Descubra os mods mais recentes',
+                mine: 'Mods que publicou',
+            },
+            servers: {
+                overview:
+                    'Contagens de jogadores ao vivo e os servidores onde as pessoas estão',
+                add: 'Coloque o seu servidor a ser acompanhado',
+                browse: 'Navegador de servidores ao vivo',
+                maps: 'Mapas jogados nos servidores que acompanhamos',
+                mine: 'Servidores que gere',
+            },
+            parties: {
+                overview: 'Quem está a jogar agora mesmo',
+                add: 'Crie uma partida e escolha um jogo',
+                browse: 'Todas as partidas, abertas e a decorrer',
+                live: 'Partidas a decorrer neste momento',
+                friends: 'Partidas em que os seus amigos estão',
+                mine: 'Partidas que criou ou a que se juntou',
+            },
         },
         share: {
             title: 'Partilhe o seu trabalho',

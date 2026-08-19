@@ -48,14 +48,27 @@ export default function SiteSidebar({
             sections={sections}
             expandActiveSection={false}
             linkComponent={localeLink(locale)}
+            /* Resting state is the icon rail: pointing at it opens the full
+               panel OVER the page, and the toggle pins that open. City made the
+               same move — the rail was spending 16rem of every page on a nav
+               nobody reads twice — and the two shells share one persisted flag,
+               so a reader who pinned it open in the app arrives here pinned. */
+            defaultCollapsed
+            hoverExpand
+            /* Plus Jakarta Sans for the rail alone, as in city: the nav is a
+               fixed set of short labels read at a glance rather than prose, and
+               its wider shapes hold up at 13px where the body face goes muddy. */
+            className="font-pjs"
             labels={{
                 expand: t('sidebar.expand'),
                 collapse: t('sidebar.collapse'),
+                pin: t('sidebar.pin'),
+                unpin: t('sidebar.unpin'),
             }}
             footer={
                 <a
                     href={shareHref}
-                    className="group relative block w-full overflow-hidden rounded-xl border border-accent/30 bg-gradient-to-br from-accent/15 to-[#5577f0]/5 p-4 text-left transition-all duration-300 hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20"
+                    className="group relative block w-full overflow-hidden rounded-xl border border-accent/30 bg-gradient-to-br from-accent/15 to-[#5577f0]/5 p-4 text-left transition-visual duration-300 hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20"
                 >
                     <div className="flex items-center gap-2 text-sm font-semibold text-foreground">
                         <Sparkles className="h-4 w-4 text-accent" />
@@ -64,7 +77,7 @@ export default function SiteSidebar({
                     <p className="mt-1 text-xs text-muted">
                         {t('rail.share.desc')}
                     </p>
-                    <span className="absolute -right-6 -top-6 h-16 w-16 rounded-full bg-accent/20 blur-2xl transition-all duration-500 group-hover:scale-150" />
+                    <span className="absolute -right-6 -top-6 h-16 w-16 rounded-full bg-accent/20 blur-2xl transition-visual duration-500 group-hover:scale-150" />
                 </a>
             }
             footerCollapsed={
@@ -72,7 +85,7 @@ export default function SiteSidebar({
                     href={shareHref}
                     title={shareTitle}
                     aria-label={shareTitle}
-                    className="group relative flex w-full items-center justify-center rounded-xl border border-accent/30 bg-gradient-to-br from-accent/15 to-[#5577f0]/5 p-3 text-accent transition-all duration-300 hover:border-accent/60"
+                    className="group relative flex w-full items-center justify-center rounded-xl border border-accent/30 bg-gradient-to-br from-accent/15 to-[#5577f0]/5 p-3 text-accent transition-visual duration-300 hover:border-accent/60"
                 >
                     <Sparkles className="h-4 w-4" />
                 </a>

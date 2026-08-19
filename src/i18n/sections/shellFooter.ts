@@ -12,16 +12,14 @@ import type { LocaleT } from '../config'
  * truth for which links the footer shows, in which column and in what order;
  * this file only carries their text.
  *
- * Most of the second, third and fourth columns are English-only here (the
- * Resources heading, `parties`, `groups`, `community`, `activity`, `media`,
- * `banners`, `contact`, `discussions`, `changelog`, `roadmap`, `feedback`,
- * `bugs`). That is not an omission: city's own `locales/<lang>/footer.json`
- * carries them in English too — its request pipeline merges English under every
- * locale — so translating them here would make the landing site's footer read
- * DIFFERENTLY from the app's in the other eight languages, which is exactly what
- * this catalogue exists to prevent. `getT` falls back to English per key, so the
- * rest of a locale still renders. When city translates one of them, copy it
- * across.
+ * City now translates every one of these keys itself, so nothing here is
+ * English-only any more (most of the second, third and fourth columns used to
+ * be, because city carried them in English alone). A key city ever carries in
+ * English alone must STAY English here too: its request pipeline merges English
+ * under every locale, so translating one on this side alone would make the
+ * landing site's footer read DIFFERENTLY from the app's in the other eight
+ * languages, which is exactly what this catalogue exists to prevent. `getT`
+ * falls back to English per key, so a gap never leaks a raw key.
  */
 export type FooterCatalog = Record<
     LocaleT,
@@ -35,7 +33,8 @@ export type FooterCatalog = Record<
 
 export const shellFooter: FooterCatalog = {
     en: {
-        slogan: 'Taking modding to the next level — mods, game assets, and servers for everyone.',
+        slogan:
+            'Taking modding to the next level — mods, game assets, and servers for everyone.',
         copyright: '© {year} The Modding Community. All rights reserved.',
         headings: {
             explore: 'Explore',
@@ -64,18 +63,21 @@ export const shellFooter: FooterCatalog = {
             roadmap: 'Roadmap',
             feedback: 'Feedback',
             bugs: 'Bug Tracker',
+            status: 'Site Status',
             tos: 'Terms of Service',
             privacy: 'Privacy Policy',
             licenses: 'Licenses',
         },
     },
     es: {
-        slogan: 'Llevamos el modding al siguiente nivel: mods, recursos de juego y servidores para todos.',
+        slogan:
+            'Llevamos el modding al siguiente nivel: mods, recursos de juego y servidores para todos.',
         copyright:
             '© {year} The Modding Community. Todos los derechos reservados.',
         headings: {
             explore: 'Explorar',
             community: 'Comunidad',
+            resources: 'Recursos',
             legal: 'Legal',
         },
         links: {
@@ -83,21 +85,36 @@ export const shellFooter: FooterCatalog = {
             assets: 'Recursos',
             mods: 'Mods',
             servers: 'Servidores',
+            parties: 'Partidas',
             communities: 'Comunidades',
             collections: 'Colecciones',
+            groups: 'Grupos',
+            community: 'Comunidad',
+            banners: 'Banners',
             discord: 'Discord',
             blog: 'Blog',
+            activity: 'Actividad',
+            discussions: 'Debates',
+            media: 'Multimedia',
+            contact: 'Contacto',
+            changelog: 'Novedades',
+            roadmap: 'Hoja de ruta',
+            feedback: 'Sugerencias',
+            bugs: 'Registro de errores',
+            status: 'Estado del sitio',
             tos: 'Términos del servicio',
             privacy: 'Política de privacidad',
             licenses: 'Licencias',
         },
     },
     fr: {
-        slogan: 'Le modding passe à la vitesse supérieure — mods, ressources de jeu et serveurs pour tous.',
+        slogan:
+            'Le modding passe à la vitesse supérieure — mods, ressources de jeu et serveurs pour tous.',
         copyright: '© {year} The Modding Community. Tous droits réservés.',
         headings: {
             explore: 'Explorer',
             community: 'Communauté',
+            resources: 'Ressources',
             legal: 'Mentions légales',
         },
         links: {
@@ -105,21 +122,36 @@ export const shellFooter: FooterCatalog = {
             assets: 'Ressources',
             mods: 'Mods',
             servers: 'Serveurs',
+            parties: 'Sessions',
             communities: 'Communautés',
             collections: 'Collections',
+            groups: 'Groupes',
+            community: 'Communauté',
+            banners: 'Bannières',
             discord: 'Discord',
             blog: 'Blog',
+            activity: 'Activité',
+            discussions: 'Discussions',
+            media: 'Médias',
+            contact: 'Nous contacter',
+            changelog: 'Journal des modifications',
+            roadmap: 'Feuille de route',
+            feedback: 'Suggestions',
+            bugs: 'Suivi des bugs',
+            status: 'État du site',
             tos: "Conditions d'utilisation",
             privacy: 'Politique de confidentialité',
             licenses: 'Licences',
         },
     },
     de: {
-        slogan: 'Modding auf das nächste Level bringen — Mods, Game-Assets und Server für alle.',
+        slogan:
+            'Modding auf das nächste Level bringen — Mods, Game-Assets und Server für alle.',
         copyright: '© {year} The Modding Community. Alle Rechte vorbehalten.',
         headings: {
             explore: 'Entdecken',
             community: 'Community',
+            resources: 'Ressourcen',
             legal: 'Rechtliches',
         },
         links: {
@@ -127,21 +159,36 @@ export const shellFooter: FooterCatalog = {
             assets: 'Assets',
             mods: 'Mods',
             servers: 'Server',
+            parties: 'Partys',
             communities: 'Communitys',
             collections: 'Sammlungen',
+            groups: 'Gruppen',
+            community: 'Community',
+            banners: 'Banner',
             discord: 'Discord',
             blog: 'Blog',
+            activity: 'Aktivität',
+            discussions: 'Diskussionen',
+            media: 'Medien',
+            contact: 'Kontakt',
+            changelog: 'Änderungsprotokoll',
+            roadmap: 'Roadmap',
+            feedback: 'Feedback',
+            bugs: 'Bug-Tracker',
+            status: 'Seitenstatus',
             tos: 'Nutzungsbedingungen',
             privacy: 'Datenschutzerklärung',
             licenses: 'Lizenzen',
         },
     },
     ru: {
-        slogan: 'Моддинг на новом уровне — моды, игровые ресурсы и серверы для всех.',
+        slogan:
+            'Моддинг на новом уровне — моды, игровые ресурсы и серверы для всех.',
         copyright: '© {year} The Modding Community. Все права защищены.',
         headings: {
             explore: 'Обзор',
             community: 'Сообщество',
+            resources: 'Ресурсы',
             legal: 'Правовая информация',
         },
         links: {
@@ -149,21 +196,36 @@ export const shellFooter: FooterCatalog = {
             assets: 'Ресурсы',
             mods: 'Моды',
             servers: 'Серверы',
+            parties: 'Пати',
             communities: 'Сообщества',
             collections: 'Коллекции',
+            groups: 'Группы',
+            community: 'Сообщество',
+            banners: 'Баннеры',
             discord: 'Discord',
             blog: 'Блог',
+            activity: 'Активность',
+            discussions: 'Обсуждения',
+            media: 'Медиа',
+            contact: 'Связаться с нами',
+            changelog: 'Список изменений',
+            roadmap: 'Дорожная карта',
+            feedback: 'Отзывы',
+            bugs: 'Трекер багов',
+            status: 'Состояние сайта',
             tos: 'Условия использования',
             privacy: 'Политика конфиденциальности',
             licenses: 'Лицензии',
         },
     },
     nl: {
-        slogan: 'Modding naar een hoger niveau — mods, game assets en servers voor iedereen.',
+        slogan:
+            'Modding naar een hoger niveau — mods, game assets en servers voor iedereen.',
         copyright: '© {year} The Modding Community. Alle rechten voorbehouden.',
         headings: {
             explore: 'Ontdekken',
             community: 'Community',
+            resources: 'Bronnen',
             legal: 'Juridisch',
         },
         links: {
@@ -171,10 +233,23 @@ export const shellFooter: FooterCatalog = {
             assets: 'Assets',
             mods: 'Mods',
             servers: 'Servers',
+            parties: "Party's",
             communities: 'Communities',
             collections: 'Collecties',
+            groups: 'Groepen',
+            community: 'Community',
+            banners: 'Banners',
             discord: 'Discord',
             blog: 'Blog',
+            activity: 'Activiteit',
+            discussions: 'Discussies',
+            media: 'Media',
+            contact: 'Contact',
+            changelog: 'Changelog',
+            roadmap: 'Roadmap',
+            feedback: 'Feedback',
+            bugs: 'Bugtracker',
+            status: 'Sitestatus',
             tos: 'Servicevoorwaarden',
             privacy: 'Privacybeleid',
             licenses: 'Licenties',
@@ -186,6 +261,7 @@ export const shellFooter: FooterCatalog = {
         headings: {
             explore: '探す',
             community: 'コミュニティ',
+            resources: 'リソース',
             legal: '規約',
         },
         links: {
@@ -193,10 +269,23 @@ export const shellFooter: FooterCatalog = {
             assets: 'アセット',
             mods: 'MOD',
             servers: 'サーバー',
+            parties: 'パーティー',
             communities: 'コミュニティ',
             collections: 'コレクション',
+            groups: 'グループ',
+            community: 'コミュニティ',
+            banners: 'バナー',
             discord: 'Discord',
             blog: 'ブログ',
+            activity: 'アクティビティ',
+            discussions: 'ディスカッション',
+            media: 'メディア',
+            contact: 'お問い合わせ',
+            changelog: '変更履歴',
+            roadmap: 'ロードマップ',
+            feedback: 'フィードバック',
+            bugs: 'バグトラッカー',
+            status: 'サイトステータス',
             tos: '利用規約',
             privacy: 'プライバシーポリシー',
             licenses: 'ライセンス',
@@ -208,6 +297,7 @@ export const shellFooter: FooterCatalog = {
         headings: {
             explore: '探索',
             community: '社区',
+            resources: '资源',
             legal: '法律信息',
         },
         links: {
@@ -215,22 +305,37 @@ export const shellFooter: FooterCatalog = {
             assets: '资源',
             mods: '模组',
             servers: '服务器',
+            parties: '组队',
             communities: '社区',
             collections: '合集',
+            groups: '群组',
+            community: '社区',
+            banners: '横幅',
             discord: 'Discord',
             blog: '博客',
+            activity: '动态',
+            discussions: '讨论',
+            media: '媒体',
+            contact: '联系我们',
+            changelog: '更新日志',
+            roadmap: '路线图',
+            feedback: '反馈',
+            bugs: '缺陷追踪',
+            status: '网站状态',
             tos: '服务条款',
             privacy: '隐私政策',
             licenses: '许可协议',
         },
     },
     pt: {
-        slogan: 'A levar o modding ao próximo nível — mods, recursos de jogo e servidores para todos.',
+        slogan:
+            'A levar o modding ao próximo nível — mods, recursos de jogo e servidores para todos.',
         copyright:
             '© {year} The Modding Community. Todos os direitos reservados.',
         headings: {
             explore: 'Explorar',
             community: 'Comunidade',
+            resources: 'Recursos',
             legal: 'Legal',
         },
         links: {
@@ -238,10 +343,23 @@ export const shellFooter: FooterCatalog = {
             assets: 'Recursos',
             mods: 'Mods',
             servers: 'Servidores',
+            parties: 'Partidas',
             communities: 'Comunidades',
             collections: 'Coleções',
+            groups: 'Grupos',
+            community: 'Comunidade',
+            banners: 'Banners',
             discord: 'Discord',
             blog: 'Blog',
+            activity: 'Atividade',
+            discussions: 'Discussões',
+            media: 'Multimédia',
+            contact: 'Contacte-nos',
+            changelog: 'Novidades',
+            roadmap: 'Roteiro',
+            feedback: 'Sugestões',
+            bugs: 'Registo de erros',
+            status: 'Estado do site',
             tos: 'Termos de Serviço',
             privacy: 'Política de Privacidade',
             licenses: 'Licenças',

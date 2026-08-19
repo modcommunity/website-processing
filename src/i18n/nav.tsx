@@ -1,5 +1,4 @@
 import {
-    Home,
     Boxes,
     Cog,
     Hammer,
@@ -10,6 +9,7 @@ import {
     Search,
     Compass,
     Users,
+    UsersRound,
     NotebookPen,
     FolderKey,
     Package,
@@ -19,6 +19,7 @@ import {
     Group,
     Puzzle,
     Activity,
+    FolderTree,
     MessageSquare,
     MessagesSquare,
     UserCheck,
@@ -48,89 +49,111 @@ const BUGS = '/bugs'
 // City's own contact page (`CONTACT_URL` there), not a mailto — the page
 // carries the address, the Discord invite and the staff directory.
 const CONTACT = '/contact'
+// City's status page — incidents and live checks, under the bug tracker in its
+// Resources menu.
+const STATUS = '/status'
 
 /**
- * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same six
- * top-level links plus the hrefless "Resources" dropdown, in the same order,
- * with the same icons and the same sub-labels. Labels/descriptions come from
- * `nav.*`, ported verbatim from city's `locales/<lang>/nav.json`, so both
- * headers read identically in every locale.
+ * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same four
+ * top-level entries, in the same order, with the same icons and the same
+ * sub-labels. Labels/descriptions come from `nav.*`, ported verbatim from
+ * city's `locales/<lang>/nav.json`, so both headers read identically in every
+ * locale.
  *
- * Each content pillar carries its sidebar section as a hover dropdown, exactly
- * as city does — the menu under "Assets" IS the rail's Assets section, so the
- * header and the rail cannot drift. The pillar itself still links to its landing
- * page; the menu only ever opens on hover.
+ * The bar is four entries wide, exactly as city's is: everything you can BROWSE
+ * under Explore, everywhere the community talks to us under Community, what we
+ * publish back at them under Resources, and the Blog on its own. Explore and
+ * Resources are hrefless (dropdown-only triggers) because neither has a page.
  *
- * `signedIn` drops the signed-in-only leaves ("My Mods", "Messages", …) from
- * those dropdowns, mirroring what <SiteSidebar/> does to the rail. Pass the
- * `tmc_auth` hint (see `lib/auth-hint`).
+ * The pillars no longer carry their sidebar section as a dropdown — city
+ * dropped that, so the per-pillar Add / Browse / My X routes are reached from
+ * the landing page or the rail, which still lists every section in full. That
+ * is also why nothing here is signed-in-only any more: the auth hint still
+ * shapes the RAIL (see `buildVisibleSidebarSections`), just not this.
  *
  * If city's PRIMARY_NAV changes, change this with it — that config is the
  * source of truth.
  */
-export function buildNav(t: TFunc, signedIn = false): NavItem[] {
-    // The rail's own sections, minus the leaves this visitor cannot use. The
-    // shared `NavLeaf` has no notion of `requiresAuth`, so it is stripped here.
-    const sections = buildSidebarSections(t)
-
-    const pillar = (label: string): NavLeaf[] => {
-        const section = sections.find((s) => s.label === label)
-
-        if (!section)
-            throw new Error(`nav: no sidebar section "${label}"`)
-
-        return section.items
-            .filter((item) => !item.requiresAuth || signedIn)
-            .map(({ requiresAuth: _requiresAuth, ...leaf }) => leaf)
-    }
-
+export function buildNav(t: TFunc): NavItem[] {
     return [
         {
-            label: t('nav.home.label'),
-            href: '/',
-            icon: Home,
-            desc: t('nav.home.desc'),
+            // Dropdown-only: city has no `/explore` page, and inventing one
+            // would duplicate the landing pages this menu already points at.
+            label: t('nav.explore.label'),
+            icon: Compass,
+            desc: t('nav.explore.desc'),
+            children: [
+                {
+                    label: t('nav.apps.label'),
+                    href: '/apps',
+                    icon: Boxes,
+                    desc: t('nav.apps.desc'),
+                },
+                {
+                    label: t('nav.mods.label'),
+                    href: '/mods',
+                    icon: Hammer,
+                    desc: t('nav.mods.desc'),
+                },
+                {
+                    label: t('nav.servers.label'),
+                    href: '/servers',
+                    icon: Server,
+                    desc: t('nav.servers.desc'),
+                },
+                {
+                    label: t('nav.assets.label'),
+                    href: '/assets',
+                    icon: Cog,
+                    desc: t('nav.assets.desc'),
+                },
+                {
+                    label: t('nav.collections.label'),
+                    href: '/collections',
+                    icon: Group,
+                    desc: t('nav.collections.desc'),
+                },
+                {
+                    label: t('nav.communities.label'),
+                    href: '/communities',
+                    icon: Users,
+                    desc: t('nav.communities.desc'),
+                },
+                {
+                    label: t('nav.articles.label'),
+                    href: '/articles',
+                    icon: Newspaper,
+                    desc: t('nav.articles.desc'),
+                },
+                {
+                    // Media has no landing page of its own — the browser IS the
+                    // page — so this points at `/media/browse`, as city's leaf
+                    // does, rather than at a `/media` that would 404.
+                    label: t('nav.media.label'),
+                    href: '/media/browse',
+                    icon: Images,
+                    desc: t('nav.media.desc'),
+                },
+                {
+                    label: t('nav.parties.label'),
+                    href: '/parties',
+                    icon: Gamepad2,
+                    desc: t('nav.parties.desc'),
+                },
+                {
+                    label: t('nav.groups.label'),
+                    href: '/groups',
+                    icon: UsersRound,
+                    desc: t('nav.groups.desc'),
+                },
+            ],
         },
         {
-            label: t('nav.apps.label'),
-            href: '/apps',
-            icon: Boxes,
-            desc: t('nav.apps.desc'),
-            children: pillar(t('rail.sections.apps')),
-        },
-        {
-            label: t('nav.assets.label'),
-            href: '/assets',
-            icon: Cog,
-            desc: t('nav.assets.desc'),
-            children: pillar(t('rail.sections.assets')),
-        },
-        {
-            label: t('nav.mods.label'),
-            href: '/mods',
-            icon: Hammer,
-            desc: t('nav.mods.desc'),
-            children: pillar(t('rail.sections.mods')),
-        },
-        {
-            label: t('nav.servers.label'),
-            href: '/servers',
-            icon: Server,
-            desc: t('nav.servers.desc'),
-            children: pillar(t('rail.sections.servers')),
-        },
-        {
-            label: t('nav.parties.label'),
-            href: '/parties',
-            icon: Gamepad2,
-            desc: t('nav.parties.desc'),
-            children: pillar(t('rail.sections.parties')),
-        },
-        {
-            // No href: a dropdown-only trigger, exactly as in website-city.
-            label: t('nav.resources.label'),
-            icon: FolderKey,
-            desc: t('nav.resources.desc'),
+            // The people pillar, and the places the community talks TO us.
+            label: t('nav.community.label'),
+            href: '/community',
+            icon: Users,
+            desc: t('nav.community.desc'),
             children: [
                 {
                     label: t('nav.discord.label'),
@@ -138,35 +161,6 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     icon: FaDiscord,
                     desc: t('nav.discord.desc'),
                     external: true,
-                },
-                {
-                    label: t('nav.blog.label'),
-                    href: '/blog/',
-                    icon: NotebookPen,
-                    desc: t('nav.blog.desc'),
-                },
-                // The member directory. City renamed this from "Users" and moved
-                // the route to `/community` with it.
-                {
-                    label: t('nav.community.label'),
-                    href: '/community',
-                    icon: Users,
-                    desc: t('nav.community.desc'),
-                },
-                {
-                    // The site-wide board. Sits right after the member
-                    // directory, as in city: both are the people side of the
-                    // site, one the who and the other the what-they-are-saying.
-                    label: t('nav.discussions.label'),
-                    href: '/discussions',
-                    icon: MessagesSquare,
-                    desc: t('nav.discussions.desc'),
-                },
-                {
-                    label: t('nav.banners.label'),
-                    href: '/banners',
-                    icon: Images,
-                    desc: t('nav.banners.desc'),
                 },
                 {
                     label: t('nav.roadmap.label'),
@@ -184,14 +178,32 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     desc: t('nav.feedback.desc'),
                 },
                 {
-                    // The site's own changelog — what actually shipped. It sits
-                    // with the roadmap (what is planned) and feedback (what is
-                    // asked for), which is the order those three are read in.
-                    label: t('nav.changelog.label'),
-                    href: CHANGELOG,
-                    icon: ScrollText,
-                    desc: t('nav.changelog.desc'),
+                    // The site-wide board: the conversations that are not about
+                    // one mod or server.
+                    label: t('nav.discussions.label'),
+                    href: '/discussions',
+                    icon: MessagesSquare,
+                    desc: t('nav.discussions.desc'),
                 },
+                {
+                    // City's contact page — email, Discord and the staff
+                    // directory. Lives on website-city like everything else
+                    // under this menu, so a plain relative path.
+                    label: t('nav.contact.label'),
+                    href: CONTACT,
+                    icon: Mail,
+                    desc: t('nav.contact.desc'),
+                },
+            ],
+        },
+        {
+            // Dropdown-only, like Explore. What it holds is the reporting side
+            // of the site — what is broken, what we shipped, and whether
+            // anything is down right now, in the order those are read in.
+            label: t('nav.resources.label'),
+            icon: FolderKey,
+            desc: t('nav.resources.desc'),
+            children: [
                 {
                     // The bug tracker, which is where defect reports go now:
                     // they were previously a feedback type, and a report that
@@ -203,19 +215,30 @@ export function buildNav(t: TFunc, signedIn = false): NavItem[] {
                     desc: t('nav.bugs.desc'),
                 },
                 {
-                    // City's contact page — email, Discord and the staff
-                    // directory. Lives on website-city like everything else
-                    // under this menu, so a plain relative path.
-                    label: t('nav.contact.label'),
-                    href: CONTACT,
-                    icon: Mail,
-                    desc: t('nav.contact.desc'),
+                    // The site's own changelog — what actually shipped.
+                    label: t('nav.changelog.label'),
+                    href: CHANGELOG,
+                    icon: ScrollText,
+                    desc: t('nav.changelog.desc'),
                 },
-                // The GitHub dev-issue tracker used to sit here, and is gone
-                // from city's Resources menu too: feedback and the roadmap
-                // above it are the two boards we want people on, and both live
-                // on the site.
+                {
+                    // The status page, under the bug tracker on purpose:
+                    // somebody about to report that the site is broken should
+                    // pass "is it already known" on the way there.
+                    label: t('nav.status.label'),
+                    href: STATUS,
+                    icon: Activity,
+                    desc: t('nav.status.desc'),
+                },
             ],
+        },
+        {
+            // The blog lives on this site, so it keeps the trailing slash
+            // Astro's directory output serves it under.
+            label: t('nav.blog.label'),
+            href: '/blog/',
+            icon: NotebookPen,
+            desc: t('nav.blog.desc'),
         },
     ]
 }
@@ -299,6 +322,7 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
                 { label: t('footer.links.roadmap'), href: ROADMAP },
                 { label: t('footer.links.feedback'), href: FEEDBACK },
                 { label: t('footer.links.bugs'), href: BUGS },
+                { label: t('footer.links.status'), href: STATUS },
             ],
         },
         {
@@ -627,6 +651,28 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            /*
+             * The taxonomy itself. Sits between the content pillars and the
+             * people one because it is what every pillar above is organized BY
+             * — a reader after "co-op servers and co-op mods" is asking a
+             * category question, not a mods question.
+             */
+            label: t('rail.sections.categories'),
+            icon: FolderTree,
+            items: [
+                {
+                    label: t('rail.items.overview'),
+                    href: '/categories',
+                    icon: Compass,
+                },
+                {
+                    label: t('rail.items.browse'),
+                    href: '/categories/browse',
+                    icon: Search,
+                },
+            ],
+        },
+        {
             label: t('rail.sections.groups'),
             icon: Users,
             items: [
@@ -665,6 +711,15 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     label: t('rail.items.activity'),
                     href: '/community/activity',
                     icon: Activity,
+                },
+                {
+                    // The site-wide board. It sits in the people pillar rather
+                    // than under any content type because that is what it is
+                    // for: the conversations that are not about one mod or
+                    // server.
+                    label: t('rail.items.discussions'),
+                    href: '/discussions',
+                    icon: MessagesSquare,
                 },
                 {
                     label: t('rail.items.users'),
