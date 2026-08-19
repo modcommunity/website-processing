@@ -169,12 +169,18 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming modd
 					<!--
 						`@container`: the page content sizes itself off THIS
 						element's width, not the viewport's. It has to, because
-						the two differ by the sidebar — <SiteSidebar/> appears at
-						`lg` and takes 16rem, so a plain `lg:grid-cols-2` fires
-						exactly when the space to lay out in drops by 256px. That
-						is how a 1100px window ended up with four 180px columns
-						and a horizontal scrollbar. Sections use the `@…`
-						variants (`@3xl:grid-cols-2`, …) throughout.
+						the two differ by the sidebar — <SiteSidebar/> appears
+						at `md` and takes 4rem resting (16rem once pinned open),
+						so a plain `lg:grid-cols-2` fires exactly when the space
+						to lay out in drops. That is how a 1100px window ended up
+						with four 180px columns and a horizontal scrollbar.
+						Sections use the `@…` variants (`@3xl:grid-cols-2`, …)
+						throughout.
+
+						Only the PINNED width is taken out of this element: a
+						hover peek opens the rail's panel OVER the page rather
+						than beside it, precisely so it cannot reflow what is
+						being read.
 					-->
 					<main class="@container relative z-20 min-w-0 grow">
 						<slot />

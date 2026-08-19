@@ -15,10 +15,11 @@ import { useSignedIn } from '../lib/auth-hint'
  * and translations stay on the client where their functions live).
  *
  * The `left` slot carries the shared <MobileNav/> drawer. Both halves of the
- * desktop shell are desktop-only — the header nav is `md:flex` and <SiteSidebar/>
- * is `lg:flex` — so without it a phone gets no navigation at all. It is given the
- * same nav + sidebar sections those two render, so the drawer is the whole shell
- * in one panel.
+ * desktop shell appear at the same breakpoint — the header nav is `md:flex` and
+ * <SiteSidebar/> is `md:flex` — and the drawer's own trigger is `md:hidden`, so
+ * exactly one of the two navigations exists at any width and a phone is never
+ * left without one. It is given the same nav + sidebar sections those two
+ * render, so the drawer is the whole shell in one panel.
  *
  * The account action is `sm`-and-up only: below 640px "My Account" overflows the
  * bar (it wraps/clips under ~375px), so it moves into the drawer's footer slot
@@ -38,7 +39,7 @@ export default function SiteHeader({
     // deterministically and reconciles after mount, so there is no hydration
     // mismatch — the same trick `AccountButton` uses.
     const signedIn = useSignedIn()
-    const nav = buildNav(t, signedIn)
+    const nav = buildNav(t)
 
     return (
         <Header
