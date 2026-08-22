@@ -19,8 +19,8 @@
     "audit:overflow:bisect": "node scripts/overflow-bisect.mjs"
   },
   "dependencies": {
-    "@astrojs/node": "^11.0.2",
-    "@astrojs/react": "^6.0.1",
+    "@astrojs/node": "^11.1.4",
+    "@astrojs/react": "^6.0.4",
     "@fontsource-variable/dm-sans": "^5.3.0",
     "@fontsource-variable/orbitron": "^5.3.0",
     "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
@@ -28,7 +28,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "astro": "^7.0.6",
+    "astro": "^7.2.4",
     "lucide-react": "^0.542.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
