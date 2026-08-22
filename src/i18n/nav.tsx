@@ -62,8 +62,9 @@ const STATUS = '/status'
  *
  * The bar is four entries wide, exactly as city's is: everything you can BROWSE
  * under Explore, everywhere the community talks to us under Community, what we
- * publish back at them under Resources, and the Blog on its own. Explore and
- * Resources are hrefless (dropdown-only triggers) because neither has a page.
+ * publish back at them under Resources, and the Blog on its own. Resources is
+ * hrefless (a dropdown-only trigger) because it has no page of its own; Explore
+ * has none either, so it points at the app browser, exactly as city's does.
  *
  * The pillars no longer carry their sidebar section as a dropdown — city
  * dropped that, so the per-pillar Add / Browse / My X routes are reached from
@@ -77,9 +78,11 @@ const STATUS = '/status'
 export function buildNav(t: TFunc): NavItem[] {
     return [
         {
-            // Dropdown-only: city has no `/explore` page, and inventing one
-            // would duplicate the landing pages this menu already points at.
+            // City has no `/explore` page and inventing one would duplicate the
+            // landing pages this menu already points at, so the pillar links at
+            // the app browser — as city's does.
             label: t('nav.explore.label'),
+            href: '/apps/browse',
             icon: Compass,
             desc: t('nav.explore.desc'),
             children: [
