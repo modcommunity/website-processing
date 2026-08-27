@@ -7,7 +7,7 @@ type Props = {
 const { eyebrow, class: className } = Astro.props as Props
 ---
 
-<div class={`flex flex-col gap-4 ${className ?? ""}`}>
+<div class={`flex flex-col gap-4 intersect-once intersect:motion-preset-fade ${className ?? ""}`}>
     {eyebrow && (
         <span
             class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-accent"

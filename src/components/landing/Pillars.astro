@@ -5,6 +5,14 @@ import { localizePath } from "../../i18n/config";
 
 const t = getT(Astro.currentLocale);
 
+/*
+ * Entrance delays as WHOLE class names, not `motion-delay-${i * 70}`: Tailwind
+ * scans the source as text, so a class it never sees written out is a class it
+ * never generates — the interpolated version silently animates all five at
+ * once.
+ */
+const DELAYS = ['motion-delay-0', 'motion-delay-70', 'motion-delay-140', 'motion-delay-210', 'motion-delay-280'];
+
 const pillars = [
     { icon: Boxes, title: t('landing.pillars.p1Title'), href: localizePath("/assets", Astro.currentLocale), desc: t('landing.pillars.p1Desc') },
     { icon: Hammer, title: t('landing.pillars.p2Title'), href: localizePath("/mods", Astro.currentLocale), desc: t('landing.pillars.p2Desc') },
@@ -16,10 +24,10 @@ const pillars = [
 
 <section class="px-4 pb-6 container mx-auto">
     <div class="grid grid-cols-2 gap-4 @xl:grid-cols-3 @4xl:grid-cols-5">
-        {pillars.map((p) => (
+        {pillars.map((p, i) => (
             <a
                 href={p.href}
-                class="card group items-center text-center hover:!border-accent"
+                class={`card group items-center text-center hover:!border-accent intersect-once intersect:motion-preset-slide-up ${DELAYS[i]}`}
             >
                 <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
                     <p.icon className="h-6 w-6" />

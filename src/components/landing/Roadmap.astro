@@ -1,44 +1,145 @@
 ---
-import { Bell, CalendarClock, Columns3, Map } from 'lucide-react';
+import {
+    Bell,
+    Bug,
+    CalendarClock,
+    Columns3,
+    LayoutGrid,
+    Lightbulb,
+    ListTree,
+    Map,
+    Sparkles,
+    Wrench,
+} from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
+import MockCard from "./roadmap/MockCard.astro";
 import { getT } from "../../i18n/t";
-import { localizePath } from "../../i18n/config";
+import { DEFAULT_LOCALE, isLocale, localizePath } from "../../i18n/config";
 
 
 const t = getT(Astro.currentLocale);
+const loc = isLocale(Astro.currentLocale) ? Astro.currentLocale : DEFAULT_LOCALE;
 
 /*
- * A miniature of the real board (website-city's `/roadmap`): one column per
- * `RoadmapItemStatus`, cards carrying their type chip. Static markup on
- * purpose — it is an illustration of the feature, not a live feed.
+ * A miniature of a real board, drawn both ways website-city draws one — the
+ * timeline and the column board — with the tab switch between them live.
+ *
+ * The board it mocks is deliberately NOT ours. The point the section makes is
+ * that anybody who owns content here can publish a roadmap for it, and a mock
+ * of the official board illustrates the opposite — so this is a made-up
+ * "Zombie Infection Mod" doing exactly what the copy invites you to do, with
+ * the kind of items a mod actually has (art to source, a bug in the cure, a
+ * netcode pass) rather than platform features. The chip beside the title says
+ * it is an example, so it cannot be read as a live board.
+ *
+ * Everything below mirrors city's `RoadmapBoard`
+ * (`src/app/_components/lib/roadmap/board.tsx`) and the types it colours from
+ * (`src/types/roadmap/type.ts`): the same four-value status vocabulary, the
+ * same per-status colours, the same spine-and-alternating-cards timeline, the
+ * same column headers under a fading rule. Only the `md:` variants become
+ * `@3xl:` — see CLAUDE.md on why viewport breakpoints are wrong on this site.
  */
-const columns = [
-    {
+
+/** city's `RoadmapStatusStyles`. CANCELED exists there; this board has none. */
+const ROADMAP_STATUS = {
+    PLANNED: {
+        chip: 'border-accent/40 bg-accent/10 text-accent',
+        dot: 'bg-accent',
+        glow: 'shadow-[0_0_18px_2px_rgba(99,102,241,0.35)]',
+        rule: 'from-accent/60',
         label: t('landing.roadmap.sPlanned'),
-        dot: "bg-muted",
-        items: [
-            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i1') },
-            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i2') },
-        ],
     },
-    {
+    IN_PROGRESS: {
+        chip: 'border-warning/40 bg-warning/10 text-warning',
+        dot: 'bg-warning',
+        glow: 'shadow-[0_0_18px_2px_rgba(234,179,8,0.35)]',
+        rule: 'from-warning/60',
         label: t('landing.roadmap.sProgress'),
-        dot: "bg-accent",
-        items: [
-            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i3') },
-            { type: t('landing.roadmap.tImprovement'), title: t('landing.roadmap.i4') },
-        ],
     },
-    {
+    COMPLETED: {
+        chip: 'border-success/40 bg-success/10 text-success',
+        dot: 'bg-success',
+        glow: 'shadow-[0_0_18px_2px_rgba(34,197,94,0.35)]',
+        rule: 'from-success/60',
         label: t('landing.roadmap.sCompleted'),
-        dot: "bg-success",
-        items: [
-            { type: t('landing.roadmap.tFeature'), title: t('landing.roadmap.i5') },
-            { type: t('landing.roadmap.tImprovement'), title: t('landing.roadmap.i6') },
-        ],
     },
-];
+} as const
+
+/** city's `TYPE_ICON` + `RoadmapItemTypeKeys`. */
+const ROADMAP_TYPE = {
+    FEATURE: { icon: Sparkles, label: t('landing.roadmap.tFeature') },
+    BUG: { icon: Bug, label: t('landing.roadmap.tBug') },
+    IMPROVEMENT: { icon: Wrench, label: t('landing.roadmap.tImprovement') },
+    OTHER: { icon: Lightbulb, label: t('landing.roadmap.tOther') },
+} as const
+
+/** city's `RoadmapPriorityStyles` + `RoadmapItemPriorityKeys`. */
+const ROADMAP_PRIORITY = {
+    LOW: { chip: 'border-border bg-surface-secondary text-muted', label: t('landing.roadmap.prLow') },
+    MEDIUM: { chip: 'border-accent/30 bg-accent/10 text-accent', label: t('landing.roadmap.prMedium') },
+    HIGH: { chip: 'border-warning/40 bg-warning/10 text-warning', label: t('landing.roadmap.prHigh') },
+    CRITICAL: { chip: 'border-danger/40 bg-danger/10 text-danger', label: t('landing.roadmap.prCritical') },
+} as const
+
+/*
+ * `month` is an offset from the month this was built in, not a fixed date: a
+ * mock roadmap whose "planned" column is dated last year advertises an
+ * abandoned board. Completed sits behind the build, in progress straddles it,
+ * planned runs ahead — which is also what makes the timeline's chronological
+ * order group the statuses the way a reader expects.
+ *
+ * The columns are deliberately uneven (3 / 2 / 4). Three equal stacks read as
+ * placeholder data; a real board is lopsided, and mostly done.
+ */
+const items = [
+    { key: 'i1', status: 'PLANNED', type: 'OTHER', priority: 'MEDIUM', month: 2 },
+    { key: 'i2', status: 'PLANNED', type: 'FEATURE', priority: 'HIGH', month: 3 },
+    { key: 'i7', status: 'PLANNED', type: 'IMPROVEMENT', priority: 'LOW', month: 4 },
+    { key: 'i3', status: 'IN_PROGRESS', type: 'FEATURE', priority: 'HIGH', month: 0 },
+    { key: 'i4', status: 'IN_PROGRESS', type: 'BUG', priority: 'MEDIUM', month: 1 },
+    { key: 'i5', status: 'COMPLETED', type: 'FEATURE', priority: 'MEDIUM', month: -4 },
+    { key: 'i6', status: 'COMPLETED', type: 'IMPROVEMENT', priority: 'HIGH', month: -3 },
+    { key: 'i8', status: 'COMPLETED', type: 'BUG', priority: 'CRITICAL', month: -2 },
+    { key: 'i9', status: 'COMPLETED', type: 'OTHER', priority: 'LOW', month: -1 },
+] as const
+
+/*
+ * UTC, like city's `fmtDate`, and month precision: a fictional board naming an
+ * exact day is a promise the board cannot keep.
+ */
+const monthFmt = new Intl.DateTimeFormat(loc, { month: 'short', year: 'numeric', timeZone: 'UTC' })
+const now = new Date()
+const cards = items.map((item) => {
+    const status = ROADMAP_STATUS[item.status]
+    const type = ROADMAP_TYPE[item.type]
+    const date = monthFmt.format(new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + item.month, 1)))
+
+    return {
+        ...item,
+        title: t(`landing.roadmap.${item.key}`),
+        statusLabel: status.label,
+        statusChip: status.chip,
+        statusDot: status.dot,
+        statusGlow: status.glow,
+        typeLabel: type.label,
+        typeIcon: type.icon,
+        priorityLabel: ROADMAP_PRIORITY[item.priority].label,
+        priorityChip: ROADMAP_PRIORITY[item.priority].chip,
+        dateLabel: t('landing.roadmap.datePlanned', { date }),
+    }
+})
+
+/** Column order is city's `RoadmapItemStatusVals` order, minus CANCELED. */
+const columns = (['PLANNED', 'IN_PROGRESS', 'COMPLETED'] as const).map((status) => ({
+    ...ROADMAP_STATUS[status],
+    items: cards.filter((card) => card.status === status),
+}))
+
+/* Chronological, exactly like city's <Timeline/> — one run, not four. */
+const timeline = [...cards].sort((a, b) => a.month - b.month)
+
+const tab = "flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-medium transition"
 ---
 
 <section class="py-20 px-4 container mx-auto flex flex-col gap-10">
@@ -47,58 +148,215 @@ const columns = [
         <p set:html={t('landing.roadmap.introHtml')}></p>
     </SectionIntro>
 
-    {/* Board mock-up */}
-    <div class="overflow-hidden rounded-xl border border-border bg-background/70 intersect-once intersect:motion-preset-slide-up">
+    {/* Board mock-up. Its own `@container`, so the timeline splits either side
+        of the spine on the board's width rather than on <main>'s. */}
+    <div data-roadmap-board class="@container overflow-hidden rounded-xl border border-border bg-background/70 intersect-once intersect:motion-preset-slide-up">
         <div class="flex flex-wrap items-center justify-between gap-3 border-b border-border px-4 py-3">
             <div class="flex items-center gap-2 text-sm font-semibold text-foreground">
                 <Map className="h-4 w-4 text-accent" />
-                {t('landing.roadmap.boardTitle')}
+                <span>{t('landing.roadmap.boardTitle')}</span>
+                <span class="rounded-full border border-border bg-surface px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted">
+                    {t('landing.roadmap.boardExample')}
+                </span>
             </div>
-            <div class="flex items-center gap-1 rounded-lg border border-border bg-surface p-1 text-xs">
-                <span class="rounded-md px-2 py-1 text-muted">{t('landing.roadmap.viewTimeline')}</span>
-                <span class="rounded-md bg-accent/15 px-2 py-1 font-semibold text-accent ring-1 ring-accent/25">{t('landing.roadmap.viewColumns')}</span>
+
+            {/* city's view switch, down to the two glyphs. Real buttons, and
+                the panels below are both rendered server-side — the script only
+                flips which one carries `hidden`. */}
+            <div class="flex items-center rounded-lg border border-border bg-surface p-0.5">
+                <button
+                    type="button"
+                    data-roadmap-view="timeline"
+                    title={t('landing.roadmap.viewTimeline')}
+                    aria-pressed="false"
+                    class={`${tab} text-muted hover:text-foreground`}
+                >
+                    <ListTree className="h-3.5 w-3.5" />
+                    {t('landing.roadmap.viewTimeline')}
+                </button>
+                <button
+                    type="button"
+                    data-roadmap-view="columns"
+                    title={t('landing.roadmap.viewColumns')}
+                    aria-pressed="true"
+                    class={`${tab} bg-accent/15 text-accent`}
+                >
+                    <LayoutGrid className="h-3.5 w-3.5" />
+                    {t('landing.roadmap.viewColumns')}
+                </button>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 gap-4 p-4 @3xl:grid-cols-3">
-            {columns.map((col) => (
-                <div class="flex flex-col gap-3 rounded-lg border border-border/70 bg-surface/40 p-3">
-                    <div class="flex items-center justify-between gap-2">
-                        <span class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted">
-                            <span class={`h-2 w-2 rounded-full ${col.dot}`}></span>
-                            {col.label}
-                        </span>
-                        <span class="rounded-full border border-border px-1.5 text-[10px] text-muted">{col.items.length}</span>
-                    </div>
-                    {col.items.map((item) => (
-                        <div class="flex flex-col gap-2 rounded-lg border border-border bg-surface p-3">
-                            <span class="w-fit rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">
-                                {item.type}
+        <div class="p-4">
+            {/* Columns — one per status, count beside the label, fading rule
+                under it. `grid-cols-1` is not cosmetic: an implicit single
+                track sizes to its widest child and pushes the page wide. */}
+            <div data-roadmap-panel="columns" class="grid grid-cols-1 gap-4 @3xl:grid-cols-2 @5xl:grid-cols-3">
+                {columns.map((col) => (
+                    <section class="flex min-w-0 flex-col gap-3">
+                        <header class="flex items-center justify-between gap-2">
+                            <span class="flex items-center gap-2 text-sm font-semibold text-foreground">
+                                <span class={`h-2 w-2 rounded-full ${col.dot}`}></span>
+                                {col.label}
+                                <span class="text-xs font-normal text-muted">{col.items.length}</span>
                             </span>
-                            <span class="text-sm text-foreground">{item.title}</span>
+                        </header>
+
+                        <div class={`h-0.5 w-full rounded-full bg-gradient-to-r to-transparent ${col.rule}`}></div>
+
+                        <div class="flex flex-col gap-3">
+                            {col.items.map((card) => (
+                                <MockCard
+                                    title={card.title}
+                                    statusLabel={card.statusLabel}
+                                    statusChip={card.statusChip}
+                                    statusDot={card.statusDot}
+                                    typeLabel={card.typeLabel}
+                                    typeIcon={card.typeIcon}
+                                    priorityLabel={card.priorityLabel}
+                                    priorityChip={card.priorityChip}
+                                    dateLabel={card.dateLabel}
+                                />
+                            ))}
                         </div>
+                    </section>
+                ))}
+            </div>
+
+            {/* Timeline — one vertical run, cards alternating either side of a
+                glowing spine once there is room. The glow is a blurred copy of
+                the spine rather than a shadow on it: a shadow on a 2px element
+                is a smudge, and both copies are non-interactive. */}
+            <div data-roadmap-panel="timeline" class="relative hidden">
+                <div
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-0 bottom-0 left-[11px] w-0.5 bg-gradient-to-b from-accent/70 via-accent/30 to-transparent @3xl:left-1/2 @3xl:-translate-x-1/2"
+                ></div>
+                <div
+                    aria-hidden="true"
+                    class="pointer-events-none absolute top-0 bottom-0 left-[11px] w-0.5 bg-accent/40 blur-[6px] @3xl:left-1/2 @3xl:-translate-x-1/2"
+                ></div>
+
+                <ol class="relative flex flex-col gap-6">
+                    {timeline.map((card, i) => (
+                        <li class="relative flex flex-col @3xl:grid @3xl:grid-cols-2 @3xl:gap-8">
+                            <span
+                                aria-hidden="true"
+                                class={`absolute top-6 left-[5px] z-10 h-3.5 w-3.5 rounded-full ring-4 ring-background @3xl:left-1/2 @3xl:-translate-x-1/2 ${card.statusDot} ${card.statusGlow}`}
+                            ></span>
+
+                            <div class={`min-w-0 pl-8 @3xl:pl-0 ${i % 2 === 0 ? '@3xl:col-start-1 @3xl:pr-4 @3xl:text-right' : '@3xl:col-start-2 @3xl:pl-4'}`}>
+                                <MockCard
+                                    title={card.title}
+                                    statusLabel={card.statusLabel}
+                                    statusChip={card.statusChip}
+                                    statusDot={card.statusDot}
+                                    typeLabel={card.typeLabel}
+                                    typeIcon={card.typeIcon}
+                                    priorityLabel={card.priorityLabel}
+                                    priorityChip={card.priorityChip}
+                                    dateLabel={card.dateLabel}
+                                    class={i % 2 === 0 ? '@3xl:items-end' : ''}
+                                />
+                            </div>
+                        </li>
                     ))}
-                </div>
-            ))}
+                </ol>
+            </div>
         </div>
     </div>
 
     <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-4">
-        <FeatureCard icon={Columns3} title={t('landing.roadmap.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Columns3} title={t('landing.roadmap.c1t')} class="intersect-once intersect:motion-preset-slide-right">
             <Fragment set:html={t('landing.roadmap.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={CalendarClock} title={t('landing.roadmap.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={CalendarClock} title={t('landing.roadmap.c2t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
             <Fragment set:html={t('landing.roadmap.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={Map} title={t('landing.roadmap.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Map} title={t('landing.roadmap.c3t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-160">
             <Fragment set:html={t('landing.roadmap.c3b')} />
         </FeatureCard>
-        <FeatureCard icon={Bell} title={t('landing.roadmap.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Bell} title={t('landing.roadmap.c4t')} class="intersect-once intersect:motion-preset-slide-left motion-delay-240">
             <Fragment set:html={t('landing.roadmap.c4b')} />
         </FeatureCard>
     </div>
 
+    {/* The board above is a fiction; this is the real one, so the button is
+        the loudest thing in the section. The glow and ring are decorative
+        siblings behind the anchor rather than styles on it, so neither can
+        affect the hit area, and both stop under `prefers-reduced-motion`. */}
     <div class="flex justify-center">
-        <a href={localizePath("/roadmap", Astro.currentLocale)} class="btn btn-special">{t('landing.roadmap.button')}</a>
+        <span class="relative inline-flex">
+            <span aria-hidden="true" class="roadmap-cta-glow pointer-events-none absolute -inset-2 rounded-2xl bg-sky-400/40 blur-lg"></span>
+            <span aria-hidden="true" class="roadmap-cta-ring pointer-events-none absolute -inset-0.5 rounded-[0.625rem] ring-2 ring-sky-300/70"></span>
+            <a
+                href={localizePath("/roadmap", Astro.currentLocale)}
+                class="btn btn-special relative px-6 py-3 text-base"
+            >
+                <Map className="h-5 w-5" />
+                <span>{t('landing.roadmap.button')}</span>
+            </a>
+        </span>
     </div>
 </section>
+
+<script>
+    /*
+     * The view switch. Both panels are server-rendered, so this only moves the
+     * `hidden` class and the pressed state between them — no markup is built
+     * here, and with JS off the board still shows its columns.
+     *
+     * Every class it toggles also appears in the markup above (the columns tab
+     * ships active, the timeline tab ships idle), which is what keeps Tailwind
+     * generating them: it scans source, and a class that existed only in this
+     * string would never be emitted.
+     */
+    const ACTIVE = ['bg-accent/15', 'text-accent']
+    const IDLE = ['text-muted', 'hover:text-foreground']
+
+    for (const board of document.querySelectorAll<HTMLElement>('[data-roadmap-board]')) {
+        const tabs = board.querySelectorAll<HTMLButtonElement>('[data-roadmap-view]')
+        const panels = board.querySelectorAll<HTMLElement>('[data-roadmap-panel]')
+
+        const show = (view: string) => {
+            for (const panel of panels)
+                panel.classList.toggle('hidden', panel.dataset.roadmapPanel !== view)
+
+            for (const tab of tabs) {
+                const on = tab.dataset.roadmapView === view
+                tab.setAttribute('aria-pressed', String(on))
+                for (const cls of ACTIVE) tab.classList.toggle(cls, on)
+                for (const cls of IDLE) tab.classList.toggle(cls, !on)
+            }
+        }
+
+        for (const tab of tabs)
+            tab.addEventListener('click', () => show(tab.dataset.roadmapView ?? 'columns'))
+    }
+</script>
+
+<style>
+    /* Two offset cycles rather than one: the ring breathes on the button's
+       edge while the glow behind it swells a beat later, which reads as a
+       pulse instead of a single flashing outline. */
+    @keyframes roadmapCtaGlow {
+        0%, 100% { opacity: 0.35; transform: scale(0.98); }
+        50%      { opacity: 0.85; transform: scale(1.04); }
+    }
+
+    @keyframes roadmapCtaRing {
+        0%, 100% { opacity: 0.45; }
+        50%      { opacity: 1; }
+    }
+
+    .roadmap-cta-glow { animation: roadmapCtaGlow 3s ease-in-out infinite; }
+    .roadmap-cta-ring { animation: roadmapCtaRing 3s ease-in-out infinite 0.4s; }
+
+    @media (prefers-reduced-motion: reduce) {
+        .roadmap-cta-glow,
+        .roadmap-cta-ring {
+            animation: none;
+            opacity: 0.6;
+        }
+    }
+</style>

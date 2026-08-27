@@ -1,5 +1,5 @@
 ---
-import { Globe, Heart, LineChart, RefreshCw, Search, Users } from 'lucide-react';
+import { Globe, Heart, LineChart, MonitorSmartphone, RefreshCw, Search, Users } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
 import { getT } from "../../i18n/t";
@@ -16,27 +16,34 @@ const t = getT(Astro.currentLocale);
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
-        <FeatureCard icon={Search} title={t('landing.servers.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Search} title={t('landing.servers.c1t')} class="intersect-once intersect:motion-preset-slide-right">
             <Fragment set:html={t('landing.servers.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={RefreshCw} title={t('landing.servers.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={RefreshCw} title={t('landing.servers.c2t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
             <Fragment set:html={t('landing.servers.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={LineChart} title={t('landing.servers.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={LineChart} title={t('landing.servers.c3t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-160">
             <Fragment set:html={t('landing.servers.c3b')} />
         </FeatureCard>
         <FeatureCard icon={Users} title={t('landing.servers.c4t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.servers.c4b')} />
         </FeatureCard>
-        <FeatureCard icon={Heart} title={t('landing.servers.c5t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Heart} title={t('landing.servers.c5t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
             <Fragment set:html={t('landing.servers.c5b')} />
         </FeatureCard>
-        <FeatureCard icon={Globe} title={t('landing.servers.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Globe} title={t('landing.servers.c6t')} class="intersect-once intersect:motion-preset-slide-left motion-delay-160">
             <Fragment set:html={t('landing.servers.c6b')} />
         </FeatureCard>
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex flex-wrap justify-center gap-3">
         <a href={localizePath("/servers", Astro.currentLocale)} class="btn btn-special">{t('landing.servers.browse')}</a>
+        {/* The live half of this — pings from your own machine, queries in real
+            time — is the app's, so the section that describes the browser is
+            where its page belongs. */}
+        <a href={localizePath("/tmc-app", Astro.currentLocale)} class="btn btn-primary">
+            <MonitorSmartphone className="h-5 w-5" />
+            <span>{t('landing.servers.appLink')}</span>
+        </a>
     </div>
 </section>

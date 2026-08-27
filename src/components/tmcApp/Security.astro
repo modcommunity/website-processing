@@ -1,0 +1,37 @@
+---
+import { BellRing, Globe, KeyRound, ScrollText, SlidersHorizontal, TerminalSquare } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.secEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.secTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.secIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        <FeatureCard icon={Globe} title={t('landing.tmcApp.s1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.s1b')} />
+        </FeatureCard>
+        <FeatureCard icon={KeyRound} title={t('landing.tmcApp.s2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.s2b')} />
+        </FeatureCard>
+        <FeatureCard icon={TerminalSquare} title={t('landing.tmcApp.s3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.s3b')} />
+        </FeatureCard>
+        <FeatureCard icon={SlidersHorizontal} title={t('landing.tmcApp.s4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.s4b')} />
+        </FeatureCard>
+        <FeatureCard icon={ScrollText} title={t('landing.tmcApp.s5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.s5b')} />
+        </FeatureCard>
+        <FeatureCard icon={BellRing} title={t('landing.tmcApp.s6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.s6b')} />
+        </FeatureCard>
+    </div>
+</section>

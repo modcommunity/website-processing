@@ -1,0 +1,46 @@
+---
+import { FileUp, RefreshCw, Waves } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import Terminal from "./Terminal.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.relEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.relTitleHtml')}></h2>
+        <p set:html={t('landing.apiTool.relIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 items-start gap-8 @5xl:grid-cols-2">
+        <Terminal title={t('landing.apiTool.relSnippetTitle')} class="intersect-once intersect:motion-preset-slide-up"><span class="text-muted"># Upload the files, attach them, write the release — one command</span>
+<span class="text-accent">tmc</span> release publish --mod 5 \
+  --version <span class="text-success-2">1.2.0</span> \
+  --title <span class="text-success-2">"Bug fixes"</span> \
+  --content-file CHANGELOG.md \
+  --file <span class="text-success-2">'dist/*.zip'</span> --file dist/checksums.txt
+
+<span class="text-muted"># Everything on the item, without re-sending the item</span>
+<span class="text-accent">tmc</span> release list  --mod 5
+<span class="text-accent">tmc</span> release files --mod 5 --version <span class="text-success-2">1.2.0</span></Terminal>
+
+        {/* Own container: three cards laid out inside a half-width column have
+            to be measured against the half, not against the page. */}
+        <div class="@container">
+            <div class="grid grid-cols-1 gap-6">
+                <FeatureCard icon={RefreshCw} title={t('landing.apiTool.r1t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.r1b')} />
+                </FeatureCard>
+                <FeatureCard icon={FileUp} title={t('landing.apiTool.r2t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.r2b')} />
+                </FeatureCard>
+                <FeatureCard icon={Waves} title={t('landing.apiTool.r3t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.r3b')} />
+                </FeatureCard>
+            </div>
+        </div>
+    </div>
+</section>

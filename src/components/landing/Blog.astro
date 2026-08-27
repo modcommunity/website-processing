@@ -2,8 +2,17 @@
 import Articles from "./blog/Articles"
 import SectionIntro from "./helper/SectionIntro.astro"
 import { getT } from "../../i18n/t";
+import { dayKey, fetchBlogPool } from "../../lib/blog";
 
 const t = getT(Astro.currentLocale);
+
+/*
+ * The blog, from website-city's public API, fetched ONCE for the whole build
+ * (this component renders per locale) and baked into the island's props. The
+ * island rotates the day's selection out of it client-side, and refetches only
+ * if the build is more than a day old — see `lib/blog`.
+ */
+const pool = await fetchBlogPool();
 ---
 
 <section class="px-4 py-20 container mx-auto flex flex-col gap-10">
@@ -11,11 +20,18 @@ const t = getT(Astro.currentLocale);
         <h2 slot="title" set:html={t('landing.blog.titleHtml')}></h2>
         <p set:html={t('landing.blog.introHtml')}></p>
     </SectionIntro>
+    {/* The island renders empty until it hydrates, so the wrapper — which is
+        in the server HTML — is what carries the entrance. */}
+    <div class="intersect-once intersect:motion-preset-slide-up">
     <Articles
         client:load
+        pool={pool.articles}
+        fetchedAt={pool.fetchedAt}
+        buildDay={dayKey()}
         moddingGuidesHtml={t('landing.blog.moddingGuidesHtml')}
         serverGuidesHtml={t('landing.blog.serverGuidesHtml')}
         prevLabel={t('landing.blog.prev')}
         nextLabel={t('landing.blog.next')}
     />
+    </div>
 </section>

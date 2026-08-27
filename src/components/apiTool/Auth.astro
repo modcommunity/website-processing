@@ -1,0 +1,70 @@
+---
+import { Eye, Stethoscope, UserCog, Wallet } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import Terminal from "./Terminal.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+{/*
+  * Credentials — the half of the tool the other sections assume you already
+  * have. Everything here is `auth_cmd.py` / `config.py` in `../../../../api-cli`:
+  * the profile store and its 0600 config file, the environment twins, whoami's
+  * three probe requests, doctor, and the anonymous surface, which belongs with
+  * them because "no key at all" is a credential the tool models rather than a
+  * flag it threads through the transport.
+  *
+  * The second profile in the snippet is deliberately the SAME origin: the
+  * CLI's DEFAULT_BASE_URL is https://moddingcommunity.com (config.py), so a
+  * profile normally separates keys and roles — a scoped CI token, a JWT key,
+  * a personal one — not sites. --base-url exists for a self-hosted or local
+  * instance, but naming an invented staging host implied the opposite.
+  *
+  * Snippet left, cards right — the same shape as Automation, one section down.
+  */}
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.authEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.authTitleHtml')}></h2>
+        <p set:html={t('landing.apiTool.authIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 items-start gap-8 @5xl:grid-cols-2">
+        <Terminal title={t('landing.apiTool.authSnippetTitle')} class="intersect-once intersect:motion-preset-slide-up"><span class="text-muted"># A bearer key, or an Ed25519 key you hold the private half of</span>
+<span class="text-accent">tmc</span> auth login --token <span class="text-success-2">tmc_xxxxxxxxxxxx</span>
+<span class="text-accent">tmc</span> auth login --jwt --key-id <span class="text-success-2">tmcak_xxxxxxxx</span> --private-key ~/keys/tmc.pem
+
+<span class="text-muted"># A second key on the same site — a scoped one for scripts</span>
+<span class="text-accent">tmc</span> auth login --profile ci \
+  --base-url <span class="text-success-2">https://moddingcommunity.com</span> --token <span class="text-success-2">tmc_…</span>
+<span class="text-accent">tmc</span> auth use ci
+
+<span class="text-muted"># Which key is active, and what the server lets it do</span>
+<span class="text-accent">tmc</span> auth whoami
+<span class="text-accent">tmc</span> auth doctor
+
+<span class="text-muted"># …or no key at all</span>
+<span class="text-accent">tmc</span> mod list --anon --app <span class="text-success-2">4</span> -o json</Terminal>
+
+        {/* Own container: four cards in a half-width column are measured
+            against the half, not against the page. */}
+        <div class="@container">
+            <div class="grid grid-cols-1 gap-6 @2xl:grid-cols-2">
+                <FeatureCard icon={UserCog} title={t('landing.apiTool.au1t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.au1b')} />
+                </FeatureCard>
+                <FeatureCard icon={Wallet} title={t('landing.apiTool.au2t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.au2b')} />
+                </FeatureCard>
+                <FeatureCard icon={Stethoscope} title={t('landing.apiTool.au3t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.au3b')} />
+                </FeatureCard>
+                <FeatureCard icon={Eye} title={t('landing.apiTool.au4t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.au4b')} />
+                </FeatureCard>
+            </div>
+        </div>
+    </div>
+</section>

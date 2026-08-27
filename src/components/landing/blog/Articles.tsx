@@ -7,10 +7,19 @@ import CarouselComponent from "react-multi-carousel";
 const Carousel = CarouselComponent.default || CarouselComponent;
 
 import Article from "./articles/Article"
-import type { HTMLAttributes } from "react"
+import { useEffect, useState, type HTMLAttributes } from "react"
 
 import { ChevronLeft, ChevronRight, Hammer, Server } from "lucide-react";
 import IconAndText from "../../helper/IconAndText";
+
+import {
+    dailyPick,
+    dayKey,
+    fetchArticles,
+    POOL_MAX_AGE_MS,
+    type BlogArticle,
+    type BlogKind,
+} from "../../../lib/blog";
 
 
 /**
@@ -52,6 +61,30 @@ function Arrow({
 type Props = {
     itemClassName?: string
 
+    /**
+     * The whole blog, fetched from website-city at build time by `Blog.astro`.
+     * The island picks the day's shelves out of it rather than being handed a
+     * selection, because the selection has to be able to change without a
+     * rebuild — see `lib/blog`.
+     */
+    pool: BlogArticle[]
+
+    /** When `pool` was fetched (epoch ms). 0 means "the build could not". */
+    fetchedAt: number
+
+    /**
+     * The UTC day the pool was baked on.
+     *
+     * The first client render has to reproduce the server's markup or React
+     * throws it away, so both start from the build's day and the effect below
+     * moves to today's afterwards. On a site rebuilt today that is the same
+     * string and nothing re-renders. Belt-and-braces as things stand — the
+     * carousel renders no slides until it has measured the container, so the
+     * server emits an empty track either way — but the day the selection is
+     * made must not be a thing the server and the browser can disagree about.
+     */
+    buildDay: string
+
     // User-visible labels, translated + passed in from Blog.astro (which has
     // access to Astro.currentLocale). English defaults keep the island usable
     // on its own. Values are HTML fragments (they carry an inline
@@ -64,24 +97,52 @@ type Props = {
     nextLabel?: string
 }
 
-export type ArticleType = {
-    url: string
-    image: string
-    title: string
-    desc: string
-
-    tags?: string[]
-}
+/** Cards per shelf per day. Enough to be worth a carousel, few enough to rotate. */
+const PER_SHELF = 8
 
 export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>) {
     const {
         itemClassName,
         className,
+        pool,
+        fetchedAt,
+        buildDay,
         moddingGuidesHtml = 'Check out some of our modding <span class="special">how-to</span> guides!',
         serverGuidesHtml = 'Check out some of our server <span class="special">setup</span> guides!',
         prevLabel = 'Previous articles',
         nextLabel = 'Next articles',
     } = props
+
+    const [articles, setArticles] = useState<BlogArticle[]>(pool)
+    const [day, setDay] = useState<string>(buildDay)
+
+    useEffect(() => {
+        // Rotate to today. On a fresh build this is a no-op.
+        setDay(dayKey())
+
+        /*
+         * Refetch only a POOL that has gone stale.
+         *
+         * The section is already correct without this — it is the baked pool
+         * that renders, and the daily rotation runs over whatever is in hand.
+         * The request exists for the case the build cannot cover: a static site
+         * that has not been rebuilt since a post went up. Gating it on the
+         * stamp means a site deployed this morning sends no request at all,
+         * which is the common case and the one worth being free.
+         */
+        if (Date.now() - fetchedAt <= POOL_MAX_AGE_MS) return
+
+        const abort = new AbortController()
+
+        void (async () => {
+            const fresh = await fetchArticles(abort.signal)
+
+            if (!abort.signal.aborted && fresh && fresh.length > 0)
+                setArticles(fresh)
+        })()
+
+        return () => abort.abort()
+    }, [fetchedAt])
 
     /*
      * Responsive settings for the carousel.
@@ -115,126 +176,44 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
         }
     }
 
-    const articlesModding: ArticleType[] = [
-        {
-            url: "https://moddingcommunity.com/blog/how-to-install-mods-for-the-witcher-3/",
-            image: "tw3_how_to_mod.png",
-            title: "How To Install Mods In The Witcher 3",
-            desc: "A guide on how to download and install mods in The Witcher 3 (Wild Hunt) on PC.",
-            tags: ["tw3", "modding", "how-to"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-download-install-mods-in-skyrim/",
-            image: "skyrim_how_to_mod.jpg",
-            title: "How To Install Mods In Skyrim",
-            desc: "A full guide on how to download and install mods in Skyrim on PC using mod managers like Vortex.",
-            tags: ["skyrim", "modding", "how-to"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-install-mods-in-rdr2/",
-            image: "rdr2_how_to_mod.jpg",
-            title: "How To Install Mods In RDR2",
-            desc: "A guide on how to install mods in Red Dead Redemption 2 (RDR2) on PC, including instructions on how to use a popular mod loader, Lenny's Mod Loader (LML).",
-            tags: ["rdr2", "modding", "lml", "how-to"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-download-install-mods-in-minecraft/",
-            image: "mc_how_to_mod.png",
-            title: "How To Install Mods In MC",
-            desc: "A full guide on how to download and install mods in Minecraft including how to use Forge and Fabric.",
-            tags: ["minecraft", "modding", "how-to"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-download-install-mods-in-halo-mcc/",
-            image: "halo_how_to_mod.png",
-            title: "How To Install Mods In Halo: MCC",
-            desc: "A full guide on how to download and install mods in Halo: Master Chief Collection (Halo: MCC) using Steam Workshop and Vortex.",
-            tags: ["halo", "modding", "how-to"]
-        }
+    const shelves: { kind: BlogKind; icon: typeof Hammer; html: string; speed: number }[] = [
+        { kind: 'modding', icon: Hammer, html: moddingGuidesHtml, speed: 14000 },
+        { kind: 'server', icon: Server, html: serverGuidesHtml, speed: 10000 },
     ]
 
-    const articlesServer: ArticleType[] = [
-        {
-            url: "https://moddingcommunity.com/blog/how-to-set-up-a-rust-server/",
-            image: "rust_how_to_set_up_server.png",
-            title: "How To Set Up A Rust Game Server",
-            desc: "A guide on how to set up a Rust game server.",
-            tags: ["rust", "server", "setup"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-install-umod-onto-rust-servers/",
-            image: "rust_how_to_install_umod.png",
-            title: "How To Install uMod Onto Rust Servers",
-            desc: "A guide on how to download and install uMod (Oxide) onto a Rust game server for Windows and Linux.",
-            tags: ["rust", "umod", "server"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-set-up-a-minecraft-java-edition-server/",
-            image: "mc_how_to_set_up_server.png",
-            title: "How To Set Up A Minecraft Java Edition Server",
-            desc: "A full guide on how to set up a Minecraft Java Edition server on both Windows and Linux (Debian 12).",
-            tags: ["minecraft", "server", "setup"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-make-a-l4d2-server-with-mods/",
-            image: "l4d2_how_to_set_up_server.jpg",
-            title: "How To Make A L4D2 Server With Mods",
-            desc: "A guide on how to create and run a Left 4 Dead 2 server with mods on both Windows and Linux.",
-            tags: ["l4d2", "server", "mods", "setup"]
-        },
-        {
-            url: "https://moddingcommunity.com/blog/how-to-make-a-gmod-server-install-mods-addons/",
-            image: "gmod_how_to_set_up_server.png",
-            title: "How To Make A GMod Server With Mods",
-            desc: "A guide on how to set up a Garry's Mod server and download and install mods (addons) on both Windows and Linux.",
-            tags: ["gmod", "server", "setup", "mods"]
-        }
-    ]
-    
     return (
         <div className="flex flex-col gap-4">
-            <div className="flex flex-col gap-2">
-                <IconAndText
-                    icon={<Hammer className="w-4 h-4 text-text-primary" />}
-                >
-                    <span dangerouslySetInnerHTML={{ __html: moddingGuidesHtml }} />
-                </IconAndText>
-                <Carousel
-                    suppressHydrationWarning
-                    className={` ${className ?? ""}`}
-                    responsive={responsive}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={14000}
-                    ssr={true}
-                    customLeftArrow={<Arrow dir="left" label={prevLabel} />}
-                    customRightArrow={<Arrow dir="right" label={nextLabel} />}
-                    itemClass={`p-6 ${itemClassName ?? ""} intersect-once intersect:sm:motion-preset-pop`}
-                >
-                    {articlesModding.map((a, k) => <Article key={`article-${k}`} {...a} /> )}
-                </Carousel>
-            </div>
-            <div className="flex flex-col gap-2">
-                <IconAndText
-                    icon={<Server className="w-4 h-4 text-text-primary" />}
-                >
-                    <span dangerouslySetInnerHTML={{ __html: serverGuidesHtml }} />
-                </IconAndText>
-                <Carousel
-                    suppressHydrationWarning
-                    className={`${className ?? ""}`}
-                    responsive={responsive}
-                    infinite={true}
-                    autoPlay={true}
-                    autoPlaySpeed={10000}
-                    ssr={true}
-                    customLeftArrow={<Arrow dir="left" label={prevLabel} />}
-                    customRightArrow={<Arrow dir="right" label={nextLabel} />}
-                    itemClass={`p-6 ${itemClassName ?? ""} intersect-once intersect:sm:motion-preset-pop`}
-                >
-                    {articlesServer.map((a, k) => <Article key={`article-${k}`} {...a} /> )}
-                </Carousel>
-            </div>
+            {shelves.map(({ kind, icon: Icon, html, speed }) => {
+                const picked = dailyPick(articles, kind, PER_SHELF, day)
+
+                // A shelf with nothing on it is a heading over a blank strip.
+                if (picked.length < 1)
+                    return null
+
+                return (
+                    <div key={kind} className="flex flex-col gap-2">
+                        <IconAndText
+                            icon={<Icon className="w-4 h-4 text-text-primary" />}
+                        >
+                            <span dangerouslySetInnerHTML={{ __html: html }} />
+                        </IconAndText>
+                        <Carousel
+                            suppressHydrationWarning
+                            className={`${className ?? ""}`}
+                            responsive={responsive}
+                            infinite={true}
+                            autoPlay={true}
+                            autoPlaySpeed={speed}
+                            ssr={true}
+                            customLeftArrow={<Arrow dir="left" label={prevLabel} />}
+                            customRightArrow={<Arrow dir="right" label={nextLabel} />}
+                            itemClass={`p-6 ${itemClassName ?? ""} intersect-once intersect:sm:motion-preset-pop`}
+                        >
+                            {picked.map((a) => <Article key={`article-${kind}-${a.id}`} article={a} /> )}
+                        </Carousel>
+                    </div>
+                )
+            })}
         </div>
     )
 }

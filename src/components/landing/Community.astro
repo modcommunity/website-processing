@@ -1,5 +1,5 @@
 ---
-import { Mail, MessagesSquare } from 'lucide-react';
+import { Mail, MessagesSquare, Share2 } from 'lucide-react';
 /*
  * Brand marks come from react-icons, which is the exception this repo already
  * made for Discord: lucide dropped its brand glyphs. Github / Twitter /
@@ -12,7 +12,6 @@ import { Mail, MessagesSquare } from 'lucide-react';
  * two social rows still render the same glyphs.
  */
 import { FaDiscord, FaFacebookF, FaGithub, FaSteam, FaXTwitter } from 'react-icons/fa6';
-import Card from "../helper/Card.astro";
 import SectionIntro from "./helper/SectionIntro.astro";
 import { getT } from "../../i18n/t";
 import { localizePath } from "../../i18n/config";
@@ -30,8 +29,19 @@ const socials = [
     { label: 'X (Twitter)', href: 'https://x.com/modcommunity_', icon: FaXTwitter },
     { label: 'GitHub', href: 'https://github.com/modcommunity', icon: FaGithub },
     { label: 'Steam', href: 'https://steamcommunity.com/groups/moddingcommunity', icon: FaSteam },
-    { label: 'Facebook', href: 'https://facebook.com/modcommunity', icon: FaFacebookF },
+    { label: 'Facebook', href: 'https://facebook.com/tmcmods', icon: FaFacebookF },
 ];
+
+/*
+ * Every way in is one card, and every card is the same card: icon tile, title,
+ * body, action pinned to the bottom. Before this the section was a 120-wide
+ * Discord panel with a screenshot, a two-up row of small cards under it and a
+ * centred contact trailer — three different sizes for four things that are all
+ * just "somewhere you can talk to us". Grid items stretch, so `grow` on the
+ * spacer is what actually lines the four footers up.
+ */
+const iconTile = "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-colors group-hover:bg-accent/15";
+const body = "text-sm text-muted [&_a]:text-accent [&_.special]:text-accent";
 ---
 
 <section class="px-4 py-20 container mx-auto flex flex-col gap-10">
@@ -39,38 +49,31 @@ const socials = [
         <h2 slot="title" set:html={t('landing.joinCommunity.titleHtml')}></h2>
         <p>{t('landing.joinCommunity.intro')}</p>
     </SectionIntro>
-    <div class="p-6">
-        <div class="flex flex-col @2xl:flex-row justify-center gap-y-10 @2xl:gap-30 *:w-full *:@2xl:max-w-120">
-            <Card className="min-w-0 intersect-once intersect:sm:motion-preset-slide-up-lg">
-                <div class="w-full h-48">
-                    <a href="https://discord.moddingcommunity.com">
-                        <img
-                            src="/images/community/discord.png"
-                            class="w-full h-full brightness-75 hover:brightness-100 hover:duration-300 rounded-lg object-cover object-center"
-                            alt={t('landing.joinCommunity.discordAlt')}
-                        />
-                    </a>
-                </div>
-                <div class="flex justify-center">
-                    <a href="https://discord.moddingcommunity.com">
-                        <h3>{t('landing.joinCommunity.discordTitle')}</h3>
-                    </a>
-                </div>
-                <div class="p-2">
-                    <ul class="list-disc pl-6" set:html={t('landing.joinCommunity.discordBulletsHtml')}></ul>
-                </div>
-            </Card>
-        </div>
-    </div>
 
-    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2">
-        {/* Social accounts */}
-        <div class="card intersect-once intersect:motion-preset-slide-up">
-            <div class="flex flex-col gap-1">
-                <h4 class="text-base">{t('landing.joinCommunity.followTitle')}</h4>
-                <p class="text-sm text-muted">{t('landing.joinCommunity.followBlurb')}</p>
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-4">
+        {/* Discord — the community's actual home, so it leads. */}
+        <div class="card group intersect-once intersect:motion-preset-slide-right">
+            <div class="flex items-start gap-4">
+                <span class={iconTile}><FaDiscord className="h-5 w-5" /></span>
+                <h4 class="text-base grow">{t('landing.joinCommunity.discordTitle')}</h4>
             </div>
-            <div class="mt-3 flex flex-wrap gap-3">
+            <p class={body} set:html={t('landing.joinCommunity.discordBlurb')}></p>
+            <div class="grow"></div>
+            <a href="https://discord.moddingcommunity.com" class="btn btn-special text-sm">
+                <FaDiscord className="h-4 w-4" />
+                {t('landing.joinCommunity.discordButton')}
+            </a>
+        </div>
+
+        {/* Social accounts */}
+        <div class="card group intersect-once intersect:motion-preset-slide-up motion-delay-80">
+            <div class="flex items-start gap-4">
+                <span class={iconTile}><Share2 className="h-5 w-5" /></span>
+                <h4 class="text-base grow">{t('landing.joinCommunity.followTitle')}</h4>
+            </div>
+            <p class={body}>{t('landing.joinCommunity.followBlurb')}</p>
+            <div class="grow"></div>
+            <div class="flex flex-wrap gap-2">
                 {socials.map(({ label, href, icon: Icon }) => (
                     <a
                         href={href}
@@ -87,28 +90,31 @@ const socials = [
         </div>
 
         {/* Discussions — the easiest first post to make. */}
-        <div class="card intersect-once intersect:motion-preset-slide-up">
-            <div class="flex flex-col gap-1">
-                <h4 class="text-base">{t('landing.joinCommunity.discussionsTitle')}</h4>
-                <p class="text-sm text-muted [&_.special]:text-accent" set:html={t('landing.joinCommunity.discussionsBlurb')}></p>
+        <div class="card group intersect-once intersect:motion-preset-slide-up motion-delay-160">
+            <div class="flex items-start gap-4">
+                <span class={iconTile}><MessagesSquare className="h-5 w-5" /></span>
+                <h4 class="text-base grow">{t('landing.joinCommunity.discussionsTitle')}</h4>
             </div>
+            <p class={body} set:html={t('landing.joinCommunity.discussionsBlurb')}></p>
             <div class="grow"></div>
-            <div class="mt-3">
-                <a href={localizePath("/discussions", Astro.currentLocale)} class="btn btn-primary text-sm">
-                    <MessagesSquare className="h-4 w-4" />
-                    {t('landing.joinCommunity.discussionsButton')}
-                </a>
+            <a href={localizePath("/discussions", Astro.currentLocale)} class="btn btn-primary text-sm">
+                <MessagesSquare className="h-4 w-4" />
+                {t('landing.joinCommunity.discussionsButton')}
+            </a>
+        </div>
+
+        {/* Direct line to the team, for anything the Discord isn't the place for. */}
+        <div class="card group intersect-once intersect:motion-preset-slide-left motion-delay-240">
+            <div class="flex items-start gap-4">
+                <span class={iconTile}><Mail className="h-5 w-5" /></span>
+                <h4 class="text-base grow">{t('landing.joinCommunity.contactTitle')}</h4>
             </div>
+            <p class={body} set:html={t('landing.joinCommunity.contactBlurb')}></p>
+            <div class="grow"></div>
+            <a href={localizePath("/contact", Astro.currentLocale)} class="btn btn-primary text-sm">
+                <Mail className="h-4 w-4" />
+                {t('landing.joinCommunity.contactButton')}
+            </a>
         </div>
     </div>
-
-    {/* Direct line to the team, for anything the Discord isn't the place for. */}
-    <div class="flex flex-col items-center gap-4 text-center">
-        <p class="max-w-2xl text-muted [&_.special]:text-accent" set:html={t('landing.joinCommunity.contactBlurb')}></p>
-        <a href={localizePath("/contact", Astro.currentLocale)} class="btn btn-special">
-            <Mail className="h-4 w-4" />
-            {t('landing.joinCommunity.contactButton')}
-        </a>
-    </div>
-
 </section>

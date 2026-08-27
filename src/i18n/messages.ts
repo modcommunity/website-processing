@@ -12,6 +12,8 @@ import { blog } from './sections/blog'
 import { roadmap } from './sections/roadmap'
 import { feedback } from './sections/feedback'
 import { platform } from './sections/platform'
+import { tmcApp } from './sections/tmcApp'
+import { apiTool } from './sections/apiTool'
 import { joinCommunity } from './sections/joinCommunity'
 import { shellNav } from './sections/shellNav'
 import { shellSidebar } from './sections/shellSidebar'
@@ -261,6 +263,11 @@ const SECTIONS = {
     blog,
     platform,
     joinCommunity,
+    // The two dedicated product pages (/tmc-app, /api-tool). They live in the
+    // same `landing.*` namespace as the home-page sections because they are
+    // landing pages too — `landing.tmcApp.*` and `landing.apiTool.*`.
+    tmcApp,
+    apiTool,
 }
 
 function landingFor(locale: LocaleT): Record<string, Record<string, string>> {

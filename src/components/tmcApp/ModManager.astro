@@ -1,0 +1,83 @@
+---
+import { Cloud, FolderSearch, GitCompare, HardDrive, Layers, Undo2 } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+
+/*
+ * The four deployment strategies, in the order `deploy::engine` prefers them.
+ * `usvfs` is Windows-only and behind a build flag, so it carries a tag rather
+ * than sitting in the list as if it were the default.
+ */
+const strategies = [
+    { name: t('landing.tmcApp.strat1n'), folder: t('landing.tmcApp.strat1f'), cost: t('landing.tmcApp.strat1c'), tag: null },
+    { name: t('landing.tmcApp.strat2n'), folder: t('landing.tmcApp.strat2f'), cost: t('landing.tmcApp.strat2c'), tag: null },
+    { name: t('landing.tmcApp.strat3n'), folder: t('landing.tmcApp.strat3f'), cost: t('landing.tmcApp.strat3c'), tag: null },
+    { name: t('landing.tmcApp.strat4n'), folder: t('landing.tmcApp.strat4f'), cost: t('landing.tmcApp.strat4c'), tag: 'Windows' },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.modsEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.modsTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.modsIntroHtml')}></p>
+    </SectionIntro>
+
+    {/* A table is genuinely the right shape here — three parallel facts about
+        four options. `overflow-x-auto` + `min-w-0` so it scrolls inside itself
+        on a phone instead of widening the page. */}
+    <div class="min-w-0 overflow-hidden rounded-xl border border-border bg-surface intersect-once intersect:motion-preset-slide-up">
+        <div class="overflow-x-auto">
+            <table class="w-full min-w-[32rem] text-left text-sm">
+                <thead class="border-b border-border text-xs uppercase tracking-wider text-muted">
+                    <tr>
+                        <th scope="col" class="px-4 py-3 font-semibold">{t('landing.tmcApp.stratHead1')}</th>
+                        <th scope="col" class="px-4 py-3 font-semibold">{t('landing.tmcApp.stratHead2')}</th>
+                        <th scope="col" class="px-4 py-3 font-semibold">{t('landing.tmcApp.stratHead3')}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {strategies.map(({ name, folder, cost, tag }) => (
+                        <tr class="border-b border-border/60 last:border-0">
+                            <td class="px-4 py-3">
+                                <span class="flex items-center gap-2">
+                                    <span class="font-semibold text-foreground">{name}</span>
+                                    {tag && (
+                                        <span class="rounded-full border border-accent/30 bg-accent/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-accent">{tag}</span>
+                                    )}
+                                </span>
+                            </td>
+                            <td class="px-4 py-3 text-muted">{folder}</td>
+                            <td class="px-4 py-3 text-muted">{cost}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+        <p class="border-t border-border px-4 py-3 text-sm text-muted [&_em]:not-italic [&_em]:text-accent" set:html={t('landing.tmcApp.stratNote')}></p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        <FeatureCard icon={Layers} title={t('landing.tmcApp.m1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.m1b')} />
+        </FeatureCard>
+        <FeatureCard icon={Undo2} title={t('landing.tmcApp.m2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.m2b')} />
+        </FeatureCard>
+        <FeatureCard icon={GitCompare} title={t('landing.tmcApp.m3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.m3b')} />
+        </FeatureCard>
+        <FeatureCard icon={Cloud} title={t('landing.tmcApp.m4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.m4b')} />
+        </FeatureCard>
+        <FeatureCard icon={HardDrive} title={t('landing.tmcApp.m5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.m5b')} />
+        </FeatureCard>
+        <FeatureCard icon={FolderSearch} title={t('landing.tmcApp.m6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.m6b')} />
+        </FeatureCard>
+    </div>
+</section>

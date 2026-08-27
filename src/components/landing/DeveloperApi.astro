@@ -1,8 +1,9 @@
 ---
-import { Code2, History, Key, PackageOpen } from 'lucide-react';
+import { Code2, History, Key, PackageOpen, TerminalSquare } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
 import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
 
 
 const t = getT(Astro.currentLocale);
@@ -22,13 +23,13 @@ const t = getT(Astro.currentLocale);
                 <FeatureCard icon={Key} title={t('landing.api.c1t')} class="intersect-once intersect:motion-preset-slide-up">
                     <Fragment set:html={t('landing.api.c1b')} />
                 </FeatureCard>
-                <FeatureCard icon={Code2} title={t('landing.api.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+                <FeatureCard icon={Code2} title={t('landing.api.c2t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
                     <Fragment set:html={t('landing.api.c2b')} />
                 </FeatureCard>
                 <FeatureCard icon={PackageOpen} title={t('landing.api.c3t')} class="intersect-once intersect:motion-preset-slide-up">
                     <Fragment set:html={t('landing.api.c3b')} />
                 </FeatureCard>
-                <FeatureCard icon={History} title={t('landing.api.c4t')} class="intersect-once intersect:motion-preset-slide-up">
+                <FeatureCard icon={History} title={t('landing.api.c4t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
                     <Fragment set:html={t('landing.api.c4b')} />
                 </FeatureCard>
             </div>
@@ -42,23 +43,65 @@ const t = getT(Astro.currentLocale);
           * it, the `overflow-x-auto` on the <pre> does its job and the snippet
           * scrolls by itself.
           */}
-        <div class="min-w-0 overflow-hidden rounded-xl border border-border bg-background/70">
+        <div class="min-w-0 overflow-hidden rounded-xl border border-border bg-background/70 intersect-once intersect:motion-preset-slide-left">
             <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
                 <span class="h-3 w-3 rounded-full bg-danger/70"></span>
                 <span class="h-3 w-3 rounded-full bg-warning/70"></span>
                 <span class="h-3 w-3 rounded-full bg-success/70"></span>
                 <span class="ml-2 text-xs text-muted">release.sh</span>
             </div>
-            <pre class="overflow-x-auto p-4 text-[12.5px] leading-relaxed font-mono text-foreground/90"><code><span class="text-muted"># 1. Create a mod (or asset, community, collection…)</span>
-<span class="text-accent">curl</span> -X POST https://moddingcommunity.com/api/content/mod \
-  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
-  -d <span class="text-success-2">'&lbrace;"name":"My Mod","appId":42&rbrace;'</span>
+            {/*
+              * A real release pipeline, in the shape a CI job would actually
+              * run it: shebang, variables at the top, ids captured from the
+              * responses rather than pasted in.
+              *
+              * The endpoints are taken from website-city's
+              * `docs/api/public-content-api.md`, not invented:
+              *   - POST /api/content/{type}        creates one — the COLLECTION
+              *     url, no id, because the id is what it hands back.
+              *     /api/content/mod/{id} is the read/update/delete form.
+              *   - POST /api/content/file?name=…   raw-bytes upload; this form
+              *     answers with a single object (multipart answers an array).
+              *   - PUT  /api/content/{type}/{id}/releases   cuts the release
+              *     and attaches the file ids.
+              * Success wraps its payload in `data`, hence the `.data.id`.
+              */}
+            <pre class="overflow-x-auto p-4 text-[12.5px] leading-relaxed font-mono text-foreground/90"><code><span class="text-accent">#!/usr/bin/env bash</span>
+<span class="text-muted"># Build → publish, on every commit.</span>
+<span class="text-warning">set</span> -euo pipefail
 
-<span class="text-muted"># 2. Cut a release &amp; upload its files</span>
-<span class="text-accent">curl</span> -X POST \
-  <span class="text-success-2">"…/api/content/file?releaseId=123"</span> \
-  -H <span class="text-success-2">"Authorization: Bearer tmc_..."</span> \
-  -F <span class="text-success-2">"files=@MyMod-1.2.0.zip"</span></code></pre>
+API=<span class="text-success-2">"https://moddingcommunity.com/api/content"</span>
+TOKEN=<span class="text-success-2">"$&lbrace;TMC_TOKEN&rbrace;"</span>  <span class="text-muted"># tmc_… bearer, or a signed Ed25519 JWT</span>
+APP_ID=<span class="text-success-2">42</span>
+VERSION=<span class="text-success-2">"1.2.0"</span>
+ARCHIVE=<span class="text-success-2">"dist/MyMod-$VERSION.zip"</span>
+
+<span class="text-muted"># 1. Create the mod (or asset, community, collection…).</span>
+MOD_ID=$(<span class="text-accent">curl</span> -sX POST <span class="text-success-2">"$API/mod"</span> \
+  -H <span class="text-success-2">"Authorization: Bearer $TOKEN"</span> \
+  -H <span class="text-success-2">"Content-Type: application/json"</span> \
+  -d <span class="text-success-2">"&lbrace;\"name\":\"My Mod\",\"appId\":$APP_ID&rbrace;"</span> | <span class="text-accent">jq</span> -r .data.id)
+
+<span class="text-muted"># 2. Upload the archive.</span>
+FILE_ID=$(<span class="text-accent">curl</span> -sX POST <span class="text-success-2">"$API/file?name=$(basename "$ARCHIVE")"</span> \
+  -H <span class="text-success-2">"Authorization: Bearer $TOKEN"</span> \
+  -H <span class="text-success-2">"Content-Type: application/zip"</span> \
+  --data-binary <span class="text-success-2">"@$ARCHIVE"</span> | <span class="text-accent">jq</span> -r .data.id)
+
+<span class="text-muted"># 3. Cut the release, pointing at it.</span>
+<span class="text-accent">curl</span> -X PUT <span class="text-success-2">"$API/mod/$MOD_ID/releases"</span> \
+  -H <span class="text-success-2">"Authorization: Bearer $TOKEN"</span> \
+  -H <span class="text-success-2">"Content-Type: application/json"</span> \
+  -d <span class="text-success-2">"[&lbrace;\"version\":\"$VERSION\",\"files\":[\"$FILE_ID\"]&rbrace;]"</span></code></pre>
         </div>
+    </div>
+
+    {/* Everything above is reachable with curl; the CLI is the version of it
+        that already knows the ordering, the caps and the retries. */}
+    <div class="flex justify-center">
+        <a href={localizePath("/api-tool", Astro.currentLocale)} class="btn btn-special">
+            <TerminalSquare className="h-5 w-5" />
+            <span>{t('landing.api.cliButton')}</span>
+        </a>
     </div>
 </section>
