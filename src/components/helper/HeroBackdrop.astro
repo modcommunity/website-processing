@@ -1,0 +1,176 @@
+---
+/**
+ * Image-free hero backdrops — pure gradient and light.
+ *
+ * Every hero on this site used to paint the same two layers: one
+ * `from-accent/10 via-background to-background` wash and one accent orb under
+ * the title. Three landing pages, one picture. This component is the fix: a
+ * named set of backdrops that are all built from the same kinds of layer and
+ * all obey the same rules, but that each have their own colour and their own
+ * shape, so the home page, `/tmc-app` and `/api-tool` are recognisably
+ * different places.
+ *
+ * Rules, matching website-city's `ui/browser/hero_backdrops.tsx` — the two
+ * sites deliberately share this vocabulary:
+ *
+ * 1. **No artwork.** Colour and light carry the identity. Nothing here loads a
+ *    file, so nothing here can fail to load.
+ * 2. **Fixed dark, not tokenised.** A hero wearing one of these renders its
+ *    copy white. `var(--accent)` is the one token used, because it is brand
+ *    blue in every theme; everything else is a literal.
+ * 3. **The backdrop itself never animates.** It is the first paint of a
+ *    session, and it has to be right before any JavaScript runs. The home
+ *    page layers a Three.js field OVER `blueprint` (`HeroField.tsx`), which is
+ *    a separate, optional, after-the-fact thing: it fades in once it has a
+ *    frame, and everything here still stands on its own without it.
+ *
+ * The layers are absolutely positioned inside a `relative isolate` parent and
+ * sit at `-z-10`, so the hero's own copy needs no z-index of its own.
+ */
+
+type Props = {
+    /** Which backdrop to paint. */
+    variant: 'blueprint' | 'workshop' | 'console'
+    class?: string
+}
+
+const { variant, class: className = '' } = Astro.props as Props
+
+// Grain, as an inline SVG turbulence data URI. This is what stops the wide soft
+// ramps below from banding into visible steps on an 8-bit panel — which is most
+// panels. Shared by every variant, so it is built once here.
+const NOISE =
+    "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")"
+
+// Radial fade, so a full-bleed pattern stops before it reaches the edges rather
+// than being cut off by them.
+const mask = (shape: string, stop = '40%') => {
+    const g = `radial-gradient(${shape}, #000 ${stop}, transparent 100%)`
+    return `mask-image:${g};-webkit-mask-image:${g};`
+}
+---
+
+{
+    /*
+     * blueprint — the home page. Structure rather than glow.
+     *
+     * The old front-page backdrop (`launch`) was four saturated orbs on
+     * near-black: the loudest thing on the site, and the same picture every
+     * other SaaS front page paints. This one is built the other way round —
+     * two restrained lights, and a *drawn* field over them: a fine grid with
+     * heavier rules every fifth line, and one broad diagonal sweep across it.
+     * It reads as a plan being drawn rather than a product being launched,
+     * which is what a site about building things should look like.
+     *
+     * The grid is deliberately visible (0.07, not the 0.03 a decorative grid
+     * usually gets). It is the identity here, so if it fades to nothing the
+     * backdrop is just a dark rectangle.
+     */
+    variant === 'blueprint' && (
+        <div class={`pointer-events-none absolute inset-0 -z-10 bg-[#04060d] ${className}`}>
+            <div class="absolute inset-0 bg-[linear-gradient(160deg,#070c1c,#04060d_55%,#060814)]"></div>
+
+            {/* Two lights, not four. */}
+            <div class="absolute -left-32 top-1/3 h-[30rem] w-[38rem] rounded-full bg-accent/38 blur-[130px]"></div>
+            <div class="absolute -right-24 -top-24 h-[26rem] w-[30rem] rounded-full bg-[#6366f1]/32 blur-[130px]"></div>
+
+            {/* Minor grid, then major rules every fifth line.
+                Wrapped, and named, because the home page fades this whole
+                group out once its Three.js field is live — see
+                `landing/heading/HeroField.tsx`. Two lattices, one flat and one
+                in perspective, are one lattice too many. */}
+            <div class="hero-blueprint-grid absolute inset-0 transition-opacity duration-1000">
+                <div
+                    class="absolute inset-0 opacity-[0.07]"
+                    style={`background-image:linear-gradient(to right, #bfdbfe 1px, transparent 1px),linear-gradient(to bottom, #bfdbfe 1px, transparent 1px);background-size:40px 40px;${mask('ellipse 85% 75% at 50% 45%', '45%')}`}
+                ></div>
+                <div
+                    class="absolute inset-0 opacity-[0.10]"
+                    style={`background-image:linear-gradient(to right, #93c5fd 1px, transparent 1px),linear-gradient(to bottom, #93c5fd 1px, transparent 1px);background-size:200px 200px;${mask('ellipse 85% 75% at 50% 45%', '45%')}`}
+                ></div>
+            </div>
+
+            {/* One diagonal sweep, the only thing in here that is not
+                orthogonal — without it the grid reads as a table. */}
+            <div class="absolute inset-0 bg-[linear-gradient(115deg,transparent_28%,rgba(191,219,254,0.07)_46%,transparent_64%)]"></div>
+
+            <div class="absolute inset-0 opacity-[0.14] mix-blend-overlay" style={`background-image:${NOISE}`}></div>
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-sky-200/20 to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-sky-200/14 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25"></div>
+        </div>
+    )
+}
+
+{
+    /*
+     * workshop — /tmc-app. A lit room: indigo and violet above a hard horizon
+     * two-thirds down, with the light pooling on the floor beneath it. The app
+     * is a desktop tool, and this is the closest a gradient gets to a desk.
+     */
+    variant === 'workshop' && (
+        <div class={`pointer-events-none absolute inset-0 -z-10 bg-[#05060f] ${className}`}>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0d0f26] via-[#05060f] to-[#080a1a]"></div>
+            <div class="absolute -left-24 -top-24 h-[24rem] w-[36rem] rounded-full bg-[#4f46e5]/50 blur-[120px]"></div>
+            <div class="absolute -right-12 -top-20 h-[24rem] w-[28rem] rounded-full bg-[#8b5cf6]/42 blur-[120px]"></div>
+            <div class="absolute left-1/2 top-0 h-72 w-[46rem] max-w-full -translate-x-1/2 rounded-full bg-accent/40 blur-[110px]"></div>
+
+            {/* The horizon and the light on the floor below it. */}
+            <div class="absolute inset-x-0 top-[68%] h-px bg-gradient-to-r from-transparent via-violet-300/28 to-transparent"></div>
+            <div class="absolute inset-x-0 top-[68%] h-40 bg-gradient-to-b from-indigo-500/50 to-transparent blur-[40px]"></div>
+
+            {/* Dot lattice, faded out well before the copy. */}
+            <div
+                class="absolute inset-0 opacity-[0.10]"
+                style={`background-image:radial-gradient(rgba(255,255,255,0.35) 1px, transparent 1px);background-size:26px 26px;${mask('ellipse 80% 55% at 50% 30%', '30%')}`}
+            ></div>
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-300/24 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        </div>
+    )
+}
+
+{
+    /*
+     * console — /api-tool. A terminal, on black. Nothing else on this site is
+     * this colour, and a perspective floor grid (square columns, squashed rows)
+     * runs to a horizon behind the copy.
+     *
+     * The hue is TEAL, between green and cyan, not the emerald it started as.
+     * Green alone reads as one specific terminal — the phosphor one — and it is
+     * also the site's `--success`, so a page painted in it borrows a status
+     * colour for its identity. Teal keeps the terminal association (it is still
+     * the green half of the spectrum) while sitting next to the brand blue
+     * rather than opposite it, which is what stops the accent orb below from
+     * looking like a different backdrop bleeding in.
+     *
+     * It is also the palette website-city already uses for this feeling — see
+     * its `signal` variant (#22d3ee / #14b8a6 over #03080c), which this now
+     * shares a spectrum with rather than contradicting.
+     */
+    variant === 'console' && (
+        <div class={`pointer-events-none absolute inset-0 -z-10 bg-[#020a0c] ${className}`}>
+            <div class="absolute inset-0 bg-[linear-gradient(150deg,#04161a,#020a0c_55%,#03101a)]"></div>
+            <div class="absolute -left-20 -top-24 h-[24rem] w-[32rem] rounded-full bg-[#14b8a6]/44 blur-[120px]"></div>
+            <div class="absolute right-[6%] -top-20 h-[22rem] w-[24rem] rounded-full bg-[#22d3ee]/40 blur-[120px]"></div>
+            <div class="absolute -bottom-28 left-1/4 h-[20rem] w-[34rem] rounded-full bg-accent/42 blur-[130px]"></div>
+
+            {/* Perspective floor. */}
+            <div
+                class="absolute inset-0 opacity-[0.07]"
+                style={`background-image:linear-gradient(to right, #5eead4 1px, transparent 1px),linear-gradient(to bottom, #5eead4 1px, transparent 1px);background-size:56px 22px;${mask('ellipse 95% 60% at 50% 100%')}`}
+            ></div>
+
+            {/* Scanlines. Very low contrast — this is a texture, not an effect;
+                at any more strength it reads as a broken display. */}
+            <div
+                class="absolute inset-0 opacity-[0.045]"
+                style={`background-image:repeating-linear-gradient(to bottom, rgba(255,255,255,0.9) 0px, rgba(255,255,255,0.9) 1px, transparent 1px, transparent 4px);${mask('ellipse 90% 90% at 50% 50%', '10%')}`}
+            ></div>
+
+            <div class="absolute inset-0 opacity-[0.16] mix-blend-overlay" style={`background-image:${NOISE}`}></div>
+            <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-teal-300/28 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent"></div>
+        </div>
+    )
+}

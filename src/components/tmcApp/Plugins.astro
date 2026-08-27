@@ -1,0 +1,51 @@
+---
+import { FileSignature, Fingerprint, Lock, Package, Palette, Radar, Wrench } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+
+const types = [
+    { icon: Wrench, title: t('landing.tmcApp.plugType1'), desc: t('landing.tmcApp.plugType1d') },
+    { icon: Radar, title: t('landing.tmcApp.plugType2'), desc: t('landing.tmcApp.plugType2d') },
+    { icon: Palette, title: t('landing.tmcApp.plugType3'), desc: t('landing.tmcApp.plugType3d') },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.plugEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.plugTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.plugIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-4 @3xl:grid-cols-3">
+        {types.map(({ icon: Icon, title, desc }) => (
+            <div class="flex items-start gap-3 rounded-xl border border-border bg-surface p-4 intersect-once intersect:motion-preset-slide-up">
+                <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent ring-1 ring-accent/20">
+                    <Icon className="h-4 w-4" />
+                </span>
+                <div class="flex min-w-0 flex-col">
+                    <span class="font-semibold text-foreground">{title}</span>
+                    <span class="text-sm text-muted">{desc}</span>
+                </div>
+            </div>
+        ))}
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2">
+        <FeatureCard icon={Package} title={t('landing.tmcApp.g1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.g1b')} />
+        </FeatureCard>
+        <FeatureCard icon={Lock} title={t('landing.tmcApp.g2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.g2b')} />
+        </FeatureCard>
+        <FeatureCard icon={Fingerprint} title={t('landing.tmcApp.g3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.g3b')} />
+        </FeatureCard>
+        <FeatureCard icon={FileSignature} title={t('landing.tmcApp.g4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.g4b')} />
+        </FeatureCard>
+    </div>
+</section>

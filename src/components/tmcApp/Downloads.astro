@@ -1,0 +1,28 @@
+---
+import { Gauge, History, PauseCircle } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.dlEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.dlTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.dlIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-3">
+        <FeatureCard icon={PauseCircle} title={t('landing.tmcApp.d1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.d1b')} />
+        </FeatureCard>
+        <FeatureCard icon={Gauge} title={t('landing.tmcApp.d2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.d2b')} />
+        </FeatureCard>
+        <FeatureCard icon={History} title={t('landing.tmcApp.d3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.tmcApp.d3b')} />
+        </FeatureCard>
+    </div>
+</section>

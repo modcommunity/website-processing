@@ -1,0 +1,50 @@
+---
+import { CheckCircle2, KeySquare, TestTube2, Unlock } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import Terminal from "./Terminal.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.ciEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.ciTitleHtml')}></h2>
+        <p set:html={t('landing.apiTool.ciIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 items-start gap-8 @5xl:grid-cols-2">
+        {/* `&lbrace;` because Astro parses a bare `{` in markup as an
+            expression, and the workflow snippet is full of `${{ … }}`. */}
+        <Terminal title={t('landing.apiTool.ciSnippetTitle')} class="intersect-once intersect:motion-preset-slide-up"><span class="text-accent">- name:</span> Publish to TMC
+  <span class="text-accent">env:</span>
+    <span class="text-accent">TMC_TOKEN:</span> <span class="text-success-2">$&lbrace;&lbrace; secrets.TMC_TOKEN &rbrace;&rbrace;</span>
+  <span class="text-accent">run:</span> |
+    tmc release publish --mod 42 \
+      --version <span class="text-success-2">"$&lbrace;GITHUB_REF_NAME#v&rbrace;"</span> \
+      --content-file CHANGELOG.md \
+      --file <span class="text-success-2">'dist/*.zip'</span>
+
+<span class="text-muted"># Clean pipes: data on stdout, progress on stderr</span>
+tmc mod list --mine --all -o ids | xargs -n1 tmc mod get -o json</Terminal>
+
+        <div class="@container">
+            <div class="grid grid-cols-1 gap-6 @2xl:grid-cols-2">
+                <FeatureCard icon={KeySquare} title={t('landing.apiTool.ci1t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.ci1b')} />
+                </FeatureCard>
+                <FeatureCard icon={CheckCircle2} title={t('landing.apiTool.ci2t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.ci2b')} />
+                </FeatureCard>
+                <FeatureCard icon={Unlock} title={t('landing.apiTool.ci3t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.ci3b')} />
+                </FeatureCard>
+                <FeatureCard icon={TestTube2} title={t('landing.apiTool.ci4t')} class="intersect-once intersect:motion-preset-slide-up">
+                    <Fragment set:html={t('landing.apiTool.ci4b')} />
+                </FeatureCard>
+            </div>
+        </div>
+    </div>
+</section>

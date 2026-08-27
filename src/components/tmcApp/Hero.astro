@@ -1,0 +1,183 @@
+---
+import { Code2, Map, Search, Signal, Wifi } from 'lucide-react';
+// OS logos are brand marks, which is the one category lucide has no glyphs for
+// and react-icons is kept around for — same exception Community.astro makes for
+// Discord/Steam. Do not reach for react-icons for anything else.
+import { FaAndroid, FaApple, FaAppStoreIos, FaLinux, FaWindows } from 'react-icons/fa6';
+import HeroBackdrop from "../helper/HeroBackdrop.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+import { APP_REPO } from "./links";
+
+
+const t = getT(Astro.currentLocale);
+
+/*
+ * The platform chips.
+ *
+ * Ordered and tagged, not just listed: the plan is the three desktop targets
+ * first and mobile after them, and a flat row of five reads as five things you
+ * could install — which is doubly wrong here, because none of them exist yet.
+ * The mobile two are dimmed and carry a "Later" tag so the row states the plan
+ * rather than implying a shipping matrix.
+ */
+const platforms = [
+    { icon: FaWindows, label: t('landing.tmcApp.p1'), later: false },
+    { icon: FaLinux, label: t('landing.tmcApp.p2'), later: false },
+    { icon: FaApple, label: t('landing.tmcApp.p3'), later: false },
+    { icon: FaAndroid, label: t('landing.tmcApp.p4'), later: true },
+    { icon: FaAppStoreIos, label: t('landing.tmcApp.p5'), later: true },
+];
+
+/*
+ * The mock server list in the panel on the right.
+ *
+ * Static, deliberately: this is a picture of the app, not a live feed, and the
+ * page has no data source. The names are the games the app's browser actually
+ * speaks a protocol for (see ../../../../tmc-app's CLAUDE.md), so the mock does
+ * not promise a game the app cannot query. Numbers are illustrative and the
+ * caption under the panel says so.
+ */
+const rows = [
+    { name: 'Rust — Vanilla Main', map: 'Procedural', players: '183/200', ping: 24, hot: true },
+    { name: "Garry's Mod — DarkRP", map: 'rp_downtown_v4c', players: '96/128', ping: 41, hot: false },
+    { name: 'Minecraft — SkyFactory', map: 'Overworld', players: '72/100', ping: 63, hot: false },
+    { name: 'Valheim — Northlands', map: 'Meadows', players: '8/10', ping: 88, hot: false },
+];
+---
+
+{/*
+  * The app's hero.
+  *
+  * Deliberately NOT the shape the front page uses. That one is a centred column
+  * on a four-colour mesh, because it is selling the whole site; this is a
+  * two-column split on a lit-room backdrop, because it is selling one desktop
+  * application and the fastest way to say what that application is, is to show
+  * it. The panel on the right IS the pitch — a live server browser — so it gets
+  * half the hero rather than a screenshot further down the page.
+  */}
+<section class="px-4 pt-8 @2xl:pt-12">
+    <div class="container mx-auto">
+        <div class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+            <HeroBackdrop variant="workshop" />
+
+            <div class="@container grid grid-cols-1 items-center gap-10 px-6 py-14 @5xl:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] @2xl:py-20">
+                <div class="flex min-w-0 flex-col items-start gap-5 text-left">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/75 backdrop-blur-md">
+                        <span class="h-1.5 w-1.5 rounded-full bg-violet-300 shadow-[0_0_8px_2px] shadow-violet-300/60"></span>
+                        {t('landing.tmcApp.heroBadge')}
+                    </span>
+
+                    <h2
+                        class="text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-[#c4b5fd]"
+                        set:html={t('landing.tmcApp.heroTitleHtml')}
+                    ></h2>
+
+                    {/* A lit rule rather than a centred divider — this column is
+                        left-aligned, so the underline is too. */}
+                    <span aria-hidden class="h-px w-24 bg-gradient-to-r from-white/60 to-transparent"></span>
+
+                    <p
+                        class="max-w-xl text-pretty text-lg text-white/75 [&_.special]:text-[#c4b5fd]"
+                        set:html={t('landing.tmcApp.heroTaglineHtml')}
+                    ></p>
+
+                    <div class="flex flex-wrap items-center gap-2">
+                        {platforms.map(({ icon: Icon, label, later }) => (
+                            <span class={`inline-flex items-center gap-2 rounded-lg border px-3 py-1.5 text-sm backdrop-blur-md ${later ? 'border-white/8 bg-white/[0.04] text-white/45' : 'border-white/12 bg-white/8 text-white/80'}`}>
+                                <Icon className={`h-4 w-4 ${later ? 'text-violet-200/50' : 'text-violet-200'}`} />
+                                {label}
+                                {later && (
+                                    <span class="rounded-full border border-white/12 px-1.5 text-[0.6rem] font-semibold uppercase tracking-wider text-white/40">
+                                        {t('landing.tmcApp.pLater')}
+                                    </span>
+                                )}
+                            </span>
+                        ))}
+                    </div>
+                    <p class="text-xs text-white/50">{t('landing.tmcApp.heroPlatformNote')}</p>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-1">
+                        <a
+                            href={APP_REPO}
+                            target="_blank"
+                            rel="noreferrer"
+                            class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-[#05060f] shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:bg-white/90"
+                        >
+                            <Code2 className="h-5 w-5" />
+                            <span>{t('landing.tmcApp.heroBtnSource')}</span>
+                        </a>
+                        <a
+                            href={localizePath("/roadmap", Astro.currentLocale)}
+                            class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20"
+                        >
+                            <Map className="h-5 w-5" />
+                            <span>{t('landing.tmcApp.heroBtnRoadmap')}</span>
+                        </a>
+                    </div>
+
+                    {/*
+                      * Nothing is published, for any platform. Saying so in the
+                      * hero is deliberate: everything below describes what is
+                      * BUILT, and a reader should not have to reach the last
+                      * section to find out they cannot download it yet.
+                      */}
+                    <p
+                        class="max-w-xl rounded-xl border border-amber-400/25 bg-amber-400/5 px-4 py-3 text-sm text-white/70 [&_.special]:text-amber-200"
+                        set:html={t('landing.tmcApp.heroNoteHtml')}
+                    ></p>
+                </div>
+
+                {/* The app window. Pure markup — no screenshot to go stale, and
+                    nothing to load. `aria-hidden` because every word in it is
+                    decorative: the real claims are in the copy on the left. */}
+                <div aria-hidden class="min-w-0">
+                    <div class="overflow-hidden rounded-2xl border border-white/12 bg-[#0a0c1c]/80 shadow-2xl shadow-black/50 backdrop-blur-xl">
+                        {/* Title bar. */}
+                        <div class="flex items-center gap-2 border-b border-white/8 bg-white/[0.04] px-4 py-2.5">
+                            <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+                            <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+                            <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
+                            <span class="ml-2 text-[0.7rem] font-medium tracking-wide text-white/45">
+                                TMC — Server Browser
+                            </span>
+                            <span class="ml-auto inline-flex items-center gap-1.5 rounded-full bg-emerald-400/10 px-2 py-0.5 text-[0.65rem] font-semibold text-emerald-300">
+                                <Wifi className="h-3 w-3" />
+                                Live
+                            </span>
+                        </div>
+
+                        {/* Search row. */}
+                        <div class="flex items-center gap-2 border-b border-white/8 px-4 py-2.5">
+                            <Search className="h-3.5 w-3.5 shrink-0 text-white/35" />
+                            <span class="text-xs text-white/35">Filter by game, map, players…</span>
+                        </div>
+
+                        {/* Rows. `tabular-nums` so the player counts and pings
+                            line up into columns instead of jittering. */}
+                        <ul class="divide-y divide-white/6">
+                            {rows.map(({ name, map, players, ping, hot }) => (
+                                <li class="flex items-center gap-3 px-4 py-3">
+                                    <span class={`h-2 w-2 shrink-0 rounded-full ${hot ? 'bg-emerald-400 shadow-[0_0_8px_2px] shadow-emerald-400/50' : 'bg-emerald-400/50'}`}></span>
+                                    <span class="min-w-0 flex-1">
+                                        <span class="block truncate text-sm font-medium text-white/85">{name}</span>
+                                        <span class="block truncate text-[0.7rem] text-white/40">{map}</span>
+                                    </span>
+                                    <span class="shrink-0 text-xs tabular-nums text-white/70">{players}</span>
+                                    <span class="inline-flex shrink-0 items-center gap-1 text-[0.7rem] tabular-nums text-white/40">
+                                        <Signal className="h-3 w-3" />
+                                        {ping}ms
+                                    </span>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <div class="border-t border-white/8 bg-white/[0.03] px-4 py-2 text-[0.65rem] text-white/35">
+                            {t('landing.tmcApp.heroMockNote')}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

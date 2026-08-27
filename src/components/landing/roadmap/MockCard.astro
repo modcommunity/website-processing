@@ -1,0 +1,73 @@
+---
+import { CalendarClock } from 'lucide-react'
+import type { IconLike } from "@modcommunity/shared"
+
+/*
+ * One card on the mock board, drawn the way website-city's `RoadmapCard`
+ * (`src/app/_components/lib/roadmap/card.tsx`) draws a real one: a chip row of
+ * status / type / priority, the title, then the planned date.
+ *
+ * Deliberately short of city's card in one place — the engagement footer. A
+ * real card carries likes, comments and views; this board is a fiction, so
+ * those would be three invented numbers, the same reason the hero carries no
+ * stat row. Everything that is drawn is drawn with city's classes.
+ *
+ * Both views render this file, which is the point: city renders one component
+ * in its timeline and in its columns, so the two views differ in arrangement
+ * and in nothing else.
+ */
+type Props = {
+    title: string
+    statusLabel: string
+    /** `chip` / `dot` fragments — see ROADMAP_STATUS in `../Roadmap.astro`. */
+    statusChip: string
+    statusDot: string
+    typeLabel: string
+    typeIcon: IconLike
+    priorityLabel: string
+    priorityChip: string
+    dateLabel: string
+    class?: string
+}
+
+const {
+    title,
+    statusLabel,
+    statusChip,
+    statusDot,
+    typeLabel,
+    typeIcon: TypeIcon,
+    priorityLabel,
+    priorityChip,
+    dateLabel,
+    class: className,
+} = Astro.props as Props
+
+// city's <Flair/>, minus the React.
+const flair = "inline-flex items-center gap-1 rounded-md border border-border bg-surface-secondary px-2 py-0.5 text-[11px] font-medium"
+---
+
+<div
+    class={`group flex flex-col gap-3 rounded-2xl border border-border bg-surface p-4 shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:shadow-lg ${className ?? ""}`}
+>
+    <div class="flex flex-wrap items-center gap-2">
+        <span class={`${flair} ${statusChip}`}>
+            <span class={`mr-0.5 inline-block h-1.5 w-1.5 rounded-full ${statusDot}`}></span>
+            {statusLabel}
+        </span>
+        <span class={`${flair} border-border text-muted`}>
+            <TypeIcon className="h-3 w-3" />
+            {typeLabel}
+        </span>
+        <span class={`${flair} ${priorityChip}`}>{priorityLabel}</span>
+    </div>
+
+    <h3 class="text-base font-semibold text-foreground transition group-hover:text-accent">{title}</h3>
+
+    <div class="flex flex-wrap items-center gap-3 text-xs text-muted">
+        <span class="inline-flex items-center gap-1.5">
+            <CalendarClock className="h-3.5 w-3.5" />
+            {dateLabel}
+        </span>
+    </div>
+</div>

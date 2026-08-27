@@ -1,0 +1,51 @@
+---
+import { Code2, DownloadCloud, Map, MonitorSmartphone, PenSquare, RefreshCcw } from 'lucide-react';
+import { FaDiscord } from 'react-icons/fa6';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+import { APP_REPO, DISCORD } from "./links";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.statusEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.statusTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.statusIntroHtml')}></p>
+    </SectionIntro>
+
+    {/* Four now, so the platform plan sits beside the caveats rather than
+        being buried in prose. */}
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-4">
+        <FeatureCard icon={DownloadCloud} title={t('landing.tmcApp.n1t')} class="intersect-once intersect:motion-preset-slide-right">
+            <Fragment set:html={t('landing.tmcApp.n1b')} />
+        </FeatureCard>
+        <FeatureCard icon={PenSquare} title={t('landing.tmcApp.n2t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
+            <Fragment set:html={t('landing.tmcApp.n2b')} />
+        </FeatureCard>
+        <FeatureCard icon={RefreshCcw} title={t('landing.tmcApp.n3t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-160">
+            <Fragment set:html={t('landing.tmcApp.n3b')} />
+        </FeatureCard>
+        <FeatureCard icon={MonitorSmartphone} title={t('landing.tmcApp.n4t')} class="intersect-once intersect:motion-preset-slide-left motion-delay-240">
+            <Fragment set:html={t('landing.tmcApp.n4b')} />
+        </FeatureCard>
+    </div>
+
+    <div class="flex flex-wrap items-center justify-center gap-3">
+        <a href={APP_REPO} target="_blank" rel="noreferrer" class="btn btn-special">
+            <Code2 className="h-5 w-5" />
+            <span>{t('landing.tmcApp.statusBtnSource')}</span>
+        </a>
+        <a href={localizePath("/roadmap", Astro.currentLocale)} class="btn btn-primary">
+            <Map className="h-5 w-5" />
+            <span>{t('landing.tmcApp.statusBtnRoadmap')}</span>
+        </a>
+        <a href={DISCORD} target="_blank" rel="noreferrer" class="btn btn-primary">
+            <FaDiscord className="h-5 w-5" />
+            <span>{t('landing.tmcApp.statusBtnDiscord')}</span>
+        </a>
+    </div>
+</section>

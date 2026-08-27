@@ -1,0 +1,27 @@
+---
+/**
+ * The terminal card the landing page's DeveloperApi section draws inline —
+ * lifted out here because this page has four of them.
+ *
+ * `min-w-0` on the wrapper is load-bearing: a grid/flex item's automatic
+ * minimum size is its content's, and a long unbreakable command line would
+ * otherwise widen the column and push a scrollbar onto the whole page instead
+ * of scrolling inside the <pre>.
+ */
+type Props = {
+    title: string
+    class?: string
+}
+
+const { title, class: className } = Astro.props as Props
+---
+
+<div class={`min-w-0 overflow-hidden rounded-xl border border-border bg-background/70 ${className ?? ""}`}>
+    <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
+        <span class="h-3 w-3 rounded-full bg-danger/70"></span>
+        <span class="h-3 w-3 rounded-full bg-warning/70"></span>
+        <span class="h-3 w-3 rounded-full bg-success/70"></span>
+        <span class="ml-2 text-xs text-muted">{title}</span>
+    </div>
+    <pre class="overflow-x-auto p-4 text-[12.5px] leading-relaxed font-mono text-foreground/90"><code><slot /></code></pre>
+</div>

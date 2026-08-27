@@ -1,0 +1,69 @@
+---
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import Terminal from "./Terminal.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+
+/*
+ * The four relation verbs. `set` is the destructive one — PUT on a relation
+ * means "this is now the complete set" — so it is the row that carries the
+ * warning colour rather than being one of four identical rows.
+ */
+const verbs = [
+    { cmd: 'tmc rel add', method: t('landing.apiTool.v1m'), means: t('landing.apiTool.v1d'), danger: false },
+    { cmd: 'tmc rel set', method: t('landing.apiTool.v2m'), means: t('landing.apiTool.v2d'), danger: true },
+    { cmd: 'tmc rel rm', method: t('landing.apiTool.v3m'), means: t('landing.apiTool.v3d'), danger: false },
+    { cmd: 'tmc rel clear', method: t('landing.apiTool.v4m'), means: t('landing.apiTool.v4d'), danger: false },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.verbEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.verbTitleHtml')}></h2>
+        <p set:html={t('landing.apiTool.verbIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 items-start gap-8 @5xl:grid-cols-2">
+        <div class="min-w-0 overflow-hidden rounded-xl border border-border bg-surface intersect-once intersect:motion-preset-slide-up">
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-[30rem] text-left text-sm">
+                    <thead class="border-b border-border text-xs uppercase tracking-wider text-muted">
+                        <tr>
+                            <th scope="col" class="px-4 py-3 font-semibold">{t('landing.apiTool.verbHead1')}</th>
+                            <th scope="col" class="px-4 py-3 font-semibold">{t('landing.apiTool.verbHead2')}</th>
+                            <th scope="col" class="px-4 py-3 font-semibold">{t('landing.apiTool.verbHead3')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {verbs.map(({ cmd, method, means, danger }) => (
+                            <tr class="border-b border-border/60 last:border-0">
+                                <td class="whitespace-nowrap px-4 py-3 font-mono text-xs text-foreground">{cmd}</td>
+                                <td class="px-4 py-3">
+                                    <span class:list={[
+                                        "rounded-md px-2 py-0.5 font-mono text-[11px] font-semibold",
+                                        danger ? "bg-danger/10 text-danger ring-1 ring-danger/25" : "bg-accent/10 text-accent ring-1 ring-accent/20",
+                                    ]}>{method}</span>
+                                </td>
+                                <td class:list={["px-4 py-3", danger ? "font-semibold text-foreground" : "text-muted"]}>{means}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <Terminal title={t('landing.apiTool.verbSnippetTitle')} class="intersect-once intersect:motion-preset-slide-up"><span class="text-muted"># Add two tags. The rest of the item is untouched</span>
+<span class="text-accent">tmc</span> tags add mod 5 pvp vanilla
+
+<span class="text-muted"># Upload a screenshot and attach it in one step</span>
+<span class="text-accent">tmc</span> media add mod 5 --file shot.png --title Screenshot
+
+<span class="text-muted"># Read one relation back</span>
+<span class="text-accent">tmc</span> rel get mod 5 releases
+
+<span class="text-muted"># …and the one that REPLACES the whole gallery</span>
+<span class="text-accent">tmc</span> rel set mod 5 media --from-file gallery.json</Terminal>
+    </div>
+</section>

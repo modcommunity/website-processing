@@ -62,6 +62,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Add',
             browse: 'Browse',
             maps: 'Maps',
+            players: 'Players',
             blog: 'Blog',
             activity: 'Activity',
             discussions: 'Discussions',
@@ -102,6 +103,8 @@ export const shellSidebar: SidebarCatalog = {
                 add: 'Get your server tracked',
                 browse: 'Live server browser',
                 maps: 'Maps played across our tracked servers',
+                players:
+                    'Who is playing right now, and the all-time leaderboards',
                 mine: 'Servers you manage',
             },
             parties: {
@@ -138,6 +141,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Añadir',
             browse: 'Explorar',
             maps: 'Mapas',
+            players: 'Jugadores',
             blog: 'Blog',
             activity: 'Actividad',
             discussions: 'Debates',
@@ -180,6 +184,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: 'Haz que sigamos tu servidor',
                 browse: 'Explorador de servidores en directo',
                 maps: 'Mapas jugados en los servidores que seguimos',
+                players: 'Quién está jugando ahora mismo y las clasificaciones históricas',
                 mine: 'Servidores que administras',
             },
             parties: {
@@ -216,6 +221,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Ajouter',
             browse: 'Parcourir',
             maps: 'Cartes',
+            players: 'Joueurs',
             blog: 'Blog',
             activity: 'Activité',
             discussions: 'Discussions',
@@ -257,6 +263,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: 'Faites suivre votre serveur',
                 browse: 'Navigateur de serveurs en direct',
                 maps: 'Cartes jouées sur les serveurs que nous suivons',
+                players: 'Qui joue en ce moment, et les classements de tous les temps',
                 mine: 'Serveurs que vous gérez',
             },
             parties: {
@@ -293,6 +300,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Hinzufügen',
             browse: 'Durchsuchen',
             maps: 'Maps',
+            players: 'Spieler',
             blog: 'Blog',
             activity: 'Aktivität',
             discussions: 'Diskussionen',
@@ -336,6 +344,7 @@ export const shellSidebar: SidebarCatalog = {
                 browse: 'Live-Serverbrowser',
                 maps:
                     'Maps, die auf den von uns erfassten Servern gespielt werden',
+                players: 'Wer gerade spielt, und die ewigen Bestenlisten',
                 mine: 'Server, die Sie verwalten',
             },
             parties: {
@@ -372,6 +381,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Добавить',
             browse: 'Обзор',
             maps: 'Карты',
+            players: 'Игроки',
             blog: 'Блог',
             activity: 'Активность',
             discussions: 'Обсуждения',
@@ -413,6 +423,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: 'Добавьте свой сервер в отслеживание',
                 browse: 'Живой браузер серверов',
                 maps: 'Карты, на которых играют на отслеживаемых серверах',
+                players: 'Кто играет прямо сейчас, и рейтинги за всё время',
                 mine: 'Серверы, которыми вы управляете',
             },
             parties: {
@@ -449,6 +460,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Toevoegen',
             browse: 'Bekijken',
             maps: 'Maps',
+            players: 'Spelers',
             blog: 'Blog',
             activity: 'Activiteit',
             discussions: 'Discussies',
@@ -491,6 +503,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: 'Laat je server volgen',
                 browse: 'Live serverbrowser',
                 maps: 'Maps die op onze gevolgde servers worden gespeeld',
+                players: 'Wie er nu speelt, en de ranglijsten aller tijden',
                 mine: 'Servers die je beheert',
             },
             parties: {
@@ -527,6 +540,7 @@ export const shellSidebar: SidebarCatalog = {
             add: '追加',
             browse: '探す',
             maps: 'マップ',
+            players: 'プレイヤー',
             blog: 'ブログ',
             activity: 'アクティビティ',
             discussions: 'ディスカッション',
@@ -567,6 +581,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: '自分のサーバーを追跡対象にする',
                 browse: 'ライブサーバーブラウザー',
                 maps: '追跡中のサーバーでプレイされているマップ',
+                players: 'いま誰がプレイしているか、そして歴代ランキング',
                 mine: '自分が管理しているサーバー',
             },
             parties: {
@@ -603,6 +618,7 @@ export const shellSidebar: SidebarCatalog = {
             add: '添加',
             browse: '浏览',
             maps: '地图',
+            players: '玩家',
             blog: '博客',
             activity: '动态',
             discussions: '讨论',
@@ -643,6 +659,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: '让我们追踪你的服务器',
                 browse: '实时服务器浏览器',
                 maps: '我们追踪的服务器上正在游玩的地图',
+                players: '此刻谁在游戏中，以及历史排行榜',
                 mine: '你管理的服务器',
             },
             parties: {
@@ -679,6 +696,7 @@ export const shellSidebar: SidebarCatalog = {
             add: 'Adicionar',
             browse: 'Explorar',
             maps: 'Mapas',
+            players: 'Jogadores',
             blog: 'Blog',
             activity: 'Atividade',
             discussions: 'Discussões',
@@ -721,6 +739,7 @@ export const shellSidebar: SidebarCatalog = {
                 add: 'Coloque o seu servidor a ser acompanhado',
                 browse: 'Navegador de servidores ao vivo',
                 maps: 'Mapas jogados nos servidores que acompanhamos',
+                players: 'Quem está jogando agora e os rankings de todos os tempos',
                 mine: 'Servidores que gere',
             },
             parties: {

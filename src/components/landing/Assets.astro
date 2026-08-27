@@ -18,22 +18,22 @@ const t = getT(Astro.currentLocale);
     </SectionIntro>
 
     <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
-        <FeatureCard icon={Tags} title={t('landing.assets.c1t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Tags} title={t('landing.assets.c1t')} class="intersect-once intersect:motion-preset-slide-right">
             <Fragment set:html={t('landing.assets.c1b')} />
         </FeatureCard>
-        <FeatureCard icon={Images} title={t('landing.assets.c2t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Images} title={t('landing.assets.c2t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
             <Fragment set:html={t('landing.assets.c2b')} />
         </FeatureCard>
-        <FeatureCard icon={Star} title={t('landing.assets.c3t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Star} title={t('landing.assets.c3t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-160">
             <Fragment set:html={t('landing.assets.c3b')} />
         </FeatureCard>
         <FeatureCard icon={Code2} title={t('landing.assets.c4t')} class="intersect-once intersect:motion-preset-slide-up">
             <Fragment set:html={t('landing.assets.c4b')} />
         </FeatureCard>
-        <FeatureCard icon={Workflow} title={t('landing.assets.c5t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={Workflow} title={t('landing.assets.c5t')} class="intersect-once intersect:motion-preset-slide-up motion-delay-80">
             <Fragment set:html={t('landing.assets.c5b')} />
         </FeatureCard>
-        <FeatureCard icon={FaGithub} title={t('landing.assets.c6t')} class="intersect-once intersect:motion-preset-slide-up">
+        <FeatureCard icon={FaGithub} title={t('landing.assets.c6t')} class="intersect-once intersect:motion-preset-slide-left motion-delay-160">
             <Fragment set:html={t('landing.assets.c6b')} />
         </FeatureCard>
     </div>

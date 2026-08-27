@@ -1,0 +1,13 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import TmcApp from '../../components/TmcApp.astro';
+---
+
+<Layout pathName={"/tmc-app"} meta={{
+    title: "The TMC App",
+    titleMain: "The TMC App - The Modding Community",
+    desc: "A cross-platform server browser and mod manager for Windows, macOS, Linux, Android and iOS. Real latency measured from your device, live server queries, and mods deployed without copying anything."
+}}>
+    <h1 class="sr-only">The TMC App - The Modding Community</h1>
+    <TmcApp />
+</Layout>

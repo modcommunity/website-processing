@@ -1,0 +1,132 @@
+---
+import { BookOpen, KeyRound } from 'lucide-react';
+import { FaDiscord } from 'react-icons/fa6';
+import Terminal from "./Terminal.astro";
+import HeroBackdrop from "../helper/HeroBackdrop.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+import { API_KEYS, DISCORD, DOCS_CLI } from "./links";
+
+
+const t = getT(Astro.currentLocale);
+
+const chips = [
+    t('landing.apiTool.heroChip1'),
+    t('landing.apiTool.heroChip2'),
+    t('landing.apiTool.heroChip3'),
+];
+---
+
+{/*
+  * The CLI's hero.
+  *
+  * The third shape on this site and the third backdrop, on purpose. The front
+  * page is a centred column on a four-colour mesh; /tmc-app is a split with an
+  * app window on a lit-room violet; this is a stacked banner on teal — the one
+  * page here that is about a terminal, and the only place that colour appears.
+  *
+  * Stacked rather than side-by-side: the install snippet is the thing a reader
+  * came for, and squeezing it into a half-width column is what forced the old
+  * layout's `min-w-0` / `overflow-x-auto` juggling. Full width, under the copy,
+  * it just fits.
+  */}
+<section class="px-4 pt-8 @2xl:pt-12">
+    <div class="container mx-auto">
+        <div class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+            <HeroBackdrop variant="console" />
+
+            <div class="flex flex-col gap-8 px-6 py-14 @2xl:py-20">
+                <div class="flex min-w-0 flex-col items-start gap-5">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-teal-300/20 bg-teal-400/10 px-4 py-1.5 font-mono text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-teal-300 backdrop-blur-md">
+                        <span class="h-1.5 w-1.5 rounded-full bg-teal-300 shadow-[0_0_8px_2px] shadow-teal-300/60"></span>
+                        {t('landing.apiTool.heroBadge')}
+                    </span>
+
+                    {/* The banner line: headline left, CTAs right, aligned to the
+                        headline's baseline rather than to the whole block — the
+                        tagline below is full width, so pinning the buttons to
+                        the bottom of a two-paragraph column left them floating
+                        in the middle of the hero with nothing beside them. */}
+                    <div class="flex w-full flex-col gap-6 @5xl:flex-row @5xl:items-end @5xl:justify-between @5xl:gap-12">
+                        <h2
+                            class="max-w-3xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-[#5eead4]"
+                            set:html={t('landing.apiTool.heroTitleHtml')}
+                        ></h2>
+
+                        <div class="flex shrink-0 flex-wrap gap-3">
+                            <a
+                                href={localizePath(API_KEYS, Astro.currentLocale)}
+                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-300 px-6 py-3 font-semibold text-[#02141a] shadow-lg shadow-teal-500/20 transition hover:-translate-y-0.5 hover:bg-teal-200"
+                            >
+                                <KeyRound className="h-5 w-5" />
+                                <span>{t('landing.apiTool.heroBtnKey')}</span>
+                            </a>
+                            <a
+                                href={DOCS_CLI}
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-teal-300/30 bg-teal-400/10 px-6 py-3 font-semibold text-teal-200 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-teal-300/60 hover:bg-teal-400/20"
+                            >
+                                <BookOpen className="h-5 w-5" />
+                                <span>{t('landing.apiTool.heroBtnDocs')}</span>
+                            </a>
+                            <a
+                                href={DISCORD}
+                                target="_blank"
+                                rel="noreferrer"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20"
+                            >
+                                <FaDiscord className="h-5 w-5" />
+                                <span>{t('landing.apiTool.heroBtnDiscord')}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <span aria-hidden class="h-px w-24 bg-gradient-to-r from-teal-200/70 to-transparent"></span>
+
+                    <p
+                        class="max-w-2xl text-pretty text-lg text-white/75 [&_.special]:text-teal-300"
+                        set:html={t('landing.apiTool.heroTaglineHtml')}
+                    ></p>
+
+                    {/* The three chips, as one hairline-divided strip rather
+                        than three loose pills — same panel treatment the front
+                        page's surface strip uses, so the two read as a family. */}
+                    <div class="flex flex-wrap items-stretch divide-x divide-white/10 overflow-hidden rounded-xl border border-white/10 bg-white/5 backdrop-blur-md">
+                        {chips.map((chip) => (
+                            <span class="px-4 py-2 font-mono text-xs text-white/70">{chip}</span>
+                        ))}
+                    </div>
+
+                    <p
+                        class="max-w-2xl rounded-xl border border-amber-400/25 bg-amber-400/5 px-4 py-3 text-sm text-white/70 [&_.special]:text-amber-200"
+                        set:html={t('landing.apiTool.heroNoteHtml')}
+                    ></p>
+                </div>
+
+                {/* Full width. `min-w-0` on the wrapper because a `curl`-length
+                    unbreakable line in here would otherwise widen the whole grid
+                    and push a scrollbar onto the page rather than scroll inside
+                    its own box — see CLAUDE.md's container-query notes. */}
+                <div class="flex min-w-0 flex-col gap-3">
+                    {/* Re-tinted for the hero: the component's own tokens are
+                        theme surfaces, which on this near-black backdrop read as
+                        a grey box floating on green. */}
+                    <Terminal
+                        title={t('landing.apiTool.installTitle')}
+                        class="!border-white/12 !bg-[#020a0c]/85 backdrop-blur-md [&_pre]:!text-white/85 [&_.text-muted]:!text-white/40 [&_.text-accent]:!text-teal-300"
+                    ><span class="text-muted"># From the source checkout — there is nothing to build</span>
+<span class="text-accent">pip</span> install .
+<span class="text-accent">pip</span> install <span class="text-success-2">'.[fast]'</span>   <span class="text-muted"># optional: cryptography, for faster signing</span>
+<span class="text-accent">tmc</span> --version       <span class="text-muted"># tmc 1.1.0</span>
+
+<span class="text-muted"># Keys are made under Account → API Keys</span>
+<span class="text-accent">tmc</span> auth login --token <span class="text-success-2">tmc_xxxxxxxxxxxx</span>
+<span class="text-accent">tmc</span> auth whoami
+
+<span class="text-muted"># …or read public items with no key at all</span>
+<span class="text-accent">tmc</span> mod list --anon --app 4 -o json</Terminal>
+                    <p class="text-sm text-white/50">{t('landing.apiTool.installNote')}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

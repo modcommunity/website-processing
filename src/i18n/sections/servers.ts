@@ -23,6 +23,8 @@ export const servers: SectionCatalog = {
         c6t: 'Broad Game Support',
         c6b: 'From Rust and CS2 to Minecraft and Garry\'s Mod, powered by <span class="special">17 query protocols</span> under the hood.',
         browse: 'Browse Servers',
+        // Links out to /tmc-app, which is translated in all nine locales too.
+        appLink: 'Get Live Pings In The App',
     },
     es: {
         eyebrow: 'Servidores',
@@ -42,6 +44,7 @@ export const servers: SectionCatalog = {
         c6t: 'Amplio Soporte de Juegos',
         c6b: 'Desde Rust y CS2 hasta Minecraft y Garry\'s Mod, impulsado por <span class="special">17 protocolos de consulta</span> por dentro.',
         browse: 'Explorar Servidores',
+        appLink: 'Obtén Pings En Vivo En La App',
     },
     fr: {
         eyebrow: 'Serveurs',
@@ -61,6 +64,7 @@ export const servers: SectionCatalog = {
         c6t: 'Large Prise en Charge',
         c6b: 'De Rust et CS2 à Minecraft et Garry\'s Mod, propulsé par <span class="special">17 protocoles de requête</span> en coulisses.',
         browse: 'Parcourir les Serveurs',
+        appLink: 'Des Pings En Direct Dans L\'App',
     },
     de: {
         eyebrow: 'Server',
@@ -80,6 +84,7 @@ export const servers: SectionCatalog = {
         c6t: 'Breite Spielunterstützung',
         c6b: 'Von Rust und CS2 bis Minecraft und Garry\'s Mod, angetrieben von <span class="special">17 Abfrageprotokollen</span> unter der Haube.',
         browse: 'Server Durchsuchen',
+        appLink: 'Live-Pings In Der App',
     },
     ru: {
         eyebrow: 'Серверы',
@@ -99,6 +104,7 @@ export const servers: SectionCatalog = {
         c6t: 'Широкая Поддержка Игр',
         c6b: 'От Rust и CS2 до Minecraft и Garry\'s Mod — на основе <span class="special">17 протоколов запросов</span> под капотом.',
         browse: 'Смотреть Серверы',
+        appLink: 'Живой Пинг В Приложении',
     },
     nl: {
         eyebrow: 'Servers',
@@ -118,6 +124,7 @@ export const servers: SectionCatalog = {
         c6t: 'Brede Game-ondersteuning',
         c6b: 'Van Rust en CS2 tot Minecraft en Garry\'s Mod, aangedreven door <span class="special">17 query-protocollen</span> onder de motorkap.',
         browse: 'Servers Bekijken',
+        appLink: 'Live Pings In De App',
     },
     ja: {
         eyebrow: 'サーバー',
@@ -137,6 +144,7 @@ export const servers: SectionCatalog = {
         c6t: '幅広いゲーム対応',
         c6b: 'Rust や CS2 から Minecraft や Garry\'s Mod まで、内部では <span class="special">17 のクエリプロトコル</span> が動作しています。',
         browse: 'サーバーを見る',
+        appLink: 'アプリでリアルタイムの Ping を',
     },
     zh: {
         eyebrow: '服务器',
@@ -156,6 +164,7 @@ export const servers: SectionCatalog = {
         c6t: '广泛的游戏支持',
         c6b: '从 Rust 和 CS2 到 Minecraft 和 Garry\'s Mod，底层由 <span class="special">17 种查询协议</span> 提供支持。',
         browse: '浏览服务器',
+        appLink: '在应用中获取实时延迟',
     },
     pt: {
         eyebrow: 'Servidores',
@@ -175,5 +184,6 @@ export const servers: SectionCatalog = {
         c6t: 'Amplo Suporte a Jogos',
         c6b: 'De Rust e CS2 a Minecraft e Garry\'s Mod, impulsionado por <span class="special">17 protocolos de consulta</span> por baixo dos panos.',
         browse: 'Explorar Servidores',
+        appLink: 'Pings Ao Vivo No App',
     },
 }

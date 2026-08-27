@@ -1,0 +1,21 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import ApiTool from '../../../components/ApiTool.astro';
+import { NON_DEFAULT_LOCALES } from '../../../i18n/config';
+
+// Localized route so the language picker never 404s here. The body copy is
+// translated in all nine locales via `i18n/sections/apiTool.ts`; the `meta`
+// below is still English, like every other page's on this site.
+export function getStaticPaths() {
+    return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout pathName={Astro.url.pathname} meta={{
+    title: "The tmc CLI",
+    titleMain: "The tmc CLI - The Modding Community",
+    desc: "tmc is a dependency-free Python command-line client for our content API. Create and edit content, manage relations, and upload files and cut releases in a single command."
+}}>
+    <h1 class="sr-only">The tmc CLI - The Modding Community</h1>
+    <ApiTool />
+</Layout>

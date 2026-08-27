@@ -5,8 +5,8 @@ Guidance for working in this repository. This file is specific to
 
 ## What this repo is
 `website-processing` is the **Astro + React** static site for The Modding
-Community's public landing pages — the home page, licenses, privacy policy and
-ToS. It is intentionally separate from the core app (`../website-city`, Next.js)
+Community's public landing pages — the home page, the two product pages
+(`/tmc-app`, `/api-tool`), licenses, privacy policy and ToS. It is intentionally separate from the core app (`../website-city`, Next.js)
 so the marketing/legal surface can be a fast static build.
 
 Pages live in `src/pages/*/index.astro`; each renders a `src/components/*.astro`
@@ -127,7 +127,15 @@ activates the shared theme's `.dark` token block. There is no theme toggle here.
   Note lucide icons are **stroke**-based: colour them with `text-*`, never
   `fill-*` (a `fill-` class leaves them invisible).
 - Stack: `astro` 7, `@astrojs/react`, Tailwind v4 via `@tailwindcss/vite`,
-  `react-icons`, `react-multi-carousel`. No HeroUI, no Mantine.
+  `react-icons`, `react-multi-carousel`, `three`. No HeroUI, no Mantine.
+- **`three` is only ever imported dynamically.** It is here for one thing — the
+  front page's hero field (`landing/heading/HeroField.tsx`) — and it is 700 KB
+  of JS, several times the rest of the site's client bundle put together. The
+  `await import('three')` inside that component's effect is what keeps it a
+  separate chunk that no other page fetches and that nothing waits on. A
+  top-level `import … from 'three'` anywhere would put it in the entry bundle
+  and undo that; if a second thing ever needs it, give that one a dynamic
+  import too.
 - **`react-multi-carousel` is pinned to an exact `2.8.5` — do not change it to
   `^2.8.5` or bump it to `2.8.6`.** 2.8.6 accidentally ships `npm`, `install` and
   `core-js` as *runtime* dependencies (the classic `npm install install npm`
@@ -138,6 +146,235 @@ activates the shared theme's `.dark` token block. There is no theme toggle here.
   costs nothing functionally. A caret range would silently resolve back to 2.8.6
   and bring the noise back. Revisit only if upstream publishes a 2.8.7 that drops
   those deps.
+
+## The blog shelf reads from website-city
+
+The two article carousels at the bottom of the landing page are **not** a
+hardcoded list any more. `src/lib/blog.ts` fetches them from website-city's
+public content API — the *unauthenticated* half, so there is no key, no secret
+and no build-time credential:
+
+```
+GET https://moddingcommunity.com/api/content/article?official=1&limit=20&page=N
+```
+
+`official=1` is the whole definition of "the blog" (that flag is what puts a
+post there), and the endpoint answers with `access-control-allow-origin: *`, so
+the same call works from the build and from the browser. The origin is
+`CITY_URL` from `src/lib/site.ts` (`PUBLIC_CITY_URL`, defaulting to production)
+— see **Origins and environment** below; a local city needs no key, so
+`PUBLIC_CITY_URL=http://localhost:3000` is the whole of pointing the shelf at
+dev.
+
+Two separate mechanisms, and it is worth keeping them apart when changing this:
+
+- **The pool** is fetched at build time and baked into the island's props
+  (memoised, so the nine locale renders make one request). The island refetches
+  in the browser only when that pool is more than a day old — a site rebuilt
+  today sends no client request at all.
+- **The selection** rotates daily, client-side, seeded with the UTC date
+  (`dailyPick`). That is what makes "different articles today" work on a static
+  site with no rebuild. It must stay deterministic: the server and the browser
+  have to agree on the first render.
+
+Everything the API returns is treated as optional, because the site has to build
+against a city deployment that has not shipped a given field yet — no `image`
+falls back to the local `public/images/blog/article/*` art by slug and then to a
+gradient, no `path` falls back to `/blog/<slug>`, and a failed fetch falls back
+to `FALLBACK_ARTICLES` (the ten posts this section used to hardcode) so the
+section is never empty.
+
+**`image`, `tags` and article `path` need website-city ≥ the change that added
+them** (`src/lib/api/public/anon.ts` there, plus its `?official` list filter).
+Until that deploys, the shelf renders from titles and the local art — correctly,
+just plainer. The modding/server split reads tags and categories first and falls
+back to the title.
+
+## Origins and environment
+
+Every origin this site points at lives in **`src/lib/site.ts`**, and every one
+is a `PUBLIC_*` variable with a production default, so a fresh checkout builds
+exactly as production does with no `.env` at all:
+
+| Constant | Variable | Default | Used by |
+| --- | --- | --- | --- |
+| `SITE_URL` | `PUBLIC_URL` | `https://moddingcommunity.com` | `Layout.astro` — canonical, hreflang, Open Graph |
+| `CITY_URL` | `PUBLIC_CITY_URL` | `https://moddingcommunity.com` | `lib/blog.ts` — the blog shelf's fetch and its article URLs |
+| `DOCS_URL` | `PUBLIC_DOCS_URL` | `https://docs.moddingcommunity.com` | `apiTool/links.ts` — `docs('/tmc-cli')` |
+
+`.env.example` documents these along with the page-metadata and analytics
+variables; copy it to `.env` and uncomment what you need.
+
+Three things worth knowing before adding a fourth:
+
+- **`PUBLIC_` is load-bearing, and it is also a limit.** It is what makes Astro
+  inline the value into the CLIENT bundle as well as the build — which the blog
+  shelf needs, since its island refetches from `CITY_URL` in the browser when
+  the baked pool is a day old. It equally means **nothing here may hold a
+  secret**: these values ship to every visitor.
+- **Trailing slashes are stripped on the way in.** Call sites concatenate rooted
+  paths (`${CITY_URL}/api/content/article`), so `PUBLIC_CITY_URL=http://localhost:3000/`
+  would otherwise build `//api/...`.
+- **`DOCS_URL` points at a host the docs have not moved to yet.** The
+  documentation site is `../website-learn`, served today at `/learn` on the main
+  domain; the default here is where it is headed. That is precisely why it is a
+  variable — the value is expected to be wrong for a while, and overriding it is
+  a line in `.env` rather than an edit to a component.
+
+## The product pages (`/tmc-app`, `/api-tool`)
+
+Two dedicated landing pages that are not the home page, each built the same way
+it is: a shell in `src/components/<Name>.astro` composing one `.astro` file per
+section, and a route pair — `src/pages/<route>/index.astro` plus
+`src/pages/[lang]/<route>/index.astro` — so the language picker never 404s.
+
+| Page | Describes | Source of truth |
+| --- | --- | --- |
+| `/tmc-app` | The Tauri app: the live server browser, the mod manager, downloads, plugins, its security model | `../tmc-app`, chiefly its `CLAUDE.md` |
+| `/api-tool` | `tmc`, the Python CLI for the public content API | `../api-cli`, its `README.md` and `CLAUDE.md` |
+
+Three things to keep in mind when editing them:
+
+- **Both products are unreleased, and the pages say so — loudly.** The app has
+  no builds on any platform; the CLI is not on PyPI and has no public
+  repository. `/tmc-app` states it in the badge (`heroBadge`), the hero note
+  (`heroNoteHtml`) and a whole closing section headed "Not Available, And Not
+  Ready" (`statusTitleHtml`, `statusIntroHtml`, the `n1`–`n4` cards). `/api-tool`
+  says it three times over the same way: the badge (`heroBadge`, "Not Released
+  Yet"), an amber note in the hero (`heroNoteHtml`) and one more above the
+  closing buttons (`ctaNoteHtml`) — the two notes wear amber/`warning` rather
+  than the page's teal, because a caution should not be dressed in the page's
+  own colour. `installNote` under the terminal is now only about the install
+  itself. When that changes, those are the strings, and the install snippet
+  becomes a real `pip install tmc-cli`.
+- **`/tmc-app` states no version number, on purpose.** The app's three manifests
+  (`package.json`, `src-tauri/Cargo.toml`, `src-tauri/tauri.conf.json`) all say
+  `0.1.0`, which is the `create-tauri-app` default rather than a decision, and a
+  version nobody can install tells a reader nothing. If a real pre-release
+  number is set over there, `heroNoteHtml` is where it comes back.
+- **The platform plan is desktop first.** Windows, Linux and macOS, then mobile
+  — that is the order the hero's chips are in, the mobile two are dimmed and
+  tagged "Later" (`pLater`), and the `n4` card says it in words. A flat row of
+  five reads as a shipping matrix, which would be wrong twice over.
+- **Forward-looking copy is fenced, not folded in.** These pages describe what
+  is BUILT, so the one place `/tmc-app` talks about what is coming — the server
+  administration panel at the end of `LiveBrowser.astro` — is shaped to make
+  that unmissable: one "In the app" row (RCON, which exists), four rows each
+  tagged "Planned", and a line saying planned means planned. A planned feature
+  in a plain `FeatureCard` alongside built ones would read as shipped; if
+  something else needs a "later", copy this panel rather than adding a card.
+- **Every claim is checked against the sibling repo.** The protocol list, the
+  four deployment strategies, the relation verbs and the exit codes are copied,
+  not invented, and each is sourced in a comment. When a sibling changes, this
+  is downstream of it. `apiTool.ts`'s header names the version it was last
+  checked against (**api-cli 1.1.0**) — the type, relation and cap lists come
+  from `src/tmc_cli/schema.py`, and the test count from actually running
+  `python3 -m unittest discover -s tests` over there, because the README's
+  figure is the thing most likely to have drifted.
+- **`/api-tool` links the docs, not a repository.** There is no public repo to
+  link, so the hero's third button and the closing CTA both point at
+  `DOCS_URL + /tmc-cli` — see **Origins and environment**.
+- **Translated in all nine locales, like the home page.** `src/i18n/sections/tmcApp.ts`
+  and `apiTool.ts` fill every locale, as do the two links these pages added into
+  `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`).
+  `en` stays the reference shape: add a key there first, then fill the other
+  eight — `getT` falls back per KEY, so a half-filled key still renders (in
+  English) rather than blank.
+
+  What deliberately stays identical across locales is everything a reader would
+  *type or recognise as a name*: platform and product names (Windows, macOS,
+  RCON, USVFS, Source, Frostbite, Ed25519), the CLI's commands, flags,
+  environment variables, HTTP methods and exit codes, the snippet titles
+  (`install.sh`, `release.yml`, …), and the mock server's own name and map in
+  `/tmc-app`'s hero. Translating a flag would produce a line that does not run.
+  Each catalogue's header comment says this too — keep the two in step.
+
+## The three heroes (`src/components/helper/HeroBackdrop.astro`)
+
+The home page, `/tmc-app` and `/api-tool` each open with a hero, and they are
+deliberately **not** the same hero. They used to be: all three painted the same
+two layers — one `from-accent/10 via-background to-background` wash and one
+accent orb under the title — over the same centred column, so the only thing
+that told you which page you were on was the words.
+
+Each is now built over one of three named backdrops, and each has its own
+silhouette — including its own frame: the product pages are self-contained
+rounded panels, the front page is a full-bleed band.
+
+| Page | Backdrop | Shape |
+| --- | --- | --- |
+| `/` (`landing/Heading.astro`) | `blueprint` — two restrained lights, plus an animated Three.js wireframe terrain over them (`HeroField.tsx`) | Full-bleed asymmetric band: copy left (eyebrow rule, static display headline, CTAs), the five surfaces as a numbered index in a rule-separated column right |
+| `/tmc-app` (`tmcApp/Hero.astro`) | `workshop` — indigo/violet over a lit horizon | Two-column split: copy left, a pure-markup mock of the app's server browser right |
+| `/api-tool` (`apiTool/Hero.astro`) | `console` — teal on black, perspective floor, scanlines | Banner: headline left with CTAs on its baseline, then the full-width install terminal |
+
+Things that are load-bearing:
+
+- **The backdrops are image-free and fixed-dark.** Pure gradient and blurred
+  light, so nothing can fail to load and nothing goes stale. They are fixed
+  dark rather than tokenised because the copy over them is white — a backdrop
+  built from `--surface` would lighten under a light theme and take the copy
+  with it. `var(--accent)` is the one token used. Same rules, same vocabulary
+  as website-city's `src/app/_components/ui/browser/hero_backdrops.tsx`; keep
+  the two in step.
+- **No layout ever animates — the headlines included.** The front page's
+  headline used to type itself in (`HeadingTitle`, `react-type-animation`),
+  which made the first paint of the site an empty box that then shoved
+  everything below it down, and needed a `min-h-*` floor on its wrapper to hide
+  that. It is plain markup now; the component and the dependency are gone.
+- **The one animation is the front page's hero field, and it is strictly
+  additive.** `landing/heading/HeroField.tsx` draws a Three.js wireframe
+  terrain — a lattice on the XZ plane displaced by three layered sines in the
+  vertex shader, running to a horizon behind the headline — over the
+  `blueprint` backdrop. It replaced that backdrop's *flat* grid, which was two
+  CSS gradient lattices at two pitches (40px and 200px) anchored to the
+  element's corner, so the major rules never landed on the minor ones and the
+  alignment moved with the viewport.
+
+  Everything about it is arranged so that it can simply not happen:
+
+  - The CSS backdrop still paints its own grid, and `Heading.astro` fades that
+    grid out — and fades the field's scrim in — with
+    `.hero-band:has([data-hero-field='live'])`. `HeroField` sets that attribute
+    on its own host only once it has put a frame on screen, so no JS, no WebGL
+    or a context that fails to create leaves the hero exactly as it was before
+    any of this, at full strength.
+  - It hydrates `client:idle` and imports `three` dynamically, so nothing about
+    the first paint waits on it.
+  - `prefers-reduced-motion: reduce` renders one frame and never starts the
+    loop, and the loop stops whenever the hero is off-screen or the tab is
+    hidden. Time advances only on frames actually drawn, so a hero that was
+    away for a minute resumes rather than jumping a minute of relief.
+  - The camera reframes by *aspect*, not width: portrait lifts it and looks
+    further down, because a low camera in a tall phone-shaped box fills two
+    thirds of the hero with the two nearest rows.
+
+  If another page ever wants motion, copy this shape — a fallback that is
+  complete on its own, and an enhancement that announces itself only after it
+  works. Do not animate a backdrop in place of one.
+- **`.special` is `text-special-1 font-bold` from `Utilities.css`,** and each
+  hero overrides its colour (`[&_.special]:…`) so the emphasis belongs to that
+  page's palette rather than to the site accent, which is a blue that fights
+  both the green and the violet. The 200-weight Tailwind shades read as white at
+  hero sizes — 300 is where they actually look coloured.
+- **The front page's surface index is not a stat row.** This site is static and
+  has no live counts; three invented numbers under a headline is worse than
+  none. That half of the hero carries the five destinations instead — numbered
+  rows, one hover target per row — labelled from `nav.*` (which website-city
+  translates in all nine locales, so it needs no new strings) with the icons
+  city's nav config uses. The closing rule sits on the `<ul>`, not on the last
+  row: each anchor is its `<li>`'s only child, so `last:` would match all five.
+- **The hero copy keys are translated in all nine locales.** `landing.hero.*`
+  gained `eyebrow`, `ctaExplore`, `ctaDiscord`, `tagline` and `shelfLabel`
+  (and `titleAnim1` is now just `title`),
+  filled for every locale — unlike the product-page sections, the home page is
+  fully translated and an English-only key there would be a regression. The two
+  product heroes stay English-only, matching the rest of those pages.
+- **`devWarningHtml` links to `/changelog` and `/roadmap`,** which are
+  website-city routes (`src/app/[locale]/{changelog,roadmap}`), reached as
+  plain root-relative paths — the same convention `nav.tsx` and the hero's
+  `card1Html` already use for `/mods`, `/assets` and friends. Same origin in
+  production, so they resolve; they are not localized, for the same reason
+  those are not.
 
 ## Build / dev
 

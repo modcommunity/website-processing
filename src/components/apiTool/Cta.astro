@@ -1,0 +1,39 @@
+---
+import { BookOpen, KeyRound, MonitorSmartphone } from 'lucide-react';
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+import { API_KEYS, DOCS_CLI } from "./links";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto">
+    <div class="flex flex-col items-center gap-5 rounded-2xl border border-border bg-surface px-6 py-12 text-center intersect-once intersect:motion-preset-slide-up">
+        <h2 class="text-3xl" set:html={t('landing.apiTool.ctaTitleHtml')}></h2>
+        <p class="max-w-2xl text-muted [&_.special]:text-accent" set:html={t('landing.apiTool.ctaIntroHtml')}></p>
+
+        {/* Said in the hero badge, said in the hero note, said again here —
+            the last thing before the buttons, so nobody acts on the page
+            believing the tool is downloadable. */}
+        <p
+            class="max-w-2xl rounded-xl border border-warning/25 bg-warning/5 px-4 py-3 text-sm text-muted [&_.special]:text-warning"
+            set:html={t('landing.apiTool.ctaNoteHtml')}
+        ></p>
+
+        <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href={localizePath(API_KEYS, Astro.currentLocale)} class="btn btn-special">
+                <KeyRound className="h-5 w-5" />
+                <span>{t('landing.apiTool.ctaBtnKey')}</span>
+            </a>
+            <a href={DOCS_CLI} class="btn btn-primary">
+                <BookOpen className="h-5 w-5" />
+                <span>{t('landing.apiTool.ctaBtnDocs')}</span>
+            </a>
+            <a href={localizePath("/tmc-app", Astro.currentLocale)} class="btn btn-primary">
+                <MonitorSmartphone className="h-5 w-5" />
+                <span>{t('landing.apiTool.ctaBtnApp')}</span>
+            </a>
+        </div>
+    </div>
+</section>

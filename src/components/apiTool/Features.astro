@@ -1,0 +1,43 @@
+---
+import { Boxes, Eye, KeyRound, Link2, PackageOpen, SpellCheck, Terminal as TerminalIcon, Timer } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+
+const t = getT(Astro.currentLocale);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.featEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.featTitleHtml')}></h2>
+        <p set:html={t('landing.apiTool.featIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-4">
+        <FeatureCard icon={PackageOpen} title={t('landing.apiTool.f1t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f1b')} />
+        </FeatureCard>
+        <FeatureCard icon={KeyRound} title={t('landing.apiTool.f2t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f2b')} />
+        </FeatureCard>
+        <FeatureCard icon={Eye} title={t('landing.apiTool.f3t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f3b')} />
+        </FeatureCard>
+        <FeatureCard icon={Link2} title={t('landing.apiTool.f4t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f4b')} />
+        </FeatureCard>
+        <FeatureCard icon={Boxes} title={t('landing.apiTool.f5t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f5b')} />
+        </FeatureCard>
+        <FeatureCard icon={SpellCheck} title={t('landing.apiTool.f6t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f6b')} />
+        </FeatureCard>
+        <FeatureCard icon={TerminalIcon} title={t('landing.apiTool.f7t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f7b')} />
+        </FeatureCard>
+        <FeatureCard icon={Timer} title={t('landing.apiTool.f8t')} class="intersect-once intersect:motion-preset-slide-up">
+            <Fragment set:html={t('landing.apiTool.f8b')} />
+        </FeatureCard>
+    </div>
+</section>

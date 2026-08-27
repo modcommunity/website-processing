@@ -1,37 +1,201 @@
 ---
-import { Code2, Heart, Users } from 'lucide-react';
+import { ArrowUpRight, Code2, Compass, Cog, Group, Hammer, Heart, Server, Users } from 'lucide-react';
 // lucide dropped its brand marks; see Community.astro.
-import { FaGithub } from 'react-icons/fa6';
-import HeadingTitle from "./heading/Title"
+import { FaDiscord, FaGithub } from 'react-icons/fa6';
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
+import HeroField from "./heading/HeroField"
+import HeroBackdrop from "../helper/HeroBackdrop.astro"
 import Card from "../helper/Card.astro"
 import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
 
 
 const t = getT(Astro.currentLocale);
+
+const DISCORD = 'https://discord.moddingcommunity.com';
+
+/*
+ * The five surfaces, as a numbered index down the side of the hero.
+ *
+ * They used to be a strip of icon tiles under the CTAs — decoration that a
+ * reader skims past on the way to the fold. As an index they are half the
+ * hero instead: full-width rows, a number, a rule between each, one hover
+ * target the width of the column. The point of the front page is to send
+ * people to one of these five places, so they get the space that implies.
+ *
+ * Still deliberately NOT a stat row: this site is static and has no live
+ * counts, and three invented numbers under a headline is worse than none.
+ *
+ * Labels come from `nav.*`, which website-city translates in all nine locales,
+ * so the index needs no new strings. Icons AND ORDER match city's nav config,
+ * which is the authoritative list (see CLAUDE.md) — this used to lead with mods
+ * and put collections before communities, so the same five destinations were
+ * numbered one way here and listed another way in the menu directly above.
+ */
+const surfaces = [
+    { icon: Cog, label: t('nav.assets.label'), href: '/assets' },
+    { icon: Hammer, label: t('nav.mods.label'), href: '/mods' },
+    { icon: Server, label: t('nav.servers.label'), href: '/servers' },
+    { icon: Users, label: t('nav.communities.label'), href: '/communities' },
+    { icon: Group, label: t('nav.collections.label'), href: '/collections' },
+];
 ---
 
-<section class="relative isolate overflow-hidden px-4 py-24 @2xl:py-32">
-    {/* Accent gradient wash + glow, mirroring website-city's hero treatment. */}
-    <div class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-accent/10 via-background to-background"></div>
-    <div class="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[46rem] max-w-full -translate-x-1/2 rounded-full bg-accent/20 blur-3xl"></div>
+{/*
+  * The front-page hero.
+  *
+  * A full-bleed band, not a rounded panel, and asymmetric rather than centred:
+  * the copy runs down the left against a ruled blueprint field, and the five
+  * destinations are a numbered index in a column beside it. `/tmc-app` and
+  * `/api-tool` keep their own shapes (split and banner), so the three heroes
+  * still read as three different places.
+  *
+  * The copy inside is white on all of it — that is the reason the backdrop is
+  * fixed-dark rather than tokenised. See HeroBackdrop.astro.
+  *
+  * The headline is static markup. It used to type itself in, which meant the
+  * first paint of the site was an empty box that then pushed everything below
+  * it down; a heading is not the place for the one animation on the page.
+  *
+  * The motion lives in the BACKDROP instead, where nothing depends on it: a
+  * Three.js wireframe terrain (`heading/HeroField.tsx`) fades in over the
+  * blueprint layers once it has rendered a frame, and the flat CSS grid fades
+  * out as it does. Nothing reflows, nothing waits for it, and a browser that
+  * cannot run it keeps exactly the hero this page had before.
+  */}
+<section class="hero-band relative isolate overflow-hidden border-b border-white/10">
+    <HeroBackdrop variant="blueprint" />
 
-    <div class="container mx-auto flex flex-col items-center gap-6 text-center">
-        <span class="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs font-medium text-muted backdrop-blur">
-            <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-            The Modding Community
-        </span>
+    {/* `client:idle`, not `client:load`: the field is decoration, so it should
+        queue behind the hydration that the page's actual behaviour needs.
+        `three` itself is imported dynamically inside the component, so it is a
+        chunk fetched after first paint rather than part of the entry bundle. */}
+    <HeroField className="pointer-events-none absolute inset-0 -z-10" client:idle />
 
-        {/* Need to add minimum height since HeadingTitle loads after first render (makes other elements shift up then down which looks weird without the minimum height) */}
-        <div class="min-h-14 @2xl:min-h-16">
-            <HeadingTitle sequence={[t('landing.hero.titleAnim1')]} client:load />
+    {/* Scrim, over the field and under the copy: the terrain's brightest band
+        is its horizon, which lands exactly where the paragraph is. This sinks
+        the corner the copy occupies and lets the field come forward to the
+        right and bottom, which is also what gives the hero its depth — without
+        it the lattice reads as a texture laid flat over everything.
+
+        It fades in with the field, and only with it: there is nothing to scrim
+        when the canvas never arrives, and dimming the CSS backdrop in that case
+        would make the no-JS hero worse than the one this replaced. */}
+    <div
+        class="hero-field-scrim pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-1000 bg-[linear-gradient(102deg,rgba(4,6,13,0.88)_0%,rgba(4,6,13,0.5)_28%,transparent_54%)]"
+    ></div>
+    <div
+        class="hero-field-scrim pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 opacity-0 transition-opacity duration-1000 bg-gradient-to-t from-[#04060d] to-transparent"
+    ></div>
+
+    <div class="container mx-auto px-4 py-14 @2xl:py-20 @5xl:py-28">
+        <div class="grid items-center gap-12 @4xl:grid-cols-12 @4xl:gap-16">
+
+            {/* Copy. */}
+            <div class="min-w-0 @4xl:col-span-7">
+                <div class="flex items-center gap-3 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-white/55">
+                    <span class="h-px w-10 bg-sky-300/70"></span>
+                    <span>{t('landing.hero.eyebrow')}</span>
+                </div>
+
+                <h2 class="mt-6 max-w-3xl text-balance font-pjs text-[2.5rem] font-extrabold leading-[1.04] tracking-tight text-white @2xl:text-6xl @5xl:text-[4.25rem]">
+                    {t('landing.hero.title')}
+                </h2>
+
+                <p
+                    class="mt-6 max-w-xl text-pretty text-lg leading-relaxed text-white/70 [&_.text-accent]:text-sky-300 [&_.special]:text-sky-300"
+                    set:html={t('landing.hero.paraHtml')}
+                ></p>
+
+                <div class="mt-8 flex flex-wrap items-center gap-3">
+                    {/* `/explore` is a real page on website-city now: one
+                        server-rendered page listing everything the community
+                        has published across all seven content types. That is
+                        what this button promises, so it points there rather
+                        than at `/apps` (the "pick your game" index it used to
+                        settle for, back when `/explore` was still the social
+                        timeline that has since moved to `/feed`). */}
+                    <a
+                        href={localizePath("/explore", Astro.currentLocale)}
+                        class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/25 transition hover:brightness-110"
+                    >
+                        <Compass className="h-5 w-5" />
+                        <span>{t('landing.hero.ctaExplore')}</span>
+                    </a>
+                    <a
+                        href={DISCORD}
+                        target="_blank"
+                        rel="noreferrer"
+                        class="inline-flex items-center justify-center gap-2 rounded-lg border border-white/20 px-6 py-3 font-semibold text-white/85 transition hover:border-white/45 hover:bg-white/5 hover:text-white"
+                    >
+                        <FaDiscord className="h-5 w-5" />
+                        <span>{t('landing.hero.ctaDiscord')}</span>
+                    </a>
+                </div>
+
+                <p class="mt-6 text-xs text-white/45">{t('landing.hero.tagline')}</p>
+            </div>
+
+            {/* The index. A rule separates it from the copy at the width where
+                the two sit side by side; below that it stacks and the rule
+                would be a stray horizontal line, so it is `@4xl:` only. */}
+            <div class="min-w-0 @4xl:col-span-5 @4xl:border-l @4xl:border-white/10 @4xl:pl-10">
+                <span class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/40">
+                    {t('landing.hero.shelfLabel')}
+                </span>
+
+                {/* The closing rule lives on the list: `last:` on the anchor would
+                    match every row, since each anchor is its `<li>`'s only child. */}
+                <ul class="mt-4 border-b border-white/10">
+                    {surfaces.map(({ icon: Icon, label, href }, i) => (
+                        <li>
+                            <a
+                                href={localizePath(href, Astro.currentLocale)}
+                                class="group flex items-center gap-4 border-t border-white/10 py-4 hover:border-sky-300/30"
+                            >
+                                <span class="font-mono text-xs tabular-nums text-white/35 transition-colors group-hover:text-sky-300">
+                                    {String(i + 1).padStart(2, '0')}
+                                </span>
+                                <Icon className="h-5 w-5 shrink-0 text-white/45 transition-colors group-hover:text-sky-300" />
+                                <span class="min-w-0 grow truncate font-pjs font-bold text-white/85 transition-colors group-hover:text-white">
+                                    {label}
+                                </span>
+                                <ArrowUpRight className="h-4 w-4 shrink-0 -translate-x-1 text-sky-300 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
 
-        <p class="max-w-2xl text-balance text-muted" set:html={t('landing.hero.paraHtml')}></p>
-
-        <InDevelopmentWarning html={t('landing.hero.devWarningHtml')} client:load />
+        <InDevelopmentWarning
+            html={t('landing.hero.devWarningHtml')}
+            className="mt-12 w-fit max-w-3xl rounded-lg border border-amber-400/25 bg-amber-400/[0.06] px-4 py-3 text-sm text-white/70 [&_.special]:text-amber-200 [&_a]:text-amber-200"
+            client:load
+        />
     </div>
 </section>
+
+<style is:global>
+    /*
+     * The blueprint backdrop's flat CSS grid retires once the Three.js field
+     * has a frame on screen — two lattices at two different alignments were
+     * exactly the problem the field is here to fix.
+     *
+     * Keyed on `data-hero-field`, which `HeroField` sets on its own host only
+     * after its first successful render, so the selector simply never matches
+     * when there is no JS, no WebGL or no context: the old grid stays, at full
+     * strength, and the hero is the one it always was.
+     */
+    .hero-band:has([data-hero-field='live']) .hero-blueprint-grid {
+        opacity: 0;
+    }
+
+    /* …and the scrim that belongs to the field arrives with it. */
+    .hero-band:has([data-hero-field='live']) .hero-field-scrim {
+        opacity: 1;
+    }
+</style>
 
 <section class="py-10 px-4 container mx-auto">
     <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
@@ -44,7 +208,7 @@ const t = getT(Astro.currentLocale);
                 <Fragment set:html={t('landing.hero.card1Html')} />
             </p>
         </Card>
-        <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-left-lg intersect:xl:motion-preset-fade-lg">
+        <Card className="flex flex-col gap-4 intersect-once intersect:motion-preset-slide-up motion-delay-80">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
                 <Heart className="h-6 w-6" />
             </span>
@@ -53,7 +217,7 @@ const t = getT(Astro.currentLocale);
                 <Fragment set:html={t('landing.hero.card2Html')} />
             </p>
         </Card>
-        <Card className="flex flex-col gap-4 intersect-once intersect:md:motion-preset-slide-right-lg intersect:xl:motion-preset-slide-left-lg">
+        <Card className="flex flex-col gap-4 intersect-once intersect:motion-preset-slide-left-lg motion-delay-160">
             <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">
                 <FaGithub className="h-6 w-6" />
             </span>

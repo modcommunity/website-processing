@@ -73,7 +73,10 @@ const STATUS = '/status'
  * shapes the RAIL (see `buildVisibleSidebarSections`), just not this.
  *
  * If city's PRIMARY_NAV changes, change this with it — that config is the
- * source of truth.
+ * source of truth. That includes the ORDER of the pillars, which had drifted:
+ * this menu led with mods and put collections ahead of communities, so the front
+ * page's own index of the same destinations was numbered differently from the
+ * menu above it.
  */
 export function buildNav(t: TFunc): NavItem[] {
     return [
@@ -93,6 +96,12 @@ export function buildNav(t: TFunc): NavItem[] {
                     desc: t('nav.apps.desc'),
                 },
                 {
+                    label: t('nav.assets.label'),
+                    href: '/assets',
+                    icon: Cog,
+                    desc: t('nav.assets.desc'),
+                },
+                {
                     label: t('nav.mods.label'),
                     href: '/mods',
                     icon: Hammer,
@@ -105,18 +114,6 @@ export function buildNav(t: TFunc): NavItem[] {
                     desc: t('nav.servers.desc'),
                 },
                 {
-                    label: t('nav.assets.label'),
-                    href: '/assets',
-                    icon: Cog,
-                    desc: t('nav.assets.desc'),
-                },
-                {
-                    label: t('nav.collections.label'),
-                    href: '/collections',
-                    icon: Group,
-                    desc: t('nav.collections.desc'),
-                },
-                {
                     label: t('nav.communities.label'),
                     href: '/communities',
                     icon: Users,
@@ -127,6 +124,12 @@ export function buildNav(t: TFunc): NavItem[] {
                     href: '/articles',
                     icon: Newspaper,
                     desc: t('nav.articles.desc'),
+                },
+                {
+                    label: t('nav.collections.label'),
+                    href: '/collections',
+                    icon: Group,
+                    desc: t('nav.collections.desc'),
                 },
                 {
                     // Media has no landing page of its own — the browser IS the
@@ -508,6 +511,14 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     href: '/servers/maps',
                     icon: Map,
                     desc: t('rail.pillars.servers.maps'),
+                },
+                // Same reasoning as Maps: one leaf, pointing at the landing,
+                // which carries its own browse button.
+                {
+                    label: t('rail.items.players'),
+                    href: '/servers/players',
+                    icon: Users,
+                    desc: t('rail.pillars.servers.players'),
                 },
                 // The forum's Knowledgebase leaf used to sit here, and is
                 // gone from city's rail too until the FAQ section replacing it
