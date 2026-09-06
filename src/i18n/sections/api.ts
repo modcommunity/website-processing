@@ -14,7 +14,7 @@ export const api: SectionCatalog = {
         c3b: 'Push <span class="special">releases</span>, <span class="special">files</span>, <span class="special">images &amp; media</span>, links and installers through the relations API.',
         c4t: 'Safe By Default',
         c4b: 'Every request is <span class="special">rate-limited</span> and <span class="special">audit-logged</span>, and can never do more than you can.',
-        // Links out to /api-tool, translated in all nine locales like this one.
+        // Links out to /tmc-cli, translated in all nine locales like this one.
         cliButton: 'Meet The tmc CLI',
     },
     es: {

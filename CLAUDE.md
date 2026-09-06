@@ -6,7 +6,7 @@ Guidance for working in this repository. This file is specific to
 ## What this repo is
 `website-processing` is the **Astro + React** static site for The Modding
 Community's public landing pages — the home page, the two product pages
-(`/tmc-app`, `/api-tool`), licenses, privacy policy and ToS. It is intentionally separate from the core app (`../website-city`, Next.js)
+(`/tmc-app`, `/tmc-cli`), licenses, privacy policy and ToS. It is intentionally separate from the core app (`../website-city`, Next.js)
 so the marketing/legal surface can be a fast static build.
 
 Pages live in `src/pages/*/index.astro`; each renders a `src/components/*.astro`
@@ -221,7 +221,7 @@ Three things worth knowing before adding a fourth:
   variable — the value is expected to be wrong for a while, and overriding it is
   a line in `.env` rather than an edit to a component.
 
-## The product pages (`/tmc-app`, `/api-tool`)
+## The product pages (`/tmc-app`, `/tmc-cli`)
 
 Two dedicated landing pages that are not the home page, each built the same way
 it is: a shell in `src/components/<Name>.astro` composing one `.astro` file per
@@ -231,7 +231,7 @@ section, and a route pair — `src/pages/<route>/index.astro` plus
 | Page | Describes | Source of truth |
 | --- | --- | --- |
 | `/tmc-app` | The Tauri app: the live server browser, the mod manager, downloads, plugins, its security model | `../tmc-app`, chiefly its `CLAUDE.md` |
-| `/api-tool` | `tmc`, the Python CLI for the public content API | `../api-cli`, its `README.md` and `CLAUDE.md` |
+| `/tmc-cli` | `tmc`, the Python CLI for the public content API | `../api-cli`, its `README.md` and `CLAUDE.md` |
 
 Three things to keep in mind when editing them:
 
@@ -239,7 +239,7 @@ Three things to keep in mind when editing them:
   no builds on any platform; the CLI is not on PyPI and has no public
   repository. `/tmc-app` states it in the badge (`heroBadge`), the hero note
   (`heroNoteHtml`) and a whole closing section headed "Not Available, And Not
-  Ready" (`statusTitleHtml`, `statusIntroHtml`, the `n1`–`n4` cards). `/api-tool`
+  Ready" (`statusTitleHtml`, `statusIntroHtml`, the `n1`–`n4` cards). `/tmc-cli`
   says it three times over the same way: the badge (`heroBadge`, "Not Released
   Yet"), an amber note in the hero (`heroNoteHtml`) and one more above the
   closing buttons (`ctaNoteHtml`) — the two notes wear amber/`warning` rather
@@ -271,7 +271,7 @@ Three things to keep in mind when editing them:
   from `src/tmc_cli/schema.py`, and the test count from actually running
   `python3 -m unittest discover -s tests` over there, because the README's
   figure is the thing most likely to have drifted.
-- **`/api-tool` links the docs, not a repository.** There is no public repo to
+- **`/tmc-cli` links the docs, not a repository.** There is no public repo to
   link, so the hero's third button and the closing CTA both point at
   `DOCS_URL + /tmc-cli` — see **Origins and environment**.
 - **Translated in all nine locales, like the home page.** `src/i18n/sections/tmcApp.ts`
@@ -291,7 +291,7 @@ Three things to keep in mind when editing them:
 
 ## The three heroes (`src/components/helper/HeroBackdrop.astro`)
 
-The home page, `/tmc-app` and `/api-tool` each open with a hero, and they are
+The home page, `/tmc-app` and `/tmc-cli` each open with a hero, and they are
 deliberately **not** the same hero. They used to be: all three painted the same
 two layers — one `from-accent/10 via-background to-background` wash and one
 accent orb under the title — over the same centred column, so the only thing
@@ -305,7 +305,7 @@ rounded panels, the front page is a full-bleed band.
 | --- | --- | --- |
 | `/` (`landing/Heading.astro`) | `blueprint` — two restrained lights and a diagonal sweep, plus a slowly turning Three.js point cloud over them (`HeroField.tsx`) | Full-bleed asymmetric band: copy left (eyebrow rule, static display headline, CTAs), the five surfaces as a numbered index in a rule-separated column right |
 | `/tmc-app` (`tmcApp/Hero.astro`) | `workshop` — indigo/violet over a lit horizon | Two-column split: copy left, a pure-markup mock of the app's server browser right |
-| `/api-tool` (`apiTool/Hero.astro`) | `console` — teal on black, perspective floor, scanlines | Banner: headline left with CTAs on its baseline, then the full-width install terminal |
+| `/tmc-cli` (`apiTool/Hero.astro`) | `console` — teal on black, perspective floor, scanlines | Banner: headline left with CTAs on its baseline, then the full-width install terminal |
 
 Things that are load-bearing:
 

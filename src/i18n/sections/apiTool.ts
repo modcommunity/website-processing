@@ -1,7 +1,7 @@
 import type { SectionCatalog } from './types'
 
 /**
- * Copy for the `/api-tool` page — the `tmc` command-line client for the public
+ * Copy for the `/tmc-cli` page — the `tmc` command-line client for the public
  * content API.
  *
  * Translated across all nine locales, like `./tmcApp.ts`. `en` is the reference
