@@ -270,7 +270,7 @@ const SECTIONS = {
     blog,
     platform,
     joinCommunity,
-    // The two dedicated product pages (/tmc-app, /api-tool). They live in the
+    // The two dedicated product pages (/tmc-app, /tmc-cli). They live in the
     // same `landing.*` namespace as the home-page sections because they are
     // landing pages too — `landing.tmcApp.*` and `landing.apiTool.*`.
     tmcApp,

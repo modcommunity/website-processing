@@ -99,7 +99,7 @@ FILE_ID=$(<span class="text-accent">curl</span> -sX POST <span class="text-succe
     {/* Everything above is reachable with curl; the CLI is the version of it
         that already knows the ordering, the caps and the retries. */}
     <div class="flex justify-center">
-        <a href={localizePath("/api-tool", Astro.currentLocale)} class="btn btn-special">
+        <a href={localizePath("/tmc-cli", Astro.currentLocale)} class="btn btn-special">
             <TerminalSquare className="h-5 w-5" />
             <span>{t('landing.api.cliButton')}</span>
         </a>
