@@ -45,7 +45,7 @@ const surfaces = [
   * The front-page hero.
   *
   * A full-bleed band, not a rounded panel, and asymmetric rather than centred:
-  * the copy runs down the left against a ruled blueprint field, and the five
+  * the copy runs down the left against the blueprint backdrop, and the five
   * destinations are a numbered index in a column beside it. `/tmc-app` and
   * `/api-tool` keep their own shapes (split and banner), so the three heroes
   * still read as three different places.
@@ -58,12 +58,16 @@ const surfaces = [
   * it down; a heading is not the place for the one animation on the page.
   *
   * The motion lives in the BACKDROP instead, where nothing depends on it: a
-  * Three.js wireframe terrain (`heading/HeroField.tsx`) fades in over the
-  * blueprint layers once it has rendered a frame, and the flat CSS grid fades
-  * out as it does. Nothing reflows, nothing waits for it, and a browser that
-  * cannot run it keeps exactly the hero this page had before.
+  * Three.js point cloud (`heading/HeroField.tsx`) turning slowly over the
+  * blueprint layers, faded in once it has rendered a frame. Nothing reflows,
+  * nothing waits for it, and a browser that cannot run it keeps a hero that is
+  * complete without it.
+  *
+  * The backdrop no longer draws a grid of its own — two lattices over each
+  * other was the interference, so `blueprint` is plain light now and the field
+  * on top of it has no lines in it at all.
   */}
-<section class="hero-band relative isolate overflow-hidden border-b border-white/10">
+<section class="relative isolate overflow-hidden border-b border-white/10">
     <HeroBackdrop variant="blueprint" />
 
     {/* `client:idle`, not `client:load`: the field is decoration, so it should
@@ -71,22 +75,6 @@ const surfaces = [
         `three` itself is imported dynamically inside the component, so it is a
         chunk fetched after first paint rather than part of the entry bundle. */}
     <HeroField className="pointer-events-none absolute inset-0 -z-10" client:idle />
-
-    {/* Scrim, over the field and under the copy: the terrain's brightest band
-        is its horizon, which lands exactly where the paragraph is. This sinks
-        the corner the copy occupies and lets the field come forward to the
-        right and bottom, which is also what gives the hero its depth — without
-        it the lattice reads as a texture laid flat over everything.
-
-        It fades in with the field, and only with it: there is nothing to scrim
-        when the canvas never arrives, and dimming the CSS backdrop in that case
-        would make the no-JS hero worse than the one this replaced. */}
-    <div
-        class="hero-field-scrim pointer-events-none absolute inset-0 -z-10 opacity-0 transition-opacity duration-1000 bg-[linear-gradient(102deg,rgba(4,6,13,0.88)_0%,rgba(4,6,13,0.5)_28%,transparent_54%)]"
-    ></div>
-    <div
-        class="hero-field-scrim pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-40 opacity-0 transition-opacity duration-1000 bg-gradient-to-t from-[#04060d] to-transparent"
-    ></div>
 
     <div class="container mx-auto px-4 py-14 @2xl:py-20 @5xl:py-28">
         <div class="grid items-center gap-12 @4xl:grid-cols-12 @4xl:gap-16">
@@ -175,27 +163,6 @@ const surfaces = [
         />
     </div>
 </section>
-
-<style is:global>
-    /*
-     * The blueprint backdrop's flat CSS grid retires once the Three.js field
-     * has a frame on screen — two lattices at two different alignments were
-     * exactly the problem the field is here to fix.
-     *
-     * Keyed on `data-hero-field`, which `HeroField` sets on its own host only
-     * after its first successful render, so the selector simply never matches
-     * when there is no JS, no WebGL or no context: the old grid stays, at full
-     * strength, and the hero is the one it always was.
-     */
-    .hero-band:has([data-hero-field='live']) .hero-blueprint-grid {
-        opacity: 0;
-    }
-
-    /* …and the scrim that belongs to the field arrives with it. */
-    .hero-band:has([data-hero-field='live']) .hero-field-scrim {
-        opacity: 1;
-    }
-</style>
 
 <section class="py-10 px-4 container mx-auto">
     <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">

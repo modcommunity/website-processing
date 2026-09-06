@@ -59,6 +59,13 @@ export const en = {
         select: 'Select a language',
         current: 'Language: {name}',
     },
+    // The floating scroll-to-top button. English-only on purpose: website-city
+    // carries this string in `locales/en` alone and merges English under every
+    // locale, so translating it here would make the two shells disagree in the
+    // other eight languages.
+    actions: {
+        backToTop: 'Back to top',
+    },
 }
 
 export type Messages = typeof en

@@ -303,7 +303,7 @@ rounded panels, the front page is a full-bleed band.
 
 | Page | Backdrop | Shape |
 | --- | --- | --- |
-| `/` (`landing/Heading.astro`) | `blueprint` — two restrained lights, plus an animated Three.js wireframe terrain over them (`HeroField.tsx`) | Full-bleed asymmetric band: copy left (eyebrow rule, static display headline, CTAs), the five surfaces as a numbered index in a rule-separated column right |
+| `/` (`landing/Heading.astro`) | `blueprint` — two restrained lights and a diagonal sweep, plus a slowly turning Three.js point cloud over them (`HeroField.tsx`) | Full-bleed asymmetric band: copy left (eyebrow rule, static display headline, CTAs), the five surfaces as a numbered index in a rule-separated column right |
 | `/tmc-app` (`tmcApp/Hero.astro`) | `workshop` — indigo/violet over a lit horizon | Two-column split: copy left, a pure-markup mock of the app's server browser right |
 | `/api-tool` (`apiTool/Hero.astro`) | `console` — teal on black, perspective floor, scanlines | Banner: headline left with CTAs on its baseline, then the full-width install terminal |
 
@@ -321,36 +321,45 @@ Things that are load-bearing:
   which made the first paint of the site an empty box that then shoved
   everything below it down, and needed a `min-h-*` floor on its wrapper to hide
   that. It is plain markup now; the component and the dependency are gone.
+- **Nothing in a hero draws a grid any more, and that is the point.** There
+  were two of them: `blueprint` painted a flat one in CSS (a 40px minor lattice
+  and a 200px major one behind a radial mask) and `HeroField` drew a second one
+  in perspective — a wireframe terrain displaced by three sines in a vertex
+  shader. They were meant to hand over to each other, but a reader saw both
+  crossing, which is exactly the interference the drawn field was supposed to
+  fix. The CSS grid is gone from `blueprint` outright, so the question cannot
+  come back, and the terrain is gone with it.
+
 - **The one animation is the front page's hero field, and it is strictly
-  additive.** `landing/heading/HeroField.tsx` draws a Three.js wireframe
-  terrain — a lattice on the XZ plane displaced by three layered sines in the
-  vertex shader, running to a horizon behind the headline — over the
-  `blueprint` backdrop. It replaced that backdrop's *flat* grid, which was two
-  CSS gradient lattices at two pitches (40px and 200px) anchored to the
-  element's corner, so the major rules never landed on the minor ones and the
-  alignment moved with the viewport.
+  additive.** `landing/heading/HeroField.tsx` is now a point cloud — ~560 dots
+  scattered through a box, turning slowly — over the `blueprint` backdrop. It
+  has **no lines in it**, so there is nothing for the copy or the backdrop to
+  collide with, and it is deliberately small: no custom shaders at all. Depth
+  fade is `scene.fog`, which `PointsMaterial` honours for free, and the round
+  dot is a radial gradient drawn once into a `<canvas>`. If you find yourself
+  writing GLSL in here again, that is the thing this replaced.
 
   Everything about it is arranged so that it can simply not happen:
 
-  - The CSS backdrop still paints its own grid, and `Heading.astro` fades that
-    grid out — and fades the field's scrim in — with
-    `.hero-band:has([data-hero-field='live'])`. `HeroField` sets that attribute
-    on its own host only once it has put a frame on screen, so no JS, no WebGL
-    or a context that fails to create leaves the hero exactly as it was before
-    any of this, at full strength.
+  - The backdrop under it is complete on its own. There is no handshake left —
+    no `data-hero-field` attribute, no `:has()` fade, no scrim — because
+    nothing below it needs hiding any more. No JS, no WebGL, or a context that
+    fails to create leaves the hero exactly as it renders without it.
   - It hydrates `client:idle` and imports `three` dynamically, so nothing about
-    the first paint waits on it.
+    the first paint waits on it, and `three` stays its own ~724 KB chunk rather
+    than entering the bundle.
   - `prefers-reduced-motion: reduce` renders one frame and never starts the
     loop, and the loop stops whenever the hero is off-screen or the tab is
     hidden. Time advances only on frames actually drawn, so a hero that was
-    away for a minute resumes rather than jumping a minute of relief.
-  - The camera reframes by *aspect*, not width: portrait lifts it and looks
-    further down, because a low camera in a tall phone-shaped box fills two
-    thirds of the hero with the two nearest rows.
+    away for a minute resumes rather than jumping a minute of rotation.
+  - The camera widens its lens by *aspect*, not width: a tall, narrow hero sees
+    a much smaller slice of the box, so portrait gets a wider FOV to keep the
+    same amount of field in frame.
 
-  If another page ever wants motion, copy this shape — a fallback that is
-  complete on its own, and an enhancement that announces itself only after it
-  works. Do not animate a backdrop in place of one.
+  If another page ever wants motion, copy this shape — a backdrop that is
+  complete on its own, and an enhancement layered over it that adds no
+  structure the backdrop already draws. Do not animate a backdrop in place of
+  one, and do not give the enhancement and the backdrop the same motif.
 - **`.special` is `text-special-1 font-bold` from `Utilities.css`,** and each
   hero overrides its colour (`[&_.special]:…`) so the emphasis belongs to that
   page's palette rather than to the site accent, which is a blue that fights
@@ -430,3 +439,12 @@ Things that are load-bearing:
   hard-coded here, so website-city and the app stay in sync.
 - Keep `.astro` files for page structure and React (`.tsx`) for interactive
   islands, matching the existing split.
+
+---
+
+## External source code
+
+`~/stack/external-study/` holds third-party source cloned **to be read** — Godot, the
+Source engine, Momentum Mod, Shavit's `bhoptimer`, and the mod managers. Read-only,
+never a dependency, never imported. Look there before designing something from
+scratch; see [`external-study/README.md`](../external-study/README.md).
