@@ -57,14 +57,16 @@ const mask = (shape: string, stop = '40%') => {
      * The old front-page backdrop (`launch`) was four saturated orbs on
      * near-black: the loudest thing on the site, and the same picture every
      * other SaaS front page paints. This one is built the other way round —
-     * two restrained lights, and a *drawn* field over them: a fine grid with
-     * heavier rules every fifth line, and one broad diagonal sweep across it.
+     * two restrained lights and one broad diagonal sweep, and nothing else.
      * It reads as a plan being drawn rather than a product being launched,
      * which is what a site about building things should look like.
      *
-     * The grid is deliberately visible (0.07, not the 0.03 a decorative grid
-     * usually gets). It is the identity here, so if it fades to nothing the
-     * backdrop is just a dark rectangle.
+     * There is deliberately NO grid in here any more. It used to draw two flat
+     * CSS lattices (40px minor, 200px major behind a radial mask), which
+     * crossed the Three.js field layered over this backdrop by the home page
+     * and left the hero looking like two drawings on one sheet. The motion
+     * belongs to `landing/heading/HeroField.tsx`; this stays plain light, so
+     * there is nothing for it to interfere with either way.
      */
     variant === 'blueprint' && (
         <div class={`pointer-events-none absolute inset-0 -z-10 bg-[#04060d] ${className}`}>
@@ -74,24 +76,8 @@ const mask = (shape: string, stop = '40%') => {
             <div class="absolute -left-32 top-1/3 h-[30rem] w-[38rem] rounded-full bg-accent/38 blur-[130px]"></div>
             <div class="absolute -right-24 -top-24 h-[26rem] w-[30rem] rounded-full bg-[#6366f1]/32 blur-[130px]"></div>
 
-            {/* Minor grid, then major rules every fifth line.
-                Wrapped, and named, because the home page fades this whole
-                group out once its Three.js field is live — see
-                `landing/heading/HeroField.tsx`. Two lattices, one flat and one
-                in perspective, are one lattice too many. */}
-            <div class="hero-blueprint-grid absolute inset-0 transition-opacity duration-1000">
-                <div
-                    class="absolute inset-0 opacity-[0.07]"
-                    style={`background-image:linear-gradient(to right, #bfdbfe 1px, transparent 1px),linear-gradient(to bottom, #bfdbfe 1px, transparent 1px);background-size:40px 40px;${mask('ellipse 85% 75% at 50% 45%', '45%')}`}
-                ></div>
-                <div
-                    class="absolute inset-0 opacity-[0.10]"
-                    style={`background-image:linear-gradient(to right, #93c5fd 1px, transparent 1px),linear-gradient(to bottom, #93c5fd 1px, transparent 1px);background-size:200px 200px;${mask('ellipse 85% 75% at 50% 45%', '45%')}`}
-                ></div>
-            </div>
-
-            {/* One diagonal sweep, the only thing in here that is not
-                orthogonal — without it the grid reads as a table. */}
+            {/* One diagonal sweep, so the two lights are not the only shape
+                in here. */}
             <div class="absolute inset-0 bg-[linear-gradient(115deg,transparent_28%,rgba(191,219,254,0.07)_46%,transparent_64%)]"></div>
 
             <div class="absolute inset-0 opacity-[0.14] mix-blend-overlay" style={`background-image:${NOISE}`}></div>

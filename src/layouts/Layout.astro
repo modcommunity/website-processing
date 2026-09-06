@@ -5,6 +5,7 @@ import ObserverProvider from '../components/Observer';
 import SiteHeader from "../components/SiteHeader";
 import SiteSidebar from "../components/SiteSidebar";
 import SiteFooter from "../components/SiteFooter";
+import BackToTop from "../components/BackToTop";
 import { LOCALES, localizeUrl, stripLocale, type LocaleT } from "../i18n/config";
 import { SITE_URL } from "../lib/site";
 
@@ -189,6 +190,15 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming modd
 				</div>
 
 				<SiteFooter locale={locale} client:load />
+
+				<!--
+					The floating scroll-to-top button, bottom-centre, on every
+					page. `client:idle` rather than `client:load`: it does
+					nothing until the reader is a screenful down the page, so it
+					has no business competing with the shell for the first
+					hydration slot.
+				-->
+				<BackToTop locale={locale} client:idle />
 			</div>
 		</ObserverProvider>
 	</body>
