@@ -115,6 +115,10 @@ export const shellNav: NavCatalog = {
             label: 'Site Status',
             desc: 'Is anything broken right now? Incidents and live checks',
         },
+        docs: {
+            label: 'Docs',
+            desc: 'Guides, references and the full API documentation',
+        },
         blog: {
             label: 'Blog',
             desc: 'News & write-ups',
@@ -213,6 +217,10 @@ export const shellNav: NavCatalog = {
             desc:
                 '¿Hay algo que no funcione ahora mismo? Incidencias y comprobaciones en vivo',
         },
+        docs: {
+            label: 'Documentación',
+            desc: 'Guías, referencias y la documentación completa de la API',
+        },
         blog: {
             label: 'Blog',
             desc: 'Noticias y artículos',
@@ -308,6 +316,10 @@ export const shellNav: NavCatalog = {
             label: 'État du site',
             desc:
                 'Quelque chose est-il en panne en ce moment ? Incidents et vérifications en direct',
+        },
+        docs: {
+            label: 'Documentation',
+            desc: 'Guides, références et la documentation complète de l\'API',
         },
         blog: {
             label: 'Blog',
@@ -405,6 +417,11 @@ export const shellNav: NavCatalog = {
         status: {
             label: 'Seitenstatus',
             desc: 'Gibt es gerade Störungen? Vorfälle und Live-Prüfungen',
+        },
+        docs: {
+            label: 'Dokumentation',
+            desc:
+                'Anleitungen, Referenzen und die vollständige API-Dokumentation',
         },
         blog: {
             label: 'Blog',
@@ -504,6 +521,10 @@ export const shellNav: NavCatalog = {
             desc:
                 'Что-то не работает прямо сейчас? Инциденты и проверки в реальном времени',
         },
+        docs: {
+            label: 'Документация',
+            desc: 'Руководства, справочники и полная документация API',
+        },
         blog: {
             label: 'Блог',
             desc: 'Новости и статьи',
@@ -598,6 +619,10 @@ export const shellNav: NavCatalog = {
         status: {
             label: 'Sitestatus',
             desc: 'Werkt er nu iets niet? Incidenten en live controles',
+        },
+        docs: {
+            label: 'Documentatie',
+            desc: 'Handleidingen, naslagwerk en de volledige API-documentatie',
         },
         blog: {
             label: 'Blog',
@@ -694,6 +719,10 @@ export const shellNav: NavCatalog = {
             label: 'サイトステータス',
             desc: '現在、障害は発生していますか？インシデントとライブチェック',
         },
+        docs: {
+            label: 'ドキュメント',
+            desc: 'ガイド、リファレンス、API ドキュメント一式',
+        },
         blog: {
             label: 'ブログ',
             desc: 'ニュースと記事',
@@ -788,6 +817,10 @@ export const shellNav: NavCatalog = {
         status: {
             label: '网站状态',
             desc: '当前是否有故障？事件与实时检查',
+        },
+        docs: {
+            label: '文档',
+            desc: '指南、参考资料与完整的 API 文档',
         },
         blog: {
             label: '博客',
@@ -885,6 +918,10 @@ export const shellNav: NavCatalog = {
             label: 'Estado do site',
             desc:
                 'Há algo com problemas agora? Incidentes e verificações em direto',
+        },
+        docs: {
+            label: 'Documentação',
+            desc: 'Guias, referências e a documentação completa da API',
         },
         blog: {
             label: 'Blog',
