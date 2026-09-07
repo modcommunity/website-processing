@@ -29,6 +29,7 @@ import {
     Mail,
     Bug,
     ScrollText,
+    BookOpen,
 } from 'lucide-react'
 // lucide dropped brand marks, so Discord stays on react-icons — website-city
 // makes the same exception.
@@ -54,6 +55,9 @@ const CONTACT = '/contact'
 // City's status page — incidents and live checks, under the bug tracker in its
 // Resources menu.
 const STATUS = '/status'
+// The documentation site — its own deployment on its own subdomain, so unlike
+// everything above it this is absolute and its leaf is marked `external`.
+const DOCS = 'https://docs.moddingcommunity.com'
 
 /**
  * Header primary nav — a mirror of website-city's `PRIMARY_NAV`: the same four
@@ -226,13 +230,23 @@ export function buildNav(t: TFunc): NavItem[] {
             ],
         },
         {
-            // Dropdown-only, like Explore. What it holds is the reporting side
-            // of the site — what is broken, what we shipped, and whether
-            // anything is down right now, in the order those are read in.
+            // Dropdown-only, like Explore. What it holds is the docs, then the
+            // reporting side of the site — what is broken, what we shipped, and
+            // whether anything is down right now, in the order those are read
+            // in.
             label: t('nav.resources.label'),
             icon: FolderKey,
             desc: t('nav.resources.desc'),
             children: [
+                {
+                    // The docs site. The only leaf in this menu that is not on
+                    // city's domain.
+                    label: t('nav.docs.label'),
+                    href: DOCS,
+                    icon: BookOpen,
+                    desc: t('nav.docs.desc'),
+                    external: true,
+                },
                 {
                     // The bug tracker, which is where defect reports go now:
                     // they were previously a feedback type, and a report that
