@@ -59,10 +59,9 @@ export const en = {
         select: 'Select a language',
         current: 'Language: {name}',
     },
-    // The floating scroll-to-top button. English-only on purpose: website-city
-    // carries this string in `locales/en` alone and merges English under every
-    // locale, so translating it here would make the two shells disagree in the
-    // other eight languages.
+    // The floating scroll-to-top button. Mirrors website-city's
+    // `common.actions.backToTop`, which now carries all nine languages — this
+    // used to be English-only here because city's copy was.
     actions: {
         backToTop: 'Back to top',
     },
@@ -92,6 +91,7 @@ const es: DeepPartial<Messages> = {
         toDark: 'Cambiar al modo oscuro',
     },
     picker: { select: 'Selecciona un idioma', current: 'Idioma: {name}' },
+    actions: { backToTop: 'Volver arriba' },
 }
 
 const fr: DeepPartial<Messages> = {
@@ -115,6 +115,7 @@ const fr: DeepPartial<Messages> = {
         select: 'Sélectionner une langue',
         current: 'Langue : {name}',
     },
+    actions: { backToTop: 'Retour en haut' },
 }
 
 const de: DeepPartial<Messages> = {
@@ -138,6 +139,7 @@ const de: DeepPartial<Messages> = {
         select: 'Sprache auswählen',
         current: 'Sprache: {name}',
     },
+    actions: { backToTop: 'Nach oben' },
 }
 
 const ru: DeepPartial<Messages> = {
@@ -158,6 +160,7 @@ const ru: DeepPartial<Messages> = {
         toDark: 'Переключить на тёмную тему',
     },
     picker: { select: 'Выберите язык', current: 'Язык: {name}' },
+    actions: { backToTop: 'Наверх' },
 }
 
 const nl: DeepPartial<Messages> = {
@@ -178,6 +181,7 @@ const nl: DeepPartial<Messages> = {
         toDark: 'Overschakelen naar donkere modus',
     },
     picker: { select: 'Kies een taal', current: 'Taal: {name}' },
+    actions: { backToTop: 'Terug naar boven' },
 }
 
 const ja: DeepPartial<Messages> = {
@@ -198,6 +202,7 @@ const ja: DeepPartial<Messages> = {
         toDark: 'ダークモードに切り替え',
     },
     picker: { select: '言語を選択', current: '言語: {name}' },
+    actions: { backToTop: 'トップへ戻る' },
 }
 
 const zh: DeepPartial<Messages> = {
@@ -218,6 +223,7 @@ const zh: DeepPartial<Messages> = {
         toDark: '切换到深色模式',
     },
     picker: { select: '选择语言', current: '语言：{name}' },
+    actions: { backToTop: '回到顶部' },
 }
 
 const pt: DeepPartial<Messages> = {
@@ -238,6 +244,7 @@ const pt: DeepPartial<Messages> = {
         toDark: 'Mudar para o modo escuro',
     },
     picker: { select: 'Selecione um idioma', current: 'Idioma: {name}' },
+    actions: { backToTop: 'Voltar ao topo' },
 }
 
 const SHELL: Record<LocaleT, DeepPartial<Messages>> = {
