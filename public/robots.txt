@@ -1,0 +1,11 @@
+# The Modding Community — landing site (website-processing).
+#
+# Everything here is public marketing and legal copy meant to be indexed, so
+# nothing is disallowed. The one thing this file exists for is the Sitemap
+# line: @astrojs/sitemap emits the index below at build time, and without a
+# pointer to it a crawler has to discover all 54 localized pages by following
+# links.
+User-agent: *
+Allow: /
+
+Sitemap: https://moddingcommunity.com/sitemap-index.xml
