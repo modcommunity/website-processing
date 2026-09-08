@@ -56,7 +56,10 @@ const CONTACT = '/contact'
 // Resources menu.
 const STATUS = '/status'
 // The documentation site — its own deployment on its own subdomain, so unlike
-// everything above it this is absolute and its leaf is marked `external`.
+// everything above it this is absolute. It is NOT marked `external` though:
+// city dropped that too, because the docs are ours and a leaf that opens a tab
+// of its own is the one entry in the menu that behaves differently from the
+// rest of it.
 const DOCS = 'https://docs.moddingcommunity.com'
 
 /**
@@ -240,12 +243,12 @@ export function buildNav(t: TFunc): NavItem[] {
             children: [
                 {
                     // The docs site. The only leaf in this menu that is not on
-                    // city's domain.
+                    // city's domain — it still navigates in place, exactly as
+                    // city's does.
                     label: t('nav.docs.label'),
                     href: DOCS,
                     icon: BookOpen,
                     desc: t('nav.docs.desc'),
-                    external: true,
                 },
                 {
                     // The bug tracker, which is where defect reports go now:
@@ -363,6 +366,9 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
              */
             heading: t('footer.headings.resources'),
             links: [
+                // The documentation, first: it is the entry in this column a
+                // reader wants BEFORE the ones about things being broken.
+                { label: t('footer.links.docs'), href: DOCS },
                 { label: t('footer.links.changelog'), href: CHANGELOG },
                 { label: t('footer.links.roadmap'), href: ROADMAP },
                 { label: t('footer.links.feedback'), href: FEEDBACK },
@@ -857,6 +863,17 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                     icon: Search,
                 },
             ],
+        },
+        {
+            /*
+             * The docs, in the rail — city added the same one-leaf section, for
+             * the same reason: the header menu and the footer column both carry
+             * this leaf, and the rail was the one surface the documentation
+             * could not be reached from.
+             */
+            label: t('rail.sections.resources'),
+            icon: FolderKey,
+            items: [{ label: t('rail.items.docs'), href: DOCS, icon: BookOpen }],
         },
     ]
 }
