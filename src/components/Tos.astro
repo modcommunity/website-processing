@@ -22,28 +22,36 @@ import LegalSection from "./legal/LegalSection.astro"
 import LegalBlock from "./legal/LegalBlock.astro"
 import LegalCallout from "./legal/LegalCallout.astro"
 
-const lastUpdated = "August 6, 2026"
+const lastUpdated = "September 10, 2026"
 
 /**
  * The US state whose law governs these terms, and whose courts hear a dispute.
  *
- * SET THIS. While it is null the "Governing Law & Disputes" section still
- * renders and still commits to US law — which is what the DMCA section below
- * already assumes — but it omits the choice-of-forum sentence, because naming
- * the wrong court is worse than naming none. Setting it to a state name (e.g.
- * "Massachusetts") is the only change needed; the copy adapts around it.
+ * STILL UNSET, and now a deliberate choice rather than a gap. While it is null
+ * the "Governing Law & Disputes" section still renders and still commits to US
+ * law — which is what the DMCA section below already assumes — but it omits the
+ * choice-of-forum sentence, because naming the wrong court is worse than naming
+ * none.
+ *
+ * TekWorks LLC's state of formation is the obvious candidate, but a
+ * choice-of-law clause is a decision about where WE would have to litigate, not
+ * a fact about the company, and nothing on this site requires one. Set it to a
+ * state name (e.g. "Delaware") and the copy adapts around it — that is the only
+ * change needed — but set it because someone decided to, not because the field
+ * looks empty.
  */
 const governingState: string | null = null
 ---
 
 <LegalPage title="Terms of Service" eyebrow="Legal" lastUpdated={lastUpdated}>
     <Fragment slot="lede">
-        <p>These are the <strong>terms of service</strong> for <Special>The Modding Community</Special> (<span class="italic">TMC</span>). They explain what you can expect from us, and what we expect from you. We have tried to keep them readable rather than impenetrable.</p>
+        <p>These are the <strong>terms of service</strong> for <Special>The Modding Community</Special> (<span class="italic">TMC</span>), a DBA of <Special>TekWorks LLC</Special> (&quot;we&quot;, &quot;us&quot;). They explain what you can expect from us, and what we expect from you. We have tried to keep them readable rather than impenetrable.</p>
         <p>By using our services you agree to these terms. If you do not agree with them, please do not use our services.</p>
     </Fragment>
 
     <LegalSection title="Who We Are" icon={Users}>
         <p>The Modding Community is a <Special>modding and game development community</Special>. We provide a place to discover, share and manage <strong>mods</strong>, <strong>assets</strong> and <strong>game servers</strong>, alongside articles, communities, collections and discussion.</p>
+        <p>The services described here are operated by <Special>TekWorks LLC</Special>, a <Special>United States limited liability company</Special>. <span class="italic">The Modding Community</span> is a registered <Special>DBA</Special> — a trading name — of that company, so the two names refer to the same entity throughout these terms: your agreement is with TekWorks LLC, and every &quot;we&quot; and &quot;us&quot; below means it.</p>
         <p>These terms cover our main website at moddingcommunity.com and the landing and legal pages you are reading now. Our <CLink href="https://discord.moddingcommunity.com" target="_blank">Discord server</CLink> is additionally governed by its own rules and by Discord{"'"}s terms.</p>
     </LegalSection>
 
@@ -207,8 +215,30 @@ const governingState: string | null = null
             <p>If you see something that breaks these rules, <Special>report it</Special>. Reports go to our moderation staff and are not visible to the reported party{"'"}s audience. Filing reports in bad faith — to harass a creator or bury a competitor — is itself a violation.</p>
         </LegalBlock>
 
+        {/*
+          This block used to end "— it is also what the EU Digital Services Act
+          requires of us." The practice stays; the citation is gone, and should
+          not be put back without a decision behind it.
+
+          The DSA's statement-of-reasons duty (Art. 17) does land on a hosting
+          service our size — Art. 19 exempts micro and small enterprises from
+          the heavy tier (Arts. 20-28: internal complaint-handling, out-of-court
+          dispute settlement, trusted flaggers, transparency reports) but NOT
+          from this. What we have not done is Art. 13: a provider outside the
+          Union that has a substantial connection to it must designate a legal
+          representative in a Member State and publish their details, and we
+          have designated nobody. Shipping this site in nine languages, German
+          and Dutch among them, is the kind of targeting Recital 8 points at, so
+          "the DSA does not reach us" is not a position to assert casually.
+
+          Naming the regulation while missing that part of it is worse than not
+          naming it: it is a compliance claim we cannot fully back. Saying the
+          same thing as our own commitment is true either way and costs nothing.
+
+          Put the citation back only once an Art. 13 representative exists.
+        */}
         <LegalBlock title="Telling You Why">
-            <p>When we remove or restrict something you posted, we will tell you <Special>what</Special> was actioned, <Special>why</Special>, whether the decision was made by a person or by an automated system, and <Special>how to challenge it</Special>. That is what the appeal thread is for, and it is a standing commitment rather than a courtesy — it is also what the EU Digital Services Act requires of us.</p>
+            <p>When we remove or restrict something you posted, we will tell you <Special>what</Special> was actioned, <Special>why</Special>, whether the decision was made by a person or by an automated system, and <Special>how to challenge it</Special>. That is what the appeal thread is for, and it is a <Special>standing commitment</Special> rather than a courtesy: we hold ourselves to it for every member, wherever you live, and we do not treat it as something owed only where a regulator asks for it.</p>
         </LegalBlock>
 
         <LegalBlock title="Copyright Complaints">
@@ -243,7 +273,7 @@ const governingState: string | null = null
         </LegalBlock>
 
         <LegalBlock title="Trademarks & Non-Affiliation">
-            <p>The Modding Community is an <Special>independent, community-run project</Special>. We are <Special>not affiliated with, endorsed by, sponsored by, or otherwise connected to</Special> any of the game developers or publishers whose titles we support.</p>
+            <p>The Modding Community is <Special>independently owned and operated</Special> by TekWorks LLC, and is <Special>community-driven</Special> in what it hosts. We are <Special>not affiliated with, endorsed by, sponsored by, or otherwise connected to</Special> any of the game developers or publishers whose titles we support.</p>
             <p>That includes — but is not limited to — <CLink href="https://www.valvesoftware.com/en/" target="_blank">Valve</CLink>, <CLink href="https://facepunch.com/" target="_blank">Facepunch Studios</CLink>, <CLink href="https://projectzomboid.com/blog/about-us/" target="_blank">The Indie Stone</CLink>, <CLink href="https://www.bohemia.net/" target="_blank">Bohemia Interactive</CLink> and <CLink href="https://tripwireinteractive.com/" target="_blank">Tripwire Interactive</CLink>. Their games, logos and trademarks belong to them, and are referenced here purely <Special>descriptively</Special> — to identify which game a mod, asset or server relates to. We hold these studios in <Special>high regard</Special>; their willingness to support modding is the reason communities like ours exist at all.</p>
             <p>The same applies to other <Special>modding platforms and install sources</Special>. TMC is not affiliated with <CLink href="https://www.nexusmods.com/" target="_blank">Nexus Mods</CLink>, <CLink href="https://www.curseforge.com/" target="_blank">CurseForge</CLink>, <CLink href="https://gamebanana.com/" target="_blank">GameBanana</CLink>, <CLink href="https://thunderstore.io/" target="_blank">Thunderstore</CLink>, the <CLink href="https://steamcommunity.com/workshop/" target="_blank">Steam Workshop</CLink> or any similar service. Where a mod or asset on TMC points at one of those platforms as an install source, that is a <Special>reference</Special>, not a partnership. We have <Special>enormous respect</Special> for the work those teams have done for modding over the years — we see them as peers in the same ecosystem, not competitors — and we make no claim over their content, branding or communities.</p>
             <p>If you represent a studio or platform named on our services and would like something changed, corrected or removed, contact us and we will work with you.</p>
@@ -255,13 +285,13 @@ const governingState: string | null = null
         </LegalBlock>
 
         <LegalBlock title="Liability">
-            <p>To the fullest extent permitted by law, TMC and its staff are <Special>not liable</Special> for indirect, incidental, special, punitive or consequential damages arising from your use of our services — including lost data, lost profits, lost goodwill, damage caused by content you downloaded, or the conduct of any third party on or through our services.</p>
+            <p>To the fullest extent permitted by law, TekWorks LLC, its members, officers and staff are <Special>not liable</Special> for indirect, incidental, special, punitive or consequential damages arising from your use of our services — including lost data, lost profits, lost goodwill, damage caused by content you downloaded, or the conduct of any third party on or through our services.</p>
             <p>Where liability cannot be excluded, our total aggregate liability to you for all claims arising out of or relating to the service is limited to the <Special>greater of</Special> the amount you paid us in the <Special>twelve months</Special> before the claim arose, or <Special>fifty US dollars</Special>.</p>
             <p>Nothing in these terms limits liability that cannot lawfully be limited — including for death or personal injury caused by negligence, or for fraud — and nothing here affects consumer rights you have under the law where you live.</p>
         </LegalBlock>
 
         <LegalBlock title="Indemnity">
-            <p>You agree to <Special>indemnify and hold harmless</Special> TMC and its staff from any claim, demand, loss or reasonable legal cost brought by a third party arising out of content you published, your breach of these terms, your infringement of somebody else's rights, or your misuse of our API or an integration credential.</p>
+            <p>You agree to <Special>indemnify and hold harmless</Special> TekWorks LLC, its members, officers and staff from any claim, demand, loss or reasonable legal cost brought by a third party arising out of content you published, your breach of these terms, your infringement of somebody else's rights, or your misuse of our API or an integration credential.</p>
             <p>This does not apply to the extent the claim arises from <Special>our</Special> own wrongdoing, and we will tell you promptly about any claim we ask you to cover and let you participate in defending it.</p>
         </LegalBlock>
 
@@ -292,7 +322,7 @@ const governingState: string | null = null
             <li><Special>Entire agreement.</Special> These terms, together with our <CLink href="/privacy-policy">privacy policy</CLink>, are the whole agreement between us about our services, and replace anything said before.</li>
             <li><Special>Severability.</Special> If any provision is found unenforceable, it is narrowed to what is enforceable and the rest of the terms remain in effect.</li>
             <li><Special>No waiver.</Special> If we do not enforce a provision on one occasion, we have not given up the right to enforce it later.</li>
-            <li><Special>Assignment.</Special> You may not transfer your account or your rights under these terms without our consent. We may assign these terms to a successor if the project changes hands, and will tell you if that happens.</li>
+            <li><Special>Assignment.</Special> You may not transfer your account or your rights under these terms without our consent. We may assign these terms to a successor — including in a merger, reorganisation, or sale of the business or its assets — and will tell you if that happens.</li>
             <li><Special>No third-party beneficiaries.</Special> These terms create rights only between you and us.</li>
             <li><Special>Force majeure.</Special> Neither of us is liable for a failure caused by something genuinely outside our control — an upstream outage, a natural disaster, or a change in the law.</li>
             <li><Special>Export and sanctions.</Special> You may not use our services if you are subject to sanctions that prohibit it, or in a way that breaches applicable export-control law.</li>
@@ -312,5 +342,6 @@ const governingState: string | null = null
 
     <LegalSection title="Contact Us" icon={Mail}>
         <p>Questions, appeals, copyright complaints and removal requests can be sent to <CLink href="mailto:contact@moddingcommunity.com">contact@moddingcommunity.com</CLink>, or raised through our <CLink href="https://discord.moddingcommunity.com" target="_blank">Discord</CLink>. We are a small team and we read everything.</p>
+        <p>Formal or legal notices should be addressed to <Special>TekWorks LLC</Special> at the same address, marked for the attention of <span class="italic">The Modding Community</span>. Ask us at that address if you need our postal details.</p>
     </LegalSection>
 </LegalPage>
