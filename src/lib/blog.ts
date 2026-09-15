@@ -78,6 +78,17 @@ export type BlogArticle = {
     categories: string[]
     tags: string[]
     kind: BlogKind
+    /**
+     * When city published it, as epoch ms — `0` when the API did not say.
+     *
+     * Carried because the SELECTION needs it, not because the card renders it.
+     * `dailyPick` pins the newest few posts to the front of every shelf, and
+     * before this field existed there was no way to know which those were: the
+     * shuffle ran over the pool uniformly, so a post published this morning had
+     * the same ~8-in-27 chance of being on the modding shelf as one from two
+     * years ago. It was on the wire the whole time and thrown away here.
+     */
+    createdAt: number
 }
 
 export type BlogPool = {
@@ -107,6 +118,9 @@ type AnonArticle = {
     url?: string | null
     description?: string | null
     official?: boolean
+    /** ISO 8601. Optional like everything else here — see the note above. */
+    createdAt?: string | null
+    updatedAt?: string | null
     image?: string | null
     tags?: { id?: number; name?: string | null }[] | null
     categories?: { id?: number; name?: string | null; slug?: string | null }[] | null
@@ -180,6 +194,24 @@ function text(value: unknown): string {
     return typeof value === 'string' ? value.trim() : ''
 }
 
+/**
+ * An ISO date to epoch ms, or `0` when there isn't one.
+ *
+ * `0` rather than `null` so every comparison in {@link dailyPick} is arithmetic
+ * and an undated post simply sorts oldest — which is the right way round. A
+ * deployment that does not publish the field must not have its whole blog
+ * treated as brand new and pinned to the front of every shelf.
+ */
+function epoch(value: unknown): number {
+    const raw = text(value)
+
+    if (!raw) return 0
+
+    const ms = Date.parse(raw)
+
+    return Number.isNaN(ms) ? 0 : ms
+}
+
 /** One wire row into a card, or null when it is not renderable. */
 function toArticle(row: AnonArticle): BlogArticle | null {
     const title = text(row.name)
@@ -221,6 +253,9 @@ function toArticle(row: AnonArticle): BlogArticle | null {
             (local ? `/images/blog/article/${local}` : null),
         categories,
         tags,
+        // `updatedAt` is the fallback so a post city has no creation date for
+        // still sorts somewhere sensible rather than to the bottom forever.
+        createdAt: epoch(row.createdAt) || epoch(row.updatedAt),
         kind: classify(title, [
             ...tags,
             ...categories,
@@ -355,12 +390,46 @@ function rng(seed: number): () => number {
 }
 
 /**
- * `count` articles of one kind, shuffled deterministically for the given day.
+ * How many of a shelf's slots are reserved for the most recent posts.
  *
- * Deterministic is the whole point: the server and the browser must agree, or
- * React discards the server's HTML on hydration, and two visitors comparing
- * notes on the same day should see the same shelf. The day string is folded
- * into the seed with the kind so the two carousels do not rotate in lockstep.
+ * The rest rotate. Without this the shelf was a UNIFORM shuffle over the whole
+ * pool, which quietly failed the one thing the section is for: with 27 modding
+ * guides in the pool and 8 slots on the shelf, a guide published this morning
+ * appeared on roughly three days in ten and was indistinguishable from one
+ * written two years ago. Publishing something and not seeing it on the home
+ * page is the bug that was actually being reported.
+ *
+ * Three rather than one because posts arrive in bursts — a run of three in a
+ * week would otherwise evict each other — and rather than eight because a shelf
+ * that is ENTIRELY the newest posts stops rotating at all, which is the
+ * opposite failure and the one the daily shuffle was added to fix.
+ */
+const PINNED_NEW = 3
+
+/**
+ * `count` articles of one kind: the newest few, then a daily rotation.
+ *
+ * Two halves, deliberately.
+ *
+ *  • The newest {@link PINNED_NEW} posts are always on the shelf, newest first.
+ *    That is what makes publishing visible the same day, and it needs no
+ *    randomness at all.
+ *  • The remaining slots are a shuffle of everything else, seeded with the UTC
+ *    date, so the back half of the shelf turns over at midnight and the older
+ *    library keeps getting airings.
+ *
+ * Deterministic is the whole point of the seed: the server and the browser must
+ * agree, or React discards the server's HTML on hydration, and two visitors
+ * comparing notes on the same day should see the same shelf. The day string is
+ * folded into the seed with the kind so the two carousels do not rotate in
+ * lockstep.
+ *
+ * NOTE the arithmetic that cannot be fixed here: when a shelf's pool is no
+ * bigger than `count`, every post is on it every day and no selection strategy
+ * can make the SET change — only the order. The server shelf is in exactly that
+ * state (7 posts, 8 slots), which is why it looked frozen. Sorting newest-first
+ * is the whole of what this function can do about it; the rest is a matter of
+ * publishing more server guides.
  */
 export function dailyPick(
     articles: BlogArticle[],
@@ -370,16 +439,31 @@ export function dailyPick(
 ): BlogArticle[] {
     const pool = articles.filter((a) => a.kind === kind)
 
+    if (count <= 0) return []
+
+    // Newest first. `id` breaks a tie (and carries the whole ordering for a
+    // deployment that publishes no dates), since city's ids ascend with time.
+    const byNewest = [...pool].sort(
+        (a, b) => b.createdAt - a.createdAt || b.id - a.id
+    )
+
+    // Nothing to choose: the shelf is the pool. Still ordered, so a new post
+    // lands at the front rather than wherever the shuffle put it.
+    if (byNewest.length <= count) return byNewest
+
+    const pinned = byNewest.slice(0, Math.min(PINNED_NEW, count))
+    const rest = byNewest.slice(pinned.length)
+
     const next = rng(seedOf(`${day}:${kind}`))
 
-    // Fisher-Yates over a copy.
-    for (let i = pool.length - 1; i > 0; i--) {
+    // Fisher-Yates over the remainder.
+    for (let i = rest.length - 1; i > 0; i--) {
         const j = Math.floor(next() * (i + 1))
 
-        ;[pool[i], pool[j]] = [pool[j]!, pool[i]!]
+        ;[rest[i], rest[j]] = [rest[j]!, rest[i]!]
     }
 
-    return pool.slice(0, count)
+    return [...pinned, ...rest.slice(0, count - pinned.length)]
 }
 
 /* -------------------------------------------------------------------------- */
@@ -404,6 +488,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['tw3', 'modding', 'how-to'],
         kind: 'modding',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -2,
@@ -414,6 +502,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['skyrim', 'modding', 'how-to'],
         kind: 'modding',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -3,
@@ -424,6 +516,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['rdr2', 'modding', 'lml', 'how-to'],
         kind: 'modding',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -4,
@@ -434,6 +530,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['minecraft', 'modding', 'how-to'],
         kind: 'modding',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -5,
@@ -444,6 +544,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['halo', 'modding', 'how-to'],
         kind: 'modding',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -6,
@@ -454,6 +558,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['rust', 'server', 'setup'],
         kind: 'server',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -7,
@@ -464,6 +572,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['rust', 'umod', 'server'],
         kind: 'server',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -8,
@@ -474,6 +586,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['minecraft', 'server', 'setup'],
         kind: 'server',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -9,
@@ -484,6 +600,10 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['l4d2', 'server', 'mods', 'setup'],
         kind: 'server',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
     {
         id: -10,
@@ -494,5 +614,9 @@ export const FALLBACK_ARTICLES: BlogArticle[] = [
         categories: [],
         tags: ['gmod', 'server', 'setup', 'mods'],
         kind: 'server',
+        // Unknown: these are the pre-API hardcodes, so 0 sorts them oldest and a
+        // real fetch always outranks them. The negative ids keep the original
+        // order as the tie-break.
+        createdAt: 0,
     },
 ]
