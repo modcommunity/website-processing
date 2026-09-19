@@ -434,7 +434,49 @@ Things that are load-bearing:
   `document.documentElement.scrollWidth` against `clientWidth` at a spread of
   widths — 320 / 390 / 768 / **1024 / 1100** / 1440 / 1920. The two in bold are
   the sidebar-transition widths where this class of bug lives, and they are the
-  ones nobody tests by hand.
+  ones nobody tests by hand. `npm run audit:overflow` does exactly this over
+  every built page.
+
+  **`<main>` carries `overflow-x-clip`, and an entrance animation is why.**
+  The card rows arrive with `intersect:motion-preset-slide-left`, which starts
+  the element at `translateX(+25%)` of its own width (`+100%` for the two `-lg`
+  ones) and slides it home. For the length of that animation the offset is real
+  scrollable overflow, at every width: the front page measured **675px wide in
+  a 390px viewport**, 1111px in 768px, 1529px in 1440px, and `/tmc-app` the
+  same way. On a phone that is most of a screen, and since a slide plays
+  *while* the reader scrolls, the symptom is a page that goes wide under you as
+  you read, with the band outside `bg-background` showing as white gutters down
+  both sides.
+
+  Two things follow, and both matter:
+
+  - **The clip belongs on the column, not the call sites.** Clipping where the
+    animation happens keeps all 13 slides exactly as designed — the card now
+    arrives from behind the page edge, which is what the effect was always
+    meant to look like. It is `clip` and not `hidden` on purpose: `hidden`
+    makes `<main>` a scroll container, which forces `overflow-y` to `auto` and
+    would break the legal pages' `sticky top-20` table of contents.
+  - **`audit:overflow` lifts the guard before it measures** (`main{overflow:
+    visible}`), because otherwise the rule would swallow the accidental content
+    overflow the script exists to find — the unbreakable Russian heading above
+    would have gone quiet rather than fixed. Keep that line if you touch the
+    script. The audit also still disables animations, which is now merely
+    de-noising rather than the load-bearing assumption it used to be.
+
+  **And the audit had stopped running at all, which is the real reason this
+  shipped.** The nine `/api-tool/` pages are `<meta http-equiv="refresh">`
+  stubs redirecting to `/tmc-cli`. They navigate the instant they load, so the
+  `addStyleTag` right after `goto` threw "Execution context was destroyed", and
+  because that `await` sat *outside* the per-page `try`, the rejection was
+  uncaught and killed the process — from the commit that added those redirects
+  onward. A dead audit and a clean audit look identical in a terminal if you
+  are not reading the exit code. The script now skips redirect stubs at
+  discovery (by content, not by path) and wraps the whole per-page measurement,
+  so one bad page costs one finding instead of the run. If you add a script
+  like this, make the same two guarantees.
+
+  So: a new section may not rely on `<main>` clipping for its *layout*. The
+  guard covers deliberate, transient, animated overshoot and nothing else.
 - **New colours** should be added to the shared theme in `../tmc-global`, not
   hard-coded here, so website-city and the app stay in sync.
 - Keep `.astro` files for page structure and React (`.tsx`) for interactive

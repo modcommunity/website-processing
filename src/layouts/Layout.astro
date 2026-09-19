@@ -185,7 +185,51 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming modd
 						than beside it, precisely so it cannot reflow what is
 						being read.
 					-->
-					<main class="@container relative z-20 min-w-0 grow">
+					<!--
+						`overflow-x-clip`: an ENTRANCE ANIMATION may not widen
+						the page.
+
+						The card rows all animate in with
+						`intersect:motion-preset-slide-left` (and two `-lg`
+						ones), which starts the element at
+						`translateX(+25%)` — `+100%` for `-lg` — of its own
+						width and slides it home. That offset is real
+						scrollable overflow for the length of the animation:
+						on a 390px phone the front page measured 675px wide
+						while the three hero cards were arriving, and
+						/tmc-app 435px. Every width is affected, not just
+						phones (768px went 343px over), but a phone is where
+						it is unmissable, because the overflow is most of a
+						screen: the reader scrolls, the document goes wide
+						under them, and the band outside `bg-background`
+						reads as white gutters down both sides.
+
+						It was invisible to `npm run audit:overflow` because
+						that script disables animations before measuring, on
+						the theory that an element mid-flight is "overflow no
+						user could ever scroll to". That is exactly backwards
+						for a horizontal slide: the user is scrolling *while*
+						it plays, which is what triggers it.
+
+						So the overshoot is clipped where it belongs — the
+						column the animation happens in — rather than the 13
+						call sites being rewritten to slide some other way.
+						The motion is unchanged and now reads the way it was
+						meant to, with the card arriving from behind the
+						page edge.
+
+						`clip`, NOT `hidden`: `hidden` would make <main> a
+						scroll container, which forces `overflow-y` to auto
+						and breaks `position: sticky` inside it. `clip`
+						leaves the Y axis visible and creates no scroll
+						container.
+
+						It does mean accidental content overflow inside
+						<main> is clipped instead of scrolling — so the audit
+						lifts this rule before it measures, and keeps its
+						teeth. See scripts/overflow-audit.mjs.
+					-->
+					<main class="@container relative z-20 min-w-0 grow overflow-x-clip">
 						<slot />
 					</main>
 				</div>
