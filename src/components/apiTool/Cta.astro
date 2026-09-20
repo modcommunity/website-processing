@@ -22,15 +22,15 @@ const t = getT(Astro.currentLocale);
         ></p>
 
         <div class="flex flex-wrap items-center justify-center gap-3">
-            <a href={localizePath(API_KEYS, Astro.currentLocale)} class="btn btn-special">
+            <a href={localizePath(API_KEYS, Astro.currentLocale)} data-umami-event="cli_page_cta" data-umami-event-to="api-keys" data-umami-event-place="cta" class="btn btn-special">
                 <KeyRound className="h-5 w-5" />
                 <span>{t('landing.apiTool.ctaBtnKey')}</span>
             </a>
-            <a href={DOCS_CLI} class="btn btn-primary">
+            <a href={DOCS_CLI} data-umami-event="cli_page_cta" data-umami-event-to="docs" data-umami-event-place="cta" class="btn btn-primary">
                 <BookOpen className="h-5 w-5" />
                 <span>{t('landing.apiTool.ctaBtnDocs')}</span>
             </a>
-            <a href={localizePath("/tmc-app", Astro.currentLocale)} class="btn btn-primary">
+            <a href={localizePath("/tmc-app", Astro.currentLocale)} data-umami-event="cli_page_cta" data-umami-event-to="tmc-app" data-umami-event-place="cta" class="btn btn-primary">
                 <MonitorSmartphone className="h-5 w-5" />
                 <span>{t('landing.apiTool.ctaBtnApp')}</span>
             </a>

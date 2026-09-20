@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowUp } from 'lucide-react'
 import { getT } from '../i18n/t'
+import { track } from '../lib/umami'
 
 /**
  * How close to the bottom of the document counts as "at the end", in pixels.
@@ -85,6 +86,14 @@ export default function BackToTop({ locale = 'en' }: { locale?: string }) {
         const reduced = window.matchMedia?.(
             '(prefers-reduced-motion: reduce)'
         ).matches
+
+        /*
+         * The button only appears near the END of a page, so a press means
+         * somebody read to the bottom and wanted to go back — which is a
+         * different and more interesting fact than a scroll position. It
+         * navigates nowhere, so nothing else records it.
+         */
+        track('back_to_top')
 
         window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' })
     }

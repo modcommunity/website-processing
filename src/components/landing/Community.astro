@@ -44,7 +44,7 @@ const iconTile = "flex h-11 w-11 shrink-0 items-center justify-center rounded-xl
 const body = "text-sm text-muted [&_a]:text-accent [&_.special]:text-accent";
 ---
 
-<section class="px-4 py-20 container mx-auto flex flex-col gap-10">
+<section data-section="community" class="px-4 py-20 container mx-auto flex flex-col gap-10">
     <SectionIntro eyebrow={t('landing.joinCommunity.eyebrow')}>
         <h2 slot="title" set:html={t('landing.joinCommunity.titleHtml')}></h2>
         <p>{t('landing.joinCommunity.intro')}</p>

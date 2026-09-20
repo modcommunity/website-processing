@@ -119,6 +119,28 @@ const {
 
             link.href = `#${section.id}`
             link.textContent = section.dataset.tocTitle ?? ""
+
+            /*
+             * The rail is built here at run time, so it is not in the HTML and
+             * cannot carry a `data-umami-event` the way a static anchor does —
+             * and every entry is a `#hash`, which produces no pageview and no
+             * request. Without this the whole control is invisible.
+             *
+             * The section's ID and its index, never `tocTitle`: the title is
+             * translated prose and one section would be nine rows.
+             */
+            link.addEventListener("click", () => {
+                try {
+                    window.umami?.track("legal_toc_click", {
+                        section: section.id,
+                        index: sections.indexOf(section) + 1,
+                        of: sections.length,
+                        path: window.location.pathname,
+                    })
+                } catch {
+                    /* Analytics must never break a page. */
+                }
+            })
             link.className =
                 "rounded-r-lg border-l-2 border-transparent px-3 py-1.5 text-muted no-underline transition-colors hover:bg-surface-secondary hover:text-foreground"
 
@@ -164,5 +186,47 @@ const {
 
         window.addEventListener("scroll", onScroll, { passive: true })
         window.addEventListener("resize", onScroll, { passive: true })
+
+        /*
+         * How far down the policy anybody actually reads — the one number
+         * people ask about a legal page, and one a pageview cannot answer
+         * because the whole document is a single URL.
+         *
+         * A high-water mark reported ONCE, not a row per section like the
+         * landing page's `section_view`. A policy is read top to bottom or
+         * abandoned, so the interesting figure is where it stopped; fourteen
+         * rows per visit would be the same fact spelled expensively.
+         *
+         * `visibilitychange` on `hidden`, not `beforeunload`: a page hidden by
+         * a tab switch or a phone locking is the last moment guaranteed to
+         * run on mobile, where `beforeunload` is unreliable and `unload` has
+         * been unreliable for years. `sent` guards the double fire you get
+         * from hiding and then genuinely leaving.
+         */
+        let deepest = 0
+        let sent = false
+
+        const mark = () => {
+            if (current + 1 > deepest) deepest = current + 1
+        }
+
+        window.addEventListener("scroll", mark, { passive: true })
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.visibilityState !== "hidden" || sent) return
+
+            sent = true
+
+            try {
+                window.umami?.track("legal_depth", {
+                    deepest,
+                    of: sections.length,
+                    section: sections[Math.max(0, deepest - 1)]?.id,
+                    path: window.location.pathname,
+                })
+            } catch {
+                /* Analytics must never break a page. */
+            }
+        })
     }
 </script>

@@ -9,7 +9,7 @@ import { localizePath } from "../../i18n/config";
 const t = getT(Astro.currentLocale);
 ---
 
-<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+<section data-section="collections" class="py-20 px-4 container mx-auto flex flex-col gap-10">
     <SectionIntro eyebrow={t('landing.collections.eyebrow')}>
         <h2 slot="title" set:html={t('landing.collections.titleHtml')}></h2>
         <p set:html={t('landing.collections.introHtml')}></p>

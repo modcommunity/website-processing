@@ -100,6 +100,9 @@ const rows = [
                     <div class="flex flex-wrap items-center gap-3 pt-1">
                         <a
                             href={APP_REPO}
+                            data-umami-event="app_page_cta"
+                            data-umami-event-to="repo"
+                            data-umami-event-place="hero"
                             target="_blank"
                             rel="noreferrer"
                             class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-[#05060f] shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:bg-white/90"
@@ -109,6 +112,9 @@ const rows = [
                         </a>
                         <a
                             href={localizePath("/roadmap", Astro.currentLocale)}
+                            data-umami-event="app_page_cta"
+                            data-umami-event-to="roadmap"
+                            data-umami-event-place="hero"
                             class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20"
                         >
                             <Map className="h-5 w-5" />

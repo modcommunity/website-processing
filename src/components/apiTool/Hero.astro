@@ -56,6 +56,9 @@ const chips = [
                         <div class="flex shrink-0 flex-wrap gap-3">
                             <a
                                 href={localizePath(API_KEYS, Astro.currentLocale)}
+                                data-umami-event="cli_page_cta"
+                                data-umami-event-to="api-keys"
+                                data-umami-event-place="hero"
                                 class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-300 px-6 py-3 font-semibold text-[#02141a] shadow-lg shadow-teal-500/20 transition hover:-translate-y-0.5 hover:bg-teal-200"
                             >
                                 <KeyRound className="h-5 w-5" />
@@ -63,6 +66,9 @@ const chips = [
                             </a>
                             <a
                                 href={DOCS_CLI}
+                                data-umami-event="cli_page_cta"
+                                data-umami-event-to="docs"
+                                data-umami-event-place="hero"
                                 class="inline-flex items-center justify-center gap-2 rounded-xl border border-teal-300/30 bg-teal-400/10 px-6 py-3 font-semibold text-teal-200 backdrop-blur-md transition hover:-translate-y-0.5 hover:border-teal-300/60 hover:bg-teal-400/20"
                             >
                                 <BookOpen className="h-5 w-5" />
@@ -70,6 +76,9 @@ const chips = [
                             </a>
                             <a
                                 href={DISCORD}
+                                data-umami-event="cli_page_cta"
+                                data-umami-event-to="discord"
+                                data-umami-event-place="hero"
                                 target="_blank"
                                 rel="noreferrer"
                                 class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20"

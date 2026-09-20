@@ -1,6 +1,7 @@
 import { Button } from '@modcommunity/shared'
 import { isLocale, localizeUrl, type LocaleT } from '../i18n/config'
 import { useSignedIn } from '../lib/auth-hint'
+import { track } from '../lib/umami'
 
 /**
  * Header account action for the landing site: "Sign In" (→ website-city login)
@@ -30,6 +31,13 @@ export default function AccountButton({
     return (
         <a
             href={localizeUrl(signedIn ? '/account' : '/login', lang)}
+            /*
+             * `signedIn` is the point: this one button is Sign In to a
+             * stranger and My Account to a member, and the split says how much
+             * of the landing page's traffic already has an account — which is
+             * what the pitch should be written for.
+             */
+            onClick={() => track('account', { signedIn })}
             className={className}
         >
             <Button btnType="special">
