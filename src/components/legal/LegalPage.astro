@@ -67,7 +67,24 @@ const {
             </div>
         </div>
 
-        <aside class="hidden shrink-0 @5xl:block @5xl:w-64" data-legal-toc>
+        {/*
+            `@5xl:self-stretch` is what makes the rail below actually STICK.
+
+            A `position: sticky` element travels inside its PARENT's content
+            box, and the row above sets `@5xl:items-start` — so this <aside>
+            took its height from its own content, which is the sticky panel and
+            nothing else. Parent 556px tall, child 556px tall: no room to
+            travel, so the panel scrolled away with the page like any static
+            box and the "on this page" rail was gone by the second screen. It
+            looked correct in every screenshot, because at scroll 0 a sticky
+            element that cannot stick is exactly where it should be.
+
+            Stretching the aside to the row's full height gives the panel the
+            whole article to travel down. `self-stretch` on this item rather
+            than dropping `items-start` from the row, so the alignment of the
+            article column beside it is untouched.
+        */}
+        <aside class="hidden shrink-0 @5xl:block @5xl:w-64 @5xl:self-stretch" data-legal-toc>
             <div
                 class="sticky top-20 flex max-h-[calc(100vh-6rem)] flex-col gap-3 overflow-y-auto rounded-2xl border border-border bg-surface p-4"
             >
