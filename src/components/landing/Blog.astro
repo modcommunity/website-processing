@@ -15,7 +15,7 @@ const t = getT(Astro.currentLocale);
 const pool = await fetchBlogPool();
 ---
 
-<section class="px-4 py-20 container mx-auto flex flex-col gap-10">
+<section data-section="blog" class="px-4 py-20 container mx-auto flex flex-col gap-10">
     <SectionIntro eyebrow={t('landing.blog.eyebrow')}>
         <h2 slot="title" set:html={t('landing.blog.titleHtml')}></h2>
         <p set:html={t('landing.blog.introHtml')}></p>

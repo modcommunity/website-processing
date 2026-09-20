@@ -1,4 +1,5 @@
 import type { LinkComponent, LinkProps } from '@modcommunity/shared'
+import { track } from '../lib/umami'
 import { isLocale, localizeUrl, type LocaleT } from './config'
 
 /**
@@ -68,13 +69,47 @@ export function localeLink(locale: string): LinkComponent {
 
     const target: LocaleT = isLocale(locale) ? locale : 'en'
 
-    function LocaleLink({ href, target: t, rel, children, ...rest }: LinkProps) {
+    function LocaleLink({
+        href,
+        target: t,
+        rel,
+        children,
+        onClick: callerOnClick,
+        ...rest
+    }: LinkProps & { onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void }) {
+        /*
+         * Every header, sidebar, footer and mobile-drawer link comes through
+         * here, which makes it the one place to record what this site is FOR:
+         * a visitor leaving the pitch for the app.
+         *
+         * Only internal links. An external one is already auto-tagged
+         * `outbound-link-click` by the analytics snippet — which ignores
+         * same-host links, so without this these are recorded nowhere at all.
+         *
+         * The BARE href, so `/mods` is one row rather than nine localized
+         * ones.
+         *
+         * `callerOnClick` is destructured OUT of `rest` and composed rather
+         * than left in it: `{...rest}` is spread after the explicit props, so
+         * an `onClick` arriving from `@modcommunity/shared` — the mobile
+         * drawer passes one to close itself — would silently replace this and
+         * the event would fire nowhere.
+         */
+        const leaving = isInternal(href)
+
+        function onClick(e: React.MouseEvent<HTMLAnchorElement>) {
+            if (leaving) track('app_link', { href: href.split('?')[0] })
+
+            callerOnClick?.(e)
+        }
+
         return (
             <a
                 href={isInternal(href) ? localizeUrl(href, target) : href}
                 target={t}
                 rel={mergeRel(href, rel, t === '_blank')}
                 {...rest}
+                onClick={onClick}
             >
                 {children}
             </a>

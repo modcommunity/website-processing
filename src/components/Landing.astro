@@ -33,3 +33,64 @@ import Community from "./landing/Community.astro";
 <Blog />
 <Platform />
 <Community />
+
+{/*
+    How far down this page a reader actually got.
+
+    The landing page is fourteen sections and one URL: the argument for the
+    platform is spread across all of them, and a pageview says only that
+    somebody arrived at the top. Which section they stop at IS the funnel, and
+    it produces no navigation of any kind.
+
+    An IntersectionObserver rather than a scroll handler — the browser does the
+    geometry off the main thread, and a `scroll` listener doing
+    `getBoundingClientRect()` on fourteen elements per frame is the classic way
+    to make a long page feel heavy in order to measure it.
+
+    A section counts as reached when a QUARTER of it is on screen, not the first
+    pixel: a reader who scrolls fast past a section's top edge and stops has not
+    reached it, and `threshold: 0` would file every section between where they
+    started and where they landed.
+
+    Each fires at most once per pageview and then unobserves itself. Fourteen
+    rows per visit is already the ceiling, and without the unobserve a reader
+    scrolling back up would double them.
+
+    `data-section` lives on each component's own root, so the NAME is stable
+    across a reorder — an ordinal would silently re-label every row the first
+    time a section moved.
+*/}
+<script>
+    const sections = document.querySelectorAll<HTMLElement>('[data-section]')
+
+    if (sections.length && 'IntersectionObserver' in window) {
+        const order = new Map<Element, number>()
+        sections.forEach((s, i) => order.set(s, i + 1))
+
+        const io = new IntersectionObserver(
+            (entries) => {
+                for (const entry of entries) {
+                    if (!entry.isIntersecting) continue
+
+                    io.unobserve(entry.target)
+
+                    const name = (entry.target as HTMLElement).dataset.section
+
+                    try {
+                        window.umami?.track('section_view', {
+                            section: name,
+                            index: order.get(entry.target),
+                            of: sections.length,
+                            path: window.location.pathname,
+                        })
+                    } catch {
+                        /* Analytics must never break a page. */
+                    }
+                }
+            },
+            { threshold: 0.25 }
+        )
+
+        sections.forEach((s) => io.observe(s))
+    }
+</script>

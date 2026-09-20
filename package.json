@@ -16,7 +16,8 @@
     "shared:watch": "npm --prefix ../tmc-global/shared run dev",
     "shared:status": "node -e \"const p=require('path'),f=require('fs'),d='node_modules/@modcommunity/shared',r=f.realpathSync(d);console.log(f.lstatSync(d).isSymbolicLink()?'local  -> '+p.relative(process.cwd(),r):'registry -> '+require(p.join(r,'package.json')).version)\"",
     "audit:overflow": "node scripts/overflow-audit.mjs",
-    "audit:overflow:bisect": "node scripts/overflow-bisect.mjs"
+    "audit:overflow:bisect": "node scripts/overflow-bisect.mjs",
+    "umami:check": "node scripts/umami-check.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^11.1.4",

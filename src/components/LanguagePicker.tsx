@@ -9,6 +9,7 @@ import {
     type LocaleT,
 } from '../i18n/config'
 import { getT } from '../i18n/t'
+import { track } from '../lib/umami'
 
 /**
  * Language picker matching website-city's UX: a two-letter trigger, a dropdown
@@ -39,6 +40,17 @@ export default function LanguagePicker({
     }, [])
 
     function choose(next: LocaleT) {
+        /*
+         * Before the navigation on the last line of this function, not after:
+         * assigning `location.href` unloads the page, and an event queued on
+         * the way out is one that may never be sent.
+         *
+         * `from` as well as `to` — the pageview path already says which
+         * languages are read; what it cannot say is which ones people switch
+         * AWAY from, which is where a translation is failing.
+         */
+        track('locale_change', { from: locale, to: next })
+
         try {
             document.cookie = `${LOCALE_COOKIE}=${next}; path=/; max-age=${
                 60 * 60 * 24 * 365
