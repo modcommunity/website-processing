@@ -66,18 +66,28 @@ export const en = {
         backToTop: 'Back to top',
     },
     /*
-     * The bottom-right launcher block — Play beside Chat. Ported from
-     * website-city's `chat.widget.*`, whose block this one mirrors.
+     * The bottom-right launcher block — Play, Console, Chat. Ported from
+     * website-city's `chat.dock.*` and `chat.widget.*`, whose row this one
+     * mirrors.
      *
-     * `play` stays English in every locale on purpose: city carries
-     * `widget.playAria` in English alone, and its request pipeline merges
-     * English under every locale, so translating it on this side alone would
+     * `play`, `playAria` and `console` stay English in every locale on purpose:
+     * city fills those three under `en` alone, and its request pipeline merges
+     * English under every locale, so translating them on this side alone would
      * make the same button read DIFFERENTLY on the two halves of one domain.
      * `chat` is city's `widget.aria`, which IS translated there.
+     *
+     * `signIn` is the one string taken from THIS catalogue rather than city's:
+     * it repeats `account.signIn`, because the header button and the launcher's
+     * signed-out title sit on the same page and must not offer two different
+     * words for the same act. (City's `chat.widget.signIn` says サインイン where
+     * its account menu says ログイン; that is not worth copying.)
      */
     dock: {
-        play: 'Open the play center',
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
         chat: 'Open chats',
+        signIn: 'Sign in',
     },
 }
 
@@ -106,7 +116,13 @@ const es: DeepPartial<Messages> = {
     },
     picker: { select: 'Selecciona un idioma', current: 'Idioma: {name}' },
     actions: { backToTop: 'Volver arriba' },
-    dock: { play: 'Open the play center', chat: 'Abrir los chats' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'Abrir los chats',
+        signIn: 'Iniciar sesión',
+    },
 }
 
 const fr: DeepPartial<Messages> = {
@@ -131,7 +147,13 @@ const fr: DeepPartial<Messages> = {
         current: 'Langue : {name}',
     },
     actions: { backToTop: 'Retour en haut' },
-    dock: { play: 'Open the play center', chat: 'Ouvrir les discussions' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'Ouvrir les discussions',
+        signIn: 'Se connecter',
+    },
 }
 
 const de: DeepPartial<Messages> = {
@@ -156,7 +178,13 @@ const de: DeepPartial<Messages> = {
         current: 'Sprache: {name}',
     },
     actions: { backToTop: 'Nach oben' },
-    dock: { play: 'Open the play center', chat: 'Chats öffnen' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'Chats öffnen',
+        signIn: 'Anmelden',
+    },
 }
 
 const ru: DeepPartial<Messages> = {
@@ -178,7 +206,13 @@ const ru: DeepPartial<Messages> = {
     },
     picker: { select: 'Выберите язык', current: 'Язык: {name}' },
     actions: { backToTop: 'Наверх' },
-    dock: { play: 'Open the play center', chat: 'Открыть чаты' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'Открыть чаты',
+        signIn: 'Войти',
+    },
 }
 
 const nl: DeepPartial<Messages> = {
@@ -200,7 +234,13 @@ const nl: DeepPartial<Messages> = {
     },
     picker: { select: 'Kies een taal', current: 'Taal: {name}' },
     actions: { backToTop: 'Terug naar boven' },
-    dock: { play: 'Open the play center', chat: 'Chats openen' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'Chats openen',
+        signIn: 'Inloggen',
+    },
 }
 
 const ja: DeepPartial<Messages> = {
@@ -222,7 +262,13 @@ const ja: DeepPartial<Messages> = {
     },
     picker: { select: '言語を選択', current: '言語: {name}' },
     actions: { backToTop: 'トップへ戻る' },
-    dock: { play: 'Open the play center', chat: 'チャットを開く' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'チャットを開く',
+        signIn: 'ログイン',
+    },
 }
 
 const zh: DeepPartial<Messages> = {
@@ -244,7 +290,13 @@ const zh: DeepPartial<Messages> = {
     },
     picker: { select: '选择语言', current: '语言：{name}' },
     actions: { backToTop: '回到顶部' },
-    dock: { play: 'Open the play center', chat: '打开聊天' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: '打开聊天',
+        signIn: '登录',
+    },
 }
 
 const pt: DeepPartial<Messages> = {
@@ -266,7 +318,13 @@ const pt: DeepPartial<Messages> = {
     },
     picker: { select: 'Selecione um idioma', current: 'Idioma: {name}' },
     actions: { backToTop: 'Voltar ao topo' },
-    dock: { play: 'Open the play center', chat: 'Abrir conversas' },
+    dock: {
+        play: 'Play',
+        playAria: 'Play, open the play center',
+        console: 'Console',
+        chat: 'Abrir conversas',
+        signIn: 'Entrar',
+    },
 }
 
 const SHELL: Record<LocaleT, DeepPartial<Messages>> = {
