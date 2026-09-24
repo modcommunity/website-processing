@@ -195,6 +195,42 @@ function text(value: unknown): string {
 }
 
 /**
+ * An absolute http(s) URL from the wire, or `''`.
+ *
+ * `url` and `image` come from another deployment and land in an `href` and a
+ * `src`. A `javascript:` or `data:` value there is script or content this site
+ * would be serving under its own name, so anything that is not plainly http(s)
+ * is dropped and the caller's fallback (city path, local art, placeholder)
+ * takes over — exactly as if the field had been missing.
+ */
+function httpUrl(value: unknown): string {
+    const raw = text(value)
+
+    if (!raw) return ''
+
+    try {
+        const u = new URL(raw)
+
+        return u.protocol === 'https:' || u.protocol === 'http:' ? raw : ''
+    } catch {
+        return ''
+    }
+}
+
+/**
+ * A site-relative path (`/blog/x`) from the wire, or `''`.
+ *
+ * `//host/x` and `/\host/x` are refused: browsers read both as a different
+ * origin, so `${CITY_URL}${path}` or a bare `src` would stop meaning "on our
+ * site".
+ */
+function sitePath(value: unknown): string {
+    const raw = text(value)
+
+    return raw.startsWith('/') && !/^\/[\/\\]/.test(raw) ? raw : ''
+}
+
+/**
  * An ISO date to epoch ms, or `0` when there isn't one.
  *
  * `0` rather than `null` so every comparison in {@link dailyPick} is arithmetic
@@ -229,7 +265,7 @@ function toArticle(row: AnonArticle): BlogArticle | null {
 
     const slug = text(row.slug)
 
-    const path = text(row.path) || (slug ? `/blog/${slug}` : '')
+    const path = sitePath(row.path) || (slug ? `/blog/${encodeURIComponent(slug)}` : '')
 
     if (!path) return null
 
@@ -246,10 +282,11 @@ function toArticle(row: AnonArticle): BlogArticle | null {
     return {
         id: typeof row.id === 'number' ? row.id : 0,
         title,
-        url: text(row.url) || `${CITY_URL}${path}`,
+        url: httpUrl(row.url) || `${CITY_URL}${path}`,
         desc: text(row.description),
         image:
-            text(row.image) ||
+            httpUrl(row.image) ||
+            sitePath(row.image) ||
             (local ? `/images/blog/article/${local}` : null),
         categories,
         tags,
