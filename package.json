@@ -6,6 +6,8 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "check": "astro check",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "preview": "astro preview",
     "astro": "astro",
     "shared:local": "npm install ../tmc-global/shared --no-save",
@@ -43,6 +45,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@types/three": "^0.185.4",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.11"
   }
 }

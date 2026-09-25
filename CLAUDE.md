@@ -390,6 +390,9 @@ Things that are load-bearing:
 - `npm run dev` — Astro dev server.
 - `npm run build` — static build into `dist/` (this is the check to run after
   changes; it renders every page and fails on broken imports/JSX).
+- `npm test` — vitest (same setup as website-learn: no config file, no DOM).
+  `src/lib/blog.test.ts` covers the blog shelf's URL checks against a stubbed
+  `fetch`. Run it alongside the build; the build cannot see behaviour.
 - `npm run preview` — note `astro preview` needs the node adapter (commented out
   in `astro.config.mjs`); prefer `dev` locally.
 
