@@ -28,11 +28,44 @@ const {
      Stating it silences the hint and keeps the tag from being bundled if the
      attributes ever go away — this is a third-party snippet that has to load
      from Umami's origin, not something to process. -->
+<!-- Drops sends from automated browsers. The same rule as website-city's
+     `src/utils/umami/automation.ts` (read that for the reasoning) — both sites
+     report into one website id, so the two copies must agree. Defined before the
+     tracker, which looks the function up at send time via data-before-send. -->
+<script is:inline>
+    (() => {
+        let verdict;
+        const probe = () => {
+            const nav = navigator;
+            if (nav.webdriver === true) return true;
+            const brands = (nav.userAgentData && nav.userAgentData.brands) || [];
+            if (brands.some(b => /headless/i.test(b.brand))) return true;
+            try {
+                const gl = document.createElement('canvas').getContext('webgl');
+                if (gl) {
+                    const ext = gl.getExtension('WEBGL_debug_renderer_info');
+                    const r = String(gl.getParameter(ext ? ext.UNMASKED_RENDERER_WEBGL : gl.RENDERER) || '');
+                    const lose = gl.getExtension('WEBGL_lose_context');
+                    if (lose) lose.loseContext();
+                    if (/swiftshader|llvmpipe|softpipe|lavapipe/i.test(r)) return true;
+                }
+            } catch (e) {
+                /* No WebGL is not a verdict. */
+            }
+            return false;
+        };
+        window.tmcUmamiBeforeSend = (type, payload) => {
+            if (verdict === undefined) verdict = probe();
+            return verdict ? null : payload;
+        };
+    })()
+</script>
 <script
     is:inline
     defer
     src={src}
     data-website-id={websiteId}
+    data-before-send="tmcUmamiBeforeSend"
 />
 {setOutboundClicks && (
     <script>
