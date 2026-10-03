@@ -104,6 +104,7 @@ export function buildNav(t: TFunc): NavItem[] {
             // landing pages in the menu below; city has since built one that
             // does not — it is a curated look ACROSS the types each leaf here
             // covers one of.
+            id: 'nav.explore.label',
             label: t('nav.explore.label'),
             href: '/explore',
             icon: Compass,
@@ -184,6 +185,7 @@ export function buildNav(t: TFunc): NavItem[] {
         },
         {
             // The people pillar, and the places the community talks TO us.
+            id: 'nav.community.label',
             label: t('nav.community.label'),
             href: '/community',
             icon: Users,
@@ -245,6 +247,7 @@ export function buildNav(t: TFunc): NavItem[] {
             // reporting side of the site — what is broken, what we shipped, and
             // whether anything is down right now, in the order those are read
             // in.
+            id: 'nav.resources.label',
             label: t('nav.resources.label'),
             icon: FolderKey,
             desc: t('nav.resources.desc'),
@@ -291,6 +294,7 @@ export function buildNav(t: TFunc): NavItem[] {
             // blog is a website-city page, and city's Next.js build serves it
             // without a trailing slash, so a `/blog/` here would only earn a
             // 308 on every click.
+            id: 'nav.blog.label',
             label: t('nav.blog.label'),
             href: '/blog',
             icon: NotebookPen,
@@ -315,6 +319,7 @@ export function buildNav(t: TFunc): NavItem[] {
 export function buildFooterColumns(t: TFunc): FooterColumn[] {
     return [
         {
+            id: 'footer.headings.explore',
             heading: t('footer.headings.explore'),
             links: [
                 { label: t('footer.links.apps'), href: '/apps' },
@@ -338,6 +343,7 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
             ],
         },
         {
+            id: 'footer.headings.community',
             heading: t('footer.headings.community'),
             links: [
                 {
@@ -372,6 +378,7 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
              * blog, community, discussions, banners, contact) are already in the
              * columns beside this one.
              */
+            id: 'footer.headings.resources',
             heading: t('footer.headings.resources'),
             links: [
                 // The documentation, first: it is the entry in this column a
@@ -385,6 +392,7 @@ export function buildFooterColumns(t: TFunc): FooterColumn[] {
             ],
         },
         {
+            id: 'footer.headings.legal',
             heading: t('footer.headings.legal'),
             links: [
                 { label: t('footer.links.tos'), href: '/tos' },
@@ -456,6 +464,7 @@ export function buildVisibleSidebarSections(
 export function buildSidebarSections(t: TFunc): SidebarSection[] {
     return [
         {
+            id: 'rail.sections.apps',
             label: t('rail.sections.apps'),
             icon: Package,
             items: [
@@ -474,6 +483,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.assets',
             label: t('rail.sections.assets'),
             icon: Cog,
             items: [
@@ -505,6 +515,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.mods',
             label: t('rail.sections.mods'),
             icon: Hammer,
             items: [
@@ -536,6 +547,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.servers',
             label: t('rail.sections.servers'),
             icon: Server,
             items: [
@@ -592,6 +604,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
              * you press — somebody arriving to play should reach the shorter
              * path first.
              */
+            id: 'rail.sections.play',
             label: t('rail.sections.play'),
             icon: Joystick,
             items: [
@@ -622,6 +635,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.parties',
             label: t('rail.sections.parties'),
             icon: Gamepad2,
             items: [
@@ -666,6 +680,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.communities',
             label: t('rail.sections.communities'),
             icon: Users,
             items: [
@@ -693,6 +708,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.articles',
             label: t('rail.sections.articles'),
             icon: Newspaper,
             items: [
@@ -727,6 +743,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.collections',
             label: t('rail.sections.collections'),
             icon: Group,
             items: [
@@ -760,6 +777,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
              * — a reader after "co-op servers and co-op mods" is asking a
              * category question, not a mods question.
              */
+            id: 'rail.sections.categories',
             label: t('rail.sections.categories'),
             icon: FolderTree,
             items: [
@@ -776,6 +794,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             ],
         },
         {
+            id: 'rail.sections.groups',
             label: t('rail.sections.groups'),
             icon: Network,
             items: [
@@ -802,6 +821,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
             // The people pillar. "Users" is the member directory inside it, and
             // it sits BELOW Activity — the feed is what a reader opens this
             // section for.
+            id: 'rail.sections.community',
             label: t('rail.sections.community'),
             icon: Users,
             items: [
@@ -862,6 +882,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
              * Assets and Mods: one `ContentSource` table serves both kinds, so a
              * leaf under each would point at the same page twice.
              */
+            id: 'rail.sections.sources',
             label: t('rail.sections.sources'),
             icon: Puzzle,
             items: [
@@ -879,6 +900,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
              * this leaf, and the rail was the one surface the documentation
              * could not be reached from.
              */
+            id: 'rail.sections.resources',
             label: t('rail.sections.resources'),
             icon: FolderKey,
             items: [{ label: t('rail.items.docs'), href: DOCS, icon: BookOpen }],
