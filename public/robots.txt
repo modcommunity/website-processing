@@ -1,11 +1,10 @@
 # The Modding Community — landing site (website-processing).
 #
 # Everything here is public marketing and legal copy meant to be indexed, so
-# nothing is disallowed. The one thing this file exists for is the Sitemap
-# line: @astrojs/sitemap emits the index below at build time, and without a
-# pointer to it a crawler has to discover all 54 localized pages by following
-# links.
+# nothing is disallowed. In production robots.txt is answered by website-city,
+# whose robots.ts advertises the one sitemap (`/sitemap.xml`); this file only
+# matters when the landing site is served on its own. It names no sitemap:
+# @astrojs/sitemap's `/sitemap-index.xml` is not routed to this container in
+# production, and a robots.txt pointing at a 404 is what was being fixed.
 User-agent: *
 Allow: /
-
-Sitemap: https://moddingcommunity.com/sitemap-index.xml
