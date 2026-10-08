@@ -507,7 +507,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.myAssets'),
-                    href: '/assets/browse/?mine=1',
+                    href: '/assets/browse?mine=1',
                     icon: User,
                     desc: t('rail.pillars.assets.mine'),
                     requiresAuth: true,
@@ -539,7 +539,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.myMods'),
-                    href: '/mods/browse/?mine=1',
+                    href: '/mods/browse?mine=1',
                     icon: User,
                     desc: t('rail.pillars.mods.mine'),
                     requiresAuth: true,
@@ -590,7 +590,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 // exists.
                 {
                     label: t('rail.items.myServers'),
-                    href: '/servers/browse/?mine=1',
+                    href: '/servers/browse?mine=1',
                     icon: User,
                     desc: t('rail.pillars.servers.mine'),
                     requiresAuth: true,
@@ -616,19 +616,19 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.playGames'),
-                    href: '/play/?tab=games',
+                    href: '/play?tab=games',
                     icon: Gamepad2,
                     desc: t('rail.pillars.play.games'),
                 },
                 {
                     label: t('rail.items.playServers'),
-                    href: '/play/?tab=servers',
+                    href: '/play?tab=servers',
                     icon: Server,
                     desc: t('rail.pillars.play.servers'),
                 },
                 {
                     label: t('rail.items.playLobbies'),
-                    href: '/play/?tab=lobbies',
+                    href: '/play?tab=lobbies',
                     icon: Users,
                     desc: t('rail.pillars.play.lobbies'),
                 },
@@ -659,20 +659,20 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.liveParties'),
-                    href: '/parties/browse/?live=live',
+                    href: '/parties/browse?live=live',
                     icon: Gamepad2,
                     desc: t('rail.pillars.parties.live'),
                 },
                 {
                     label: t('rail.items.friendParties'),
-                    href: '/parties/browse/?friends=1&live=live',
+                    href: '/parties/browse?friends=1&live=live',
                     icon: Users,
                     desc: t('rail.pillars.parties.friends'),
                     requiresAuth: true,
                 },
                 {
                     label: t('rail.items.myParties'),
-                    href: '/parties/browse/?mine=1',
+                    href: '/parties/browse?mine=1',
                     icon: User,
                     desc: t('rail.pillars.parties.mine'),
                     requiresAuth: true,
@@ -701,7 +701,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.myCommunities'),
-                    href: '/communities/browse/?mine=1',
+                    href: '/communities/browse?mine=1',
                     icon: User,
                     requiresAuth: true,
                 },
@@ -736,7 +736,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.myArticles'),
-                    href: '/articles/browse/?mine=1',
+                    href: '/articles/browse?mine=1',
                     icon: User,
                     requiresAuth: true,
                 },
@@ -764,7 +764,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.myCollections'),
-                    href: '/collections/browse/?mine=1',
+                    href: '/collections/browse?mine=1',
                     icon: User,
                     requiresAuth: true,
                 },
@@ -811,7 +811,7 @@ export function buildSidebarSections(t: TFunc): SidebarSection[] {
                 },
                 {
                     label: t('rail.items.myGroups'),
-                    href: '/groups/browse/?mine=1',
+                    href: '/groups/browse?mine=1',
                     icon: User,
                     requiresAuth: true,
                 },
