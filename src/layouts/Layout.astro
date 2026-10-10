@@ -9,6 +9,7 @@ import BackToTop from "../components/BackToTop";
 import CornerLauncher from "../components/CornerLauncher";
 import { LOCALES, localizeUrl, stripLocale, type LocaleT } from "../i18n/config";
 import { SITE_URL } from "../lib/site";
+import { siteJsonLd } from "../lib/structured";
 
 import PlausibleAnalytics from "../components/helper/PlausibleAnalytics.astro";
 import UmamiAnalytics from "../components/helper/UmamiAnalytics.astro";
@@ -133,6 +134,12 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A welcoming modd
 		{alternates.filter(({ locale: l }) => l !== locale).map(({ locale: l }) => (
 			<meta property="og:locale:alternate" content={l}>
 		))}
+
+		<!--
+			Organization + WebSite, the nodes every website-city page carries; see
+			src/lib/structured.ts for why their ids must be city's.
+		-->
+		<script type="application/ld+json" set:html={siteJsonLd(locale)} />
 
 		<!-- Twitter Card -->
 		<meta name="twitter:card" content="summary_large_image">
