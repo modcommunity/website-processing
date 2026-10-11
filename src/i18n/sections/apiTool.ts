@@ -13,7 +13,7 @@ import type { SectionCatalog } from './types'
  * `publish.sh`, `auth.sh`, `relations.sh`, `release.yml`) — they are things you
  * type, and a translated flag would not work. The prose around them is.
  *
- * Checked against `../../../../tmc-cli` (then named api-cli) at **1.1.0** — its `README.md`,
+ * Checked against `../../../../tmc-cli` (then named api-cli) at **1.2.0** — its `README.md`,
  * `CLAUDE.md` and, where the two disagree, `src/tmc_cli/` itself (the type and
  * relation lists below are the ones `schema.py` actually defines; the test
  * count is what `python3 -m unittest discover -s tests` reports). The tool is
@@ -124,7 +124,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Never Blocked By A Stale Build',
         ci3b: 'A field the tool has not learned about yet still goes through with <span class="special">--allow-unknown-fields</span>, and <span class="special">tmc raw</span> sends any request at all.',
         ci4t: 'Tested Against The Real Thing',
-        ci4b: '75 tests drive the actual CLI against an in-process mock of the API over a real socket — both auth modes, the batching, the relation semantics and the retry path.',
+        ci4b: '185 tests drive the actual CLI against an in-process mock of the API over a real socket — both auth modes, the batching, the relation semantics and the retry path.',
 
         // ---- CTA ---------------------------------------------------------------
         ctaTitleHtml: 'Keys Live Under <span class="special">Account → API Keys</span>',
@@ -229,7 +229,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Nunca Bloqueado Por Una Versión Vieja',
         ci3b: 'Un campo que la herramienta todavía no conoce pasa igualmente con <span class="special">--allow-unknown-fields</span>, y <span class="special">tmc raw</span> envía cualquier petición que quieras.',
         ci4t: 'Probado Contra Lo Real',
-        ci4b: '75 pruebas ejecutan la CLI de verdad contra un simulacro de la API en proceso sobre un socket real — los dos modos de autenticación, la agrupación por lotes, la semántica de relaciones y la ruta de reintentos.',
+        ci4b: '185 pruebas ejecutan la CLI de verdad contra un simulacro de la API en proceso sobre un socket real — los dos modos de autenticación, la agrupación por lotes, la semántica de relaciones y la ruta de reintentos.',
 
         ctaTitleHtml: 'Las Claves Están En <span class="special">Cuenta → Claves De API</span>',
         ctaIntroHtml:
@@ -333,7 +333,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Jamais Bloqué Par Une Version Périmée',
         ci3b: 'Un champ que l\'outil ne connaît pas encore passe quand même avec <span class="special">--allow-unknown-fields</span>, et <span class="special">tmc raw</span> envoie n\'importe quelle requête.',
         ci4t: 'Testé Contre La Vraie Chose',
-        ci4b: '75 tests pilotent la vraie CLI face à un simulacre de l\'API en processus, via une vraie socket — les deux modes d\'authentification, le découpage en lots, la sémantique des relations et le chemin de réessai.',
+        ci4b: '185 tests pilotent la vraie CLI face à un simulacre de l\'API en processus, via une vraie socket — les deux modes d\'authentification, le découpage en lots, la sémantique des relations et le chemin de réessai.',
 
         ctaTitleHtml: 'Les Clés Sont Dans <span class="special">Compte → Clés D\'API</span>',
         ctaIntroHtml:
@@ -437,7 +437,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Nie Von Einem Veralteten Build Blockiert',
         ci3b: 'Ein Feld, das das Werkzeug noch nicht kennt, geht mit <span class="special">--allow-unknown-fields</span> trotzdem durch, und <span class="special">tmc raw</span> sendet überhaupt jeden Request.',
         ci4t: 'Gegen Das Echte Getestet',
-        ci4b: '75 Tests fahren die tatsächliche CLI gegen ein prozessinternes Mock der API über einen echten Socket — beide Auth-Modi, das Bündeln, die Beziehungssemantik und den Retry-Pfad.',
+        ci4b: '185 Tests fahren die tatsächliche CLI gegen ein prozessinternes Mock der API über einen echten Socket — beide Auth-Modi, das Bündeln, die Beziehungssemantik und den Retry-Pfad.',
 
         ctaTitleHtml: 'Schlüssel Findest Du Unter <span class="special">Konto → API-Schlüssel</span>',
         ctaIntroHtml:
@@ -541,7 +541,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Устаревшая Сборка Не Заблокирует',
         ci3b: 'Поле, о котором инструмент ещё не знает, всё равно пройдёт с <span class="special">--allow-unknown-fields</span>, а <span class="special">tmc raw</span> отправит вообще любой запрос.',
         ci4t: 'Проверено На Настоящем',
-        ci4b: '75 тестов гоняют настоящий CLI против внутрипроцессного макета API через реальный сокет — оба режима аутентификации, разбиение на пакеты, семантику связей и путь повторных попыток.',
+        ci4b: '185 тестов гоняют настоящий CLI против внутрипроцессного макета API через реальный сокет — оба режима аутентификации, разбиение на пакеты, семантику связей и путь повторных попыток.',
 
         ctaTitleHtml: 'Ключи Живут В <span class="special">Аккаунт → Ключи API</span>',
         ctaIntroHtml:
@@ -645,7 +645,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Nooit Geblokkeerd Door Een Verouderde Build',
         ci3b: 'Een veld dat het gereedschap nog niet kent gaat er met <span class="special">--allow-unknown-fields</span> alsnog doorheen, en <span class="special">tmc raw</span> stuurt werkelijk elk verzoek.',
         ci4t: 'Getest Tegen Het Echte Werk',
-        ci4b: '75 tests draaien de echte CLI tegen een in-process nabootsing van de API over een echte socket — beide authenticatiemodi, het bundelen, de relatiesemantiek en het herhaalpad.',
+        ci4b: '185 tests draaien de echte CLI tegen een in-process nabootsing van de API over een echte socket — beide authenticatiemodi, het bundelen, de relatiesemantiek en het herhaalpad.',
 
         ctaTitleHtml: 'Sleutels Vind Je Onder <span class="special">Account → API-Sleutels</span>',
         ctaIntroHtml:
@@ -749,7 +749,7 @@ export const apiTool: SectionCatalog = {
         ci3t: '古いビルドに足止めされません',
         ci3b: 'ツールがまだ知らないフィールドも <span class="special">--allow-unknown-fields</span> で通りますし、<span class="special">tmc raw</span> ならどんなリクエストでも送れます。',
         ci4t: '本物を相手にテスト',
-        ci4b: '75 個のテストが、実際のソケット越しにプロセス内の API モックへ本物の CLI を走らせます — 両方の認証方式、バッチ処理、関連のセマンティクス、リトライ経路まで。',
+        ci4b: '185 個のテストが、実際のソケット越しにプロセス内の API モックへ本物の CLI を走らせます — 両方の認証方式、バッチ処理、関連のセマンティクス、リトライ経路まで。',
 
         ctaTitleHtml: 'キーは <span class="special">アカウント → API キー</span> にあります',
         ctaIntroHtml:
@@ -853,7 +853,7 @@ export const apiTool: SectionCatalog = {
         ci3t: '不会被过时的构建卡住',
         ci3b: '工具还不认识的字段，加上 <span class="special">--allow-unknown-fields</span> 依旧能提交，而 <span class="special">tmc raw</span> 可以发送任意请求。',
         ci4t: '对着真东西测试',
-        ci4b: '75 项测试通过真实套接字，用进程内的 API 模拟服务驱动真正的 CLI——覆盖两种认证模式、批处理、关联语义和重试路径。',
+        ci4b: '185 项测试通过真实套接字，用进程内的 API 模拟服务驱动真正的 CLI——覆盖两种认证模式、批处理、关联语义和重试路径。',
 
         ctaTitleHtml: '密钥在<span class="special">账号 → API 密钥</span>里',
         ctaIntroHtml:
@@ -957,7 +957,7 @@ export const apiTool: SectionCatalog = {
         ci3t: 'Nunca Travado Por Uma Build Antiga',
         ci3b: 'Um campo que a ferramenta ainda não conhece passa mesmo assim com <span class="special">--allow-unknown-fields</span>, e <span class="special">tmc raw</span> envia qualquer requisição.',
         ci4t: 'Testado Contra A Coisa Real',
-        ci4b: '75 testes executam a CLI de verdade contra um mock da API no mesmo processo por um socket real — os dois modos de autenticação, o loteamento, a semântica das relações e o caminho de retentativa.',
+        ci4b: '185 testes executam a CLI de verdade contra um mock da API no mesmo processo por um socket real — os dois modos de autenticação, o loteamento, a semântica das relações e o caminho de retentativa.',
 
         ctaTitleHtml: 'As Chaves Ficam Em <span class="special">Conta → Chaves De API</span>',
         ctaIntroHtml:
