@@ -13,7 +13,7 @@ import type { SectionCatalog } from './types'
  * `publish.sh`, `auth.sh`, `relations.sh`, `release.yml`) — they are things you
  * type, and a translated flag would not work. The prose around them is.
  *
- * Checked against `../../../../api-cli` at **1.1.0** — its `README.md`,
+ * Checked against `../../../../tmc-cli` (then named api-cli) at **1.1.0** — its `README.md`,
  * `CLAUDE.md` and, where the two disagree, `src/tmc_cli/` itself (the type and
  * relation lists below are the ones `schema.py` actually defines; the test
  * count is what `python3 -m unittest discover -s tests` reports). The tool is
