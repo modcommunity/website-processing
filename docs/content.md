@@ -39,7 +39,7 @@ Each is built like the home page: a shell in `src/components/<Name>.astro` compo
 
 | Page | Describes | Source of truth |
 | --- | --- | --- |
-| `/tmc-app` | The desktop app: the live server browser, the mod manager, downloads, plugins, its security model | `../tmc-app`, chiefly its `CLAUDE.md` |
+| `/tmc-app` | The desktop app: the live server browser, the mod manager, downloads, plugins, its security model | `../tmc-app`, chiefly its `CLAUDE.md` and `docs/` |
 | `/tmc-cli` | `tmc`, the Python CLI for the public content API | `../tmc-cli`, its `README.md` and `CLAUDE.md` |
 
 - **Both products are unreleased, and the pages say so loudly.** The app has no builds; the CLI is not on PyPI and has no public repository. `/tmc-app` says it in the badge (`heroBadge`), the hero note (`heroNoteHtml`) and a closing section "Not Available, And Not Ready" (`statusTitleHtml`, `statusIntroHtml`, the `n1`–`n4` cards). `/tmc-cli` says it in the badge, an amber note in the hero (`heroNoteHtml`) and one above the closing buttons (`ctaNoteHtml`); the notes wear amber/`warning` rather than the page's teal, because a caution should not be dressed in the page's own colour. `installNote` is only about the install itself. When a product ships, those are the strings, and the install snippet becomes a real `pip install tmc-cli`.

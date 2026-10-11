@@ -13,7 +13,7 @@ import type { SectionCatalog } from './types'
  * `liveMockMap` are a mock server's own name and map — proper nouns a real
  * browser would show verbatim — so they are identical in all nine.
  *
- * Every claim here is checked against `../../../../tmc-app` (its `CLAUDE.md` is
+ * Every claim here is checked against `../../../../tmc-app` (its `CLAUDE.md` and `docs/` are
  * the source of truth for what the app does).
  *
  * NOTHING IS RELEASED. There are no builds, for any platform, and the page has
