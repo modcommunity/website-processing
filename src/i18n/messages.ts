@@ -16,7 +16,7 @@ import { tmcApp } from './sections/tmcApp'
 import { apiTool } from './sections/apiTool'
 import { joinCommunity } from './sections/joinCommunity'
 import { shellNav } from './sections/shellNav'
-import { shellSidebar } from './sections/shellSidebar'
+import { shellSidebar } from '@modcommunity/shared/i18n'
 import { shellFooter } from './sections/shellFooter'
 import { notFound } from './sections/notFound'
 
