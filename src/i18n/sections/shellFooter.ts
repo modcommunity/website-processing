@@ -3,33 +3,27 @@ import type { LocaleT } from '../config'
 /**
  * Footer slogan, copyright, column headings and link labels, ported verbatim
  * from website-city's `locales/<lang>/footer.json` so both footers read
- * identically in all nine languages. Keys mirror city's exactly
- * (`slogan`, `copyright`, `headings.*`, `links.*`), and the shape is nested so
- * `getT` can resolve it by dot-path.
+ * identically in all nine languages. Keys are city's exactly (`slogan`,
+ * `copyright`, `headings.*`, `links.*`), because `buildChrome` asks for them by
+ * city's key (`footer.links.tos`) and `ShellCatalogKey` passes footer keys
+ * through unchanged.
  *
- * Keep in sync with website-city's `FOOTER_LINKS`
- * (`src/app/_components/ui/shell/nav-config.ts`) — that config is the source of
- * truth for which links the footer shows, in which column and in what order;
- * this file only carries their text.
+ * WHICH links the footer shows, in which column and in what order, is not
+ * decided here: it is tmc-global's `site-nav.json`, which `buildChrome` reads.
+ * This file only carries their text. A key it lacks falls back to the English
+ * in that JSON, so a gap never leaks a raw key.
  *
- * The ONE key that is deliberately no longer city's text is `copyright`: it now
- * names the operating entity, `TekWorks LLC`, with `The Modding Community` as
- * its DBA. That is a legal statement about who runs the site rather than a
- * translation choice, so it is not a divergence to "fix" by copying city's line
- * back over it — city's footer is expected to gain the same wording. The
- * company name itself stays untranslated in all nine locales (it is a
- * registered name); only the words around it are localized, and `DBA` becomes
- * whatever each language calls a trade name, since the US abbreviation would
- * not read as anything elsewhere.
+ * `copyright` names the operating entity, `TekWorks LLC`, with `The Modding
+ * Community` as its DBA, the same line city's footer carries. The company name
+ * stays untranslated in all nine locales (it is a registered name); only the
+ * words around it are localized, and `DBA` becomes whatever each language calls
+ * a trade name, since the US abbreviation would not read as anything elsewhere.
  *
- * City now translates every one of these keys itself, so nothing here is
- * English-only any more (most of the second, third and fourth columns used to
- * be, because city carried them in English alone). A key city ever carries in
- * English alone must STAY English here too: its request pipeline merges English
- * under every locale, so translating one on this side alone would make the
- * landing site's footer read DIFFERENTLY from the app's in the other eight
- * languages, which is exactly what this catalogue exists to prevent. `getT`
- * falls back to English per key, so a gap never leaks a raw key.
+ * A key city carries in English alone must STAY English here too: its request
+ * pipeline merges English under every locale, so translating one on this side
+ * alone would make the landing site's footer read DIFFERENTLY from the app's in
+ * the other eight languages, which is exactly what this catalogue exists to
+ * prevent.
  */
 export type FooterCatalog = Record<
     LocaleT,

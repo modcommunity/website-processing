@@ -5,9 +5,10 @@ import type { LocaleT } from '../config'
  * website-city's `locales/<lang>/nav.json` (`items.*`) so the two headers read
  * identically in all nine languages.
  *
- * Keep in sync with website-city's PRIMARY_NAV — that config is the source of
- * truth for which entries the header shows and in what order — and with its
- * nav.json, which is the source of truth for the words. City translates every
+ * Which entries the header shows, and in what order, is tmc-global's
+ * `site-nav.json`, read by `buildChrome`; `ShellCatalogKey` turns city's
+ * `nav.items.<name>.label` into this file's `nav.<name>.label`. City's nav.json
+ * is the source of truth for the words. City translates every
  * one of these keys itself now, so nothing here is English-only; a key it ever
  * carries in English alone must stay English here too, since city's request
  * pipeline merges English under every locale and translating it on this side

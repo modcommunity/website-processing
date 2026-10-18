@@ -1,30 +1,36 @@
-import { Header, MobileNav, ThemeToggle } from '@modcommunity/shared'
-import AccountButton from './AccountButton'
+import {
+    AccountButton,
+    buildChrome,
+    Header,
+    HeaderActions,
+    LanguagePicker,
+    MobileNav,
+    ShellCatalogKey,
+    ThemeToggle,
+} from '@modcommunity/shared'
 import BrandLogo from './BrandLogo'
-import LanguagePicker from './LanguagePicker'
 import { getT } from '../i18n/t'
-import { buildNav, buildVisibleSidebarSections } from '../i18n/nav'
 import { localeLink } from '../i18n/link'
-import { stripLocale } from '../i18n/config'
+import { isLocale, localizeUrl, stripLocale } from '../i18n/config'
+import { writeLocaleCookie } from '../i18n/cookie'
 import { useSignedIn } from '../lib/auth-hint'
+import { track } from '../lib/umami'
 
 /**
- * The landing site's header — the shared website-city <Header> with a translated
- * nav plus the language picker, light/dark toggle and sign-in / account action.
- * Wrapped in a local component so Astro only serializes the plain `pathName` /
- * `locale` strings across the island boundary (the nav config, link component
- * and translations stay on the client where their functions live).
+ * The landing site's header: the shared <Header> over `buildChrome`, the same
+ * call and the same link list website-city, website-learn and website-status
+ * draw, so a link edited in tmc-global's site-nav.json reaches this bar at the
+ * next version bump instead of through a copied list here. Wrapped in a local
+ * component so Astro only serializes the plain `pathName` / `locale` strings
+ * across the island boundary (the nav, its icon components and the link
+ * component stay on the client where their functions live).
  *
- * The `left` slot carries the shared <MobileNav/> drawer. Both halves of the
- * desktop shell appear at the same breakpoint — the header nav is `md:flex` and
- * <SiteSidebar/> is `md:flex` — and the drawer's own trigger is `md:hidden`, so
- * exactly one of the two navigations exists at any width and a phone is never
- * left without one. It is given the same nav + sidebar sections those two
- * render, so the drawer is the whole shell in one panel.
- *
- * The account action is `sm`-and-up only: below 640px "My Account" overflows the
- * bar (it wraps/clips under ~375px), so it moves into the drawer's footer slot
- * instead. Exactly one of the two is visible at any width.
+ * The `left` slot carries the shared <MobileNav/> drawer. The header nav and
+ * <SiteSidebar/> are both `md:flex` and the drawer's trigger is `md:hidden`, so
+ * exactly one navigation exists at any width. Below `sm` the bar has no room
+ * for the language picker, theme toggle or "My Account" (it wraps under
+ * ~375px): <HeaderActions/> hides them there and they move into the drawer's
+ * footer, as on city.
  */
 export default function SiteHeader({
     pathName = '/',
@@ -35,40 +41,77 @@ export default function SiteHeader({
 }) {
     const t = getT(locale)
 
-    // Drops the signed-in-only leaves from the pillar dropdowns, matching what
-    // <SiteSidebar/> does to the rail. First paint renders the signed-out set
-    // deterministically and reconciles after mount, so there is no hydration
-    // mismatch — the same trick `AccountButton` uses.
+    // First paint renders the signed-out set deterministically and reconciles
+    // after mount, so there is no hydration mismatch.
     const signedIn = useSignedIn()
-    const nav = buildNav(t)
+    const chrome = buildChrome({ site: 'processing', t, keys: ShellCatalogKey, locale, signedIn })
+    const link = localeLink(locale)
+
+    const language = (className?: string) => (
+        <LanguagePicker
+            locale={locale}
+            className={className}
+            // `{name}` survives: getT only substitutes the params it is given.
+            labels={{ current: t('picker.current'), select: t('picker.select') }}
+            onSelect={(next, from) => {
+                /*
+                 * Before the navigation, not after: assigning `location.href`
+                 * unloads the page, and an event queued on the way out may
+                 * never be sent. `from` as well as `to`, because the pageview
+                 * path already says which languages are read; what it cannot
+                 * say is which ones people switch AWAY from, which is where a
+                 * translation is failing.
+                 */
+                track('locale_change', { from, to: next })
+                writeLocaleCookie(next)
+                window.location.href = localizeUrl(pathName, isLocale(next) ? next : 'en')
+            }}
+        />
+    )
+    const theme = <ThemeToggle labels={{ toLight: t('theme.toLight'), toDark: t('theme.toDark') }} />
+    const account = (className: string) => (
+        <AccountButton
+            signedIn={signedIn}
+            locale={locale}
+            labels={{ signIn: t('account.signIn'), myAccount: t('account.myAccount') }}
+            // `signedIn` is the point: this one button is Sign In to a stranger
+            // and My Account to a member, and the split says how much of the
+            // landing page's traffic already has an account.
+            onNavigate={(s) => track('account', { signedIn: s })}
+            className={className}
+        />
+    )
 
     return (
         <Header
             activePath={stripLocale(pathName)}
-            nav={nav}
-            linkComponent={localeLink(locale)}
-            // The mark as a file rather than the package's inline data URI —
-            // see <BrandLogo/>. Given the same locale-aware link the rest of
+            nav={chrome.nav}
+            linkComponent={link}
+            // The mark as a file rather than the package's inline data URI
+            // (see <BrandLogo/>), given the same locale-aware link the rest of
             // the bar uses, since a slotted logo does not inherit it.
-            logo={<BrandLogo linkComponent={localeLink(locale)} />}
-            // Entries that no longer fit collapse into this dropdown as the bar
-            // narrows (see the shared <HeaderNav/>). Without it the trigger
-            // reads "More" in all nine languages; city passes its own `nav.more`
-            // here for the same reason.
+            logo={<BrandLogo linkComponent={link} />}
+            // Without it the overflow trigger reads "More" in all nine
+            // languages; city passes its own `nav.more` here too.
             moreLabel={t('nav.more')}
             left={
                 <MobileNav
                     activePath={stripLocale(pathName)}
-                    nav={nav}
-                    sections={buildVisibleSidebarSections(t, signedIn)}
-                    linkComponent={localeLink(locale)}
+                    nav={chrome.nav}
+                    sections={chrome.sidebar}
+                    linkComponent={link}
                     footer={
-                        <AccountButton
-                            signInLabel={t('account.signIn')}
-                            myAccountLabel={t('account.myAccount')}
-                            locale={locale}
-                            className="block sm:hidden"
-                        />
+                        <div className="flex flex-col gap-3 sm:hidden">
+                            <div className="flex items-center justify-between gap-2">
+                                {/* The list opens upwards here: at the foot of
+                                    the drawer a downward one runs off the screen. */}
+                                {language(
+                                    '[&_ul]:bottom-full [&_ul]:left-0 [&_ul]:right-auto [&_ul]:top-auto [&_ul]:mb-1 [&_ul]:mt-0'
+                                )}
+                                {theme}
+                            </div>
+                            {account('block')}
+                        </div>
                     }
                     labels={{
                         open: t('mobile.open'),
@@ -77,23 +120,7 @@ export default function SiteHeader({
                     }}
                 />
             }
-            right={
-                <>
-                    <LanguagePicker locale={locale} pathName={pathName} />
-                    <ThemeToggle
-                        labels={{
-                            toLight: t('theme.toLight'),
-                            toDark: t('theme.toDark'),
-                        }}
-                    />
-                    <AccountButton
-                        signInLabel={t('account.signIn')}
-                        myAccountLabel={t('account.myAccount')}
-                        locale={locale}
-                        className="hidden sm:block"
-                    />
-                </>
-            }
+            right={<HeaderActions language={language()} theme={theme} account={account('hidden sm:block')} />}
         />
     )
 }

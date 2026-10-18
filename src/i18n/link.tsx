@@ -5,7 +5,7 @@ import { isLocale, localizeUrl, type LocaleT } from './config'
 /**
  * Locale-aware link for the shared Header / Sidebar / Footer.
  *
- * The nav configs in `nav.tsx` keep **bare** hrefs (`/mods`, `/tos`) because the
+ * `buildChrome` keeps the chrome's hrefs **bare** (`/mods`, `/tos`) because the
  * shared components match them against `activePath` to highlight the current
  * entry — prefixing them there would break that comparison. So the prefix is
  * applied at render time instead: this is passed as `linkComponent`, and every

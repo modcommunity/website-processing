@@ -1,4 +1,4 @@
-import { SOCIALS } from '../i18n/nav'
+import { buildChrome } from '@modcommunity/shared'
 import { SITE_URL } from './site'
 
 /**
@@ -37,7 +37,7 @@ export function siteJsonLd(locale: string): string {
                 logo: { '@type': 'ImageObject', url: `${SITE_URL}/images/icon.png` },
                 // The footer's own list, so the markup and the visible links
                 // can never name different accounts.
-                sameAs: SOCIALS.map((s) => s.href),
+                sameAs: buildChrome({ site: 'processing' }).socials.map((s) => s.href),
             },
             {
                 '@type': 'WebSite',

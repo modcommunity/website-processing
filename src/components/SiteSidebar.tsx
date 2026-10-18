@@ -1,22 +1,21 @@
-import { Sidebar } from '@modcommunity/shared'
+import { buildChrome, ShellCatalogKey, Sidebar } from '@modcommunity/shared'
 import { Sparkles } from 'lucide-react'
 import { getT } from '../i18n/t'
-import { buildVisibleSidebarSections } from '../i18n/nav'
 import { localeLink } from '../i18n/link'
 import { stripLocale, localizeUrl, isLocale, type LocaleT } from '../i18n/config'
 import { useSignedIn } from '../lib/auth-hint'
 
 /**
- * The landing site's primary sidebar — the shared website-city <Sidebar>,
- * translated. Wrapped in a local component so Astro only serializes the plain
- * `pathName` / `locale` strings across the island boundary.
+ * The landing site's primary sidebar: the shared website-city <Sidebar> over
+ * `buildChrome`'s rail, translated. Wrapped in a local component so Astro only
+ * serializes the plain `pathName` / `locale` strings across the island boundary.
  *
  * Two things it does beyond translating:
  *
  * - **Drops the signed-in-only leaves** (My Mods, Messages, My Friends, …) for
  *   signed-out visitors, matching city. First paint renders the signed-out set
  *   deterministically and reconciles after mount, so there is no hydration
- *   mismatch — the same trick `AccountButton` uses.
+ *   mismatch.
  * - **Renders the "Share your work" call-to-action** at the bottom. In city it
  *   opens the new-item wizard pop-up; a static build has no modal to open, so it
  *   links to `/share`, which is that same wizard as a real page.
@@ -37,7 +36,7 @@ export default function SiteSidebar({
     const lang: LocaleT = isLocale(locale) ? locale : 'en'
 
     const signedIn = useSignedIn()
-    const sections = buildVisibleSidebarSections(t, signedIn)
+    const sections = buildChrome({ site: 'processing', t, keys: ShellCatalogKey, locale, signedIn }).sidebar
 
     const shareHref = localizeUrl('/share', lang)
     const shareTitle = t('rail.share.title')

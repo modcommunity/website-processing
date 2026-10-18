@@ -1,4 +1,4 @@
-import { LOCALE_COOKIE } from './config'
+import { LOCALE_COOKIE } from '@modcommunity/shared/i18n'
 import { DOCS_URL } from '../lib/site'
 
 /**
@@ -12,6 +12,11 @@ import { DOCS_URL } from '../lib/site'
  * there is no second variable to keep in step. website-city writes the same
  * domain from its `AUTH_COOKIE_DOMAIN`, and website-learn derives it the same
  * way from the other end.
+ *
+ * Not the shared `WriteLocaleCookie`: that one only sets `Domain=` when the page
+ * is on a SUBDOMAIN of `mainUrl` (learn on `docs.`), while this site is the
+ * parent itself, at city's apex, so it would write a host-only cookie the
+ * docs never see.
  */
 export function localeCookieDomain(): string | undefined {
     if (typeof location === 'undefined') return undefined
