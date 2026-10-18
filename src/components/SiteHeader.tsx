@@ -8,13 +8,14 @@ import {
     ShellCatalogKey,
     ThemeToggle,
 } from '@modcommunity/shared'
-import BrandLogo from './BrandLogo'
 import { getT } from '../i18n/t'
 import { localeLink } from '../i18n/link'
 import { isLocale, localizeUrl, stripLocale } from '../i18n/config'
-import { writeLocaleCookie } from '../i18n/cookie'
+import { WriteLocaleCookie } from '@modcommunity/shared/i18n'
+import lockup from '@modcommunity/shared/logo01.webp'
 import { useSignedIn } from '../lib/auth-hint'
 import { track } from '../lib/umami'
+import { DOCS_URL } from '../lib/site'
 
 /**
  * The landing site's header: the shared <Header> over `buildChrome`, the same
@@ -63,7 +64,11 @@ export default function SiteHeader({
                  * translation is failing.
                  */
                 track('locale_change', { from, to: next })
-                writeLocaleCookie(next)
+                // `subdomainUrl`: this site is the PARENT of the docs host
+                // (the apex in production), so the cookie goes on this host
+                // whenever the docs are under it and the docs and city see the
+                // choice; host-only otherwise.
+                WriteLocaleCookie(next, { subdomainUrl: DOCS_URL })
                 window.location.href = localizeUrl(pathName, isLocale(next) ? next : 'en')
             }}
         />
@@ -87,10 +92,12 @@ export default function SiteHeader({
             activePath={stripLocale(pathName)}
             nav={chrome.nav}
             linkComponent={link}
-            // The mark as a file rather than the package's inline data URI
-            // (see <BrandLogo/>), given the same locale-aware link the rest of
-            // the bar uses, since a slotted logo does not inherit it.
-            logo={<BrandLogo linkComponent={link} />}
+            // The mark as a file rather than the package's inline data URI:
+            // that is ~14 kB of base64 in the island and again in the HTML at
+            // each place the shell draws it, against one cached request.
+            // `logoSrc` rather than a `logo` slot, so the shell's own <Logo>
+            // keeps the locale-aware link a slotted one would have to be given.
+            logoSrc={lockup}
             // Without it the overflow trigger reads "More" in all nine
             // languages; city passes its own `nav.more` here too.
             moreLabel={t('nav.more')}
@@ -100,6 +107,7 @@ export default function SiteHeader({
                     nav={chrome.nav}
                     sections={chrome.sidebar}
                     linkComponent={link}
+                    logoSrc={lockup}
                     footer={
                         <div className="flex flex-col gap-3 sm:hidden">
                             <div className="flex items-center justify-between gap-2">

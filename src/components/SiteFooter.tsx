@@ -1,7 +1,7 @@
 import { buildChrome, Footer, ShellCatalogKey } from '@modcommunity/shared'
-import BrandLogo from './BrandLogo'
 import { getT } from '../i18n/t'
 import { localeLink } from '../i18n/link'
+import lockup from '@modcommunity/shared/logo01.webp'
 
 /** The landing site's footer: the shared <Footer> over `buildChrome`, translated. */
 export default function SiteFooter({ locale = 'en' }: { locale?: string }) {
@@ -19,7 +19,8 @@ export default function SiteFooter({ locale = 'en' }: { locale?: string }) {
             columns={chrome.footer}
             socials={chrome.socials}
             linkComponent={localeLink(locale)}
-            logo={<BrandLogo linkComponent={localeLink(locale)} />}
+            // The file, not the data URI (see SiteHeader).
+            logoSrc={lockup}
             copyright={chrome.copyright}
         />
     )
