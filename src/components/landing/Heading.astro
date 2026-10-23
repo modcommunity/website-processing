@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Code2, Download, Compass, Cog, Group, Hammer, Heart, Scale, Server, Users } from 'lucide-react';
+import { ArrowRight, Code2, Download, Compass, Cog, Group, Hammer, Heart, Play, Scale, Server, Users } from 'lucide-react';
 // lucide dropped its brand marks; see Community.astro.
 import { FaDiscord, FaGithub } from 'react-icons/fa6';
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
@@ -190,15 +190,26 @@ const surfaces = [
                         <h3 class="font-pjs text-xl font-extrabold leading-snug text-white @2xl:text-2xl">{t('landing.hero.pfTitle')}</h3>
                         <p class="mt-2 mb-4 text-sm leading-relaxed text-white/65">{t('landing.hero.pfBody')}</p>
                         <PlatformPanel />
-                        <a
-                            href={localizePath("/platform", Astro.currentLocale)}
-                            data-umami-event="cta_platform"
-                            data-umami-event-place="hero"
-                            class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-sky-400 px-5 py-2.5 font-semibold text-[#05060f] shadow-lg shadow-sky-500/20 transition hover:bg-sky-300"
-                        >
-                            <span>{t('landing.hero.pfButton')}</span>
-                            <ArrowRight className="h-4 w-4" />
-                        </a>
+                        <div class="mt-4 grid grid-cols-1 gap-3 @md:grid-cols-5">
+                            <a
+                                href={localizePath("/platform", Astro.currentLocale)}
+                                data-umami-event="cta_platform"
+                                data-umami-event-place="hero"
+                                class="group inline-flex items-center justify-center gap-2 rounded-xl border border-sky-300/30 bg-white/[0.05] px-5 py-3 font-semibold text-white shadow-lg shadow-black/20 transition hover:border-sky-300/60 hover:bg-white/10 @md:col-span-3"
+                            >
+                                <span>{t('landing.hero.pfButton')}</span>
+                                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                            </a>
+                            <a
+                                href={localizePath("/play", Astro.currentLocale)}
+                                data-umami-event="cta_play"
+                                data-umami-event-place="hero"
+                                class="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-sky-300 to-sky-500 px-5 py-3 font-bold text-[#05060f] shadow-lg shadow-sky-500/30 ring-1 ring-white/30 transition hover:from-sky-200 hover:to-sky-400 hover:shadow-sky-400/40 @md:col-span-2"
+                            >
+                                <Play className="h-4 w-4 fill-current" />
+                                <span>{t('landing.hero.pfPlay')}</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

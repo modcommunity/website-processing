@@ -10,6 +10,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Build multiplayer games on Dot',
         pfBody: 'Open-source Godot addons for accounts, dedicated servers, moderation and parties, plus a play center that runs the games in a browser tab.',
         pfButton: 'See the platform',
+        pfPlay: 'Play games',
         paraHtml:
             'A place for modding and game development. Browse <span class="text-accent">game assets</span> and <span class="text-accent">mods</span>, check <span class="text-accent">game</span> and <span class="text-accent">social servers</span>, and start your own <span class="text-accent">communities</span>.',
         card1Title: 'Who We Are',
@@ -36,6 +37,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Crea juegos multijugador con Dot',
         pfBody: 'Complementos de Godot de código abierto para cuentas, servidores dedicados, moderación y grupos, además de un centro de juego que ejecuta los juegos en una pestaña del navegador.',
         pfButton: 'Ver la plataforma',
+        pfPlay: 'Jugar',
         paraHtml:
             'Un lugar para el modding y el desarrollo de juegos. Explora <span class="text-accent">recursos de juegos</span> y <span class="text-accent">mods</span>, consulta <span class="text-accent">servidores de juegos</span> y <span class="text-accent">sociales</span>, y crea tus propias <span class="text-accent">comunidades</span>.',
         card1Title: 'Quiénes Somos',
@@ -62,6 +64,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Créez des jeux multijoueurs avec Dot',
         pfBody: 'Des modules Godot open source pour les comptes, les serveurs dédiés, la modération et les groupes, plus un centre de jeu qui lance les jeux dans un onglet du navigateur.',
         pfButton: 'Voir la plateforme',
+        pfPlay: 'Jouer',
         paraHtml:
             'Un lieu pour le modding et le développement de jeux. Parcourez des <span class="text-accent">ressources de jeu</span> et des <span class="text-accent">mods</span>, consultez des <span class="text-accent">serveurs de jeu</span> et <span class="text-accent">sociaux</span>, et créez vos propres <span class="text-accent">communautés</span>.',
         card1Title: 'Qui Sommes-Nous ?',
@@ -88,6 +91,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Multiplayer-Spiele mit Dot bauen',
         pfBody: 'Open-Source-Godot-Addons für Konten, dedizierte Server, Moderation und Gruppen, dazu ein Spielezentrum, das die Spiele in einem Browser-Tab startet.',
         pfButton: 'Die Plattform ansehen',
+        pfPlay: 'Spielen',
         paraHtml:
             'Ein Ort für Modding und Spieleentwicklung. Durchstöbere <span class="text-accent">Spiel-Assets</span> und <span class="text-accent">Mods</span>, sieh dir <span class="text-accent">Spiel-</span> und <span class="text-accent">Social-Server</span> an und gründe deine eigenen <span class="text-accent">Communitys</span>.',
         card1Title: 'Wer Wir Sind',
@@ -114,6 +118,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Создавайте многопользовательские игры на Dot',
         pfBody: 'Открытые аддоны Godot для аккаунтов, выделенных серверов, модерации и групп, а также игровой центр, который запускает игры во вкладке браузера.',
         pfButton: 'О платформе',
+        pfPlay: 'Играть',
         paraHtml:
             'Место для моддинга и разработки игр. Просматривайте <span class="text-accent">игровые ассеты</span> и <span class="text-accent">моды</span>, смотрите <span class="text-accent">игровые</span> и <span class="text-accent">социальные серверы</span> и создавайте собственные <span class="text-accent">сообщества</span>.',
         card1Title: 'Кто Мы',
@@ -140,6 +145,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Bouw multiplayerspellen op Dot',
         pfBody: 'Open-source Godot-addons voor accounts, dedicated servers, moderatie en groepen, plus een speelcentrum dat de spellen in een browsertabblad draait.',
         pfButton: 'Bekijk het platform',
+        pfPlay: 'Spelen',
         paraHtml:
             'Een plek voor modding en gameontwikkeling. Blader door <span class="text-accent">game-assets</span> en <span class="text-accent">mods</span>, bekijk <span class="text-accent">game-</span> en <span class="text-accent">socialservers</span> en start je eigen <span class="text-accent">communities</span>.',
         card1Title: 'Wie Zijn Wij?',
@@ -166,6 +172,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Dotでマルチプレイゲームを作る',
         pfBody: 'アカウント、専用サーバー、モデレーション、グループ向けのオープンソースGodotアドオンと、ブラウザのタブでゲームを動かすプレイセンターです。',
         pfButton: 'プラットフォームを見る',
+        pfPlay: '遊ぶ',
         paraHtml:
             'MODとゲーム開発のための場所です。<span class="text-accent">ゲームアセット</span>や<span class="text-accent">MOD</span>を探し、<span class="text-accent">ゲームサーバー</span>や<span class="text-accent">ソーシャルサーバー</span>を確認し、自分の<span class="text-accent">コミュニティ</span>を作れます。',
         card1Title: '私たちについて',
@@ -192,6 +199,7 @@ export const hero: SectionCatalog = {
         pfTitle: '用 Dot 构建多人游戏',
         pfBody: '面向账号、专用服务器、管理和群组的开源 Godot 插件，以及可在浏览器标签页中运行游戏的游玩中心。',
         pfButton: '查看平台',
+        pfPlay: '开始游戏',
         paraHtml:
             '一个做模组和游戏开发的地方。可以浏览<span class="text-accent">游戏资源</span>和<span class="text-accent">模组</span>，查看<span class="text-accent">游戏服务器</span>和<span class="text-accent">社交服务器</span>，也可以创建自己的<span class="text-accent">社区</span>。',
         card1Title: '我们是谁',
@@ -218,6 +226,7 @@ export const hero: SectionCatalog = {
         pfTitle: 'Crie jogos multijogador com o Dot',
         pfBody: 'Addons Godot de código aberto para contas, servidores dedicados, moderação e grupos, mais um centro de jogo que executa os jogos num separador do navegador.',
         pfButton: 'Ver a plataforma',
+        pfPlay: 'Jogar',
         paraHtml:
             'Um lugar para modding e desenvolvimento de jogos. Explore <span class="text-accent">recursos de jogos</span> e <span class="text-accent">mods</span>, veja <span class="text-accent">servidores de jogos</span> e <span class="text-accent">sociais</span> e crie as suas próprias <span class="text-accent">comunidades</span>.',
         card1Title: 'Quem Somos',
