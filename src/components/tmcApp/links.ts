@@ -1,5 +1,14 @@
-/** The app's public repository — there is no download page to point at yet. */
+/** The app's public repository. */
 export const APP_REPO = 'https://github.com/modcommunity/tmc-app'
 
-/** Where release news goes out until there is something to download. */
+export const APP_ISSUES = `${APP_REPO}/issues`
+
+/** The latest release page: the static fallback behind the Download button. */
+export const APP_RELEASES = `${APP_REPO}/releases/latest`
+
+export const APP_SECURITY = `${APP_REPO}/blob/main/SECURITY.md`
+
+/** The Linux one-liner: verifies checksums, installs into ~/.local. */
+export const LINUX_INSTALL = `curl -fsSL https://raw.githubusercontent.com/modcommunity/tmc-app/main/scripts/install.sh | sh`
+
 export const DISCORD = 'https://discord.moddingcommunity.com'

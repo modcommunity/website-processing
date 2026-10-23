@@ -1,0 +1,36 @@
+---
+import { Boxes, Cog, FileUp, Globe, Tag, User } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+// Command names are what you type, so they are never translated.
+const groups = [
+    { icon: Boxes, n: 1, cmds: 'asset mod server community article collection group' },
+    { icon: Tag, n: 2, cmds: 'tag tags media links rel comment review' },
+    { icon: FileUp, n: 3, cmds: 'file release' },
+    { icon: User, n: 4, cmds: 'auth account favorite friends party installs subscriptions' },
+    { icon: Globe, n: 5, cmds: 'defcon stats filter catalog report play' },
+    { icon: Cog, n: 6, cmds: 'schema contract completion open raw' },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.cmdEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.cmdTitleHtml')}></h2>
+        <p>{t('landing.apiTool.cmdIntro')}</p>
+    </SectionIntro>
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        {groups.map(({ icon, n, cmds }) => (
+            <FeatureCard icon={icon} title={t(`landing.apiTool.g${n}t`)} class="intersect-once intersect:motion-preset-slide-up">
+                <p>{t(`landing.apiTool.g${n}b`)}</p>
+                <p class="mt-3 flex flex-wrap gap-1.5">
+                    {cmds.split(' ').map((c) => (
+                        <code class="rounded-md border border-border bg-background/70 px-2 py-0.5 font-mono text-xs text-foreground/85">{c}</code>
+                    ))}
+                </p>
+            </FeatureCard>
+        ))}
+    </div>
+</section>

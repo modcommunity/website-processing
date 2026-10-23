@@ -1,0 +1,25 @@
+---
+import { Gamepad2, Link2, RefreshCw, Trophy, Users, Waypoints } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const items = [
+    { icon: Gamepad2, n: 1 }, { icon: Link2, n: 2 }, { icon: Users, n: 3 },
+    { icon: RefreshCw, n: 4 }, { icon: Trophy, n: 5 }, { icon: Waypoints, n: 6 },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.moreEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.moreTitleHtml')}></h2>
+    </SectionIntro>
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        {items.map(({ icon, n }) => (
+            <FeatureCard icon={icon} title={t(`landing.tmcApp.m${n}t`)} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t(`landing.tmcApp.m${n}b`)} />
+            </FeatureCard>
+        ))}
+    </div>
+</section>

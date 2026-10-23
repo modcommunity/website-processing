@@ -41,13 +41,12 @@ Each is built like the home page: a shell in `src/components/<Name>.astro` compo
 | --- | --- | --- |
 | `/tmc-app` | The desktop app: the live server browser, the mod manager, downloads, plugins, its security model | `../tmc-app`, chiefly its `CLAUDE.md` and `docs/` |
 | `/tmc-cli` | `tmc`, the Python CLI for the public content API | `../tmc-cli`, its `README.md` and `CLAUDE.md` |
-
-- **Both products are unreleased, and the pages say so loudly.** The app has no builds; the CLI is not on PyPI and has no public repository. `/tmc-app` says it in the badge (`heroBadge`), the hero note (`heroNoteHtml`) and a closing section "Not Available, And Not Ready" (`statusTitleHtml`, `statusIntroHtml`, the `n1`–`n4` cards). `/tmc-cli` says it in the badge, an amber note in the hero (`heroNoteHtml`) and one above the closing buttons (`ctaNoteHtml`); the notes wear amber/`warning` rather than the page's teal, because a caution should not be dressed in the page's own colour. `installNote` is only about the install itself. When a product ships, those are the strings, and the install snippet becomes a real `pip install tmc-cli`.
-- **`/tmc-app` states no version number, on purpose.** The app's manifests say `0.1.0`, which is the scaffold default rather than a decision, and a version nobody can install tells a reader nothing. If a real pre-release number is set there, `heroNoteHtml` is where it comes back.
-- **The platform plan is desktop first.** Windows, Linux and macOS, then mobile: the hero's chips are in that order, the mobile two are dimmed and tagged "Later" (`pLater`), and the `n4` card says it in words. A flat row of five would read as a shipping matrix.
-- **Forward-looking copy is fenced, not folded in.** These pages describe what is built. The one place `/tmc-app` talks about what is coming, the server administration panel at the end of `LiveBrowser.astro`, has one "In the app" row (RCON, which exists), four rows each tagged "Planned", and a line saying planned means planned. A planned feature in a plain `FeatureCard` beside built ones would read as shipped; if something else needs a "later", copy this panel.
+- **`/tmc-app` is released; `/tmc-cli` is open source but not on PyPI.** The app ships Windows, Linux and macOS builds as GitHub releases and is GPL-3.0; there are no mobile builds, and the hero says so (`heroMobile`). The CLI installs from a clone of its public repository (`Install.astro`), and the copy never prints a `pip install tmc-cli` line. Say "untested" where the sibling repo says it: all supported-game deployment and USVFS are unproven, and `stratNote` / `modsGamesNote` state that.
+- **The Download button is a client-side island** (`tmcApp/DownloadButton.tsx`). Release files carry the version in their name, so it asks GitHub's releases API once (cached in `sessionStorage` for ten minutes), matches builds by pattern, and only accepts URLs under the repo's `releases/download/`. Linux gets the `.deb`, Windows the setup `.exe`, everything else the macOS `.dmg`. Every failure leaves the plain link to the latest release. Its labels are one props object (`dlLabels.ts`), nine locales.
+- **The app mockups are drawings, and say so.** `tmcApp/mock/` draws screens with made-up names and numbers; text inside them stays English like a screenshot would, only page copy is translated. Motion is state-driven (no CSS files) and gated by `useMotion`, which is false on the server and under `prefers-reduced-motion`.
+- **The platform plan is desktop only for now.** Windows, Linux and macOS; mobile is mentioned once, as not out yet.
 - **Every claim is checked against the sibling repo.** The protocol list, the four deployment strategies, the relation verbs and the exit codes are copied, not invented, and each is sourced in a comment. `apiTool.ts`'s header names the CLI version it was last checked against; the type, relation and cap lists come from the CLI's `src/tmc_cli/schema.py`, and any test count from actually running its suite, because the README's figure is the thing most likely to have drifted.
-- **`/tmc-cli` links the docs, not a repository.** There is no public repo, so the hero's third button and the closing CTA both point at `DOCS_URL + /tmc-cli`.
+- **`/tmc-cli` links the repository and the docs.** The hero's buttons and the closing CTA point at `CLI_REPO` and `DOCS_URL + /tmc-cli`. The hero terminal (`TypedTerminal.tsx`, `scenarios.ts`) shows real output shapes; commands and output are never translated.
 
 ## The platform page (`/platform`)
 
@@ -61,7 +60,7 @@ Each is built like the home page: a shell in `src/components/<Name>.astro` compo
 
 ## Translation
 
-The home page is fully translated in all nine locales, and an English-only key there is a regression. The product pages are translated too (`src/i18n/sections/tmcApp.ts`, `apiTool.ts`), as are the links they added into `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`); the two product heroes are English-only.
+The home page is fully translated in all nine locales, and an English-only key there is a regression. The product pages are translated too (`src/i18n/sections/tmcApp.ts`, `apiTool.ts`), as are the links they added into `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`).
 
 `en` is the reference shape: add a key there first, then fill the other eight. `getT` falls back per key, so a half-filled key still renders (in English) rather than blank.
 

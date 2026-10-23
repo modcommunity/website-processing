@@ -1,0 +1,22 @@
+---
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import Tour from "./Tour";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const ids = ['apps', 'play', 'servers', 'sandboxes', 'downloads', 'rcon'] as const;
+const tabs = ids.map((id) => ({
+    id,
+    label: t(`landing.tmcApp.tab_${id}`),
+    title: t(`landing.tmcApp.tt_${id}`),
+    bodyHtml: t(`landing.tmcApp.tb_${id}`),
+}));
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.tourEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.tourTitleHtml')}></h2>
+        <p>{t('landing.tmcApp.tourIntro')}</p>
+    </SectionIntro>
+    <Tour client:visible tabs={tabs} label={t('landing.tmcApp.tourLabel')} caption={t('landing.tmcApp.tourCaption')} />
+</section>

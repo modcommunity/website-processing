@@ -1,0 +1,27 @@
+---
+import { BellRing, Globe, KeyRound, ScrollText, SlidersHorizontal, TerminalSquare } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const items = [
+    { icon: Globe, n: 1 }, { icon: KeyRound, n: 2 }, { icon: TerminalSquare, n: 3 },
+    { icon: SlidersHorizontal, n: 4 }, { icon: ScrollText, n: 5 }, { icon: BellRing, n: 6 },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.safeEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.safeTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.safeIntroHtml')}></p>
+    </SectionIntro>
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        {items.map(({ icon, n }) => (
+            <FeatureCard icon={icon} title={t(`landing.tmcApp.s${n}t`)} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t(`landing.tmcApp.s${n}b`)} />
+            </FeatureCard>
+        ))}
+    </div>
+    <p class="text-sm text-muted [&_a]:text-accent" set:html={t('landing.tmcApp.safeReportHtml')}></p>
+</section>

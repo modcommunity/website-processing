@@ -13,9 +13,6 @@ const t = getT(Astro.currentLocale);
         <h2 class="text-3xl" set:html={t('landing.apiTool.ctaTitleHtml')}></h2>
         <p class="max-w-2xl text-muted [&_.special]:text-accent" set:html={t('landing.apiTool.ctaIntroHtml')}></p>
 
-        {/* Said in the hero badge, said in the hero note, said again here —
-            the last thing before the buttons, so nobody acts on the page
-            believing the tool is downloadable. */}
         <p
             class="max-w-2xl rounded-xl border border-warning/25 bg-warning/5 px-4 py-3 text-sm text-muted [&_.special]:text-warning"
             set:html={t('landing.apiTool.ctaNoteHtml')}

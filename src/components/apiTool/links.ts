@@ -19,3 +19,6 @@ export const DISCORD = 'https://discord.moddingcommunity.com'
  * host, and until then a dev build can point this at wherever they are served.
  */
 export const DOCS_CLI = docs('/tmc-cli')
+
+/** The CLI's public repository. It is installed from a clone: not on PyPI. */
+export const CLI_REPO = 'https://github.com/modcommunity/tmc-cli'

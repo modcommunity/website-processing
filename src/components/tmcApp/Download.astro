@@ -1,0 +1,41 @@
+---
+import { Code2, MessageCircle } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import DownloadButton from "./DownloadButton";
+import CopyCommand from "./CopyCommand";
+import { getT } from "../../i18n/t";
+import { APP_REPO, DISCORD, LINUX_INSTALL } from "./links";
+import { dlLabels } from "./dlLabels";
+
+const t = getT(Astro.currentLocale);
+---
+
+<section id="download" class="py-20 px-4 container mx-auto flex flex-col gap-10 scroll-mt-24">
+    <SectionIntro eyebrow={t('landing.tmcApp.dlEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.dlTitleHtml')}></h2>
+        <p>{t('landing.tmcApp.dlIntro')}</p>
+    </SectionIntro>
+
+    <div class="@container grid grid-cols-1 gap-6 @4xl:grid-cols-2">
+        <div class="card min-w-0 flex flex-col gap-4 intersect-once intersect:motion-preset-slide-up">
+            <DownloadButton client:visible labels={dlLabels(t)} variant="full" place="download" />
+            <p class="text-sm text-muted">{t('landing.tmcApp.dlPortable')}</p>
+        </div>
+        <div class="card min-w-0 flex flex-col gap-3 intersect-once intersect:motion-preset-slide-up">
+            <h3 class="text-base">{t('landing.tmcApp.dlLinuxTitle')}</h3>
+            <p class="text-sm text-muted">{t('landing.tmcApp.dlLinuxBody')}</p>
+            <CopyCommand client:visible command={LINUX_INSTALL} copy={t('landing.tmcApp.copy')} copied={t('landing.tmcApp.copied')} />
+        </div>
+    </div>
+
+    <p class="max-w-3xl text-muted [&_.special]:text-accent [&_a]:text-accent" set:html={t('landing.tmcApp.dlLicenseHtml')}></p>
+
+    <div class="flex flex-wrap gap-3">
+        <a href={APP_REPO} target="_blank" rel="noreferrer" data-umami-event="app_page_cta" data-umami-event-to="repo" data-umami-event-place="download" class="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-semibold transition hover:border-accent/50">
+            <Code2 className="h-4 w-4" />{t('landing.tmcApp.heroSource')}
+        </a>
+        <a href={DISCORD} target="_blank" rel="noreferrer" data-umami-event="app_page_cta" data-umami-event-to="discord" data-umami-event-place="download" class="inline-flex items-center gap-2 rounded-xl border border-border px-5 py-2.5 text-sm font-semibold transition hover:border-accent/50">
+            <MessageCircle className="h-4 w-4" />{t('landing.tmcApp.dlDiscord')}
+        </a>
+    </div>
+</section>

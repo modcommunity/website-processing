@@ -1,11 +1,12 @@
 ---
-import { BookOpen, KeyRound } from 'lucide-react';
+import { BookOpen, Code2, KeyRound } from 'lucide-react';
 import { FaDiscord } from 'react-icons/fa6';
-import Terminal from "./Terminal.astro";
+import TypedTerminal from "./TypedTerminal";
+import { SCENARIOS } from "./scenarios";
 import HeroBackdrop from "../helper/HeroBackdrop.astro";
 import { getT } from "../../i18n/t";
 import { localizePath } from "../../i18n/config";
-import { API_KEYS, DISCORD, DOCS_CLI } from "./links";
+import { API_KEYS, CLI_REPO, DISCORD, DOCS_CLI } from "./links";
 
 
 const t = getT(Astro.currentLocale);
@@ -15,6 +16,7 @@ const chips = [
     t('landing.apiTool.heroChip2'),
     t('landing.apiTool.heroChip3'),
 ];
+const scenarios = SCENARIOS.map((sc, i) => ({ ...sc, label: t(`landing.apiTool.ty${i + 1}`) }));
 ---
 
 {/*
@@ -86,6 +88,18 @@ const chips = [
                                 <FaDiscord className="h-5 w-5" />
                                 <span>{t('landing.apiTool.heroBtnDiscord')}</span>
                             </a>
+                            <a
+                                href={CLI_REPO}
+                                data-umami-event="cli_page_cta"
+                                data-umami-event-to="repo"
+                                data-umami-event-place="hero"
+                                target="_blank"
+                                rel="noreferrer"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20"
+                            >
+                                <Code2 className="h-5 w-5" />
+                                <span>{t('landing.apiTool.heroBtnRepo')}</span>
+                            </a>
                         </div>
                     </div>
 
@@ -116,23 +130,7 @@ const chips = [
                     and push a scrollbar onto the page rather than scroll inside
                     its own box — see docs/layout.md's container-query notes. */}
                 <div class="flex min-w-0 flex-col gap-3">
-                    {/* Re-tinted for the hero: the component's own tokens are
-                        theme surfaces, which on this near-black backdrop read as
-                        a grey box floating on green. */}
-                    <Terminal
-                        title={t('landing.apiTool.installTitle')}
-                        class="!border-white/12 !bg-[#020a0c]/85 backdrop-blur-md [&_pre]:!text-white/85 [&_.text-muted]:!text-white/40 [&_.text-accent]:!text-teal-300"
-                    ><span class="text-muted"># From the source checkout, there is nothing to build</span>
-<span class="text-accent">pip</span> install .
-<span class="text-accent">pip</span> install <span class="text-success-2">'.[fast]'</span>   <span class="text-muted"># optional: cryptography, for faster signing</span>
-<span class="text-accent">tmc</span> --version       <span class="text-muted"># tmc 1.1.0</span>
-
-<span class="text-muted"># Keys are made under Account → API Keys</span>
-<span class="text-accent">tmc</span> auth login --token <span class="text-success-2">tmc_xxxxxxxxxxxx</span>
-<span class="text-accent">tmc</span> auth whoami
-
-<span class="text-muted"># …or read public items with no key at all</span>
-<span class="text-accent">tmc</span> mod list --anon --app 4 -o json</Terminal>
+                    <TypedTerminal client:visible scenarios={scenarios} label={t('landing.apiTool.tyLabel')} />
                     <p class="text-sm text-white/50">{t('landing.apiTool.installNote')}</p>
                 </div>
             </div>

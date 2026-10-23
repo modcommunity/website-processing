@@ -1,0 +1,35 @@
+---
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import CopyCommand from "../tmcApp/CopyCommand";
+import { getT } from "../../i18n/t";
+import { CLI_REPO } from "./links";
+
+const t = getT(Astro.currentLocale);
+const steps = [
+    { n: 1, cmd: `git clone ${CLI_REPO}.git && cd tmc-cli` },
+    { n: 2, cmd: `pip install .` },
+    { n: 3, cmd: `tmc auth login --token tmc_xxxxxxxxxxxx` },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.apiTool.insEyebrow')}>
+        <h2 slot="title" set:html={t('landing.apiTool.insTitleHtml')}></h2>
+        <p>{t('landing.apiTool.insIntro')}</p>
+    </SectionIntro>
+
+    <ol class="@container grid grid-cols-1 gap-6 @4xl:grid-cols-3">
+        {steps.map(({ n, cmd }) => (
+            <li class="card min-w-0 flex flex-col gap-3 intersect-once intersect:motion-preset-slide-up">
+                <div class="flex items-center gap-3">
+                    <span class="flex h-8 w-8 items-center justify-center rounded-full bg-accent/10 font-mono text-sm font-bold text-accent ring-1 ring-accent/20">{n}</span>
+                    <h3 class="text-base">{t(`landing.apiTool.ins${n}t`)}</h3>
+                </div>
+                <p class="text-sm text-muted">{t(`landing.apiTool.ins${n}b`)}</p>
+                <div class="mt-auto">
+                    <CopyCommand client:visible command={cmd} copy={t('landing.tmcApp.copy')} copied={t('landing.tmcApp.copied')} />
+                </div>
+            </li>
+        ))}
+    </ol>
+</section>

@@ -1,0 +1,50 @@
+---
+import { Eye, FolderSync, History, PackageCheck } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+// Per strategy: how the game folder is touched, and whether it costs disk.
+const strategies = [
+    { n: 1, tone: 'text-warning' },
+    { n: 2, tone: 'text-success' },
+    { n: 3, tone: 'text-success' },
+    { n: 4, tone: 'text-accent' },
+];
+const notes = [
+    { icon: PackageCheck, n: 1 }, { icon: History, n: 2 }, { icon: Eye, n: 3 }, { icon: FolderSync, n: 4 },
+];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={t('landing.tmcApp.modsEyebrow')}>
+        <h2 slot="title" set:html={t('landing.tmcApp.modsTitleHtml')}></h2>
+        <p set:html={t('landing.tmcApp.modsIntroHtml')}></p>
+    </SectionIntro>
+
+    <div class="@container min-w-0 flex flex-col gap-3">
+        <div class="hidden grid-cols-[1.2fr_1.5fr_1.2fr] gap-4 px-4 text-xs font-semibold uppercase tracking-wider text-muted @2xl:grid">
+            <span>{t('landing.tmcApp.stratHead1')}</span>
+            <span>{t('landing.tmcApp.stratHead2')}</span>
+            <span>{t('landing.tmcApp.stratHead3')}</span>
+        </div>
+        {strategies.map(({ n, tone }) => (
+            <div class="card grid grid-cols-1 gap-1 @2xl:grid-cols-[1.2fr_1.5fr_1.2fr] @2xl:gap-4 intersect-once intersect:motion-preset-slide-up">
+                <span class="font-mono text-sm font-semibold text-foreground">{t(`landing.tmcApp.strat${n}n`)}</span>
+                <span class={`text-sm ${tone}`}>{t(`landing.tmcApp.strat${n}f`)}</span>
+                <span class="text-sm text-muted">{t(`landing.tmcApp.strat${n}c`)}</span>
+            </div>
+        ))}
+        <p class="px-1 text-sm text-muted">{t('landing.tmcApp.stratNote')}</p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2">
+        {notes.map(({ icon, n }) => (
+            <FeatureCard icon={icon} title={t(`landing.tmcApp.k${n}t`)} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={t(`landing.tmcApp.k${n}b`)} />
+            </FeatureCard>
+        ))}
+    </div>
+    <p class="text-sm text-muted">{t('landing.tmcApp.modsGamesNote')}</p>
+</section>
