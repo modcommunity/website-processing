@@ -37,6 +37,28 @@ const p = (k: string) => t(`landing.platformPage.${k}`);
                 </ol>
             </div>
 
+            <div class="flex flex-col gap-3">
+                <h4 class="text-sm font-semibold uppercase tracking-wider text-accent">{p('projTiesTitle')}</h4>
+                <p class="max-w-3xl text-sm text-muted">{p('projTiesIntro')}</p>
+                <div class="overflow-hidden rounded-xl border border-border">
+                    <div class="hidden grid-cols-2 gap-4 border-b border-border bg-background/40 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-muted @3xl:grid">
+                        <span>{proj.name}</span>
+                        <span>{p('projTieT')}</span>
+                    </div>
+                    <ul class="divide-y divide-border">
+                        {Array.from({ length: proj.ties }, (_, i) => (
+                            <li class="grid grid-cols-1 gap-1 px-4 py-3 text-sm @3xl:grid-cols-2 @3xl:gap-4">
+                                <span class="min-w-0 font-semibold">{p(`projTie${i + 1}z`)}</span>
+                                <span class="min-w-0 text-muted">{p(`projTie${i + 1}t`)}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <p class="max-w-3xl text-sm text-muted">{p('projTiesNote')}</p>
+            </div>
+
+            <p class="text-sm text-muted">{p('projOrgNote')}</p>
+
             <div class="flex flex-wrap gap-3">
                 {proj.goalsHref && (
                     <a href={proj.goalsHref} target="_blank" rel="noreferrer" class="btn btn-special">

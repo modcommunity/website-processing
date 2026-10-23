@@ -1,16 +1,12 @@
 ---
-import { CheckCircle2, Clock, Hourglass } from 'lucide-react';
 import SectionIntro from "../landing/helper/SectionIntro.astro";
 import { getT } from "../../i18n/t";
 
 const t = getT(Astro.currentLocale);
 const p = (k: string) => t(`landing.platformPage.${k}`);
 
-const cols = [
-    { icon: CheckCircle2, key: 'gd', count: 3, title: p('goalsDoneTitle'), tone: 'text-emerald-400' },
-    { icon: Clock, key: 'gn', count: 5, title: p('goalsNextTitle'), tone: 'text-accent' },
-    { icon: Hourglass, key: 'gl', count: 4, title: p('goalsLaterTitle'), tone: 'text-muted' },
-];
+/** Aims, not status: `goal_h<n>` is the heading and `goal_b<n>` the sentence or two under it. */
+const GOALS = 7;
 ---
 
 <section id="goals" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
@@ -18,22 +14,13 @@ const cols = [
         <h2 slot="title" set:html={p('goalsTitleHtml')}></h2>
         <p set:html={p('goalsIntroHtml')}></p>
     </SectionIntro>
-    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-3">
-        {cols.map(({ icon: Icon, key, count, title, tone }) => (
-            <div class="flex min-w-0 flex-col gap-4 rounded-2xl border border-border bg-surface p-5 intersect-once intersect:motion-preset-slide-up">
-                <h3 class="flex items-center gap-2 text-base font-semibold">
-                    <Icon className={`h-5 w-5 ${tone}`} />
-                    {title}
-                </h3>
-                <ul class="flex flex-col gap-3 text-sm text-muted">
-                    {Array.from({ length: count }, (_, i) => (
-                        <li class="flex gap-2">
-                            <span aria-hidden class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"></span>
-                            <span class="min-w-0" set:html={p(`${key}${i + 1}`)}></span>
-                        </li>
-                    ))}
-                </ul>
-            </div>
+    <ol class="grid grid-cols-1 gap-4 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        {Array.from({ length: GOALS }, (_, i) => (
+            <li class="flex min-w-0 flex-col gap-2 rounded-2xl border border-border bg-surface p-5 intersect-once intersect:motion-preset-slide-up">
+                <span class="flex h-7 w-7 items-center justify-center rounded-full bg-accent/10 text-xs font-semibold text-accent">{i + 1}</span>
+                <h3 class="text-base font-semibold">{p(`goal_h${i + 1}`)}</h3>
+                <p class="text-sm text-muted">{p(`goal_b${i + 1}`)}</p>
+            </li>
         ))}
-    </div>
+    </ol>
 </section>

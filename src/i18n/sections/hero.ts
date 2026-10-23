@@ -6,6 +6,10 @@ const A = 'special hover:!text-special-1-light hover:duration-300'
 
 export const hero: SectionCatalog = {
     en: {
+        pfKicker: 'Our gaming platform',
+        pfTitle: 'Build multiplayer games on Dot',
+        pfBody: 'Open-source Godot addons for accounts, dedicated servers, moderation and parties, plus a play center that runs the games in a browser tab.',
+        pfButton: 'See the platform',
         paraHtml:
             'A place for modding and game development. Browse <span class="text-accent">game assets</span> and <span class="text-accent">mods</span>, check <span class="text-accent">game</span> and <span class="text-accent">social servers</span>, and start your own <span class="text-accent">communities</span>.',
         card1Title: 'Who We Are',
@@ -23,12 +27,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open source · Community-run',
         ctaExplore: 'Browse The Site',
         ctaDiscord: 'Join The Discord',
-        tagline: 'We are creating our own gaming platform!',
-        shelfLabel: 'On the site',
         devWarningHtml:
             `The site is under <span class="special">heavy development</span>. See what just shipped in the <a href="/changelog" class="${A}">changelog</a> and what is next on the <a href="/roadmap" class="${A}">roadmap</a>.`,
     },
     es: {
+        pfKicker: 'Nuestra plataforma de juegos',
+        pfTitle: 'Crea juegos multijugador con Dot',
+        pfBody: 'Complementos de Godot de código abierto para cuentas, servidores dedicados, moderación y grupos, además de un centro de juego que ejecuta los juegos en una pestaña del navegador.',
+        pfButton: 'Ver la plataforma',
         paraHtml:
             'Un lugar para el modding y el desarrollo de juegos. Explora <span class="text-accent">recursos de juegos</span> y <span class="text-accent">mods</span>, consulta <span class="text-accent">servidores de juegos</span> y <span class="text-accent">sociales</span>, y crea tus propias <span class="text-accent">comunidades</span>.',
         card1Title: 'Quiénes Somos',
@@ -46,12 +52,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'Código abierto · Gestionado por la comunidad',
         ctaExplore: 'Explorar El Sitio',
         ctaDiscord: 'Únete Al Discord',
-        tagline: '¡Estamos creando nuestra propia plataforma de juegos!',
-        shelfLabel: 'En el sitio',
         devWarningHtml:
             `El sitio está en <span class="special">pleno desarrollo</span>. Consulta lo que acaba de salir en el <a href="/changelog" class="${A}">registro de cambios</a> y lo que viene en la <a href="/roadmap" class="${A}">hoja de ruta</a>.`,
     },
     fr: {
+        pfKicker: 'Notre plateforme de jeu',
+        pfTitle: 'Créez des jeux multijoueurs avec Dot',
+        pfBody: 'Des modules Godot open source pour les comptes, les serveurs dédiés, la modération et les groupes, plus un centre de jeu qui lance les jeux dans un onglet du navigateur.',
+        pfButton: 'Voir la plateforme',
         paraHtml:
             'Un lieu pour le modding et le développement de jeux. Parcourez des <span class="text-accent">ressources de jeu</span> et des <span class="text-accent">mods</span>, consultez des <span class="text-accent">serveurs de jeu</span> et <span class="text-accent">sociaux</span>, et créez vos propres <span class="text-accent">communautés</span>.',
         card1Title: 'Qui Sommes-Nous ?',
@@ -69,12 +77,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open source · Gérée par la communauté',
         ctaExplore: 'Parcourir Le Site',
         ctaDiscord: 'Rejoindre Le Discord',
-        tagline: 'Nous créons notre propre plateforme de jeu !',
-        shelfLabel: 'Sur le site',
         devWarningHtml:
             `Le site est en <span class="special">plein développement</span>. Voyez ce qui vient de sortir dans le <a href="/changelog" class="${A}">journal des modifications</a> et la suite sur la <a href="/roadmap" class="${A}">feuille de route</a>.`,
     },
     de: {
+        pfKicker: 'Unsere Gaming-Plattform',
+        pfTitle: 'Multiplayer-Spiele mit Dot bauen',
+        pfBody: 'Open-Source-Godot-Addons für Konten, dedizierte Server, Moderation und Gruppen, dazu ein Spielezentrum, das die Spiele in einem Browser-Tab startet.',
+        pfButton: 'Die Plattform ansehen',
         paraHtml:
             'Ein Ort für Modding und Spieleentwicklung. Durchstöbere <span class="text-accent">Spiel-Assets</span> und <span class="text-accent">Mods</span>, sieh dir <span class="text-accent">Spiel-</span> und <span class="text-accent">Social-Server</span> an und gründe deine eigenen <span class="text-accent">Communitys</span>.',
         card1Title: 'Wer Wir Sind',
@@ -92,12 +102,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open Source · Von der Community betrieben',
         ctaExplore: 'Seite Durchstöbern',
         ctaDiscord: 'Discord Beitreten',
-        tagline: 'Wir bauen unsere eigene Gaming-Plattform!',
-        shelfLabel: 'Auf der Seite',
         devWarningHtml:
             `Die Seite befindet sich in <span class="special">reger Entwicklung</span>. Was gerade erschienen ist, steht im <a href="/changelog" class="${A}">Änderungsprotokoll</a>, was als Nächstes kommt, auf der <a href="/roadmap" class="${A}">Roadmap</a>.`,
     },
     ru: {
+        pfKicker: 'Наша игровая платформа',
+        pfTitle: 'Создавайте многопользовательские игры на Dot',
+        pfBody: 'Открытые аддоны Godot для аккаунтов, выделенных серверов, модерации и групп, а также игровой центр, который запускает игры во вкладке браузера.',
+        pfButton: 'О платформе',
         paraHtml:
             'Место для моддинга и разработки игр. Просматривайте <span class="text-accent">игровые ассеты</span> и <span class="text-accent">моды</span>, смотрите <span class="text-accent">игровые</span> и <span class="text-accent">социальные серверы</span> и создавайте собственные <span class="text-accent">сообщества</span>.',
         card1Title: 'Кто Мы',
@@ -115,12 +127,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'Открытый код · Сообщество',
         ctaExplore: 'Открыть Сайт',
         ctaDiscord: 'Присоединиться К Discord',
-        tagline: 'Мы создаём собственную игровую платформу!',
-        shelfLabel: 'На сайте',
         devWarningHtml:
             `Сайт находится в стадии <span class="special">активной разработки</span>. Что уже вышло, смотрите в <a href="/changelog" class="${A}">списке изменений</a>, а что дальше, в <a href="/roadmap" class="${A}">дорожной карте</a>.`,
     },
     nl: {
+        pfKicker: 'Ons gamingplatform',
+        pfTitle: 'Bouw multiplayerspellen op Dot',
+        pfBody: 'Open-source Godot-addons voor accounts, dedicated servers, moderatie en groepen, plus een speelcentrum dat de spellen in een browsertabblad draait.',
+        pfButton: 'Bekijk het platform',
         paraHtml:
             'Een plek voor modding en gameontwikkeling. Blader door <span class="text-accent">game-assets</span> en <span class="text-accent">mods</span>, bekijk <span class="text-accent">game-</span> en <span class="text-accent">socialservers</span> en start je eigen <span class="text-accent">communities</span>.',
         card1Title: 'Wie Zijn Wij?',
@@ -138,12 +152,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open source · Door de community beheerd',
         ctaExplore: 'Bekijk De Site',
         ctaDiscord: 'Word Lid Van Discord',
-        tagline: 'We bouwen ons eigen gamingplatform!',
-        shelfLabel: 'Op de site',
         devWarningHtml:
             `De site is volop in <span class="special">ontwikkeling</span>. Zie wat net is uitgebracht in het <a href="/changelog" class="${A}">changelog</a> en wat er hierna komt op de <a href="/roadmap" class="${A}">roadmap</a>.`,
     },
     ja: {
+        pfKicker: '私たちのゲームプラットフォーム',
+        pfTitle: 'Dotでマルチプレイゲームを作る',
+        pfBody: 'アカウント、専用サーバー、モデレーション、グループ向けのオープンソースGodotアドオンと、ブラウザのタブでゲームを動かすプレイセンターです。',
+        pfButton: 'プラットフォームを見る',
         paraHtml:
             'MODとゲーム開発のための場所です。<span class="text-accent">ゲームアセット</span>や<span class="text-accent">MOD</span>を探し、<span class="text-accent">ゲームサーバー</span>や<span class="text-accent">ソーシャルサーバー</span>を確認し、自分の<span class="text-accent">コミュニティ</span>を作れます。',
         card1Title: '私たちについて',
@@ -161,12 +177,14 @@ export const hero: SectionCatalog = {
         eyebrow: 'オープンソース · コミュニティ運営',
         ctaExplore: 'サイトを見る',
         ctaDiscord: 'Discord に参加',
-        tagline: '私たち自身のゲーミングプラットフォームを作っています！',
-        shelfLabel: 'サイト内',
         devWarningHtml:
             `サイトは<span class="special">開発の真っ最中</span>です。公開されたばかりの内容は<a href="/changelog" class="${A}">変更履歴</a>で、次の予定は<a href="/roadmap" class="${A}">ロードマップ</a>でご確認ください。`,
     },
     zh: {
+        pfKicker: '我们的游戏平台',
+        pfTitle: '用 Dot 构建多人游戏',
+        pfBody: '面向账号、专用服务器、管理和群组的开源 Godot 插件，以及可在浏览器标签页中运行游戏的游玩中心。',
+        pfButton: '查看平台',
         paraHtml:
             '一个做模组和游戏开发的地方。可以浏览<span class="text-accent">游戏资源</span>和<span class="text-accent">模组</span>，查看<span class="text-accent">游戏服务器</span>和<span class="text-accent">社交服务器</span>，也可以创建自己的<span class="text-accent">社区</span>。',
         card1Title: '我们是谁',
@@ -184,12 +202,14 @@ export const hero: SectionCatalog = {
         eyebrow: '开源 · 由社区运营',
         ctaExplore: '浏览网站',
         ctaDiscord: '加入 Discord',
-        tagline: '我们正在打造属于自己的游戏平台！',
-        shelfLabel: '站内',
         devWarningHtml:
             `网站正在<span class="special">密集开发</span>中。刚发布的内容见<a href="/changelog" class="${A}">更新日志</a>，接下来的计划见<a href="/roadmap" class="${A}">路线图</a>。`,
     },
     pt: {
+        pfKicker: 'A nossa plataforma de jogos',
+        pfTitle: 'Crie jogos multijogador com o Dot',
+        pfBody: 'Addons Godot de código aberto para contas, servidores dedicados, moderação e grupos, mais um centro de jogo que executa os jogos num separador do navegador.',
+        pfButton: 'Ver a plataforma',
         paraHtml:
             'Um lugar para modding e desenvolvimento de jogos. Explore <span class="text-accent">recursos de jogos</span> e <span class="text-accent">mods</span>, veja <span class="text-accent">servidores de jogos</span> e <span class="text-accent">sociais</span> e crie as suas próprias <span class="text-accent">comunidades</span>.',
         card1Title: 'Quem Somos',
@@ -207,8 +227,6 @@ export const hero: SectionCatalog = {
         eyebrow: 'Código aberto · Gerido pela comunidade',
         ctaExplore: 'Explorar O Site',
         ctaDiscord: 'Entrar No Discord',
-        tagline: 'Estamos criando a nossa própria plataforma de jogos!',
-        shelfLabel: 'No site',
         devWarningHtml:
             `O site está em <span class="special">pleno desenvolvimento</span>. Veja o que acabou de sair no <a href="/changelog" class="${A}">registo de alterações</a> e o que vem a seguir no <a href="/roadmap" class="${A}">roteiro</a>.`,
     },

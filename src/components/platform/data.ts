@@ -79,27 +79,13 @@ export const ADDONS: { id: string; cat: AddonCat }[] = [
 
     { id: 'dot-bootstrap', cat: 'tools' },
     { id: 'dot-serve', cat: 'tools' },
-]
-
-/** `repo` is the path under {@link GAMES_ORG}; it differs from the folder name for two minigames. */
-export const GAMES: { id: string; repo: string }[] = [
-    { id: 'game-arena', repo: 'game-arena' },
-    { id: 'game-playground', repo: 'game-playground' },
-    { id: 'game-g2gfast', repo: 'game-g2gfast' },
-    { id: 'game-hungario', repo: 'game-hungario' },
-    { id: 'game-hide-n-seek', repo: 'game-hide-n-seek' },
-    { id: 'mg-prop-hunt', repo: 'game-prop-hunt' },
-    { id: 'mg-deathrun', repo: 'game-deathrun' },
-    { id: 'mg-smash-copter', repo: 'mg-smash-copter' },
-    { id: 'mg-wipeout', repo: 'mg-wipeout' },
-    { id: 'mg-buses-from-hell', repo: 'mg-buses-from-hell' },
-    { id: 'mg-dangerous-delivery', repo: 'mg-dangerous-delivery' },
+    { id: 'dot-workbench', cat: 'tools' },
 ]
 
 /**
  * Projects built on the platform. Adding one is a new entry here plus its
- * `proj.<id>.*` keys (`name` is not translated; `desc`, `goalsTitle` and
- * `g1`..`g<goals>` are) in all nine locales.
+ * `proj_<id>_*` keys (`name` is not translated; `desc`, `g1`..`g<goals>` and
+ * `projTie1z`..`projTie<ties>t` are) in all nine locales.
  */
 export const PROJECTS: {
     id: string
@@ -109,6 +95,8 @@ export const PROJECTS: {
     repoHref: string
     license: string
     goals: number
+    /** Rows in the "ties into the platform goals" table: `projTie<n>z` / `projTie<n>t`. */
+    ties: number
 }[] = [
     {
         id: 'zees',
@@ -118,5 +106,6 @@ export const PROJECTS: {
         repoHref: GAMES_ORG,
         license: 'MIT',
         goals: 8,
+        ties: 4,
     },
 ]

@@ -1,0 +1,30 @@
+---
+import { Braces, Globe, SlidersHorizontal } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+
+const cards = [
+    { icon: SlidersHorizontal, n: 1 },
+    { icon: Globe, n: 2 },
+    { icon: Braces, n: 3 },
+];
+---
+
+<section id="workbench" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={p('wbEyebrow')}>
+        <h2 slot="title" set:html={p('wbTitleHtml')}></h2>
+        <p set:html={p('wbIntroHtml')}></p>
+    </SectionIntro>
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-3">
+        {cards.map(({ icon, n }) => (
+            <FeatureCard icon={icon} title={p(`wb${n}t`)} class="intersect-once intersect:motion-preset-slide-up">
+                <Fragment set:html={p(`wb${n}b`)} />
+            </FeatureCard>
+        ))}
+    </div>
+    <p class="max-w-3xl text-sm text-muted [&_code]:text-foreground" set:html={p('wbNoteHtml')}></p>
+</section>

@@ -1,10 +1,11 @@
 ---
-import { ArrowUpRight, Code2, Compass, Cog, Group, Hammer, Heart, Server, Users } from 'lucide-react';
+import { ArrowRight, Code2, Compass, Cog, Group, Hammer, Heart, Scale, Server, Users } from 'lucide-react';
 // lucide dropped its brand marks; see Community.astro.
 import { FaDiscord, FaGithub } from 'react-icons/fa6';
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
 import HeroField from "./heading/HeroField"
 import HeroBackdrop from "../helper/HeroBackdrop.astro"
+import PlatformPanel from "../platform/PlatformPanel.astro"
 import Card from "../helper/Card.astro"
 import { getT } from "../../i18n/t";
 import { localizePath } from "../../i18n/config";
@@ -45,8 +46,9 @@ const surfaces = [
   * The front-page hero.
   *
   * A full-bleed band, not a rounded panel, and asymmetric rather than centred:
-  * the copy runs down the left against the blueprint backdrop, and the five
-  * destinations are a numbered index in a column beside it. `/tmc-app` and
+  * the copy runs down the left against the blueprint backdrop, with the five
+  * destinations as a row of links under the buttons, and the gaming platform
+  * is the lit card in the column beside it. `/tmc-app` and
   * `/tmc-cli` keep their own shapes (split and banner), so the three heroes
   * still read as three different places.
   *
@@ -139,43 +141,57 @@ const surfaces = [
                     </a>
                 </div>
 
-                <p class="mt-6 text-xs text-white/45">{t('landing.hero.tagline')}</p>
-            </div>
-
-            {/* The index. A rule separates it from the copy at the width where
-                the two sit side by side; below that it stacks and the rule
-                would be a stray horizontal line, so it is `@4xl:` only. */}
-            <div class="min-w-0 @4xl:col-span-5 @4xl:border-l @4xl:border-white/10 @4xl:pl-10">
-                <span class="text-[0.6875rem] font-semibold uppercase tracking-[0.2em] text-white/40">
-                    {t('landing.hero.shelfLabel')}
-                </span>
-
-                {/* The closing rule lives on the list: `last:` on the anchor would
-                    match every row, since each anchor is its `<li>`'s only child. */}
-                <ul class="mt-4 border-b border-white/10">
-                    {surfaces.map(({ icon: Icon, label, href }, i) => (
+                {/* The five surfaces, as a row of links under the buttons. They were a
+                    numbered index in a column of their own; that column is the
+                    platform card now, and a row costs the copy side one line.
+                    Keyed by the BARE path, the label is translated. */}
+                <ul class="mt-8 flex flex-wrap gap-2">
+                    {surfaces.map(({ icon: Icon, label, href }) => (
                         <li>
-                            {/* Same-host links into the app, one row each,
-                                keyed by the BARE path — the label is
-                                translated and would be nine rows. */}
                             <a
                                 href={localizePath(href, Astro.currentLocale)}
                                 data-umami-event="hero_surface"
                                 data-umami-event-href={href}
-                                class="group flex items-center gap-4 border-t border-white/10 py-4 hover:border-sky-300/30"
+                                class="group inline-flex items-center gap-2 rounded-full border border-white/12 bg-white/[0.04] px-3.5 py-1.5 text-sm font-semibold text-white/75 transition hover:border-sky-300/40 hover:text-white"
                             >
-                                <span class="font-mono text-xs tabular-nums text-white/35 transition-colors group-hover:text-sky-300">
-                                    {String(i + 1).padStart(2, '0')}
-                                </span>
-                                <Icon className="h-5 w-5 shrink-0 text-white/45 transition-colors group-hover:text-sky-300" />
-                                <span class="min-w-0 grow truncate font-pjs font-bold text-white/85 transition-colors group-hover:text-white">
-                                    {label}
-                                </span>
-                                <ArrowUpRight className="h-4 w-4 shrink-0 -translate-x-1 text-sky-300 opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
+                                <Icon className="h-4 w-4 shrink-0 text-white/45 transition-colors group-hover:text-sky-300" />
+                                <span>{label}</span>
                             </a>
                         </li>
                     ))}
                 </ul>
+            </div>
+
+            {/* The gaming platform, as the thing the eye lands on after the
+                headline: a lit card with its own glow, the licence tag, the
+                stack panel and one button. It is a panel and not a banner so
+                the claim is shown (real addon names, a running server light)
+                rather than asserted. */}
+            <div class="min-w-0 @4xl:col-span-5">
+                <div class="relative">
+                    <div aria-hidden="true" class="pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-indigo-500/15 to-transparent blur-2xl"></div>
+                    <div class="rounded-3xl border border-sky-300/30 bg-white/[0.04] p-4 shadow-2xl shadow-black/40 backdrop-blur-sm @2xl:p-5">
+                        <div class="mb-3 flex flex-wrap items-center gap-2">
+                            <span class="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-sky-300">{t('landing.hero.pfKicker')}</span>
+                            <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-emerald-200">
+                                <Scale className="h-3 w-3" />
+                                {t('landing.platformPage.badgeMit')}
+                            </span>
+                        </div>
+                        <h3 class="font-pjs text-xl font-extrabold leading-snug text-white @2xl:text-2xl">{t('landing.hero.pfTitle')}</h3>
+                        <p class="mt-2 mb-4 text-sm leading-relaxed text-white/65">{t('landing.hero.pfBody')}</p>
+                        <PlatformPanel />
+                        <a
+                            href={localizePath("/platform", Astro.currentLocale)}
+                            data-umami-event="cta_platform"
+                            data-umami-event-place="hero"
+                            class="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-lg bg-sky-400 px-5 py-2.5 font-semibold text-[#05060f] shadow-lg shadow-sky-500/20 transition hover:bg-sky-300"
+                        >
+                            <span>{t('landing.hero.pfButton')}</span>
+                            <ArrowRight className="h-4 w-4" />
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
 
