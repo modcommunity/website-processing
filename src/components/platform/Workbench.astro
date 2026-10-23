@@ -2,10 +2,15 @@
 import { Braces, Globe, SlidersHorizontal } from 'lucide-react';
 import SectionIntro from "../landing/helper/SectionIntro.astro";
 import FeatureCard from "../landing/helper/FeatureCard.astro";
+import WorkbenchDemo, { type Labels } from "./WorkbenchDemo.tsx";
 import { getT } from "../../i18n/t";
 
 const t = getT(Astro.currentLocale);
 const p = (k: string) => t(`landing.platformPage.${k}`);
+
+const labels = Object.fromEntries(
+    ['exTag', 'exTitle', 'note', 'view', 'hud', 'panel', 'kind', 'savesTo', 'savesTarget', 'applied', 'summary', 'reset', 'resetAll', 'on', 'off', 'profiles'].map((k) => [k, p(`wbDemo_${k}`)])
+) as Labels;
 
 const cards = [
     { icon: SlidersHorizontal, n: 1 },
@@ -26,5 +31,6 @@ const cards = [
             </FeatureCard>
         ))}
     </div>
+    <WorkbenchDemo client:visible labels={labels} />
     <p class="max-w-3xl text-sm text-muted [&_code]:text-foreground" set:html={p('wbNoteHtml')}></p>
 </section>
