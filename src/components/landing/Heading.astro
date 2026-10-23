@@ -1,5 +1,5 @@
 ---
-import { ArrowRight, Code2, Compass, Cog, Group, Hammer, Heart, Scale, Server, Users } from 'lucide-react';
+import { ArrowRight, Code2, Download, Compass, Cog, Group, Hammer, Heart, Scale, Server, Users } from 'lucide-react';
 // lucide dropped its brand marks; see Community.astro.
 import { FaDiscord, FaGithub } from 'react-icons/fa6';
 import InDevelopmentWarning from "./heading/InDevelopmentWarning"
@@ -138,6 +138,15 @@ const surfaces = [
                     >
                         <FaDiscord className="h-5 w-5" />
                         <span>{t('landing.hero.ctaDiscord')}</span>
+                    </a>
+                    <a
+                        href={localizePath("/tmc-app", Astro.currentLocale)}
+                        data-umami-event="cta_app"
+                        data-umami-event-place="hero"
+                        class="inline-flex items-center justify-center gap-2 rounded-lg border border-sky-300/40 bg-sky-300/10 px-6 py-3 font-semibold text-sky-100 transition hover:border-sky-300/70 hover:bg-sky-300/20 hover:text-white"
+                    >
+                        <Download className="h-5 w-5" />
+                        <span>{t('landing.hero.ctaApp')}</span>
                     </a>
                 </div>
 

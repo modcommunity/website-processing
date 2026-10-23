@@ -27,6 +27,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open source · Community-run',
         ctaExplore: 'Browse The Site',
         ctaDiscord: 'Join The Discord',
+        ctaApp: 'Get The App',
         devWarningHtml:
             `The site is under <span class="special">heavy development</span>. See what just shipped in the <a href="/changelog" class="${A}">changelog</a> and what is next on the <a href="/roadmap" class="${A}">roadmap</a>.`,
     },
@@ -52,6 +53,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Código abierto · Gestionado por la comunidad',
         ctaExplore: 'Explorar El Sitio',
         ctaDiscord: 'Únete Al Discord',
+        ctaApp: 'Obtén La App',
         devWarningHtml:
             `El sitio está en <span class="special">pleno desarrollo</span>. Consulta lo que acaba de salir en el <a href="/changelog" class="${A}">registro de cambios</a> y lo que viene en la <a href="/roadmap" class="${A}">hoja de ruta</a>.`,
     },
@@ -77,6 +79,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open source · Gérée par la communauté',
         ctaExplore: 'Parcourir Le Site',
         ctaDiscord: 'Rejoindre Le Discord',
+        ctaApp: "Obtenir L'App",
         devWarningHtml:
             `Le site est en <span class="special">plein développement</span>. Voyez ce qui vient de sortir dans le <a href="/changelog" class="${A}">journal des modifications</a> et la suite sur la <a href="/roadmap" class="${A}">feuille de route</a>.`,
     },
@@ -102,6 +105,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open Source · Von der Community betrieben',
         ctaExplore: 'Seite Durchstöbern',
         ctaDiscord: 'Discord Beitreten',
+        ctaApp: 'App Herunterladen',
         devWarningHtml:
             `Die Seite befindet sich in <span class="special">reger Entwicklung</span>. Was gerade erschienen ist, steht im <a href="/changelog" class="${A}">Änderungsprotokoll</a>, was als Nächstes kommt, auf der <a href="/roadmap" class="${A}">Roadmap</a>.`,
     },
@@ -127,6 +131,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Открытый код · Сообщество',
         ctaExplore: 'Открыть Сайт',
         ctaDiscord: 'Присоединиться К Discord',
+        ctaApp: 'Скачать приложение',
         devWarningHtml:
             `Сайт находится в стадии <span class="special">активной разработки</span>. Что уже вышло, смотрите в <a href="/changelog" class="${A}">списке изменений</a>, а что дальше, в <a href="/roadmap" class="${A}">дорожной карте</a>.`,
     },
@@ -152,6 +157,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Open source · Door de community beheerd',
         ctaExplore: 'Bekijk De Site',
         ctaDiscord: 'Word Lid Van Discord',
+        ctaApp: 'Haal Die App',
         devWarningHtml:
             `De site is volop in <span class="special">ontwikkeling</span>. Zie wat net is uitgebracht in het <a href="/changelog" class="${A}">changelog</a> en wat er hierna komt op de <a href="/roadmap" class="${A}">roadmap</a>.`,
     },
@@ -177,6 +183,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'オープンソース · コミュニティ運営',
         ctaExplore: 'サイトを見る',
         ctaDiscord: 'Discord に参加',
+        ctaApp: 'アプリを入手',
         devWarningHtml:
             `サイトは<span class="special">開発の真っ最中</span>です。公開されたばかりの内容は<a href="/changelog" class="${A}">変更履歴</a>で、次の予定は<a href="/roadmap" class="${A}">ロードマップ</a>でご確認ください。`,
     },
@@ -202,6 +209,7 @@ export const hero: SectionCatalog = {
         eyebrow: '开源 · 由社区运营',
         ctaExplore: '浏览网站',
         ctaDiscord: '加入 Discord',
+        ctaApp: '获取应用',
         devWarningHtml:
             `网站正在<span class="special">密集开发</span>中。刚发布的内容见<a href="/changelog" class="${A}">更新日志</a>，接下来的计划见<a href="/roadmap" class="${A}">路线图</a>。`,
     },
@@ -227,6 +235,7 @@ export const hero: SectionCatalog = {
         eyebrow: 'Código aberto · Gerido pela comunidade',
         ctaExplore: 'Explorar O Site',
         ctaDiscord: 'Entrar No Discord',
+        ctaApp: 'Obter O App',
         devWarningHtml:
             `O site está em <span class="special">pleno desenvolvimento</span>. Veja o que acabou de sair no <a href="/changelog" class="${A}">registo de alterações</a> e o que vem a seguir no <a href="/roadmap" class="${A}">roteiro</a>.`,
     },
