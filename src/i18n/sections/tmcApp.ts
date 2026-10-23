@@ -122,7 +122,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Copy`,
         copied: `Copied`,
         dlPortable: `The portable Windows build does not register the launcher entry or tmc:// links.`,
-        dlLicenseHtml: `The app is open source under the <span class="special">GPL-3.0</span> licence. Bugs and ideas go in the <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">issue tracker</a>.`,
+        dlLicenseHtml: `The app is open source under the <span class="special">GPL-3.0</span> licence. Report bugs on the <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">bug page</a> and see what is planned on the <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">roadmap</a>.`,
         dlDiscord: `Ask on Discord`,
 
         now: `Download Now`,
@@ -247,7 +247,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Kopieren`,
         copied: `Kopiert`,
         dlPortable: `Der portable Windows-Build registriert weder den Starter-Eintrag noch tmc://-Links.`,
-        dlLicenseHtml: `Die App ist Open Source unter der Lizenz <span class="special">GPL-3.0</span>. Fehler und Ideen gehören in den <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">Issue-Tracker</a>.`,
+        dlLicenseHtml: `Die App ist Open Source unter der Lizenz <span class="special">GPL-3.0</span>. Fehler meldest du auf der <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">Fehlerseite</a>, geplant ist alles auf der <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">Roadmap</a>.`,
         dlDiscord: `Auf Discord fragen`,
 
         now: `Jetzt herunterladen`,
@@ -372,7 +372,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Copiar`,
         copied: `Copiado`,
         dlPortable: `La versión portátil de Windows no registra la entrada del lanzador ni los enlaces tmc://.`,
-        dlLicenseHtml: `La aplicación es de código abierto bajo la licencia <span class="special">GPL-3.0</span>. Los fallos y las ideas van al <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">gestor de incidencias</a>.`,
+        dlLicenseHtml: `La aplicación es de código abierto bajo la licencia <span class="special">GPL-3.0</span>. Los fallos se notifican en la <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">página de errores</a> y lo planeado está en la <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">hoja de ruta</a>.`,
         dlDiscord: `Pregunte en Discord`,
 
         now: `Descargar ahora`,
@@ -497,7 +497,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Copier`,
         copied: `Copié`,
         dlPortable: `La version portable de Windows n'enregistre ni l'entrée du lanceur ni les liens tmc://.`,
-        dlLicenseHtml: `L'application est open source sous licence <span class="special">GPL-3.0</span>. Les bugs et les idées vont dans le <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">suivi des tickets</a>.`,
+        dlLicenseHtml: `L'application est open source sous licence <span class="special">GPL-3.0</span>. Les bugs se signalent sur la <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">page des bugs</a> et ce qui est prévu est sur la <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">feuille de route</a>.`,
         dlDiscord: `Poser la question sur Discord`,
 
         now: `Télécharger maintenant`,
@@ -622,7 +622,7 @@ export const tmcApp: SectionCatalog = {
         copy: `コピー`,
         copied: `コピーしました`,
         dlPortable: `Windowsのポータブル版は、ランチャーの項目もtmc://リンクも登録しません。`,
-        dlLicenseHtml: `アプリは<span class="special">GPL-3.0</span>ライセンスのオープンソースです。不具合やアイデアは<a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">Issueトラッカー</a>へどうぞ。`,
+        dlLicenseHtml: `アプリは<span class="special">GPL-3.0</span>ライセンスのオープンソースです。不具合は<a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">バグページ</a>から報告でき、予定は<a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">ロードマップ</a>で確認できます。`,
         dlDiscord: `Discordで質問する`,
 
         now: `今すぐダウンロード`,
@@ -747,7 +747,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Kopiëren`,
         copied: `Gekopieerd`,
         dlPortable: `De draagbare Windows-build registreert het startersitem en de tmc://-links niet.`,
-        dlLicenseHtml: `De app is open source onder de licentie <span class="special">GPL-3.0</span>. Fouten en ideeën horen in de <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">issuetracker</a>.`,
+        dlLicenseHtml: `De app is open source onder de licentie <span class="special">GPL-3.0</span>. Meld fouten op de <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">bugpagina</a> en zie wat gepland staat op de <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">roadmap</a>.`,
         dlDiscord: `Vraag het op Discord`,
 
         now: `Nu downloaden`,
@@ -872,7 +872,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Copiar`,
         copied: `Copiado`,
         dlPortable: `A versão portátil do Windows não regista a entrada do lançador nem as ligações tmc://.`,
-        dlLicenseHtml: `A aplicação é de código aberto, sob a licença <span class="special">GPL-3.0</span>. Erros e ideias vão para o <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">gestor de issues</a>.`,
+        dlLicenseHtml: `A aplicação é de código aberto, sob a licença <span class="special">GPL-3.0</span>. Reporte erros na <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">página de bugs</a> e veja o que está planeado no <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">roadmap</a>.`,
         dlDiscord: `Pergunte no Discord`,
 
         now: `Transferir agora`,
@@ -997,7 +997,7 @@ export const tmcApp: SectionCatalog = {
         copy: `Копировать`,
         copied: `Скопировано`,
         dlPortable: `Портативная сборка для Windows не регистрирует запись в меню запуска и ссылки tmc://.`,
-        dlLicenseHtml: `Приложение с открытым кодом под лицензией <span class="special">GPL-3.0</span>. Об ошибках и идеях пишите в <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">трекер задач</a>.`,
+        dlLicenseHtml: `Приложение с открытым кодом под лицензией <span class="special">GPL-3.0</span>. Об ошибках сообщайте на <a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">странице багов</a>, а планы смотрите в <a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">дорожной карте</a>.`,
         dlDiscord: `Спросить в Discord`,
 
         now: `Скачать сейчас`,
@@ -1122,7 +1122,7 @@ export const tmcApp: SectionCatalog = {
         copy: `复制`,
         copied: `已复制`,
         dlPortable: `Windows 便携版不会注册启动器条目和 tmc:// 链接。`,
-        dlLicenseHtml: `应用以 <span class="special">GPL-3.0</span> 许可证开源。缺陷和想法请提交到 <a href="https://github.com/modcommunity/tmc-app/issues" target="_blank" rel="noreferrer">issue 跟踪器</a>。`,
+        dlLicenseHtml: `应用以 <span class="special">GPL-3.0</span> 许可证开源。缺陷请在<a href="https://moddingcommunity.com/bugs" target="_blank" rel="noreferrer">缺陷页面</a>提交，计划请看<a href="https://moddingcommunity.com/roadmap/1-tmc-app" target="_blank" rel="noreferrer">路线图</a>。`,
         dlDiscord: `在 Discord 提问`,
 
         now: `立即下载`,

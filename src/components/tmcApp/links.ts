@@ -1,8 +1,6 @@
 /** The app's public repository. */
 export const APP_REPO = 'https://github.com/modcommunity/tmc-app'
 
-export const APP_ISSUES = `${APP_REPO}/issues`
-
 /** The latest release page: the static fallback behind the Download button. */
 export const APP_RELEASES = `${APP_REPO}/releases/latest`
 
