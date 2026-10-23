@@ -515,7 +515,7 @@ export const shellNav: NavCatalog = {
         },
         changelog: {
             label: 'Список изменений',
-            desc: 'Что мы выпустили — сначала новое',
+            desc: 'Что мы выпустили, сначала новое',
         },
         status: {
             label: 'Состояние сайта',

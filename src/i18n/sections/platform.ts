@@ -4,7 +4,8 @@ export const platform: SectionCatalog = {
     en: {
         eyebrow: 'In Development',
         titleHtml: 'Creating Our Own <span class="special">Gaming Platform</span>',
-        introHtml: `We're building our own <span class="special">open-source game assets</span> for game engines — starting with <span class="special">Godot</span> — that hand developers the parts of a multiplayer game nobody wants to write twice: hosting servers, administration and moderation, cross-platform play right down to the web browser, an authentication system, and more.`,
+        introHtml:
+            'We are building <span class="special">open-source game assets</span> for game engines, starting with <span class="special">Godot</span>. They cover the parts of a multiplayer game nobody wants to write twice: hosting servers, admin and moderation, play on every platform including the web browser, and logins.',
         tagPlanned: 'Planned',
         stackGameTitle: 'Your Game',
         stackGameSub: 'Godot first, more engines to follow',
@@ -17,23 +18,30 @@ export const platform: SectionCatalog = {
         chip3: 'Moderation',
         chip4: 'Web export',
         c1t: 'Open Source, Godot First',
-        c1b: `Free, <span class="special">open-source</span> assets you drop into your project and can read, fork and extend. <span class="special">Godot</span> comes first; other engines follow.`,
+        c1b:
+            'Free, <span class="special">open-source</span> assets you drop into your project. Read, fork and change them. <span class="special">Godot</span> comes first, other engines later.',
         c2t: 'Host & Run Servers',
-        c2b: `Tools for standing up <span class="special">dedicated servers</span> for your game — start them, configure them and keep them running without building the plumbing yourself.`,
+        c2b:
+            'Tools to set up <span class="special">dedicated servers</span> for your game, start them, configure them and keep them running.',
         c3t: 'Administration & Moderation',
-        c3b: `<span class="special">Admin and moderation</span> tooling built in: roles and permissions, kicks, bans and mutes, and a record of who did what.`,
+        c3b:
+            '<span class="special">Admin and moderation</span> tools: roles and permissions, kicks, bans and mutes, and a log of who did what.',
         c4t: 'Cross-Platform, Browser Included',
-        c4b: `One game, every platform — including <span class="special">the web browser</span>, so players can jump in from a link without installing anything.`,
-        c5t: 'Wired Into Our Server Browser',
-        c5b: `Your servers list themselves in <span class="special">our server browser</span>, with live status and player counts, so players can find them next to every other game we track.`,
+        c4b:
+            'The same game on every platform, including <span class="special">the web browser</span>, so players can join from a link with nothing to install.',
+        c5t: 'Listed In Our Server Browser',
+        c5b:
+            'Your servers show up in <span class="special">our server browser</span> with live status and player counts, next to every other game we track.',
         c6t: 'Accounts & Authentication',
-        c6b: `A ready-made <span class="special">authentication system</span> so you never have to roll your own logins — and players arrive with an identity they already have.`,
+        c6b:
+            'A ready-made <span class="special">login system</span>, so you do not write your own and players sign in with an account they already have.',
         button: 'Follow It On Our Roadmap',
     },
     es: {
         eyebrow: 'En desarrollo',
         titleHtml: 'Creando Nuestra Propia <span class="special">Plataforma De Juegos</span>',
-        introHtml: `Estamos creando nuestros propios <span class="special">recursos de juego de código abierto</span> para motores de videojuegos — empezando por <span class="special">Godot</span> — que ofrecen a los desarrolladores las piezas de un juego multijugador que nadie quiere escribir dos veces: alojamiento de servidores, administración y moderación, juego multiplataforma hasta en el navegador web, un sistema de autenticación y mucho más.`,
+        introHtml:
+            'Estamos creando <span class="special">recursos de juego de código abierto</span> para motores de juego, empezando por <span class="special">Godot</span>. Cubren lo que nadie quiere escribir dos veces en un juego multijugador: alojar servidores, administración y moderación, jugar en cualquier plataforma incluido el navegador, e inicio de sesión.',
         tagPlanned: 'Planificado',
         stackGameTitle: 'Tu juego',
         stackGameSub: 'Godot primero, más motores después',
@@ -46,23 +54,30 @@ export const platform: SectionCatalog = {
         chip3: 'Moderación',
         chip4: 'Exportación web',
         c1t: 'Código Abierto, Godot Primero',
-        c1b: `Recursos gratuitos y de <span class="special">código abierto</span> que añades a tu proyecto y puedes leer, bifurcar y ampliar. <span class="special">Godot</span> va primero; después llegarán otros motores.`,
+        c1b:
+            'Recursos gratuitos de <span class="special">código abierto</span> que añades a tu proyecto. Puedes leerlos, bifurcarlos y modificarlos. Primero <span class="special">Godot</span>, otros motores después.',
         c2t: 'Aloja Y Ejecuta Servidores',
-        c2b: `Herramientas para levantar <span class="special">servidores dedicados</span> para tu juego: arrancarlos, configurarlos y mantenerlos en marcha sin construir la infraestructura tú mismo.`,
+        c2b:
+            'Herramientas para montar <span class="special">servidores dedicados</span> de tu juego, iniciarlos, configurarlos y mantenerlos en marcha.',
         c3t: 'Administración Y Moderación',
-        c3b: `Herramientas de <span class="special">administración y moderación</span> integradas: roles y permisos, expulsiones, baneos y silencios, y un registro de quién hizo qué.`,
+        c3b:
+            'Herramientas de <span class="special">administración y moderación</span>: roles y permisos, expulsiones, bloqueos y silencios, y un registro de quién hizo qué.',
         c4t: 'Multiplataforma, Navegador Incluido',
-        c4b: `Un solo juego, todas las plataformas — incluido <span class="special">el navegador web</span>, para que los jugadores entren desde un enlace sin instalar nada.`,
-        c5t: 'Conectado A Nuestro Buscador De Servidores',
-        c5b: `Tus servidores aparecen solos en <span class="special">nuestro buscador de servidores</span>, con estado en vivo y número de jugadores, junto a todos los demás juegos que seguimos.`,
+        c4b:
+            'El mismo juego en todas las plataformas, incluido <span class="special">el navegador web</span>, para que los jugadores entren desde un enlace sin instalar nada.',
+        c5t: 'En Nuestro Buscador De Servidores',
+        c5b:
+            'Tus servidores aparecen en <span class="special">nuestro buscador de servidores</span> con estado y jugadores en directo, junto a todos los demás juegos que seguimos.',
         c6t: 'Cuentas Y Autenticación',
-        c6b: `Un <span class="special">sistema de autenticación</span> listo para usar, para que nunca tengas que crear tus propios inicios de sesión — y los jugadores lleguen con una identidad que ya tienen.`,
+        c6b:
+            'Un <span class="special">sistema de inicio de sesión</span> ya hecho, para que no escribas el tuyo y los jugadores entren con una cuenta que ya tienen.',
         button: 'Síguelo En Nuestra Hoja De Ruta',
     },
     fr: {
         eyebrow: 'En développement',
         titleHtml: 'Nous Créons Notre Propre <span class="special">Plateforme De Jeu</span>',
-        introHtml: `Nous développons nos propres <span class="special">ressources de jeu open source</span> pour les moteurs de jeu — en commençant par <span class="special">Godot</span> — qui offrent aux développeurs les briques d'un jeu multijoueur que personne n'a envie d'écrire deux fois : hébergement de serveurs, administration et modération, jeu multiplateforme jusque dans le navigateur, un système d'authentification, et bien plus.`,
+        introHtml:
+            'Nous créons des <span class="special">ressources de jeu open source</span> pour les moteurs de jeu, en commençant par <span class="special">Godot</span>. Elles couvrent ce que personne ne veut écrire deux fois dans un jeu multijoueur : hébergement de serveurs, administration et modération, jeu sur toutes les plateformes y compris le navigateur, et connexion.',
         tagPlanned: 'Prévu',
         stackGameTitle: 'Votre jeu',
         stackGameSub: "Godot d'abord, d'autres moteurs ensuite",
@@ -75,23 +90,30 @@ export const platform: SectionCatalog = {
         chip3: 'Modération',
         chip4: 'Export web',
         c1t: 'Open Source, Godot En Premier',
-        c1b: `Des ressources gratuites et <span class="special">open source</span> que vous ajoutez à votre projet et pouvez lire, forker et étendre. <span class="special">Godot</span> arrive en premier ; d'autres moteurs suivront.`,
+        c1b:
+            `Des ressources gratuites et <span class="special">open source</span> à intégrer à votre projet. Lisez-les, forkez-les, modifiez-les. <span class="special">Godot</span> d'abord, d'autres moteurs ensuite.`,
         c2t: 'Hébergez Et Faites Tourner Des Serveurs',
-        c2b: `Des outils pour monter des <span class="special">serveurs dédiés</span> pour votre jeu : les lancer, les configurer et les maintenir en ligne sans construire la tuyauterie vous-même.`,
+        c2b:
+            'Des outils pour monter des <span class="special">serveurs dédiés</span> pour votre jeu, les démarrer, les configurer et les maintenir en marche.',
         c3t: 'Administration Et Modération',
-        c3b: `Des outils <span class="special">d'administration et de modération</span> intégrés : rôles et permissions, exclusions, bannissements et mises en sourdine, et un historique de qui a fait quoi.`,
+        c3b:
+            `Des outils d'<span class="special">administration et de modération</span> : rôles et permissions, expulsions, bannissements et mises en sourdine, et un journal de qui a fait quoi.`,
         c4t: 'Multiplateforme, Navigateur Compris',
-        c4b: `Un seul jeu, toutes les plateformes — y compris <span class="special">le navigateur web</span>, pour que les joueurs entrent depuis un lien sans rien installer.`,
-        c5t: 'Relié À Notre Navigateur De Serveurs',
-        c5b: `Vos serveurs s'inscrivent d'eux-mêmes dans <span class="special">notre navigateur de serveurs</span>, avec statut en direct et nombre de joueurs, aux côtés de tous les autres jeux que nous suivons.`,
+        c4b:
+            'Le même jeu sur toutes les plateformes, y compris <span class="special">le navigateur web</span>, pour rejoindre depuis un lien sans rien installer.',
+        c5t: 'Listé Dans Notre Navigateur De Serveurs',
+        c5b:
+            'Vos serveurs apparaissent dans <span class="special">notre navigateur de serveurs</span> avec état et joueurs en direct, à côté de tous les autres jeux que nous suivons.',
         c6t: 'Comptes Et Authentification',
-        c6b: `Un <span class="special">système d'authentification</span> prêt à l'emploi : plus besoin de coder vos propres connexions — et les joueurs arrivent avec une identité qu'ils possèdent déjà.`,
+        c6b:
+            `Un <span class="special">système de connexion</span> prêt à l'emploi, pour ne pas écrire le vôtre et permettre aux joueurs de se connecter avec un compte qu'ils ont déjà.`,
         button: 'Suivez-le Sur Notre Feuille De Route',
     },
     de: {
         eyebrow: 'In Entwicklung',
         titleHtml: 'Wir Bauen Unsere Eigene <span class="special">Gaming-Plattform</span>',
-        introHtml: `Wir entwickeln eigene <span class="special">quelloffene Game-Assets</span> für Spiel-Engines — zuerst für <span class="special">Godot</span> — die Entwicklern genau die Teile eines Multiplayer-Spiels abnehmen, die niemand zweimal schreiben will: Server-Hosting, Administration und Moderation, plattformübergreifendes Spielen bis in den Webbrowser, ein Authentifizierungssystem und mehr.`,
+        introHtml:
+            'Wir bauen <span class="special">quelloffene Spiel-Assets</span> für Game-Engines, zuerst für <span class="special">Godot</span>. Sie decken ab, was niemand zweimal schreiben will: Server hosten, Administration und Moderation, Spielen auf jeder Plattform einschließlich Browser sowie Logins.',
         tagPlanned: 'Geplant',
         stackGameTitle: 'Dein Spiel',
         stackGameSub: 'Godot zuerst, weitere Engines folgen',
@@ -104,23 +126,30 @@ export const platform: SectionCatalog = {
         chip3: 'Moderation',
         chip4: 'Web-Export',
         c1t: 'Open Source, Godot Zuerst',
-        c1b: `Kostenlose, <span class="special">quelloffene</span> Assets, die du in dein Projekt ziehst und lesen, forken und erweitern kannst. <span class="special">Godot</span> kommt zuerst, weitere Engines folgen.`,
+        c1b:
+            'Kostenlose, <span class="special">quelloffene</span> Assets, die du in dein Projekt legst. Lies, forke und ändere sie. Zuerst <span class="special">Godot</span>, andere Engines später.',
         c2t: 'Server Hosten & Betreiben',
-        c2b: `Werkzeuge, um <span class="special">dedizierte Server</span> für dein Spiel aufzusetzen: starten, konfigurieren und am Laufen halten, ohne die Infrastruktur selbst zu bauen.`,
+        c2b:
+            'Werkzeuge, um <span class="special">dedizierte Server</span> für dein Spiel aufzusetzen, zu starten, zu konfigurieren und am Laufen zu halten.',
         c3t: 'Administration & Moderation',
-        c3b: `Eingebaute <span class="special">Admin- und Moderationswerkzeuge</span>: Rollen und Rechte, Kicks, Banns und Stummschaltungen — und ein Protokoll, wer was getan hat.`,
+        c3b:
+            '<span class="special">Admin- und Moderationswerkzeuge</span>: Rollen und Berechtigungen, Kicks, Banns und Stummschaltungen sowie ein Protokoll, wer was getan hat.',
         c4t: 'Plattformübergreifend, Browser Inklusive',
-        c4b: `Ein Spiel, alle Plattformen — auch <span class="special">der Webbrowser</span>, damit Spieler über einen Link einsteigen können, ohne etwas zu installieren.`,
-        c5t: 'Direkt Im Server-Browser',
-        c5b: `Deine Server tragen sich selbst in <span class="special">unseren Server-Browser</span> ein, mit Live-Status und Spielerzahlen — neben allen anderen Spielen, die wir erfassen.`,
+        c4b:
+            'Dasselbe Spiel auf jeder Plattform, auch im <span class="special">Webbrowser</span>, sodass Spieler per Link beitreten, ohne etwas zu installieren.',
+        c5t: 'Gelistet In Unserem Server-Browser',
+        c5b:
+            'Deine Server erscheinen mit Live-Status und Spielerzahlen in <span class="special">unserem Server-Browser</span>, neben allen anderen Spielen, die wir verfolgen.',
         c6t: 'Konten & Authentifizierung',
-        c6b: `Ein fertiges <span class="special">Authentifizierungssystem</span>, damit du nie eigene Logins bauen musst — und Spieler mit einer Identität ankommen, die sie schon haben.`,
+        c6b:
+            'Ein fertiges <span class="special">Login-System</span>, damit du kein eigenes schreiben musst und Spieler sich mit einem Konto anmelden, das sie schon haben.',
         button: 'Auf Unserer Roadmap Verfolgen',
     },
     ru: {
         eyebrow: 'В разработке',
         titleHtml: 'Создаём Собственную <span class="special">Игровую Платформу</span>',
-        introHtml: `Мы разрабатываем собственные <span class="special">игровые ресурсы с открытым исходным кодом</span> для игровых движков — начиная с <span class="special">Godot</span> — которые дают разработчикам те части мультиплеерной игры, что никто не хочет писать дважды: хостинг серверов, администрирование и модерацию, кроссплатформенную игру вплоть до веб-браузера, систему аутентификации и многое другое.`,
+        introHtml:
+            'Мы делаем <span class="special">игровые ассеты с открытым кодом</span> для игровых движков, начиная с <span class="special">Godot</span>. Они берут на себя то, что никто не хочет писать дважды в многопользовательской игре: хостинг серверов, администрирование и модерацию, игру на любой платформе, включая браузер, и вход в аккаунт.',
         tagPlanned: 'Запланировано',
         stackGameTitle: 'Ваша игра',
         stackGameSub: 'Сначала Godot, затем другие движки',
@@ -133,23 +162,30 @@ export const platform: SectionCatalog = {
         chip3: 'Модерация',
         chip4: 'Экспорт в веб',
         c1t: 'Открытый Код, Сначала Godot',
-        c1b: `Бесплатные ресурсы с <span class="special">открытым исходным кодом</span>: подключаете к проекту, читаете, форкаете и расширяете. <span class="special">Godot</span> идёт первым, остальные движки — следом.`,
+        c1b:
+            'Бесплатные ассеты с <span class="special">открытым кодом</span>, которые вы добавляете в проект. Их можно читать, форкать и менять. Сначала <span class="special">Godot</span>, другие движки позже.',
         c2t: 'Хостинг И Запуск Серверов',
-        c2b: `Инструменты для развёртывания <span class="special">выделенных серверов</span> вашей игры: запускать, настраивать и поддерживать их работу, не строя инфраструктуру самостоятельно.`,
+        c2b:
+            'Инструменты, чтобы поднять <span class="special">выделенные серверы</span> для вашей игры, запустить, настроить и поддерживать их работу.',
         c3t: 'Администрирование И Модерация',
-        c3b: `Встроенные инструменты <span class="special">администрирования и модерации</span>: роли и права, кики, баны и муты, а также журнал того, кто что сделал.`,
+        c3b:
+            'Инструменты <span class="special">администрирования и модерации</span>: роли и права, кики, баны и мьюты, а также журнал того, кто что сделал.',
         c4t: 'Кроссплатформенность, Включая Браузер',
-        c4b: `Одна игра — все платформы, включая <span class="special">веб-браузер</span>, чтобы игроки заходили по ссылке, ничего не устанавливая.`,
-        c5t: 'Связано С Нашим Браузером Серверов',
-        c5b: `Ваши серверы сами попадают в <span class="special">наш браузер серверов</span> — со статусом в реальном времени и числом игроков, рядом со всеми другими играми, которые мы отслеживаем.`,
+        c4b:
+            'Одна игра на любой платформе, включая <span class="special">браузер</span>, так что игроки заходят по ссылке и ничего не устанавливают.',
+        c5t: 'В Нашем Браузере Серверов',
+        c5b:
+            'Ваши серверы появляются в <span class="special">нашем браузере серверов</span> с онлайном и статусом в реальном времени, рядом со всеми остальными играми, которые мы отслеживаем.',
         c6t: 'Аккаунты И Аутентификация',
-        c6b: `Готовая <span class="special">система аутентификации</span>: не придётся писать собственные входы — а игроки приходят с уже существующей учётной записью.`,
+        c6b:
+            'Готовая <span class="special">система входа</span>: писать свою не нужно, а игроки входят с уже существующим аккаунтом.',
         button: 'Следить В Дорожной Карте',
     },
     nl: {
         eyebrow: 'In ontwikkeling',
         titleHtml: 'We Bouwen Ons Eigen <span class="special">Gamingplatform</span>',
-        introHtml: `We bouwen onze eigen <span class="special">open-source game-assets</span> voor game-engines — te beginnen met <span class="special">Godot</span> — die ontwikkelaars precies die onderdelen van een multiplayergame geven die niemand twee keer wil schrijven: servers hosten, administratie en moderatie, cross-platform spelen tot in de webbrowser, een authenticatiesysteem en meer.`,
+        introHtml:
+            'We bouwen <span class="special">opensource game-assets</span> voor game-engines, te beginnen met <span class="special">Godot</span>. Ze nemen over wat niemand twee keer wil schrijven in een multiplayergame: servers hosten, beheer en moderatie, spelen op elk platform inclusief de browser, en inloggen.',
         tagPlanned: 'Gepland',
         stackGameTitle: 'Jouw game',
         stackGameSub: 'Eerst Godot, later meer engines',
@@ -162,23 +198,30 @@ export const platform: SectionCatalog = {
         chip3: 'Moderatie',
         chip4: 'Web-export',
         c1t: 'Open Source, Godot Eerst',
-        c1b: `Gratis, <span class="special">open-source</span> assets die je in je project zet en kunt lezen, forken en uitbreiden. <span class="special">Godot</span> komt eerst; andere engines volgen.`,
+        c1b:
+            'Gratis, <span class="special">opensource</span> assets die je in je project zet. Lees, fork en pas ze aan. Eerst <span class="special">Godot</span>, andere engines later.',
         c2t: 'Servers Hosten & Draaien',
-        c2b: `Gereedschap om <span class="special">dedicated servers</span> voor je game op te zetten: starten, instellen en draaiende houden zonder zelf het leidingwerk te bouwen.`,
+        c2b:
+            'Tools om <span class="special">dedicated servers</span> voor je game op te zetten, te starten, te configureren en draaiend te houden.',
         c3t: 'Administratie & Moderatie',
-        c3b: `Ingebouwde <span class="special">beheer- en moderatietools</span>: rollen en rechten, kicks, bans en mutes, plus een logboek van wie wat deed.`,
+        c3b:
+            'Tools voor <span class="special">beheer en moderatie</span>: rollen en rechten, kicks, bans en mutes, en een logboek van wie wat deed.',
         c4t: 'Cross-Platform, Browser Inbegrepen',
-        c4b: `Eén game, elk platform — inclusief <span class="special">de webbrowser</span>, zodat spelers via een link meteen instappen zonder iets te installeren.`,
-        c5t: 'Gekoppeld Aan Onze Serverbrowser',
-        c5b: `Je servers melden zichzelf aan in <span class="special">onze serverbrowser</span>, met live status en spelersaantallen, naast alle andere games die we volgen.`,
+        c4b:
+            'Dezelfde game op elk platform, ook in <span class="special">de webbrowser</span>, zodat spelers via een link meedoen zonder iets te installeren.',
+        c5t: 'Vermeld In Onze Serverbrowser',
+        c5b:
+            'Je servers verschijnen in <span class="special">onze serverbrowser</span> met live status en spelersaantallen, naast alle andere games die we volgen.',
         c6t: 'Accounts & Authenticatie',
-        c6b: `Een kant-en-klaar <span class="special">authenticatiesysteem</span>, zodat je nooit je eigen logins hoeft te bouwen — en spelers binnenkomen met een identiteit die ze al hebben.`,
+        c6b:
+            'Een kant-en-klaar <span class="special">inlogsysteem</span>, zodat je er geen hoeft te schrijven en spelers inloggen met een account dat ze al hebben.',
         button: 'Volg Het Op Onze Roadmap',
     },
     ja: {
         eyebrow: '開発中',
         titleHtml: '<span class="special">独自のゲームプラットフォーム</span>を作っています',
-        introHtml: `私たちはゲームエンジン向けに、<span class="special">オープンソースのゲームアセット</span>を開発しています。まずは <span class="special">Godot</span> から。マルチプレイヤーゲームで誰も二度は書きたくない部分——サーバーのホスティング、管理とモデレーション、ウェブブラウザまで含むクロスプラットフォーム対応、認証システムなど——を開発者にそのまま提供します。`,
+        introHtml:
+            'ゲームエンジン向けの<span class="special">オープンソースのゲームアセット</span>を、まず<span class="special">Godot</span>向けに作っています。マルチプレイゲームで誰も二度は書きたくない部分、つまりサーバーのホスティング、管理とモデレーション、ブラウザを含む全プラットフォームでの対応、ログインを担当します。',
         tagPlanned: '計画中',
         stackGameTitle: 'あなたのゲーム',
         stackGameSub: 'まず Godot、その後ほかのエンジンにも',
@@ -191,23 +234,25 @@ export const platform: SectionCatalog = {
         chip3: 'モデレーション',
         chip4: 'ウェブ書き出し',
         c1t: 'オープンソース、まずは Godot',
-        c1b: `プロジェクトに入れるだけの無料の<span class="special">オープンソース</span>アセット。中身を読み、フォークし、拡張できます。<span class="special">Godot</span> が最初で、他のエンジンも順次対応します。`,
+        c1b:
+            'プロジェクトに入れて使える、無料の<span class="special">オープンソース</span>アセットです。読んで、フォークして、変更できます。まず<span class="special">Godot</span>、ほかのエンジンはその後に対応します。',
         c2t: 'サーバーのホストと運用',
-        c2b: `ゲーム用の<span class="special">専用サーバー</span>を立ち上げるためのツール。起動・設定・運用まで、裏側の仕組みを自分で作る必要はありません。`,
+        c2b: 'ゲーム用の<span class="special">専用サーバー</span>を立ち上げ、起動し、設定し、動かし続けるためのツールです。',
         c3t: '管理とモデレーション',
-        c3b: `<span class="special">管理・モデレーション</span>機能を標準搭載。ロールと権限、キック、BAN、ミュート、そして誰が何をしたかの記録まで。`,
+        c3b: '<span class="special">管理とモデレーション</span>のツールとして、ロールと権限、キック、BAN、ミュート、誰が何をしたかの記録を備えます。',
         c4t: 'クロスプラットフォーム、ブラウザも',
-        c4b: `ひとつのゲームをあらゆるプラットフォームへ。<span class="special">ウェブブラウザ</span>にも対応し、プレイヤーはリンクから何もインストールせずに参加できます。`,
-        c5t: 'サーバーブラウザと連携',
-        c5b: `あなたのサーバーは自動的に<span class="special">私たちのサーバーブラウザ</span>に掲載され、リアルタイムの状態とプレイヤー数とともに、他のゲームと並んで見つけてもらえます。`,
+        c4b: '同じゲームを<span class="special">Webブラウザ</span>を含む全プラットフォームで動かせるので、インストール不要でリンクから参加できます。',
+        c5t: 'サーバーブラウザに掲載',
+        c5b: 'あなたのサーバーは<span class="special">当サイトのサーバーブラウザ</span>に、リアルタイムの状態と人数つきで、ほかの対応ゲームと並んで表示されます。',
         c6t: 'アカウントと認証',
-        c6b: `すぐ使える<span class="special">認証システム</span>。自前のログイン機能を作る必要はなく、プレイヤーはすでに持っているアカウントでそのまま参加できます。`,
+        c6b: '出来合いの<span class="special">ログインシステム</span>があるので自作は不要で、プレイヤーは持っているアカウントでサインインできます。',
         button: 'ロードマップで進捗を追う',
     },
     zh: {
         eyebrow: '开发中',
         titleHtml: '我们正在打造<span class="special">自己的游戏平台</span>',
-        introHtml: `我们正在为游戏引擎打造<span class="special">开源游戏资源</span>——从 <span class="special">Godot</span> 开始——把多人游戏里没人愿意写第二遍的部分直接交给开发者：服务器托管、管理与审核、覆盖网页浏览器的跨平台支持、认证系统等等。`,
+        introHtml:
+            '我们正在为游戏引擎开发<span class="special">开源游戏资源</span>，先从 <span class="special">Godot</span> 开始。它们负责多人游戏里没人愿意写第二遍的部分：托管服务器、管理与审核、包括浏览器在内的全平台游玩，以及登录。',
         tagPlanned: '计划中',
         stackGameTitle: '你的游戏',
         stackGameSub: '先支持 Godot，后续扩展更多引擎',
@@ -220,23 +265,25 @@ export const platform: SectionCatalog = {
         chip3: '审核管理',
         chip4: '网页导出',
         c1t: '开源，Godot 优先',
-        c1b: `免费的<span class="special">开源</span>资源，放进项目即可使用，并且可以阅读、复刻和扩展。<span class="special">Godot</span> 会最先支持，其他引擎随后跟上。`,
+        c1b:
+            '免费的<span class="special">开源</span>资源，直接放进你的项目。可以阅读、派生和修改。先支持 <span class="special">Godot</span>，其他引擎之后跟上。',
         c2t: '托管与运行服务器',
-        c2b: `用于搭建游戏<span class="special">专用服务器</span>的工具：启动、配置并持续运行，无需自己从零搭建底层设施。`,
+        c2b: '用来搭建、启动、配置并持续运行游戏<span class="special">专用服务器</span>的工具。',
         c3t: '管理与审核',
-        c3b: `内置<span class="special">管理与审核</span>工具：角色与权限、踢出、封禁与禁言，还有谁做了什么的记录。`,
+        c3b: '<span class="special">管理与审核</span>工具：角色与权限、踢出、封禁和禁言，以及谁做了什么的记录。',
         c4t: '跨平台，包含浏览器',
-        c4b: `一款游戏，覆盖所有平台——包括<span class="special">网页浏览器</span>，玩家点开链接就能进入，无需安装任何东西。`,
-        c5t: '接入我们的服务器浏览器',
-        c5b: `你的服务器会自动出现在<span class="special">我们的服务器浏览器</span>中，带有实时状态和在线人数，与我们收录的其他游戏并列展示。`,
+        c4b: '同一款游戏覆盖所有平台，包括<span class="special">网页浏览器</span>，玩家点链接就能加入，无需安装。',
+        c5t: '收录进我们的服务器浏览器',
+        c5b: '你的服务器会出现在<span class="special">我们的服务器浏览器</span>里，带实时状态和玩家数，与我们追踪的其他游戏并列。',
         c6t: '账号与认证',
-        c6b: `开箱即用的<span class="special">认证系统</span>，你无需自己实现登录——玩家也能直接用已有的身份进入游戏。`,
+        c6b: '现成的<span class="special">登录系统</span>，你不用自己写，玩家用已有的账号就能登录。',
         button: '在路线图上关注进展',
     },
     pt: {
         eyebrow: 'Em desenvolvimento',
         titleHtml: 'Criando Nossa Própria <span class="special">Plataforma De Jogos</span>',
-        introHtml: `Estamos criando nossos próprios <span class="special">assets de jogo open source</span> para motores de jogos — começando pelo <span class="special">Godot</span> — que entregam aos desenvolvedores as partes de um jogo multijogador que ninguém quer escrever duas vezes: hospedagem de servidores, administração e moderação, jogo multiplataforma até no navegador, um sistema de autenticação e muito mais.`,
+        introHtml:
+            'Estamos a criar <span class="special">recursos de jogo de código aberto</span> para motores de jogo, a começar pelo <span class="special">Godot</span>. Cobrem o que ninguém quer escrever duas vezes num jogo multijogador: alojar servidores, administração e moderação, jogar em qualquer plataforma incluindo o navegador, e início de sessão.',
         tagPlanned: 'Planejado',
         stackGameTitle: 'Seu jogo',
         stackGameSub: 'Godot primeiro, outros motores depois',
@@ -249,17 +296,23 @@ export const platform: SectionCatalog = {
         chip3: 'Moderação',
         chip4: 'Exportação web',
         c1t: 'Open Source, Godot Primeiro',
-        c1b: `Assets gratuitos e <span class="special">open source</span> que você joga no projeto e pode ler, bifurcar e estender. O <span class="special">Godot</span> vem primeiro; outros motores vêm depois.`,
+        c1b:
+            'Recursos gratuitos de <span class="special">código aberto</span> que coloca no seu projeto. Pode lê-los, fazer fork e alterá-los. Primeiro o <span class="special">Godot</span>, outros motores depois.',
         c2t: 'Hospede E Rode Servidores',
-        c2b: `Ferramentas para subir <span class="special">servidores dedicados</span> do seu jogo: iniciar, configurar e manter no ar sem construir o encanamento por conta própria.`,
+        c2b:
+            'Ferramentas para montar <span class="special">servidores dedicados</span> do seu jogo, iniciá-los, configurá-los e mantê-los a funcionar.',
         c3t: 'Administração E Moderação',
-        c3b: `Ferramentas de <span class="special">administração e moderação</span> embutidas: cargos e permissões, kicks, banimentos e silenciamentos, além do registro de quem fez o quê.`,
+        c3b:
+            'Ferramentas de <span class="special">administração e moderação</span>: funções e permissões, expulsões, banimentos e silenciamentos, e um registo de quem fez o quê.',
         c4t: 'Multiplataforma, Navegador Incluído',
-        c4b: `Um jogo, todas as plataformas — inclusive <span class="special">o navegador</span>, para que os jogadores entrem por um link sem instalar nada.`,
-        c5t: 'Ligado Ao Nosso Navegador De Servidores',
-        c5b: `Seus servidores se listam sozinhos no <span class="special">nosso navegador de servidores</span>, com status ao vivo e contagem de jogadores, ao lado de todos os outros jogos que acompanhamos.`,
+        c4b:
+            'O mesmo jogo em todas as plataformas, incluindo <span class="special">o navegador web</span>, para que os jogadores entrem por um link sem instalar nada.',
+        c5t: 'Listado No Nosso Navegador De Servidores',
+        c5b:
+            'Os seus servidores aparecem no <span class="special">nosso navegador de servidores</span> com estado e jogadores em tempo real, ao lado de todos os outros jogos que acompanhamos.',
         c6t: 'Contas E Autenticação',
-        c6b: `Um <span class="special">sistema de autenticação</span> pronto, para você nunca precisar criar seus próprios logins — e os jogadores chegarem com uma identidade que já têm.`,
+        c6b:
+            'Um <span class="special">sistema de início de sessão</span> pronto a usar, para não escrever o seu e para os jogadores entrarem com uma conta que já têm.',
         button: 'Acompanhe No Nosso Roteiro',
     },
 }

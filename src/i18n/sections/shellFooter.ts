@@ -38,7 +38,7 @@ export type FooterCatalog = Record<
 export const shellFooter: FooterCatalog = {
     en: {
         slogan:
-            'Taking modding to the next level — mods, game assets, and servers for everyone.',
+            'Taking modding to the next level, mods, game assets, and servers for everyone.',
         copyright:
             '© {year} The Modding Community, a DBA of TekWorks LLC. All rights reserved.',
         headings: {
@@ -116,7 +116,7 @@ export const shellFooter: FooterCatalog = {
     },
     fr: {
         slogan:
-            'Le modding passe à la vitesse supérieure — mods, ressources de jeu et serveurs pour tous.',
+            'Le modding passe à la vitesse supérieure, mods, ressources de jeu et serveurs pour tous.',
         copyright:
             '© {year} The Modding Community, nom commercial de TekWorks LLC. Tous droits réservés.',
         headings: {
@@ -155,7 +155,7 @@ export const shellFooter: FooterCatalog = {
     },
     de: {
         slogan:
-            'Modding auf das nächste Level bringen — Mods, Game-Assets und Server für alle.',
+            'Modding auf das nächste Level bringen, Mods, Game-Assets und Server für alle.',
         copyright:
             '© {year} The Modding Community, ein Handelsname der TekWorks LLC. Alle Rechte vorbehalten.',
         headings: {
@@ -194,9 +194,9 @@ export const shellFooter: FooterCatalog = {
     },
     ru: {
         slogan:
-            'Моддинг на новом уровне — моды, игровые ресурсы и серверы для всех.',
+            'Моддинг на новом уровне, моды, игровые ресурсы и серверы для всех.',
         copyright:
-            '© {year} The Modding Community — торговое наименование TekWorks LLC. Все права защищены.',
+            '© {year} The Modding Community, торговое наименование TekWorks LLC. Все права защищены.',
         headings: {
             explore: 'Обзор',
             community: 'Сообщество',
@@ -233,7 +233,7 @@ export const shellFooter: FooterCatalog = {
     },
     nl: {
         slogan:
-            'Modding naar een hoger niveau — mods, game assets en servers voor iedereen.',
+            'Modding naar een hoger niveau, mods, game assets en servers voor iedereen.',
         copyright:
             '© {year} The Modding Community, een handelsnaam van TekWorks LLC. Alle rechten voorbehouden.',
         headings: {
@@ -271,7 +271,7 @@ export const shellFooter: FooterCatalog = {
         },
     },
     ja: {
-        slogan: 'モッディングを次のレベルへ — MOD、ゲームアセット、サーバーをすべての人に。',
+        slogan: 'モッディングを次のレベルへ、MOD、ゲームアセット、サーバーをすべての人に。',
         copyright:
             '© {year} The Modding Community（TekWorks LLC の屋号）。無断転載を禁じます。',
         headings: {
@@ -309,7 +309,7 @@ export const shellFooter: FooterCatalog = {
         },
     },
     zh: {
-        slogan: '让模组创作更进一步——面向所有人的模组、游戏资源与服务器。',
+        slogan: '让模组创作更进一步，面向所有人的模组、游戏资源与服务器。',
         copyright:
             '© {year} The Modding Community，TekWorks LLC 的商号。保留所有权利。',
         headings: {
@@ -348,7 +348,7 @@ export const shellFooter: FooterCatalog = {
     },
     pt: {
         slogan:
-            'A levar o modding ao próximo nível — mods, recursos de jogo e servidores para todos.',
+            'A levar o modding ao próximo nível, mods, recursos de jogo e servidores para todos.',
         copyright:
             '© {year} The Modding Community, um nome comercial da TekWorks LLC. Todos os direitos reservados.',
         headings: {

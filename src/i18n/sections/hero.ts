@@ -7,173 +7,209 @@ const A = 'special hover:!text-special-1-light hover:duration-300'
 export const hero: SectionCatalog = {
     en: {
         paraHtml:
-            `A <span class="text-accent">welcoming</span> and <span class="text-accent">inclusive</span> space for modding and game development &mdash; browse <span class="text-accent">game assets</span> and <span class="text-accent">mods</span>, track <span class="text-accent">game</span> and <span class="text-accent">social servers</span>, and create your own <span class="text-accent">gaming</span> and <span class="text-accent">modding communities</span>.`,
-        card1Title: 'Who Are We?',
-        card1Html: `We're a <span class="special">modding</span> and <span class="special">game development</span> community building one platform for the things that usually live in a dozen different places. <a href="/assets" class="${A}">Assets</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">servers</a>, <a href="/communities" class="${A}">communities</a> and <a href="/collections" class="${A}">collections</a> are all live today, alongside our <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
-        card2Title: 'Built For Everyone',
-        card2Html: `Whether you ship a <span class="special">singleplayer</span> mod, maintain a <span class="special">multiplayer</span> server or are writing your very first script, you get the same <span class="special">tools</span> and <span class="special">insights</span>. No gatekeeping, no pay-to-be-seen, and a <span class="special">welcoming</span> place to ask questions.`,
+            'A place for modding and game development. Browse <span class="text-accent">game assets</span> and <span class="text-accent">mods</span>, check <span class="text-accent">game</span> and <span class="text-accent">social servers</span>, and start your own <span class="text-accent">communities</span>.',
+        card1Title: 'Who We Are',
+        card1Html:
+            `We're a <span class="special">modding</span> and <span class="special">game development</span> community. <a href="/assets" class="${A}">Assets</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">servers</a>, <a href="/communities" class="${A}">communities</a> and <a href="/collections" class="${A}">collections</a> are live, and we write about it on the <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
+        card2Title: 'Open To Everyone',
+        card2Html:
+            'Singleplayer mod, multiplayer server or your first script: you get the same site and the same <span class="special">tools</span>. No gatekeeping, no paying to be seen, and a place to ask questions.',
         card3Title: 'Open Source',
-        card3Html: `We build in the open. Our <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub organization</a> hosts the platform itself along with the tooling behind it, so you can read the code, <span class="special">report issues</span> and <span class="special">contribute</span> to anything you rely on.`,
+        card3Html:
+            `Our <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub organization</a> has the platform and the tools around it. Read the code, <span class="special">report issues</span> or send a fix.`,
         ghButton: 'GitHub Org',
         sourceButton: 'Source',
         title: 'A Modding & Game Dev Community',
         eyebrow: 'Open source · Community-run',
-        ctaExplore: 'Explore The Platform',
+        ctaExplore: 'Browse The Site',
         ctaDiscord: 'Join The Discord',
         tagline: 'We are creating our own gaming platform!',
-        shelfLabel: 'All in one place',
-        devWarningHtml: `We are currently under <span class="special">heavy development</span>. See what just shipped in the <a href="/changelog" class="${A}">changelog</a>, and what is coming next on the <a href="/roadmap" class="${A}">roadmap</a>.`,
+        shelfLabel: 'On the site',
+        devWarningHtml:
+            `The site is under <span class="special">heavy development</span>. See what just shipped in the <a href="/changelog" class="${A}">changelog</a> and what is next on the <a href="/roadmap" class="${A}">roadmap</a>.`,
     },
     es: {
         paraHtml:
-            `Un espacio <span class="text-accent">acogedor</span> e <span class="text-accent">inclusivo</span> para el modding y el desarrollo de juegos &mdash; explora <span class="text-accent">recursos de juegos</span> y <span class="text-accent">mods</span>, sigue <span class="text-accent">servidores de juego</span> y <span class="text-accent">sociales</span>, y crea tus propias <span class="text-accent">comunidades</span> de juego y de modding.`,
-        card1Title: '¿Quiénes Somos?',
-        card1Html: `Somos una comunidad de <span class="special">modding</span> y <span class="special">desarrollo de juegos</span> que construye una sola plataforma para las cosas que suelen estar repartidas en una docena de sitios distintos. Los <a href="/assets" class="${A}">recursos</a>, los <a href="/mods" class="${A}">mods</a>, los <a href="/servers" class="${A}">servidores</a>, las <a href="/communities" class="${A}">comunidades</a> y las <a href="/collections" class="${A}">colecciones</a> ya están disponibles, junto a nuestro <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
-        card2Title: 'Hecho Para Todos',
-        card2Html: `Ya sea que publiques un mod <span class="special">para un jugador</span>, mantengas un servidor <span class="special">multijugador</span> o estés escribiendo tu primer script, obtienes las mismas <span class="special">herramientas</span> y <span class="special">perspectivas</span>. Sin barreras, sin pagar para que te vean, y un lugar <span class="special">acogedor</span> para hacer preguntas.`,
+            'Un lugar para el modding y el desarrollo de juegos. Explora <span class="text-accent">recursos de juegos</span> y <span class="text-accent">mods</span>, consulta <span class="text-accent">servidores de juegos</span> y <span class="text-accent">sociales</span>, y crea tus propias <span class="text-accent">comunidades</span>.',
+        card1Title: 'Quiénes Somos',
+        card1Html:
+            `Somos una comunidad de <span class="special">modding</span> y <span class="special">desarrollo de juegos</span>. <a href="/assets" class="${A}">Recursos</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">servidores</a>, <a href="/communities" class="${A}">comunidades</a> y <a href="/collections" class="${A}">colecciones</a> ya están disponibles, y escribimos sobre ello en el <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
+        card2Title: 'Abierto A Todos',
+        card2Html:
+            'Un mod para un jugador, un servidor multijugador o tu primer script: tienes el mismo sitio y las mismas <span class="special">herramientas</span>. Sin elitismo, sin pagar por ser visto y con un lugar donde hacer preguntas.',
         card3Title: 'Código Abierto',
-        card3Html: `Construimos de forma abierta. Nuestra <a href="https://github.com/modcommunity" target="_blank" class="${A}">organización de GitHub</a> aloja la propia plataforma junto con las herramientas que la respaldan, para que puedas leer el código, <span class="special">reportar problemas</span> y <span class="special">contribuir</span> a todo aquello de lo que dependes.`,
+        card3Html:
+            `Nuestra <a href="https://github.com/modcommunity" target="_blank" class="${A}">organización de GitHub</a> contiene la plataforma y las herramientas que la rodean. Lee el código, <span class="special">informa de errores</span> o envía una corrección.`,
         ghButton: 'GitHub Org',
         sourceButton: 'Código fuente',
         title: 'Una Comunidad de Modding y Desarrollo de Juegos',
         eyebrow: 'Código abierto · Gestionado por la comunidad',
-        ctaExplore: 'Explora La Plataforma',
+        ctaExplore: 'Explorar El Sitio',
         ctaDiscord: 'Únete Al Discord',
         tagline: '¡Estamos creando nuestra propia plataforma de juegos!',
-        shelfLabel: 'Todo en un solo lugar',
-        devWarningHtml: `Actualmente estamos en <span class="special">pleno desarrollo</span>. Mira lo que acaba de salir en el <a href="/changelog" class="${A}">registro de cambios</a> y lo que viene después en la <a href="/roadmap" class="${A}">hoja de ruta</a>.`,
+        shelfLabel: 'En el sitio',
+        devWarningHtml:
+            `El sitio está en <span class="special">pleno desarrollo</span>. Consulta lo que acaba de salir en el <a href="/changelog" class="${A}">registro de cambios</a> y lo que viene en la <a href="/roadmap" class="${A}">hoja de ruta</a>.`,
     },
     fr: {
         paraHtml:
-            `Un espace <span class="text-accent">accueillant</span> et <span class="text-accent">inclusif</span> pour le modding et le développement de jeux &mdash; parcourez des <span class="text-accent">ressources de jeu</span> et des <span class="text-accent">mods</span>, suivez des <span class="text-accent">serveurs de jeu</span> et <span class="text-accent">sociaux</span>, et créez vos propres <span class="text-accent">communautés</span> de jeu et de modding.`,
-        card1Title: 'Qui Sommes-nous ?',
-        card1Html: `Nous sommes une communauté de <span class="special">modding</span> et de <span class="special">développement de jeux</span> qui construit une seule plateforme pour les choses habituellement dispersées dans une dizaine d'endroits différents. Les <a href="/assets" class="${A}">ressources</a>, les <a href="/mods" class="${A}">mods</a>, les <a href="/servers" class="${A}">serveurs</a>, les <a href="/communities" class="${A}">communautés</a> et les <a href="/collections" class="${A}">collections</a> sont déjà en ligne, aux côtés de notre <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
-        card2Title: 'Conçu Pour Tous',
-        card2Html: `Que vous publiiez un mod <span class="special">solo</span>, gériez un serveur <span class="special">multijoueur</span> ou écriviez votre tout premier script, vous bénéficiez des mêmes <span class="special">outils</span> et des mêmes <span class="special">analyses</span>. Pas de favoritisme, pas de visibilité payante, et un lieu <span class="special">accueillant</span> pour poser vos questions.`,
+            'Un lieu pour le modding et le développement de jeux. Parcourez des <span class="text-accent">ressources de jeu</span> et des <span class="text-accent">mods</span>, consultez des <span class="text-accent">serveurs de jeu</span> et <span class="text-accent">sociaux</span>, et créez vos propres <span class="text-accent">communautés</span>.',
+        card1Title: 'Qui Sommes-Nous ?',
+        card1Html:
+            `Nous sommes une communauté de <span class="special">modding</span> et de <span class="special">développement de jeux</span>. <a href="/assets" class="${A}">Ressources</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">serveurs</a>, <a href="/communities" class="${A}">communautés</a> et <a href="/collections" class="${A}">collections</a> sont en ligne, et nous en parlons sur le <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
+        card2Title: 'Ouvert À Tous',
+        card2Html:
+            `Un mod solo, un serveur multijoueur ou votre premier script : vous avez le même site et les mêmes <span class="special">outils</span>. Pas d'élitisme, pas de paiement pour être vu, et un endroit pour poser vos questions.`,
         card3Title: 'Open Source',
-        card3Html: `Nous construisons au grand jour. Notre <a href="https://github.com/modcommunity" target="_blank" class="${A}">organisation GitHub</a> héberge la plateforme elle-même ainsi que les outils qui la sous-tendent, pour que vous puissiez lire le code, <span class="special">signaler des problèmes</span> et <span class="special">contribuer</span> à tout ce dont vous dépendez.`,
+        card3Html:
+            `Notre <a href="https://github.com/modcommunity" target="_blank" class="${A}">organisation GitHub</a> héberge la plateforme et les outils qui l'entourent. Lisez le code, <span class="special">signalez des problèmes</span> ou proposez un correctif.`,
         ghButton: 'Org GitHub',
         sourceButton: 'Source',
         title: 'Une Communauté de Modding et de Développement de Jeux',
         eyebrow: 'Open source · Gérée par la communauté',
-        ctaExplore: 'Explorer La Plateforme',
+        ctaExplore: 'Parcourir Le Site',
         ctaDiscord: 'Rejoindre Le Discord',
         tagline: 'Nous créons notre propre plateforme de jeu !',
-        shelfLabel: 'Tout au même endroit',
-        devWarningHtml: `Nous sommes actuellement en <span class="special">plein développement</span>. Découvrez ce qui vient de sortir dans le <a href="/changelog" class="${A}">journal des modifications</a>, et la suite sur la <a href="/roadmap" class="${A}">feuille de route</a>.`,
+        shelfLabel: 'Sur le site',
+        devWarningHtml:
+            `Le site est en <span class="special">plein développement</span>. Voyez ce qui vient de sortir dans le <a href="/changelog" class="${A}">journal des modifications</a> et la suite sur la <a href="/roadmap" class="${A}">feuille de route</a>.`,
     },
     de: {
         paraHtml:
-            `Ein <span class="text-accent">einladender</span> und <span class="text-accent">inklusiver</span> Raum für Modding und Spieleentwicklung &mdash; durchstöbere <span class="text-accent">Spiel-Assets</span> und <span class="text-accent">Mods</span>, behalte <span class="text-accent">Spiel-</span> und <span class="text-accent">Social-Server</span> im Blick und gründe deine eigenen <span class="text-accent">Gaming-</span> und <span class="text-accent">Modding-Communitys</span>.`,
-        card1Title: 'Wer Sind Wir?',
-        card1Html: `Wir sind eine <span class="special">Modding</span>- und <span class="special">Spieleentwicklungs</span>-Community, die eine einzige Plattform für die Dinge baut, die sonst an einem Dutzend verschiedener Orte liegen. <a href="/assets" class="${A}">Ressourcen</a>, <a href="/mods" class="${A}">Mods</a>, <a href="/servers" class="${A}">Server</a>, <a href="/communities" class="${A}">Communitys</a> und <a href="/collections" class="${A}">Sammlungen</a> sind bereits live &mdash; zusammen mit unserem <a href="https://moddingcommunity.com/blog" class="${A}">Blog</a>.`,
-        card2Title: 'Für Alle Gemacht',
-        card2Html: `Ob du einen <span class="special">Singleplayer</span>-Mod veröffentlichst, einen <span class="special">Multiplayer</span>-Server betreibst oder dein allererstes Skript schreibst &mdash; du bekommst die gleichen <span class="special">Werkzeuge</span> und <span class="special">Einblicke</span>. Kein Gatekeeping, kein Bezahlen für Sichtbarkeit und ein <span class="special">einladender</span> Ort, um Fragen zu stellen.`,
+            'Ein Ort für Modding und Spieleentwicklung. Durchstöbere <span class="text-accent">Spiel-Assets</span> und <span class="text-accent">Mods</span>, sieh dir <span class="text-accent">Spiel-</span> und <span class="text-accent">Social-Server</span> an und gründe deine eigenen <span class="text-accent">Communitys</span>.',
+        card1Title: 'Wer Wir Sind',
+        card1Html:
+            `Wir sind eine <span class="special">Modding</span>- und <span class="special">Spieleentwicklungs</span>-Community. <a href="/assets" class="${A}">Ressourcen</a>, <a href="/mods" class="${A}">Mods</a>, <a href="/servers" class="${A}">Server</a>, <a href="/communities" class="${A}">Communitys</a> und <a href="/collections" class="${A}">Sammlungen</a> sind live, und im <a href="https://moddingcommunity.com/blog" class="${A}">Blog</a> schreiben wir darüber.`,
+        card2Title: 'Offen Für Alle',
+        card2Html:
+            'Singleplayer-Mod, Multiplayer-Server oder dein erstes Skript: Du bekommst dieselbe Seite und dieselben <span class="special">Werkzeuge</span>. Kein Gatekeeping, kein Bezahlen für Sichtbarkeit und ein Ort für deine Fragen.',
         card3Title: 'Open Source',
-        card3Html: `Wir entwickeln offen. Unsere <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub-Organisation</a> beherbergt die Plattform selbst sowie die dahinterstehenden Werkzeuge, sodass du den Code lesen, <span class="special">Probleme melden</span> und zu allem <span class="special">beitragen</span> kannst, worauf du dich verlässt.`,
+        card3Html:
+            `Unsere <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub-Organisation</a> enthält die Plattform und die Werkzeuge drumherum. Lies den Code, <span class="special">melde Probleme</span> oder schick einen Fix.`,
         ghButton: 'GitHub-Org',
         sourceButton: 'Quellcode',
         title: 'Eine Modding- & Spieleentwicklungs-Community',
         eyebrow: 'Open Source · Von der Community betrieben',
-        ctaExplore: 'Plattform Entdecken',
+        ctaExplore: 'Seite Durchstöbern',
         ctaDiscord: 'Discord Beitreten',
         tagline: 'Wir bauen unsere eigene Gaming-Plattform!',
-        shelfLabel: 'Alles an einem Ort',
-        devWarningHtml: `Wir befinden uns derzeit in <span class="special">intensiver Entwicklung</span>. Im <a href="/changelog" class="${A}">Changelog</a> siehst du, was gerade erschienen ist &mdash; auf der <a href="/roadmap" class="${A}">Roadmap</a>, was als Nächstes kommt.`,
+        shelfLabel: 'Auf der Seite',
+        devWarningHtml:
+            `Die Seite befindet sich in <span class="special">reger Entwicklung</span>. Was gerade erschienen ist, steht im <a href="/changelog" class="${A}">Änderungsprotokoll</a>, was als Nächstes kommt, auf der <a href="/roadmap" class="${A}">Roadmap</a>.`,
     },
     ru: {
         paraHtml:
-            `Дружелюбное и <span class="text-accent">инклюзивное</span> пространство для моддинга и разработки игр &mdash; просматривайте <span class="text-accent">игровые ресурсы</span> и <span class="text-accent">моды</span>, следите за <span class="text-accent">игровыми</span> и <span class="text-accent">социальными серверами</span> и создавайте собственные <span class="text-accent">игровые и моддинг-сообщества</span>.`,
-        card1Title: 'Кто Мы?',
-        card1Html: `Мы — сообщество <span class="special">моддинга</span> и <span class="special">разработки игр</span>, создающее единую платформу для того, что обычно разбросано по десятку разных мест. <a href="/assets" class="${A}">Ресурсы</a>, <a href="/mods" class="${A}">моды</a>, <a href="/servers" class="${A}">серверы</a>, <a href="/communities" class="${A}">сообщества</a> и <a href="/collections" class="${A}">коллекции</a> уже доступны — вместе с нашими <a href="https://moddingcommunity.com/blog" class="${A}">блогом</a>.`,
-        card2Title: 'Создано Для Всех',
-        card2Html: `Публикуете ли вы <span class="special">одиночный</span> мод, поддерживаете <span class="special">многопользовательский</span> сервер или пишете свой самый первый скрипт — вы получаете одни и те же <span class="special">инструменты</span> и <span class="special">аналитику</span>. Никакого гейткипинга, никакой платы за видимость и <span class="special">приветливое</span> место, где можно задать вопрос.`,
+            'Место для моддинга и разработки игр. Просматривайте <span class="text-accent">игровые ассеты</span> и <span class="text-accent">моды</span>, смотрите <span class="text-accent">игровые</span> и <span class="text-accent">социальные серверы</span> и создавайте собственные <span class="text-accent">сообщества</span>.',
+        card1Title: 'Кто Мы',
+        card1Html:
+            `Мы сообщество <span class="special">моддинга</span> и <span class="special">разработки игр</span>. <a href="/assets" class="${A}">Ассеты</a>, <a href="/mods" class="${A}">моды</a>, <a href="/servers" class="${A}">серверы</a>, <a href="/communities" class="${A}">сообщества</a> и <a href="/collections" class="${A}">коллекции</a> уже работают, а о новостях мы пишем в <a href="https://moddingcommunity.com/blog" class="${A}">блоге</a>.`,
+        card2Title: 'Открыто Для Всех',
+        card2Html:
+            'Мод для одиночной игры, мультиплеерный сервер или ваш первый скрипт: сайт и <span class="special">инструменты</span> у всех одни и те же. Без снобизма, без платы за видимость, и есть где задать вопрос.',
         card3Title: 'Открытый Исходный Код',
-        card3Html: `Мы разрабатываем открыто. Наша <a href="https://github.com/modcommunity" target="_blank" class="${A}">организация на GitHub</a> содержит саму платформу вместе с инструментами за ней, так что вы можете читать код, <span class="special">сообщать о проблемах</span> и <span class="special">вносить вклад</span> во всё, на что полагаетесь.`,
+        card3Html:
+            `В нашей <a href="https://github.com/modcommunity" target="_blank" class="${A}">организации на GitHub</a> лежит платформа и инструменты вокруг неё. Читайте код, <span class="special">сообщайте о проблемах</span> или присылайте исправления.`,
         ghButton: 'GitHub Org',
         sourceButton: 'Исходный код',
         title: 'Сообщество Моддинга и Разработки Игр',
         eyebrow: 'Открытый код · Сообщество',
-        ctaExplore: 'Исследовать Платформу',
+        ctaExplore: 'Открыть Сайт',
         ctaDiscord: 'Присоединиться К Discord',
         tagline: 'Мы создаём собственную игровую платформу!',
-        shelfLabel: 'Всё в одном месте',
-        devWarningHtml: `Сейчас мы находимся в стадии <span class="special">активной разработки</span>. Что уже вышло &mdash; в <a href="/changelog" class="${A}">списке изменений</a>, а что будет дальше &mdash; в <a href="/roadmap" class="${A}">дорожной карте</a>.`,
+        shelfLabel: 'На сайте',
+        devWarningHtml:
+            `Сайт находится в стадии <span class="special">активной разработки</span>. Что уже вышло, смотрите в <a href="/changelog" class="${A}">списке изменений</a>, а что дальше, в <a href="/roadmap" class="${A}">дорожной карте</a>.`,
     },
     nl: {
         paraHtml:
-            `Een <span class="text-accent">gastvrije</span> en <span class="text-accent">inclusieve</span> plek voor modding en gameontwikkeling &mdash; blader door <span class="text-accent">game-assets</span> en <span class="text-accent">mods</span>, volg <span class="text-accent">game-</span> en <span class="text-accent">socialeservers</span>, en start je eigen <span class="text-accent">gaming-</span> en <span class="text-accent">moddingcommunity</span>.`,
+            'Een plek voor modding en gameontwikkeling. Blader door <span class="text-accent">game-assets</span> en <span class="text-accent">mods</span>, bekijk <span class="text-accent">game-</span> en <span class="text-accent">socialservers</span> en start je eigen <span class="text-accent">communities</span>.',
         card1Title: 'Wie Zijn Wij?',
-        card1Html: `We zijn een <span class="special">modding</span>- en <span class="special">game-ontwikkelings</span>community die één platform bouwt voor de dingen die normaal op een dozijn verschillende plekken staan. <a href="/assets" class="${A}">Assets</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">servers</a>, <a href="/communities" class="${A}">communities</a> en <a href="/collections" class="${A}">collecties</a> zijn er nu al, naast ons <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
-        card2Title: 'Gemaakt Voor Iedereen',
-        card2Html: `Of je nu een <span class="special">singleplayer</span>-mod uitbrengt, een <span class="special">multiplayer</span>-server beheert of je allereerste script schrijft, je krijgt dezelfde <span class="special">tools</span> en <span class="special">inzichten</span>. Geen gatekeeping, geen betalen om gezien te worden, en een <span class="special">gastvrije</span> plek om vragen te stellen.`,
+        card1Html:
+            `Wij zijn een community voor <span class="special">modding</span> en <span class="special">gameontwikkeling</span>. <a href="/assets" class="${A}">Assets</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">servers</a>, <a href="/communities" class="${A}">communities</a> en <a href="/collections" class="${A}">collecties</a> zijn live, en op de <a href="https://moddingcommunity.com/blog" class="${A}">blog</a> schrijven we erover.`,
+        card2Title: 'Open Voor Iedereen',
+        card2Html:
+            'Singleplayer-mod, multiplayerserver of je eerste script: je krijgt dezelfde site en dezelfde <span class="special">tools</span>. Geen gatekeeping, niet betalen om gezien te worden en een plek om vragen te stellen.',
         card3Title: 'Open Source',
-        card3Html: `We bouwen in de openbaarheid. Onze <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub-organisatie</a> host het platform zelf samen met de tooling erachter, zodat je de code kunt lezen, <span class="special">problemen kunt melden</span> en kunt <span class="special">bijdragen</span> aan alles waarop je vertrouwt.`,
+        card3Html:
+            `Onze <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub-organisatie</a> bevat het platform en de tools eromheen. Lees de code, <span class="special">meld problemen</span> of stuur een fix.`,
         ghButton: 'GitHub-org',
         sourceButton: 'Broncode',
         title: 'Een Modding- & Game Dev-community',
         eyebrow: 'Open source · Door de community beheerd',
-        ctaExplore: 'Ontdek Het Platform',
+        ctaExplore: 'Bekijk De Site',
         ctaDiscord: 'Word Lid Van Discord',
         tagline: 'We bouwen ons eigen gamingplatform!',
-        shelfLabel: 'Alles op één plek',
-        devWarningHtml: `We zijn momenteel volop in <span class="special">ontwikkeling</span>. Bekijk in de <a href="/changelog" class="${A}">changelog</a> wat er net is uitgebracht, en op de <a href="/roadmap" class="${A}">roadmap</a> wat er hierna komt.`,
+        shelfLabel: 'Op de site',
+        devWarningHtml:
+            `De site is volop in <span class="special">ontwikkeling</span>. Zie wat net is uitgebracht in het <a href="/changelog" class="${A}">changelog</a> en wat er hierna komt op de <a href="/roadmap" class="${A}">roadmap</a>.`,
     },
     ja: {
         paraHtml:
-            `<span class="text-accent">居心地がよく</span>、<span class="text-accent">誰でも歓迎</span>の、Modding とゲーム開発のための場所です。<span class="text-accent">ゲームアセット</span>や<span class="text-accent">Mod</span>を探し、<span class="text-accent">ゲームサーバー</span>や<span class="text-accent">ソーシャルサーバー</span>を追跡し、自分だけの<span class="text-accent">ゲーム・Modding コミュニティ</span>を作れます。`,
+            'MODとゲーム開発のための場所です。<span class="text-accent">ゲームアセット</span>や<span class="text-accent">MOD</span>を探し、<span class="text-accent">ゲームサーバー</span>や<span class="text-accent">ソーシャルサーバー</span>を確認し、自分の<span class="text-accent">コミュニティ</span>を作れます。',
         card1Title: '私たちについて',
-        card1Html: `私たちは<span class="special">モッディング</span>と<span class="special">ゲーム開発</span>のコミュニティで、普段は十数か所に散らばっているものを一つのプラットフォームにまとめています。<a href="/assets" class="${A}">アセット</a>、<a href="/mods" class="${A}">Mod</a>、<a href="/servers" class="${A}">サーバー</a>、<a href="/communities" class="${A}">コミュニティ</a>、<a href="/collections" class="${A}">コレクション</a>はすべて公開済みで、<a href="https://moddingcommunity.com/blog" class="${A}">ブログ</a>もあります。`,
-        card2Title: 'みんなのために',
-        card2Html: `<span class="special">シングルプレイ</span>の Mod を公開する人も、<span class="special">マルチプレイ</span>のサーバーを運営する人も、初めてのスクリプトを書く人も、同じ<span class="special">ツール</span>と<span class="special">インサイト</span>が手に入ります。門番も、見てもらうための課金もなく、質問しやすい<span class="special">居心地のよい</span>場所です。`,
+        card1Html:
+            `<span class="special">MOD</span>と<span class="special">ゲーム開発</span>のコミュニティです。<a href="/assets" class="${A}">アセット</a>、<a href="/mods" class="${A}">MOD</a>、<a href="/servers" class="${A}">サーバー</a>、<a href="/communities" class="${A}">コミュニティ</a>、<a href="/collections" class="${A}">コレクション</a>はすでに公開中で、<a href="https://moddingcommunity.com/blog" class="${A}">ブログ</a>でも情報を発信しています。`,
+        card2Title: '誰でも歓迎',
+        card2Html:
+            'シングルプレイのMOD、マルチプレイのサーバー、初めてのスクリプト。どれでも同じサイトと同じ<span class="special">ツール</span>を使えます。排他的な空気も、掲載のための課金もなく、質問しやすい場所です。',
         card3Title: 'オープンソース',
-        card3Html: `私たちはオープンに開発しています。<a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub 組織</a>にはプラットフォーム本体とそれを支えるツールがあり、コードを読み、<span class="special">問題を報告し</span>、頼りにしているものすべてに<span class="special">貢献</span>できます。`,
+        card3Html:
+            `GitHubの<a href="https://github.com/modcommunity" target="_blank" class="${A}">組織アカウント</a>に、プラットフォーム本体と周辺ツールを置いています。コードを読み、<span class="special">問題を報告</span>し、修正を送ることもできます。`,
         ghButton: 'GitHub 組織',
         sourceButton: 'ソース',
         title: 'モッディング＆ゲーム開発のコミュニティ',
         eyebrow: 'オープンソース · コミュニティ運営',
-        ctaExplore: 'プラットフォームを見る',
+        ctaExplore: 'サイトを見る',
         ctaDiscord: 'Discord に参加',
         tagline: '私たち自身のゲーミングプラットフォームを作っています！',
-        shelfLabel: 'すべてがひとつに',
-        devWarningHtml: `現在、<span class="special">鋭意開発中</span>です。リリースされたばかりの内容は<a href="/changelog" class="${A}">変更履歴</a>で、次に来るものは<a href="/roadmap" class="${A}">ロードマップ</a>でご確認ください。`,
+        shelfLabel: 'サイト内',
+        devWarningHtml:
+            `サイトは<span class="special">開発の真っ最中</span>です。公開されたばかりの内容は<a href="/changelog" class="${A}">変更履歴</a>で、次の予定は<a href="/roadmap" class="${A}">ロードマップ</a>でご確認ください。`,
     },
     zh: {
         paraHtml:
-            `一个<span class="text-accent">友好</span>且<span class="text-accent">包容</span>的模组与游戏开发空间 &mdash; 浏览<span class="text-accent">游戏素材</span>和<span class="text-accent">模组</span>，追踪<span class="text-accent">游戏服务器</span>与<span class="text-accent">社交服务器</span>，并创建属于你自己的<span class="text-accent">游戏与模组社区</span>。`,
-        card1Title: '我们是谁？',
-        card1Html: `我们是一个<span class="special">模组制作</span>与<span class="special">游戏开发</span>社区，正在把通常分散在十几个地方的东西整合到一个平台上。<a href="/assets" class="${A}">资源</a>、<a href="/mods" class="${A}">模组</a>、<a href="/servers" class="${A}">服务器</a>、<a href="/communities" class="${A}">社区</a>和<a href="/collections" class="${A}">合集</a>现已全部上线，还有我们的<a href="https://moddingcommunity.com/blog" class="${A}">博客</a>。`,
-        card2Title: '为每个人打造',
-        card2Html: `无论你是发布<span class="special">单人</span>模组、维护<span class="special">多人</span>服务器，还是在编写你的第一个脚本，你都能获得相同的<span class="special">工具</span>和<span class="special">洞察</span>。没有门槛，没有付费曝光，还有一个<span class="special">友好</span>的提问之地。`,
+            '一个做模组和游戏开发的地方。可以浏览<span class="text-accent">游戏资源</span>和<span class="text-accent">模组</span>，查看<span class="text-accent">游戏服务器</span>和<span class="text-accent">社交服务器</span>，也可以创建自己的<span class="text-accent">社区</span>。',
+        card1Title: '我们是谁',
+        card1Html:
+            `我们是一个<span class="special">模组</span>与<span class="special">游戏开发</span>社区。<a href="/assets" class="${A}">资源</a>、<a href="/mods" class="${A}">模组</a>、<a href="/servers" class="${A}">服务器</a>、<a href="/communities" class="${A}">社区</a>和<a href="/collections" class="${A}">合集</a>均已上线，我们也在<a href="https://moddingcommunity.com/blog" class="${A}">博客</a>里写这些事。`,
+        card2Title: '对所有人开放',
+        card2Html:
+            '单机模组、多人服务器或你的第一个脚本：大家用的是同一个网站和同样的<span class="special">工具</span>。没有门槛，不用付费才能被看到，有问题也有地方问。',
         card3Title: '开源',
-        card3Html: `我们公开地进行开发。我们的<a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub 组织</a>托管着平台本身以及背后的工具，因此你可以阅读代码、<span class="special">报告问题</span>，并为你所依赖的一切做出<span class="special">贡献</span>。`,
+        card3Html:
+            `我们的 <a href="https://github.com/modcommunity" target="_blank" class="${A}">GitHub 组织</a> 里有平台本身和周边工具。你可以读代码、<span class="special">报告问题</span>，也可以提交修复。`,
         ghButton: 'GitHub 组织',
         sourceButton: '源代码',
         title: '一个模组制作与游戏开发社区',
         eyebrow: '开源 · 由社区运营',
-        ctaExplore: '探索平台',
+        ctaExplore: '浏览网站',
         ctaDiscord: '加入 Discord',
         tagline: '我们正在打造属于自己的游戏平台！',
-        shelfLabel: '一站式聚合',
-        devWarningHtml: `我们目前正在<span class="special">紧张开发中</span>。在<a href="/changelog" class="${A}">更新日志</a>中查看刚刚发布的内容，在<a href="/roadmap" class="${A}">路线图</a>中了解接下来的计划。`,
+        shelfLabel: '站内',
+        devWarningHtml:
+            `网站正在<span class="special">密集开发</span>中。刚发布的内容见<a href="/changelog" class="${A}">更新日志</a>，接下来的计划见<a href="/roadmap" class="${A}">路线图</a>。`,
     },
     pt: {
         paraHtml:
-            `Um espaço <span class="text-accent">acolhedor</span> e <span class="text-accent">inclusivo</span> para modding e desenvolvimento de jogos &mdash; explore <span class="text-accent">recursos de jogos</span> e <span class="text-accent">mods</span>, acompanhe <span class="text-accent">servidores de jogo</span> e <span class="text-accent">sociais</span>, e crie suas próprias <span class="text-accent">comunidades</span> de jogos e de modding.`,
-        card1Title: 'Quem Somos?',
-        card1Html: `Somos uma comunidade de <span class="special">modding</span> e <span class="special">desenvolvimento de jogos</span> construindo uma única plataforma para as coisas que normalmente vivem em uma dúzia de lugares diferentes. Os <a href="/assets" class="${A}">recursos</a>, os <a href="/mods" class="${A}">mods</a>, os <a href="/servers" class="${A}">servidores</a>, as <a href="/communities" class="${A}">comunidades</a> e as <a href="/collections" class="${A}">coleções</a> já estão no ar, ao lado do nosso <a href="https://moddingcommunity.com/blog" class="${A}">blog</a>.`,
-        card2Title: 'Feito Para Todos',
-        card2Html: `Seja publicando um mod <span class="special">para um jogador</span>, mantendo um servidor <span class="special">multijogador</span> ou escrevendo seu primeiro script, você recebe as mesmas <span class="special">ferramentas</span> e <span class="special">informações</span>. Sem barreiras, sem pagar para ser visto, e um lugar <span class="special">acolhedor</span> para fazer perguntas.`,
+            'Um lugar para modding e desenvolvimento de jogos. Explore <span class="text-accent">recursos de jogos</span> e <span class="text-accent">mods</span>, veja <span class="text-accent">servidores de jogos</span> e <span class="text-accent">sociais</span> e crie as suas próprias <span class="text-accent">comunidades</span>.',
+        card1Title: 'Quem Somos',
+        card1Html:
+            `Somos uma comunidade de <span class="special">modding</span> e <span class="special">desenvolvimento de jogos</span>. <a href="/assets" class="${A}">Recursos</a>, <a href="/mods" class="${A}">mods</a>, <a href="/servers" class="${A}">servidores</a>, <a href="/communities" class="${A}">comunidades</a> e <a href="/collections" class="${A}">coleções</a> já estão no ar, e escrevemos sobre isso no <a href="https://moddingcommunity.com/blog" class="${A}">blogue</a>.`,
+        card2Title: 'Aberto A Todos',
+        card2Html:
+            'Um mod single-player, um servidor multijogador ou o seu primeiro script: tem o mesmo site e as mesmas <span class="special">ferramentas</span>. Sem elitismo, sem pagar para ser visto e com um lugar para fazer perguntas.',
         card3Title: 'Código Aberto',
-        card3Html: `Construímos de forma aberta. Nossa <a href="https://github.com/modcommunity" target="_blank" class="${A}">organização no GitHub</a> hospeda a própria plataforma junto com as ferramentas por trás dela, para que você possa ler o código, <span class="special">relatar problemas</span> e <span class="special">contribuir</span> com tudo aquilo de que depende.`,
+        card3Html:
+            `A nossa <a href="https://github.com/modcommunity" target="_blank" class="${A}">organização no GitHub</a> tem a plataforma e as ferramentas à volta dela. Leia o código, <span class="special">reporte problemas</span> ou envie uma correção.`,
         ghButton: 'GitHub Org',
         sourceButton: 'Código-fonte',
         title: 'Uma Comunidade de Modding e Desenvolvimento de Jogos',
         eyebrow: 'Código aberto · Gerido pela comunidade',
-        ctaExplore: 'Explorar A Plataforma',
+        ctaExplore: 'Explorar O Site',
         ctaDiscord: 'Entrar No Discord',
         tagline: 'Estamos criando a nossa própria plataforma de jogos!',
-        shelfLabel: 'Tudo num só lugar',
-        devWarningHtml: `Estamos atualmente em <span class="special">intenso desenvolvimento</span>. Veja o que acabou de sair no <a href="/changelog" class="${A}">changelog</a> e o que vem a seguir no <a href="/roadmap" class="${A}">roadmap</a>.`,
+        shelfLabel: 'No site',
+        devWarningHtml:
+            `O site está em <span class="special">pleno desenvolvimento</span>. Veja o que acabou de sair no <a href="/changelog" class="${A}">registo de alterações</a> e o que vem a seguir no <a href="/roadmap" class="${A}">roteiro</a>.`,
     },
 }

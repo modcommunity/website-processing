@@ -7,200 +7,252 @@ const A = 'special hover:!text-special-1-light hover:duration-300'
 export const mods: SectionCatalog = {
     en: {
         eyebrow: 'Mods',
-        titleHtml: 'A Full-Featured <span class="special">Mod Workshop</span>',
+        titleHtml: 'Publish And Version Your <span class="special">Mods</span>',
         introHtml:
-            'Mods have a home here where creators stay in control &mdash; a polished upload experience, rich mod pages, and releases you can cut by hand or automate from your own <span class="special">CI/CD</span> pipeline. Here\'s what you get.',
+            'Upload a mod, write its page and post each build as a release. Cut releases by hand or from your own <span class="special">CI/CD</span> pipeline.',
         c1t: 'Browse & Search',
-        c1b: '<span class="special">Browse</span> and <span class="special">search</span> mods uploaded by the community across every supported game.',
-        c2t: 'Secure Uploads & Downloads',
-        c2b: 'Securely <span class="special">upload</span> your own mods and <span class="special">download</span> others\', with unique download tracking built in.',
+        c1b:
+            '<span class="special">Browse</span> and <span class="special">search</span> community mods, game by game.',
+        c2t: 'Uploads & Downloads',
+        c2b:
+            `<span class="special">Upload</span> your own mods and <span class="special">download</span> other people's. Unique downloads are counted.`,
         c3t: 'Versioned Releases',
-        c3b: 'Ship <span class="special">versioned releases</span> with rich changelogs and attached mod files for every build &mdash; by hand, or straight from <span class="special">CI/CD</span> via the developer API.',
+        c3b:
+            'Each build is a <span class="special">versioned release</span> with a changelog and its mod files. Post it by hand, or from <span class="special">CI/CD</span> through the developer API.',
         c4t: 'Screenshots & Videos',
-        c4b: 'Add <span class="special">images and videos</span> so players know exactly what they\'re getting before they install.',
+        c4b:
+            'Add <span class="special">images and videos</span> so players can see the mod before they install it.',
         c5t: 'Licenses & Install Guides',
-        c5b: 'Pick a <span class="special">license</span> and write clear <span class="special">install instructions</span> right on the mod page.',
+        c5b:
+            'Pick a <span class="special">license</span> and write <span class="special">install instructions</span> on the mod page.',
         c6t: 'Dependencies',
-        c6b: 'Link required mods and assets as <span class="special">dependencies</span> so nothing is missing.',
+        c6b: 'List the mods and assets yours needs as <span class="special">dependencies</span>.',
         highlightTitle: 'Mod Manager',
         highlightBadge: 'Planned',
-        highlightHtml: `We are in the process of creating an official and <a href="https://github.com/modcommunity/tmc-app" class="${A}">open-source</a> app that will include a mod launcher. This mod launcher will allow you to easily install mods with one click along with manage and update them seamlessly.`,
+        highlightHtml:
+            `We are building an official, <a href="https://github.com/modcommunity/tmc-app" class="${A}">open-source</a> app with a mod launcher: install mods in one click, then manage and update them from the same place.`,
         button: 'Explore Mods',
     },
     es: {
         eyebrow: 'Mods',
-        titleHtml: 'Un <span class="special">Taller de Mods</span> Completo',
+        titleHtml: 'Publica Y Versiona Tus <span class="special">Mods</span>',
         introHtml:
-            'Los mods tienen aquí un hogar donde los creadores mantienen el control &mdash; una experiencia de subida pulida, páginas de mod ricas y lanzamientos que puedes crear a mano o automatizar desde tu propia canalización <span class="special">CI/CD</span>. Esto es lo que obtienes.',
+            'Sube un mod, escribe su página y publica cada compilación como una versión. Puedes hacerlo a mano o desde tu propio pipeline de <span class="special">CI/CD</span>.',
         c1t: 'Explorar y Buscar',
-        c1b: '<span class="special">Explora</span> y <span class="special">busca</span> mods subidos por la comunidad en todos los juegos compatibles.',
-        c2t: 'Subidas y Descargas Seguras',
-        c2b: 'Sube de forma segura tus propios mods con <span class="special">subida</span> y <span class="special">descarga</span> los de otros, con seguimiento único de descargas integrado.',
+        c1b:
+            '<span class="special">Explora</span> y <span class="special">busca</span> mods de la comunidad, juego por juego.',
+        c2t: 'Subidas Y Descargas',
+        c2b:
+            '<span class="special">Sube</span> tus propios mods y <span class="special">descarga</span> los de otros. Se cuentan las descargas únicas.',
         c3t: 'Lanzamientos Versionados',
-        c3b: 'Publica <span class="special">lanzamientos versionados</span> con registros de cambios detallados y archivos de mod adjuntos para cada compilación &mdash; a mano o directamente desde <span class="special">CI/CD</span> mediante la API para desarrolladores.',
+        c3b:
+            'Cada compilación es una <span class="special">versión</span> con su registro de cambios y sus archivos. Publícala a mano o desde <span class="special">CI/CD</span> con la API para desarrolladores.',
         c4t: 'Capturas y Vídeos',
-        c4b: 'Añade <span class="special">imágenes y vídeos</span> para que los jugadores sepan exactamente qué obtienen antes de instalar.',
+        c4b:
+            'Añade <span class="special">imágenes y vídeos</span> para que los jugadores vean el mod antes de instalarlo.',
         c5t: 'Licencias y Guías de Instalación',
-        c5b: 'Elige una <span class="special">licencia</span> y escribe <span class="special">instrucciones de instalación</span> claras directamente en la página del mod.',
+        c5b:
+            'Elige una <span class="special">licencia</span> y escribe las <span class="special">instrucciones de instalación</span> en la página del mod.',
         c6t: 'Dependencias',
-        c6b: 'Enlaza los mods y recursos necesarios como <span class="special">dependencias</span> para que no falte nada.',
+        c6b:
+            'Indica los mods y recursos que necesita el tuyo como <span class="special">dependencias</span>.',
         highlightTitle: 'Gestor de Mods',
         highlightBadge: 'Planeado',
-        highlightHtml: `Estamos en proceso de crear una aplicación oficial y de <a href="https://github.com/modcommunity/tmc-app" class="${A}">código abierto</a> que incluirá un lanzador de mods. Este lanzador te permitirá instalar mods fácilmente con un clic, además de gestionarlos y actualizarlos sin problemas.`,
+        highlightHtml:
+            `Estamos creando una aplicación oficial de <a href="https://github.com/modcommunity/tmc-app" class="${A}">código abierto</a> con un lanzador de mods: instala mods con un clic y gestiónalos y actualízalos desde el mismo sitio.`,
         button: 'Explorar Mods',
     },
     fr: {
         eyebrow: 'Mods',
-        titleHtml: 'Un <span class="special">Atelier de Mods</span> Complet',
+        titleHtml: 'Publiez Et Versionnez Vos <span class="special">Mods</span>',
         introHtml:
-            'Les mods ont ici un foyer où les créateurs gardent le contrôle &mdash; une expérience d\'envoi soignée, des pages de mod riches et des versions que vous pouvez publier à la main ou automatiser depuis votre propre pipeline <span class="special">CI/CD</span>. Voici ce dont vous disposez.',
+            'Envoyez un mod, rédigez sa page et publiez chaque build comme une version. À la main ou depuis votre propre pipeline <span class="special">CI/CD</span>.',
         c1t: 'Parcourir et Rechercher',
-        c1b: '<span class="special">Parcourez</span> et <span class="special">recherchez</span> les mods envoyés par la communauté pour tous les jeux pris en charge.',
-        c2t: 'Envois et Téléchargements Sécurisés',
-        c2b: 'Envoyez vos propres mods en toute sécurité avec l\'<span class="special">envoi</span> et <span class="special">téléchargez</span> ceux des autres, avec un suivi unique des téléchargements intégré.',
+        c1b:
+            '<span class="special">Parcourez</span> et <span class="special">recherchez</span> les mods de la communauté, jeu par jeu.',
+        c2t: 'Envois Et Téléchargements',
+        c2b:
+            '<span class="special">Envoyez</span> vos propres mods et <span class="special">téléchargez</span> ceux des autres. Les téléchargements uniques sont comptés.',
         c3t: 'Versions Publiées',
-        c3b: 'Publiez des <span class="special">versions</span> avec des journaux de modifications détaillés et des fichiers de mod joints pour chaque build &mdash; à la main ou directement depuis <span class="special">CI/CD</span> via l\'API développeur.',
+        c3b:
+            `Chaque build est une <span class="special">version</span> avec son journal des modifications et ses fichiers. Publiez-la à la main ou depuis <span class="special">CI/CD</span> via l'API développeur.`,
         c4t: 'Captures et Vidéos',
-        c4b: 'Ajoutez des <span class="special">images et vidéos</span> pour que les joueurs sachent exactement ce qu\'ils obtiennent avant d\'installer.',
+        c4b:
+            `Ajoutez des <span class="special">images et des vidéos</span> pour que les joueurs voient le mod avant de l'installer.`,
         c5t: 'Licences et Guides d\'Installation',
-        c5b: 'Choisissez une <span class="special">licence</span> et rédigez des <span class="special">instructions d\'installation</span> claires directement sur la page du mod.',
+        c5b:
+            `Choisissez une <span class="special">licence</span> et rédigez les <span class="special">instructions d'installation</span> sur la page du mod.`,
         c6t: 'Dépendances',
-        c6b: 'Reliez les mods et ressources requis en tant que <span class="special">dépendances</span> pour que rien ne manque.',
+        c6b:
+            'Indiquez les mods et ressources dont le vôtre a besoin comme <span class="special">dépendances</span>.',
         highlightTitle: 'Gestionnaire de Mods',
         highlightBadge: 'Prévu',
-        highlightHtml: `Nous sommes en train de créer une application officielle et <a href="https://github.com/modcommunity/tmc-app" class="${A}">open-source</a> qui inclura un lanceur de mods. Ce lanceur vous permettra d'installer facilement des mods en un clic, ainsi que de les gérer et de les mettre à jour en toute simplicité.`,
+        highlightHtml:
+            `Nous créons une application officielle <a href="https://github.com/modcommunity/tmc-app" class="${A}">open source</a> avec un lanceur de mods : installez des mods en un clic, puis gérez-les et mettez-les à jour au même endroit.`,
         button: 'Découvrir les Mods',
     },
     de: {
         eyebrow: 'Mods',
-        titleHtml: 'Eine Voll Ausgestattete <span class="special">Mod-Werkstatt</span>',
+        titleHtml: 'Veröffentliche Und Versioniere Deine <span class="special">Mods</span>',
         introHtml:
-            'Mods haben hier ein Zuhause, in dem die Ersteller die Kontrolle behalten &mdash; ein ausgefeiltes Upload-Erlebnis, reichhaltige Mod-Seiten und Releases, die du von Hand erstellen oder aus deiner eigenen <span class="special">CI/CD</span>-Pipeline automatisieren kannst. Das bekommst du.',
+            'Lade einen Mod hoch, schreib seine Seite und veröffentliche jeden Build als Release. Releases entstehen von Hand oder in deiner eigenen <span class="special">CI/CD</span>-Pipeline.',
         c1t: 'Durchsuchen & Suchen',
-        c1b: '<span class="special">Durchsuche</span> und <span class="special">finde</span> von der Community hochgeladene Mods über alle unterstützten Spiele hinweg.',
-        c2t: 'Sichere Uploads & Downloads',
-        c2b: 'Lade deine eigenen Mods sicher hoch mit <span class="special">Upload</span> und <span class="special">lade</span> die anderer herunter &mdash; mit integriertem, eindeutigem Download-Tracking.',
+        c1b: '<span class="special">Durchsuche</span> die Mods der Community, Spiel für Spiel.',
+        c2t: 'Uploads & Downloads',
+        c2b:
+            '<span class="special">Lade</span> eigene Mods <span class="special">hoch</span> und fremde <span class="special">herunter</span>. Einzigartige Downloads werden gezählt.',
         c3t: 'Versionierte Releases',
-        c3b: 'Veröffentliche <span class="special">versionierte Releases</span> mit ausführlichen Changelogs und angehängten Mod-Dateien für jeden Build &mdash; von Hand oder direkt aus <span class="special">CI/CD</span> über die Entwickler-API.',
+        c3b:
+            'Jeder Build ist ein <span class="special">versioniertes Release</span> mit Changelog und seinen Mod-Dateien. Per Hand oder aus <span class="special">CI/CD</span> über die Entwickler-API.',
         c4t: 'Screenshots & Videos',
-        c4b: 'Füge <span class="special">Bilder und Videos</span> hinzu, damit Spieler genau wissen, was sie bekommen, bevor sie installieren.',
+        c4b:
+            'Füge <span class="special">Bilder und Videos</span> hinzu, damit Spieler den Mod vor der Installation sehen.',
         c5t: 'Lizenzen & Installationsanleitungen',
-        c5b: 'Wähle eine <span class="special">Lizenz</span> und schreibe klare <span class="special">Installationsanweisungen</span> direkt auf der Mod-Seite.',
+        c5b:
+            'Wähle eine <span class="special">Lizenz</span> und schreibe eine <span class="special">Installationsanleitung</span> auf die Mod-Seite.',
         c6t: 'Abhängigkeiten',
-        c6b: 'Verknüpfe benötigte Mods und Assets als <span class="special">Abhängigkeiten</span>, damit nichts fehlt.',
+        c6b:
+            'Trage die Mods und Assets, die dein Mod braucht, als <span class="special">Abhängigkeiten</span> ein.',
         highlightTitle: 'Mod-Manager',
         highlightBadge: 'Geplant',
-        highlightHtml: `Wir sind dabei, eine offizielle und <a href="https://github.com/modcommunity/tmc-app" class="${A}">quelloffene</a> App zu erstellen, die einen Mod-Launcher enthält. Mit diesem Mod-Launcher kannst du Mods ganz einfach mit einem Klick installieren sowie nahtlos verwalten und aktualisieren.`,
+        highlightHtml:
+            `Wir bauen eine offizielle, <a href="https://github.com/modcommunity/tmc-app" class="${A}">quelloffene</a> App mit Mod-Launcher: Mods mit einem Klick installieren und am selben Ort verwalten und aktualisieren.`,
         button: 'Mods Entdecken',
     },
     ru: {
         eyebrow: 'Моды',
-        titleHtml: 'Полнофункциональная <span class="special">Мастерская Модов</span>',
+        titleHtml: 'Публикуйте И Версионируйте Свои <span class="special">Моды</span>',
         introHtml:
-            'У модов здесь есть дом, где авторы сохраняют контроль &mdash; отточенный процесс загрузки, насыщенные страницы модов и релизы, которые можно выпускать вручную или автоматизировать из собственного конвейера <span class="special">CI/CD</span>. Вот что вы получаете.',
+            'Загрузите мод, напишите его страницу и выпускайте каждую сборку как релиз. Вручную или из собственного <span class="special">CI/CD</span>-пайплайна.',
         c1t: 'Просмотр и Поиск',
-        c1b: '<span class="special">Просматривайте</span> и <span class="special">ищите</span> моды, загруженные сообществом, по всем поддерживаемым играм.',
-        c2t: 'Безопасные Загрузки и Скачивания',
-        c2b: 'Безопасно <span class="special">загружайте</span> собственные моды и <span class="special">скачивайте</span> чужие — со встроенным учётом уникальных скачиваний.',
+        c1b:
+            '<span class="special">Просматривайте</span> и <span class="special">ищите</span> моды сообщества по играм.',
+        c2t: 'Загрузка И Скачивание',
+        c2b:
+            '<span class="special">Загружайте</span> свои моды и <span class="special">скачивайте</span> чужие. Уникальные скачивания считаются.',
         c3t: 'Версионированные Релизы',
-        c3b: 'Выпускайте <span class="special">версионированные релизы</span> с подробными списками изменений и прикреплёнными файлами модов для каждой сборки &mdash; вручную или прямо из <span class="special">CI/CD</span> через API для разработчиков.',
+        c3b:
+            'Каждая сборка это <span class="special">версионный релиз</span> с журналом изменений и файлами мода. Публикуйте вручную или из <span class="special">CI/CD</span> через API для разработчиков.',
         c4t: 'Скриншоты и Видео',
-        c4b: 'Добавляйте <span class="special">изображения и видео</span>, чтобы игроки точно знали, что получат, ещё до установки.',
+        c4b:
+            'Добавьте <span class="special">изображения и видео</span>, чтобы игроки увидели мод до установки.',
         c5t: 'Лицензии и Инструкции по Установке',
-        c5b: 'Выберите <span class="special">лицензию</span> и напишите понятные <span class="special">инструкции по установке</span> прямо на странице мода.',
+        c5b:
+            'Выберите <span class="special">лицензию</span> и напишите <span class="special">инструкцию по установке</span> на странице мода.',
         c6t: 'Зависимости',
-        c6b: 'Связывайте нужные моды и ресурсы как <span class="special">зависимости</span>, чтобы ничего не отсутствовало.',
+        c6b:
+            'Укажите моды и ассеты, которые нужны вашему моду, как <span class="special">зависимости</span>.',
         highlightTitle: 'Менеджер Модов',
         highlightBadge: 'В Планах',
-        highlightHtml: `Мы находимся в процессе создания официального приложения с <a href="https://github.com/modcommunity/tmc-app" class="${A}">открытым исходным кодом</a>, которое будет включать лаунчер модов. Этот лаунчер позволит легко устанавливать моды в один клик, а также без труда управлять ими и обновлять их.`,
+        highlightHtml:
+            `Мы делаем официальное <a href="https://github.com/modcommunity/tmc-app" class="${A}">приложение с открытым кодом</a> с лаунчером модов: устанавливайте моды в один клик, управляйте ими и обновляйте в одном месте.`,
         button: 'Смотреть Моды',
     },
     nl: {
         eyebrow: 'Mods',
-        titleHtml: 'Een Volwaardige <span class="special">Mod-Werkplaats</span>',
+        titleHtml: 'Publiceer En Versioneer Je <span class="special">Mods</span>',
         introHtml:
-            'Mods hebben hier een thuis waar makers de controle houden &mdash; een verzorgde uploadervaring, rijke mod-pagina\'s en releases die je met de hand kunt maken of kunt automatiseren vanuit je eigen <span class="special">CI/CD</span>-pijplijn. Dit is wat je krijgt.',
+            'Upload een mod, schrijf de pagina en publiceer elke build als release. Met de hand of vanuit je eigen <span class="special">CI/CD</span>-pipeline.',
         c1t: 'Bladeren & Zoeken',
-        c1b: '<span class="special">Blader</span> en <span class="special">zoek</span> door mods die door de community zijn geüpload voor elke ondersteunde game.',
-        c2t: 'Veilige Uploads & Downloads',
-        c2b: 'Upload veilig je eigen mods met <span class="special">upload</span> en <span class="special">download</span> die van anderen, met ingebouwde unieke download-tracking.',
+        c1b:
+            '<span class="special">Blader</span> door mods van de community en <span class="special">zoek</span> per game.',
+        c2t: 'Uploads & Downloads',
+        c2b:
+            '<span class="special">Upload</span> je eigen mods en <span class="special">download</span> die van anderen. Unieke downloads worden geteld.',
         c3t: 'Geversioneerde Releases',
-        c3b: 'Breng <span class="special">geversioneerde releases</span> uit met uitgebreide changelogs en bijgevoegde mod-bestanden voor elke build &mdash; met de hand of rechtstreeks vanuit <span class="special">CI/CD</span> via de ontwikkelaars-API.',
+        c3b:
+            'Elke build is een <span class="special">release met versie</span>, changelog en modbestanden. Plaats hem met de hand of vanuit <span class="special">CI/CD</span> via de ontwikkelaars-API.',
         c4t: 'Schermafbeeldingen & Video\'s',
-        c4b: 'Voeg <span class="special">afbeeldingen en video\'s</span> toe zodat spelers precies weten wat ze krijgen voordat ze installeren.',
+        c4b:
+            `Voeg <span class="special">afbeeldingen en video's</span> toe zodat spelers de mod zien voordat ze hem installeren.`,
         c5t: 'Licenties & Installatiegidsen',
-        c5b: 'Kies een <span class="special">licentie</span> en schrijf duidelijke <span class="special">installatie-instructies</span> direct op de mod-pagina.',
+        c5b:
+            'Kies een <span class="special">licentie</span> en schrijf <span class="special">installatie-instructies</span> op de modpagina.',
         c6t: 'Afhankelijkheden',
-        c6b: 'Koppel vereiste mods en assets als <span class="special">afhankelijkheden</span> zodat er niets ontbreekt.',
+        c6b:
+            'Geef de mods en assets die jouw mod nodig heeft op als <span class="special">afhankelijkheden</span>.',
         highlightTitle: 'Mod-Beheerder',
         highlightBadge: 'Gepland',
-        highlightHtml: `We zijn bezig met het maken van een officiële en <a href="https://github.com/modcommunity/tmc-app" class="${A}">open-source</a> app die een mod-launcher zal bevatten. Met deze mod-launcher kun je mods eenvoudig met één klik installeren en ze naadloos beheren en bijwerken.`,
+        highlightHtml:
+            `We bouwen een officiële, <a href="https://github.com/modcommunity/tmc-app" class="${A}">opensource</a> app met een modlauncher: installeer mods met één klik en beheer en update ze op dezelfde plek.`,
         button: 'Mods Verkennen',
     },
     ja: {
         eyebrow: 'Mod',
-        titleHtml: '本格的な<span class="special">Modワークショップ</span>',
+        titleHtml: '<span class="special">MOD</span>を公開してバージョン管理',
         introHtml:
-            'クリエイターが主導権を保てるmodの拠点が、ここにあります &mdash; 洗練されたアップロード体験、充実したmodページ、そして手動でも自分の <span class="special">CI/CD</span> パイプラインから自動化しても作成できるリリース。今すぐ使える機能をご紹介します。',
+            'MODをアップロードし、ページを書き、ビルドごとにリリースとして公開できます。リリースは手動でも、自分の<span class="special">CI/CD</span>パイプラインからでも作れます。',
         c1t: '閲覧と検索',
-        c1b: '対応するすべてのゲームで、コミュニティがアップロードしたmodを<span class="special">閲覧</span>・<span class="special">検索</span>できます。',
-        c2t: '安全なアップロードとダウンロード',
-        c2b: '自分のmodを安全に<span class="special">アップロード</span>し、他の人のものを<span class="special">ダウンロード</span>できます。ユニークなダウンロード追跡機能も内蔵しています。',
+        c1b: 'コミュニティのMODをゲームごとに<span class="special">閲覧</span>・<span class="special">検索</span>できます。',
+        c2t: 'アップロードとダウンロード',
+        c2b:
+            '自作MODを<span class="special">アップロード</span>し、他の人のMODを<span class="special">ダウンロード</span>できます。ユニークなダウンロード数が集計されます。',
         c3t: 'バージョン付きリリース',
-        c3b: '各ビルドごとに、詳細な変更履歴とmodファイルを添付した<span class="special">バージョン付きリリース</span>を公開できます &mdash; 手動でも、開発者APIを通じて <span class="special">CI/CD</span> から直接でも。',
+        c3b:
+            'ビルドごとに、変更履歴とMODファイルを付けた<span class="special">バージョン付きリリース</span>を作成。手動でも、開発者API経由で<span class="special">CI/CD</span>からでも投稿できます。',
         c4t: 'スクリーンショットと動画',
-        c4b: '<span class="special">画像や動画</span>を追加して、プレイヤーがインストール前に何を手に入れるのかを正確に把握できるようにします。',
+        c4b: '<span class="special">画像や動画</span>を追加すれば、インストール前にMODの中身を確認してもらえます。',
         c5t: 'ライセンスとインストールガイド',
-        c5b: '<span class="special">ライセンス</span>を選び、分かりやすい<span class="special">インストール手順</span>をmodページ上に直接記載できます。',
+        c5b: '<span class="special">ライセンス</span>を選び、MODのページに<span class="special">導入手順</span>を書けます。',
         c6t: '依存関係',
-        c6b: '必要なmodやアセットを<span class="special">依存関係</span>としてリンクし、何も不足しないようにします。',
+        c6b: '必要なMODやアセットを<span class="special">依存関係</span>として登録できます。',
         highlightTitle: 'Modマネージャー',
         highlightBadge: '予定',
-        highlightHtml: `私たちは、modランチャーを含む公式かつ<a href="https://github.com/modcommunity/tmc-app" class="${A}">オープンソース</a>のアプリを制作中です。このmodランチャーを使えば、ワンクリックで簡単にmodをインストールでき、さらにシームレスに管理・更新できます。`,
+        highlightHtml:
+            `MODランチャーを備えた公式の<a href="https://github.com/modcommunity/tmc-app" class="${A}">オープンソース</a>アプリを開発中です。ワンクリックでMODを導入し、同じ場所で管理・更新できるようにします。`,
         button: 'Modを見る',
     },
     zh: {
         eyebrow: '模组',
-        titleHtml: '功能齐全的<span class="special">模组工坊</span>',
+        titleHtml: '发布并管理你的<span class="special">模组</span>版本',
         introHtml:
-            '模组在这里有了自己的家，创作者始终掌握主动权 &mdash; 精致的上传体验、内容丰富的模组页面，以及可以手动发布或从你自己的 <span class="special">CI/CD</span> 流水线自动发布的版本。以下是你现在就能用到的功能。',
+            '上传模组、写好页面，每个构建都可以作为一个发布版本。可以手动发布，也可以从你自己的 <span class="special">CI/CD</span> 流水线发布。',
         c1t: '浏览与搜索',
-        c1b: '在每一款支持的游戏中<span class="special">浏览</span>和<span class="special">搜索</span>社区上传的模组。',
-        c2t: '安全上传与下载',
-        c2b: '安全地<span class="special">上传</span>你自己的模组，并<span class="special">下载</span>他人的模组，内置独立的下载追踪。',
+        c1b: '按游戏<span class="special">浏览</span>和<span class="special">搜索</span>社区模组。',
+        c2t: '上传与下载',
+        c2b: '<span class="special">上传</span>自己的模组，<span class="special">下载</span>别人的模组。独立下载量会被统计。',
         c3t: '版本化发布',
-        c3b: '为每个版本发布带有详细更新日志和附带模组文件的<span class="special">版本化发布</span> &mdash; 可手动操作，也可通过开发者 API 直接从 <span class="special">CI/CD</span> 发布。',
+        c3b:
+            '每个构建都是一个带更新日志和模组文件的<span class="special">版本发布</span>。可以手动发布，也可以通过开发者 API 从 <span class="special">CI/CD</span> 发布。',
         c4t: '截图与视频',
-        c4b: '添加<span class="special">图片和视频</span>，让玩家在安装前就能确切了解自己将获得什么。',
+        c4b: '添加<span class="special">图片和视频</span>，让玩家安装前就能看到模组的样子。',
         c5t: '许可证与安装指南',
-        c5b: '选择一个<span class="special">许可证</span>，并直接在模组页面上写下清晰的<span class="special">安装说明</span>。',
+        c5b: '选择<span class="special">许可证</span>，并在模组页面写上<span class="special">安装说明</span>。',
         c6t: '依赖项',
-        c6b: '将所需的模组和资源作为<span class="special">依赖项</span>关联起来，确保一切齐全。',
+        c6b: '把你的模组需要的其他模组和资源列为<span class="special">依赖项</span>。',
         highlightTitle: '模组管理器',
         highlightBadge: '计划中',
-        highlightHtml: `我们正在着手创建一个官方且<a href="https://github.com/modcommunity/tmc-app" class="${A}">开源</a>的应用，其中将包含一个模组启动器。这个模组启动器将让你一键轻松安装模组，并无缝地管理和更新它们。`,
+        highlightHtml:
+            `我们正在开发带模组启动器的官方<a href="https://github.com/modcommunity/tmc-app" class="${A}">开源</a>应用：一键安装模组，并在同一处管理和更新。`,
         button: '探索模组',
     },
     pt: {
         eyebrow: 'Mods',
-        titleHtml: 'Uma <span class="special">Oficina de Mods</span> Completa',
+        titleHtml: 'Publique E Versione Os Seus <span class="special">Mods</span>',
         introHtml:
-            'Os mods têm aqui um lar onde os criadores permanecem no controle &mdash; uma experiência de envio refinada, páginas de mod ricas e lançamentos que você pode criar manualmente ou automatizar a partir do seu próprio pipeline <span class="special">CI/CD</span>. Veja o que você tem à disposição.',
+            'Envie um mod, escreva a página e publique cada build como uma versão. À mão ou a partir do seu próprio pipeline de <span class="special">CI/CD</span>.',
         c1t: 'Navegar e Pesquisar',
-        c1b: '<span class="special">Navegue</span> e <span class="special">pesquise</span> mods enviados pela comunidade em todos os jogos compatíveis.',
-        c2t: 'Envios e Downloads Seguros',
-        c2b: 'Envie seus próprios mods com segurança usando o <span class="special">envio</span> e faça o <span class="special">download</span> dos de outros, com rastreamento único de downloads integrado.',
+        c1b:
+            '<span class="special">Explore</span> e <span class="special">pesquise</span> mods da comunidade, jogo a jogo.',
+        c2t: 'Envios E Transferências',
+        c2b:
+            '<span class="special">Envie</span> os seus mods e <span class="special">transfira</span> os de outros. As transferências únicas são contadas.',
         c3t: 'Lançamentos Versionados',
-        c3b: 'Publique <span class="special">lançamentos versionados</span> com registros de alterações detalhados e arquivos de mod anexados para cada build &mdash; manualmente ou direto do <span class="special">CI/CD</span> pela API para desenvolvedores.',
+        c3b:
+            'Cada build é uma <span class="special">versão</span> com registo de alterações e os ficheiros do mod. Publique-a à mão ou a partir de <span class="special">CI/CD</span> pela API de programadores.',
         c4t: 'Capturas de Tela e Vídeos',
-        c4b: 'Adicione <span class="special">imagens e vídeos</span> para que os jogadores saibam exatamente o que estão recebendo antes de instalar.',
+        c4b:
+            'Adicione <span class="special">imagens e vídeos</span> para os jogadores verem o mod antes de o instalarem.',
         c5t: 'Licenças e Guias de Instalação',
-        c5b: 'Escolha uma <span class="special">licença</span> e escreva <span class="special">instruções de instalação</span> claras diretamente na página do mod.',
+        c5b:
+            'Escolha uma <span class="special">licença</span> e escreva as <span class="special">instruções de instalação</span> na página do mod.',
         c6t: 'Dependências',
-        c6b: 'Vincule os mods e recursos necessários como <span class="special">dependências</span> para que nada falte.',
+        c6b:
+            'Indique os mods e recursos de que o seu precisa como <span class="special">dependências</span>.',
         highlightTitle: 'Gerenciador de Mods',
         highlightBadge: 'Planejado',
-        highlightHtml: `Estamos em processo de criar um aplicativo oficial e de <a href="https://github.com/modcommunity/tmc-app" class="${A}">código aberto</a> que incluirá um inicializador de mods. Esse inicializador permitirá que você instale mods facilmente com um clique, além de gerenciá-los e atualizá-los sem complicações.`,
+        highlightHtml:
+            `Estamos a criar uma aplicação oficial de <a href="https://github.com/modcommunity/tmc-app" class="${A}">código aberto</a> com um launcher de mods: instale mods com um clique e gira e atualize-os no mesmo sítio.`,
         button: 'Explorar Mods',
     },
 }

@@ -3,9 +3,9 @@ import type { SectionCatalog } from './types'
 export const stats: SectionCatalog = {
     en: {
         eyebrow: 'Insights',
-        titleHtml: 'Track Everything With <span class="special">Beautiful Stats</span>',
+        titleHtml: 'See How Your <span class="special">Content Is Doing</span>',
         introHtml:
-            'Every asset, mod, server and community ships with real analytics, views, downloads and engagement over <span class="special">time</span>, live and historical <span class="special">player graphs</span>, and a <span class="special">breakdown</span> of your whole library.',
+            'Assets, mods, servers and communities each get analytics: views, downloads and engagement over <span class="special">time</span>, live and historical <span class="special">player graphs</span>, and a <span class="special">breakdown</span> of your whole library.',
         trendTitle: 'Views & Downloads Over Time',
         trendDesc:
             'Line & area graphs for views, downloads, favorites and ratings, bucketed by day, week, month or year.',
@@ -25,14 +25,15 @@ export const stats: SectionCatalog = {
         c2b: 'We keep <span class="special">historical</span> server and content data for over a year.',
         c3t: 'Top Maps & Users',
         c3b: '<span class="special">Pie</span> and <span class="special">bar</span> breakdowns of top maps and users.',
-        c4t: 'Unique',
-        c4b: 'Engagement stats are tied to unique <span class="special">session</span> and <span class="special">user</span> IDs giving you the most accurate insights.',
+        c4t: 'Unique Counts',
+        c4b:
+            'Engagement stats are tied to unique <span class="special">session</span> and <span class="special">user</span> IDs.',
     },
     es: {
         eyebrow: 'Perspectivas',
-        titleHtml: 'Controla Todo Con <span class="special">Estadísticas Preciosas</span>',
+        titleHtml: 'Mira Cómo Le Va A Tu <span class="special">Contenido</span>',
         introHtml:
-            'Cada recurso, mod, servidor y comunidad viene con análisis reales, vistas, descargas y participación a lo largo del <span class="special">tiempo</span>, <span class="special">gráficos de jugadores</span> en vivo e históricos, y un <span class="special">desglose</span> de toda tu biblioteca.',
+            'Los recursos, mods, servidores y comunidades tienen analíticas: visitas, descargas y participación a lo largo del <span class="special">tiempo</span>, <span class="special">gráficos de jugadores</span> en directo e históricos, y un <span class="special">desglose</span> de toda tu biblioteca.',
         trendTitle: 'Vistas y descargas a lo largo del tiempo',
         trendDesc:
             'Gráficos de líneas y áreas para vistas, descargas, favoritos y valoraciones, agrupados por día, semana, mes o año.',
@@ -52,14 +53,15 @@ export const stats: SectionCatalog = {
         c2b: 'Conservamos datos <span class="special">históricos</span> de servidores y contenido durante más de un año.',
         c3t: 'Mejores Mapas y Usuarios',
         c3b: 'Desgloses en gráfico <span class="special">circular</span> y de <span class="special">barras</span> de los mejores mapas y usuarios.',
-        c4t: 'Único',
-        c4b: 'Las estadísticas de participación están vinculadas a identificadores únicos de <span class="special">sesión</span> y <span class="special">usuario</span>, brindándote la información más precisa.',
+        c4t: 'Recuentos Únicos',
+        c4b:
+            'Las estadísticas de participación se basan en ID únicos de <span class="special">sesión</span> y de <span class="special">usuario</span>.',
     },
     fr: {
         eyebrow: 'Aperçus',
-        titleHtml: 'Suivez Tout Avec de <span class="special">Superbes Statistiques</span>',
+        titleHtml: 'Voyez Comment Va <span class="special">Votre Contenu</span>',
         introHtml:
-            "Chaque ressource, mod, serveur et communauté est livré avec de vraies analyses, des vues, des téléchargements et de l'engagement dans le <span class=\"special\">temps</span>, des <span class=\"special\">graphiques de joueurs</span> en direct et historiques, et une <span class=\"special\">répartition</span> de toute votre bibliothèque.",
+            'Les ressources, mods, serveurs et communautés ont chacun leurs statistiques : vues, téléchargements et activité dans le <span class="special">temps</span>, <span class="special">graphiques de joueurs</span> en direct et historiques, et une <span class="special">répartition</span> de toute votre bibliothèque.',
         trendTitle: 'Vues et téléchargements dans le temps',
         trendDesc:
             'Graphiques en courbes et en aires pour les vues, téléchargements, favoris et notes, regroupés par jour, semaine, mois ou année.',
@@ -79,14 +81,15 @@ export const stats: SectionCatalog = {
         c2b: "Nous conservons les données <span class=\"special\">historiques</span> des serveurs et du contenu pendant plus d'un an.",
         c3t: 'Meilleures Cartes et Utilisateurs',
         c3b: 'Répartitions en <span class="special">camembert</span> et en <span class="special">barres</span> des meilleures cartes et utilisateurs.',
-        c4t: 'Unique',
-        c4b: "Les statistiques d'engagement sont liées à des identifiants uniques de <span class=\"special\">session</span> et d'<span class=\"special\">utilisateur</span>, pour des analyses les plus précises.",
+        c4t: 'Comptes Uniques',
+        c4b:
+            `Les statistiques d'activité reposent sur des identifiants uniques de <span class="special">session</span> et d'<span class="special">utilisateur</span>.`,
     },
     de: {
         eyebrow: 'Einblicke',
-        titleHtml: 'Verfolge Alles Mit <span class="special">Schönen Statistiken</span>',
+        titleHtml: 'Sieh, Wie Deine <span class="special">Inhalte Laufen</span>',
         introHtml:
-            'Jede Ressource, jeder Mod, Server und jede Community bringt echte Analysen mit, Aufrufe, Downloads und Engagement im <span class="special">Zeitverlauf</span>, live und historische <span class="special">Spielergraphen</span> und eine <span class="special">Aufschlüsselung</span> deiner gesamten Bibliothek.',
+            'Assets, Mods, Server und Communitys haben jeweils Statistiken: Aufrufe, Downloads und Aktivität im <span class="special">Zeitverlauf</span>, aktuelle und historische <span class="special">Spielerdiagramme</span> und eine <span class="special">Aufschlüsselung</span> deiner ganzen Bibliothek.',
         trendTitle: 'Aufrufe und Downloads im Zeitverlauf',
         trendDesc:
             'Linien- und Flächendiagramme für Aufrufe, Downloads, Favoriten und Bewertungen, gruppiert nach Tag, Woche, Monat oder Jahr.',
@@ -106,14 +109,15 @@ export const stats: SectionCatalog = {
         c2b: 'Wir bewahren <span class="special">historische</span> Server- und Inhaltsdaten über ein Jahr lang auf.',
         c3t: 'Top-Karten & Nutzer',
         c3b: '<span class="special">Torten</span>- und <span class="special">Balken</span>-Aufschlüsselungen der Top-Karten und -Nutzer.',
-        c4t: 'Eindeutig',
-        c4b: 'Engagement-Statistiken sind an eindeutige <span class="special">Sitzungs</span>- und <span class="special">Nutzer</span>-IDs gebunden und liefern dir die genauesten Einblicke.',
+        c4t: 'Eindeutige Zählung',
+        c4b:
+            'Aktivitätsstatistiken sind an eindeutige <span class="special">Sitzungs-</span> und <span class="special">Nutzer-IDs</span> gebunden.',
     },
     ru: {
         eyebrow: 'Аналитика',
-        titleHtml: 'Отслеживайте Всё С <span class="special">Красивой Статистикой</span>',
+        titleHtml: 'Смотрите, Как Дела У <span class="special">Вашего Контента</span>',
         introHtml:
-            'Каждый ресурс, мод, сервер и сообщество поставляются с реальной аналитикой: просмотры, загрузки и вовлечённость со <span class="special">временем</span>, живые и исторические <span class="special">графики игроков</span> и <span class="special">разбивка</span> всей вашей библиотеки.',
+            'У ассетов, модов, серверов и сообществ есть своя аналитика: просмотры, скачивания и вовлечённость <span class="special">во времени</span>, текущие и исторические <span class="special">графики игроков</span> и <span class="special">разбивка</span> всей вашей библиотеки.',
         trendTitle: 'Просмотры и загрузки со временем',
         trendDesc:
             'Линейные и площадные графики просмотров, загрузок, избранного и оценок, сгруппированные по дням, неделям, месяцам или годам.',
@@ -133,14 +137,15 @@ export const stats: SectionCatalog = {
         c2b: 'Мы храним <span class="special">исторические</span> данные серверов и контента более года.',
         c3t: 'Лучшие Карты и Пользователи',
         c3b: '<span class="special">Круговые</span> и <span class="special">столбчатые</span> разбивки лучших карт и пользователей.',
-        c4t: 'Уникальность',
-        c4b: 'Статистика вовлечённости привязана к уникальным идентификаторам <span class="special">сессии</span> и <span class="special">пользователя</span>, давая вам самые точные данные.',
+        c4t: 'Уникальный Подсчёт',
+        c4b:
+            'Статистика вовлечённости привязана к уникальным ID <span class="special">сессий</span> и <span class="special">пользователей</span>.',
     },
     nl: {
         eyebrow: 'Inzichten',
-        titleHtml: 'Volg Alles Met <span class="special">Prachtige Statistieken</span>',
+        titleHtml: 'Zie Hoe Het Met Je <span class="special">Content Gaat</span>',
         introHtml:
-            'Elke asset, mod, server en community wordt geleverd met echte analyses, weergaven, downloads en betrokkenheid in de <span class="special">tijd</span>, live en historische <span class="special">spelersgrafieken</span>, en een <span class="special">uitsplitsing</span> van je hele bibliotheek.',
+            'Assets, mods, servers en communities hebben elk statistieken: weergaven, downloads en betrokkenheid in de <span class="special">tijd</span>, live en historische <span class="special">spelersgrafieken</span> en een <span class="special">uitsplitsing</span> van je hele bibliotheek.',
         trendTitle: 'Weergaven en downloads in de tijd',
         trendDesc:
             'Lijn- en vlakgrafieken voor weergaven, downloads, favorieten en beoordelingen, gegroepeerd per dag, week, maand of jaar.',
@@ -160,14 +165,15 @@ export const stats: SectionCatalog = {
         c2b: 'We bewaren <span class="special">historische</span> server- en contentgegevens langer dan een jaar.',
         c3t: 'Topmaps & Gebruikers',
         c3b: '<span class="special">Taart</span>- en <span class="special">staaf</span>uitsplitsingen van topmaps en gebruikers.',
-        c4t: 'Uniek',
-        c4b: "Betrokkenheidsstatistieken zijn gekoppeld aan unieke <span class=\"special\">sessie</span>- en <span class=\"special\">gebruikers</span>-ID's, voor de meest nauwkeurige inzichten.",
+        c4t: 'Unieke Tellingen',
+        c4b:
+            `Betrokkenheidsstatistieken zijn gekoppeld aan unieke <span class="special">sessie-</span> en <span class="special">gebruikers-ID's</span>.`,
     },
     ja: {
         eyebrow: 'インサイト',
-        titleHtml: '<span class="special">美しい統計</span>ですべてを追跡',
+        titleHtml: '<span class="special">コンテンツの反応</span>を確認',
         introHtml:
-            'すべてのアセット、Mod、サーバー、コミュニティには、実際の分析、閲覧数、ダウンロード数、<span class="special">時間</span>の経過に伴うエンゲージメント、リアルタイムおよび履歴の<span class="special">プレイヤーグラフ</span>、そしてライブラリ全体の<span class="special">内訳</span>が付属します。',
+            'アセット、MOD、サーバー、コミュニティごとに、閲覧数・ダウンロード数・エンゲージメントの<span class="special">推移</span>、リアルタイムと過去の<span class="special">プレイヤーグラフ</span>、ライブラリ全体の<span class="special">内訳</span>を確認できます。',
         trendTitle: '時間の経過に伴う閲覧数とダウンロード数',
         trendDesc:
             '閲覧数、ダウンロード数、お気に入り、評価の折れ線・面グラフを、日・週・月・年ごとに集計して表示します。',
@@ -187,14 +193,15 @@ export const stats: SectionCatalog = {
         c2b: '<span class="special">履歴</span>のサーバーおよびコンテンツデータを1年以上保存します。',
         c3t: 'トップマップとユーザー',
         c3b: 'トップマップとユーザーを<span class="special">円</span>グラフと<span class="special">棒</span>グラフで内訳表示します。',
-        c4t: 'ユニーク',
-        c4b: 'エンゲージメント統計は一意の<span class="special">セッション</span>および<span class="special">ユーザー</span>IDに紐付けられ、最も正確なインサイトを提供します。',
+        c4t: 'ユニーク集計',
+        c4b:
+            'エンゲージメントの統計は、ユニークな<span class="special">セッション</span>IDと<span class="special">ユーザー</span>IDに基づいています。',
     },
     zh: {
         eyebrow: '洞察',
-        titleHtml: '用<span class="special">精美的统计</span>追踪一切',
+        titleHtml: '看看你的<span class="special">内容表现如何</span>',
         introHtml:
-            '每个资源、模组、服务器和社区都自带真实的分析数据：<span class="special">随时间变化</span>的浏览、下载和互动，实时与历史<span class="special">玩家图表</span>，以及你整个库的<span class="special">明细</span>。',
+            '资源、模组、服务器和社区各有自己的统计：随<span class="special">时间</span>变化的浏览量、下载量和互动，实时与历史的<span class="special">玩家图表</span>，以及整个库的<span class="special">构成</span>。',
         trendTitle: '浏览量与下载量随时间变化',
         trendDesc:
             '以折线图和面积图展示浏览、下载、收藏和评分，可按天、周、月或年分组。',
@@ -213,14 +220,14 @@ export const stats: SectionCatalog = {
         c2b: '我们保存服务器和内容的<span class="special">历史</span>数据超过一年。',
         c3t: '热门地图与用户',
         c3b: '以<span class="special">饼图</span>和<span class="special">柱状图</span>分解热门地图和用户。',
-        c4t: '唯一',
-        c4b: '互动统计与唯一的<span class="special">会话</span>和<span class="special">用户</span>ID绑定，为你提供最准确的洞察。',
+        c4t: '独立计数',
+        c4b: '互动统计基于唯一的<span class="special">会话</span>和<span class="special">用户</span> ID。',
     },
     pt: {
         eyebrow: 'Perspectivas',
-        titleHtml: 'Acompanhe Tudo Com <span class="special">Estatísticas Lindas</span>',
+        titleHtml: 'Veja Como Vai O Seu <span class="special">Conteúdo</span>',
         introHtml:
-            'Cada recurso, mod, servidor e comunidade vem com análises reais, visualizações, downloads e engajamento ao longo do <span class="special">tempo</span>, <span class="special">gráficos de jogadores</span> ao vivo e históricos, e um <span class="special">detalhamento</span> de toda a sua biblioteca.',
+            'Os recursos, mods, servidores e comunidades têm cada um as suas estatísticas: visualizações, transferências e envolvimento ao longo do <span class="special">tempo</span>, <span class="special">gráficos de jogadores</span> em tempo real e históricos, e uma <span class="special">repartição</span> de toda a sua biblioteca.',
         trendTitle: 'Visualizações e downloads ao longo do tempo',
         trendDesc:
             'Gráficos de linha e área para visualizações, downloads, favoritos e avaliações, agrupados por dia, semana, mês ou ano.',
@@ -240,7 +247,8 @@ export const stats: SectionCatalog = {
         c2b: 'Guardamos dados <span class="special">históricos</span> de servidores e conteúdo por mais de um ano.',
         c3t: 'Melhores Mapas e Usuários',
         c3b: 'Detalhamentos em gráfico de <span class="special">pizza</span> e de <span class="special">barras</span> dos melhores mapas e usuários.',
-        c4t: 'Único',
-        c4b: 'As estatísticas de engajamento estão vinculadas a IDs únicos de <span class="special">sessão</span> e <span class="special">usuário</span>, oferecendo as informações mais precisas.',
+        c4t: 'Contagens Únicas',
+        c4b:
+            'As estatísticas de envolvimento ligam-se a IDs únicos de <span class="special">sessão</span> e de <span class="special">utilizador</span>.',
     },
 }

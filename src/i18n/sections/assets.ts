@@ -10,22 +10,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Share Game <span class="special">Assets</span> &amp; <span class="special">Tools</span>',
         introHtml:
-            'From models, scripts, and textures to plugins, libraries and full toolkits, upload, version and showcase <span class="special">game assets</span> and <span class="special">tools</span>. Every asset gets a rich page with media, categories, dependencies and <span class="special">versioned downloads</span>.',
+            'Upload models, scripts, textures, plugins and libraries. Each asset gets its own page with media, categories, dependencies and <span class="special">versioned downloads</span>.',
         c1t: 'Versioned Releases',
-        c1b: 'Cut <span class="special">versioned releases</span> with changelogs and attach files up to or over <span class="special">1 GB</span> each, so people always grab the right build.',
+        c1b:
+            'Post <span class="special">versioned releases</span> with a changelog, and attach files of <span class="special">1 GB</span> or more, so people grab the right build.',
         c2t: 'Media Galleries',
-        c2b: 'Show off your work with <span class="special">image &amp; video</span> galleries, plus custom icon, banner and card art.',
+        c2b:
+            'Add <span class="special">image &amp; video</span> galleries, plus a custom icon, banner and card art.',
         c3t: 'Ratings & Reviews',
-        c3b: 'Collect <span class="special">ratings</span>, <span class="special">reviews</span> and comments so people can see what an asset is actually like before downloading it.',
-        c4t: 'Any File You Need',
-        c4b: 'Models, textures, maps, audio, scripts, binaries and archives &mdash; upload whatever format your <span class="special">game</span> or <span class="special">engine</span> expects, securely.',
+        c3b:
+            'Get <span class="special">ratings</span>, <span class="special">reviews</span> and comments, so people can see what an asset is like before they download it.',
+        c4t: 'File Formats',
+        c4b:
+            'Upload models, textures, maps, audio, scripts, binaries or archives, in whatever format your <span class="special">game</span> or <span class="special">engine</span> expects.',
         c5t: 'Dependencies',
-        c5b: 'Declare <span class="special">dependencies</span> between assets so users pull in everything they need in one place.',
+        c5b:
+            'Declare <span class="special">dependencies</span> between assets, so users get what an asset needs along with it.',
         c6t: 'Open-Source Badge',
-        c6b: 'Link a <span class="special">source repository</span> to earn an <span class="special">open-source badge</span> on your asset page, showing people exactly what they\'re installing.',
+        c6b:
+            'Link a <span class="special">source repository</span> and the asset page gets an <span class="special">open-source badge</span>.',
         highlightTitle: 'Free &amp; Open-Source Assets',
         highlightBadge: 'Available Now',
-        highlightHtml: `We already publish our own <span class="text-accent">free, open-source assets</span> &mdash; built by the community, for the community &mdash; and we're creating <span class="text-accent">many more</span> across engines such as <a href="https://godotengine.org" class="${A}">Godot</a>, to help developers integrate gameplay features, multiplayer networking, modding support, and more into their games. We're aiming to build our own open source <a href="#gaming-platform" class="${A}">gaming platform</a>!`,
+        highlightHtml:
+            `We publish <span class="text-accent">free, open-source assets</span> of our own, and more are on the way for engines like <a href="https://godotengine.org" class="${A}">Godot</a>: gameplay features, multiplayer networking, modding support and more. We also want to build an open source <a href="#gaming-platform" class="${A}">gaming platform</a>.`,
         button: 'Browse Assets',
     },
     es: {
@@ -33,22 +40,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Comparte <span class="special">Recursos</span> &amp; <span class="special">Herramientas</span> de Juegos',
         introHtml:
-            'Desde modelos, scripts y texturas hasta plugins, librerías y kits de herramientas completos: sube, versiona y muestra <span class="special">recursos de juegos</span> y <span class="special">herramientas</span>. Cada recurso obtiene una página rica con multimedia, categorías, dependencias y <span class="special">descargas versionadas</span>.',
+            'Sube modelos, scripts, texturas, plugins y bibliotecas. Cada recurso tiene su propia página con medios, categorías, dependencias y <span class="special">descargas versionadas</span>.',
         c1t: 'Versiones Publicadas',
-        c1b: 'Crea <span class="special">versiones</span> con registros de cambios y adjunta archivos de hasta o más de <span class="special">1 GB</span> cada uno, para que la gente siempre obtenga la compilación correcta.',
+        c1b:
+            'Publica <span class="special">versiones</span> con registro de cambios y adjunta archivos de <span class="special">1 GB</span> o más, para que cada persona descargue la compilación correcta.',
         c2t: 'Galerías Multimedia',
-        c2b: 'Presume tu trabajo con galerías de <span class="special">imagen y vídeo</span>, además de icono, banner y arte de tarjeta personalizados.',
+        c2b:
+            'Añade galerías de <span class="special">imágenes y vídeos</span>, además de icono, banner e imagen de tarjeta propios.',
         c3t: 'Valoraciones y Reseñas',
-        c3b: 'Recopila <span class="special">valoraciones</span>, <span class="special">reseñas</span> y comentarios para que la gente vea cómo es realmente un recurso antes de descargarlo.',
-        c4t: 'Cualquier Archivo',
-        c4b: 'Modelos, texturas, mapas, audio, scripts, binarios y archivos comprimidos &mdash; sube el formato que tu <span class="special">juego</span> o <span class="special">motor</span> necesite, de forma segura.',
+        c3b:
+            'Recibe <span class="special">valoraciones</span>, <span class="special">reseñas</span> y comentarios, para que se vea cómo es un recurso antes de descargarlo.',
+        c4t: 'Formatos De Archivo',
+        c4b:
+            'Sube modelos, texturas, mapas, audio, scripts, binarios o archivos comprimidos, en el formato que espere tu <span class="special">juego</span> o <span class="special">motor</span>.',
         c5t: 'Dependencias',
-        c5b: 'Declara <span class="special">dependencias</span> entre recursos para que los usuarios obtengan todo lo que necesitan en un solo lugar.',
+        c5b:
+            'Declara <span class="special">dependencias</span> entre recursos para que se descargue junto con lo que necesita.',
         c6t: 'Insignia de Código Abierto',
-        c6b: 'Enlaza un <span class="special">repositorio de código fuente</span> para ganar una <span class="special">insignia de código abierto</span> en la página de tu recurso, mostrando a la gente exactamente qué están instalando.',
+        c6b:
+            'Enlaza un <span class="special">repositorio de código</span> y la página del recurso recibirá una <span class="special">insignia de código abierto</span>.',
         highlightTitle: 'Recursos Gratuitos y de Código Abierto',
         highlightBadge: 'Disponible Ya',
-        highlightHtml: `Ya publicamos nuestros propios <span class="text-accent">recursos gratuitos y de código abierto</span> &mdash; creados por la comunidad, para la comunidad &mdash; y estamos creando <span class="text-accent">muchos más</span> en motores como <a href="https://godotengine.org" class="${A}">Godot</a>, para ayudar a los desarrolladores a integrar funciones de juego, redes multijugador, soporte de mods y más en sus juegos. ¡Nuestro objetivo es construir nuestra propia <a href="#gaming-platform" class="${A}">plataforma de juegos</a> de código abierto!`,
+        highlightHtml:
+            `Publicamos nuestros propios <span class="text-accent">recursos gratuitos de código abierto</span> y vienen más para motores como <a href="https://godotengine.org" class="${A}">Godot</a>: funciones de juego, red multijugador, soporte de modding y más. También queremos crear una <a href="#gaming-platform" class="${A}">plataforma de juegos</a> de código abierto.`,
         button: 'Explorar Recursos',
     },
     fr: {
@@ -56,22 +70,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Partagez des <span class="special">Ressources</span> &amp; <span class="special">Outils</span> de Jeu',
         introHtml:
-            'Des modèles, scripts et textures aux plugins, bibliothèques et kits d\'outils complets : importez, versionnez et mettez en valeur des <span class="special">ressources de jeu</span> et des <span class="special">outils</span>. Chaque ressource obtient une page riche avec médias, catégories, dépendances et <span class="special">téléchargements versionnés</span>.',
+            'Envoyez modèles, scripts, textures, plugins et bibliothèques. Chaque ressource a sa propre page avec médias, catégories, dépendances et <span class="special">téléchargements versionnés</span>.',
         c1t: 'Versions Publiées',
-        c1b: 'Publiez des <span class="special">versions</span> avec journaux des modifications et joignez des fichiers pouvant atteindre ou dépasser <span class="special">1 Go</span> chacun, pour que chacun télécharge toujours la bonne build.',
+        c1b:
+            'Publiez des <span class="special">versions</span> avec journal des modifications et joignez des fichiers de <span class="special">1 Go</span> ou plus, pour que chacun récupère le bon build.',
         c2t: 'Galeries Multimédias',
-        c2b: 'Mettez en valeur votre travail avec des galeries d\'<span class="special">images et vidéos</span>, ainsi qu\'une icône, une bannière et un visuel de carte personnalisés.',
+        c2b:
+            `Ajoutez des galeries d'<span class="special">images et de vidéos</span>, ainsi qu'une icône, une bannière et une image de carte personnalisées.`,
         c3t: 'Notes et Avis',
-        c3b: 'Recueillez des <span class="special">notes</span>, des <span class="special">avis</span> et des commentaires pour que chacun voie ce que vaut réellement une ressource avant de la télécharger.',
-        c4t: 'Tout Fichier Nécessaire',
-        c4b: 'Modèles, textures, cartes, audio, scripts, binaires et archives &mdash; importez le format dont votre <span class="special">jeu</span> ou <span class="special">moteur</span> a besoin, en toute sécurité.',
+        c3b:
+            'Recevez des <span class="special">notes</span>, des <span class="special">avis</span> et des commentaires, pour que chacun voie ce que vaut une ressource avant de la télécharger.',
+        c4t: 'Formats De Fichier',
+        c4b:
+            `Envoyez modèles, textures, cartes, audio, scripts, binaires ou archives, dans le format qu'attend votre <span class="special">jeu</span> ou votre <span class="special">moteur</span>.`,
         c5t: 'Dépendances',
-        c5b: 'Déclarez des <span class="special">dépendances</span> entre les ressources pour que les utilisateurs récupèrent tout ce dont ils ont besoin au même endroit.',
+        c5b:
+            `Déclarez des <span class="special">dépendances</span> entre ressources pour que l'on récupère avec elle ce dont elle a besoin.`,
         c6t: 'Badge Open-Source',
-        c6b: 'Reliez un <span class="special">dépôt de code source</span> pour obtenir un <span class="special">badge open-source</span> sur la page de votre ressource, montrant à chacun exactement ce qu\'il installe.',
+        c6b:
+            'Liez un <span class="special">dépôt de code source</span> et la page de la ressource reçoit un <span class="special">badge open source</span>.',
         highlightTitle: 'Ressources Gratuites et Open-Source',
         highlightBadge: 'Disponible Maintenant',
-        highlightHtml: `Nous publions déjà nos propres <span class="text-accent">ressources gratuites et open-source</span> &mdash; créées par la communauté, pour la communauté &mdash; et nous en créons <span class="text-accent">bien d'autres</span> sur des moteurs comme <a href="https://godotengine.org" class="${A}">Godot</a>, pour aider les développeurs à intégrer des fonctionnalités de gameplay, du réseau multijoueur, la prise en charge du modding et plus encore dans leurs jeux. Notre objectif est de construire notre propre <a href="#gaming-platform" class="${A}">plateforme de jeu</a> open source !`,
+        highlightHtml:
+            `Nous publions nos propres <span class="text-accent">ressources gratuites et open source</span>, et d'autres arrivent pour des moteurs comme <a href="https://godotengine.org" class="${A}">Godot</a> : fonctions de gameplay, réseau multijoueur, prise en charge du modding et plus. Nous voulons aussi créer une <a href="#gaming-platform" class="${A}">plateforme de jeu</a> open source.`,
         button: 'Parcourir les Ressources',
     },
     de: {
@@ -79,22 +100,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Teile Spiel-<span class="special">Assets</span> &amp; <span class="special">Tools</span>',
         introHtml:
-            'Von Modellen, Skripten und Texturen bis hin zu Plugins, Bibliotheken und kompletten Toolkits: Lade <span class="special">Spiel-Assets</span> und <span class="special">Tools</span> hoch, versioniere und präsentiere sie. Jedes Asset erhält eine reichhaltige Seite mit Medien, Kategorien, Abhängigkeiten und <span class="special">versionierten Downloads</span>.',
+            'Lade Modelle, Skripte, Texturen, Plugins und Bibliotheken hoch. Jedes Asset bekommt eine eigene Seite mit Medien, Kategorien, Abhängigkeiten und <span class="special">versionierten Downloads</span>.',
         c1t: 'Versionierte Releases',
-        c1b: 'Erstelle <span class="special">versionierte Releases</span> mit Changelogs und hänge Dateien von bis zu oder über <span class="special">1 GB</span> pro Stück an, damit alle immer den richtigen Build erhalten.',
+        c1b:
+            'Veröffentliche <span class="special">versionierte Releases</span> mit Changelog und hänge Dateien von <span class="special">1 GB</span> oder mehr an, damit alle den richtigen Build bekommen.',
         c2t: 'Mediengalerien',
-        c2b: 'Präsentiere deine Arbeit mit <span class="special">Bild- &amp; Video</span>-Galerien sowie eigenem Icon, Banner und Karten-Artwork.',
+        c2b:
+            'Füge Galerien mit <span class="special">Bildern &amp; Videos</span> hinzu, dazu eigenes Icon, Banner und Kartenbild.',
         c3t: 'Bewertungen & Rezensionen',
-        c3b: 'Sammle <span class="special">Bewertungen</span>, <span class="special">Rezensionen</span> und Kommentare, damit die Leute sehen, wie ein Asset wirklich ist, bevor sie es herunterladen.',
-        c4t: 'Jede Datei, die du brauchst',
-        c4b: 'Modelle, Texturen, Karten, Audio, Skripte, Binärdateien und Archive &mdash; lade sicher jedes Format hoch, das dein <span class="special">Spiel</span> oder deine <span class="special">Engine</span> erwartet.',
+        c3b:
+            'Sammle <span class="special">Bewertungen</span>, <span class="special">Rezensionen</span> und Kommentare, damit andere vor dem Download sehen, wie ein Asset ist.',
+        c4t: 'Dateiformate',
+        c4b:
+            'Lade Modelle, Texturen, Maps, Audio, Skripte, Binärdateien oder Archive hoch, in dem Format, das dein <span class="special">Spiel</span> oder deine <span class="special">Engine</span> erwartet.',
         c5t: 'Abhängigkeiten',
-        c5b: 'Deklariere <span class="special">Abhängigkeiten</span> zwischen Assets, damit Nutzer alles Benötigte an einem Ort erhalten.',
+        c5b:
+            'Gib <span class="special">Abhängigkeiten</span> zwischen Assets an, damit Nutzer gleich alles bekommen, was ein Asset braucht.',
         c6t: 'Open-Source-Abzeichen',
-        c6b: 'Verknüpfe ein <span class="special">Quellcode-Repository</span>, um ein <span class="special">Open-Source-Abzeichen</span> auf deiner Asset-Seite zu erhalten, das den Leuten genau zeigt, was sie installieren.',
+        c6b:
+            'Verknüpfe ein <span class="special">Quell-Repository</span>, und die Asset-Seite erhält ein <span class="special">Open-Source-Abzeichen</span>.',
         highlightTitle: 'Kostenlose &amp; Open-Source-Assets',
         highlightBadge: 'Jetzt Verfügbar',
-        highlightHtml: `Wir veröffentlichen bereits unsere eigenen <span class="text-accent">kostenlosen, quelloffenen Assets</span> &mdash; von der Community, für die Community &mdash; und wir erstellen <span class="text-accent">viele weitere</span> für Engines wie <a href="https://godotengine.org" class="${A}">Godot</a>, um Entwicklern zu helfen, Gameplay-Funktionen, Multiplayer-Netzwerke, Modding-Unterstützung und mehr in ihre Spiele zu integrieren. Unser Ziel ist es, unsere eigene quelloffene <a href="#gaming-platform" class="${A}">Gaming-Plattform</a> aufzubauen!`,
+        highlightHtml:
+            `Wir veröffentlichen eigene <span class="text-accent">kostenlose Open-Source-Assets</span>, und für Engines wie <a href="https://godotengine.org" class="${A}">Godot</a> kommen weitere: Gameplay-Funktionen, Multiplayer-Netzwerk, Modding-Unterstützung und mehr. Außerdem wollen wir eine quelloffene <a href="#gaming-platform" class="${A}">Gaming-Plattform</a> bauen.`,
         button: 'Assets Durchsuchen',
     },
     ru: {
@@ -102,22 +130,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Делитесь Игровыми <span class="special">Ресурсами</span> и <span class="special">Инструментами</span>',
         introHtml:
-            'От моделей, скриптов и текстур до плагинов, библиотек и полных наборов инструментов — загружайте, версионируйте и демонстрируйте <span class="special">игровые ресурсы</span> и <span class="special">инструменты</span>. Каждый ресурс получает насыщенную страницу с медиа, категориями, зависимостями и <span class="special">версионированными загрузками</span>.',
+            'Загружайте модели, скрипты, текстуры, плагины и библиотеки. У каждого ассета своя страница с медиа, категориями, зависимостями и <span class="special">версионными загрузками</span>.',
         c1t: 'Версионированные Релизы',
-        c1b: 'Выпускайте <span class="special">версионированные релизы</span> со списками изменений и прикрепляйте файлы размером до <span class="special">1 ГБ</span> и более каждый, чтобы люди всегда получали нужную сборку.',
+        c1b:
+            'Публикуйте <span class="special">версионные релизы</span> с журналом изменений и прикрепляйте файлы от <span class="special">1 ГБ</span>, чтобы все получали нужную сборку.',
         c2t: 'Медиа-галереи',
-        c2b: 'Демонстрируйте свою работу с галереями <span class="special">изображений и видео</span>, а также с собственными значком, баннером и обложкой карточки.',
+        c2b:
+            'Добавьте галереи <span class="special">изображений и видео</span>, а также свои значок, баннер и картинку карточки.',
         c3t: 'Оценки и Отзывы',
-        c3b: 'Собирайте <span class="special">оценки</span>, <span class="special">отзывы</span> и комментарии, чтобы люди видели, каков ресурс на самом деле, ещё до загрузки.',
-        c4t: 'Любой Нужный Файл',
-        c4b: 'Модели, текстуры, карты, аудио, скрипты, бинарные файлы и архивы &mdash; безопасно загружайте любой формат, который ожидает ваша <span class="special">игра</span> или <span class="special">движок</span>.',
+        c3b:
+            'Получайте <span class="special">оценки</span>, <span class="special">отзывы</span> и комментарии, чтобы перед загрузкой было видно, каков ассет на деле.',
+        c4t: 'Форматы Файлов',
+        c4b:
+            'Загружайте модели, текстуры, карты, звук, скрипты, бинарные файлы и архивы в том формате, который ждёт ваша <span class="special">игра</span> или <span class="special">движок</span>.',
         c5t: 'Зависимости',
-        c5b: 'Объявляйте <span class="special">зависимости</span> между ресурсами, чтобы пользователи получали всё необходимое в одном месте.',
+        c5b:
+            'Указывайте <span class="special">зависимости</span> между ассетами, чтобы вместе с ассетом получать всё, что ему нужно.',
         c6t: 'Значок Открытого Кода',
-        c6b: 'Свяжите <span class="special">репозиторий исходного кода</span>, чтобы получить <span class="special">значок открытого кода</span> на странице ресурса, показывая людям, что именно они устанавливают.',
+        c6b:
+            'Привяжите <span class="special">репозиторий с исходным кодом</span>, и на странице ассета появится <span class="special">значок открытого кода</span>.',
         highlightTitle: 'Бесплатные Ресурсы с Открытым Кодом',
         highlightBadge: 'Уже Доступно',
-        highlightHtml: `Мы уже публикуем собственные <span class="text-accent">бесплатные ресурсы с открытым кодом</span> &mdash; созданные сообществом и для сообщества &mdash; и создаём <span class="text-accent">множество новых</span> для таких движков, как <a href="https://godotengine.org" class="${A}">Godot</a>, чтобы помочь разработчикам внедрять игровые механики, сетевой мультиплеер, поддержку модов и многое другое в свои игры. Мы стремимся построить собственную <a href="#gaming-platform" class="${A}">игровую платформу</a> с открытым кодом!`,
+        highlightHtml:
+            `Мы публикуем собственные <span class="text-accent">бесплатные ассеты с открытым кодом</span>, и скоро появятся новые для движков вроде <a href="https://godotengine.org" class="${A}">Godot</a>: игровые механики, сетевая игра, поддержка модов и другое. Ещё мы хотим сделать <a href="#gaming-platform" class="${A}">игровую платформу</a> с открытым кодом.`,
         button: 'Смотреть Ресурсы',
     },
     nl: {
@@ -125,22 +160,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Deel Game-<span class="special">Assets</span> &amp; <span class="special">Tools</span>',
         introHtml:
-            'Van modellen, scripts en textures tot plugins, bibliotheken en volledige toolkits: upload, versioneer en toon <span class="special">game-assets</span> en <span class="special">tools</span>. Elk asset krijgt een rijke pagina met media, categorieën, afhankelijkheden en <span class="special">geversioneerde downloads</span>.',
+            'Upload modellen, scripts, texturen, plugins en bibliotheken. Elke asset krijgt een eigen pagina met media, categorieën, afhankelijkheden en <span class="special">downloads per versie</span>.',
         c1t: 'Geversioneerde Releases',
-        c1b: 'Breng <span class="special">geversioneerde releases</span> uit met changelogs en voeg bestanden toe tot of boven de <span class="special">1 GB</span> per stuk, zodat mensen altijd de juiste build pakken.',
+        c1b:
+            'Plaats <span class="special">releases met versie</span> en changelog en voeg bestanden van <span class="special">1 GB</span> of meer toe, zodat iedereen de juiste build pakt.',
         c2t: 'Mediagalerijen',
-        c2b: 'Toon je werk met galerijen vol <span class="special">beeld &amp; video</span>, plus een eigen icoon, banner en kaartafbeelding.',
+        c2b:
+            `Voeg galerijen met <span class="special">afbeeldingen &amp; video's</span> toe, plus een eigen icoon, banner en kaartafbeelding.`,
         c3t: 'Beoordelingen & Reviews',
-        c3b: 'Verzamel <span class="special">beoordelingen</span>, <span class="special">reviews</span> en reacties zodat mensen zien hoe een asset echt is voordat ze het downloaden.',
-        c4t: 'Elk Bestand dat je Nodig Hebt',
-        c4b: 'Modellen, textures, maps, audio, scripts, binaries en archieven &mdash; upload veilig elk formaat dat je <span class="special">game</span> of <span class="special">engine</span> verwacht.',
+        c3b:
+            'Verzamel <span class="special">beoordelingen</span>, <span class="special">reviews</span> en reacties, zodat mensen vóór het downloaden zien hoe een asset is.',
+        c4t: 'Bestandsformaten',
+        c4b:
+            'Upload modellen, texturen, maps, audio, scripts, binaries of archieven, in het formaat dat je <span class="special">game</span> of <span class="special">engine</span> verwacht.',
         c5t: 'Afhankelijkheden',
-        c5b: 'Declareer <span class="special">afhankelijkheden</span> tussen assets zodat gebruikers alles wat ze nodig hebben op één plek binnenhalen.',
+        c5b:
+            'Geef <span class="special">afhankelijkheden</span> tussen assets op, zodat gebruikers meteen krijgen wat een asset nodig heeft.',
         c6t: 'Open-Source-Badge',
-        c6b: 'Koppel een <span class="special">broncode-repository</span> om een <span class="special">open-source-badge</span> op je asset-pagina te verdienen, zodat mensen precies zien wat ze installeren.',
+        c6b:
+            'Koppel een <span class="special">broncode-repository</span> en de assetpagina krijgt een <span class="special">opensourcebadge</span>.',
         highlightTitle: 'Gratis &amp; Open-Source Assets',
         highlightBadge: 'Nu Beschikbaar',
-        highlightHtml: `We publiceren al onze eigen <span class="text-accent">gratis, open-source assets</span> &mdash; gemaakt door de community, voor de community &mdash; en we maken er <span class="text-accent">veel meer</span> voor engines zoals <a href="https://godotengine.org" class="${A}">Godot</a>, om ontwikkelaars te helpen gameplayfuncties, multiplayer-netwerken, modding-ondersteuning en meer in hun games te integreren. Ons doel is om ons eigen open source <a href="#gaming-platform" class="${A}">gamingplatform</a> te bouwen!`,
+        highlightHtml:
+            `We publiceren eigen <span class="text-accent">gratis, opensource assets</span>, en er komen er meer voor engines zoals <a href="https://godotengine.org" class="${A}">Godot</a>: gameplayfuncties, multiplayer-netwerk, moddingondersteuning en meer. We willen ook een opensource <a href="#gaming-platform" class="${A}">gamingplatform</a> bouwen.`,
         button: 'Assets Bekijken',
     },
     ja: {
@@ -148,22 +190,27 @@ export const assets: SectionCatalog = {
         titleHtml:
             'ゲームの<span class="special">アセット</span>と<span class="special">ツール</span>を共有',
         introHtml:
-            'モデル、スクリプト、テクスチャからプラグイン、ライブラリ、フルツールキットまで、<span class="special">ゲームアセット</span>や<span class="special">ツール</span>をアップロード・バージョン管理・公開できます。すべてのアセットには、メディア、カテゴリ、依存関係、<span class="special">バージョン付きダウンロード</span>を備えた充実したページが用意されます。',
+            'モデル、スクリプト、テクスチャ、プラグイン、ライブラリをアップロードできます。アセットごとに、メディア、カテゴリ、依存関係、<span class="special">バージョン管理されたダウンロード</span>を載せた専用ページが付きます。',
         c1t: 'バージョン付きリリース',
-        c1b: '変更履歴付きの<span class="special">バージョン付きリリース</span>を作成し、1つあたり<span class="special">1 GB</span>以上のファイルも添付できるので、いつでも正しいビルドを入手できます。',
+        c1b:
+            '変更履歴付きの<span class="special">バージョン別リリース</span>を公開し、<span class="special">1 GB</span>以上のファイルも添付できるので、正しいビルドを入手してもらえます。',
         c2t: 'メディアギャラリー',
-        c2b: '<span class="special">画像＆動画</span>ギャラリーに加え、カスタムのアイコン、バナー、カードアートで作品をアピールできます。',
+        c2b: '<span class="special">画像・動画</span>のギャラリーに加え、独自のアイコン、バナー、カード画像を設定できます。',
         c3t: '評価とレビュー',
-        c3b: '<span class="special">評価</span>、<span class="special">レビュー</span>、コメントを集めて、ダウンロード前にアセットの実際の様子を確認できるようにします。',
-        c4t: '必要なあらゆるファイル',
-        c4b: 'モデル、テクスチャ、マップ、音声、スクリプト、バイナリ、アーカイブ &mdash; あなたの<span class="special">ゲーム</span>や<span class="special">エンジン</span>が求めるどんな形式でも安全にアップロードできます。',
+        c3b:
+            '<span class="special">評価</span>、<span class="special">レビュー</span>、コメントを集めて、ダウンロード前にアセットの実際の印象を確認してもらえます。',
+        c4t: '対応ファイル形式',
+        c4b:
+            'モデル、テクスチャ、マップ、音声、スクリプト、バイナリ、アーカイブを、<span class="special">ゲーム</span>や<span class="special">エンジン</span>が求める形式のままアップロードできます。',
         c5t: '依存関係',
-        c5b: 'アセット間の<span class="special">依存関係</span>を宣言することで、ユーザーは必要なものすべてを一か所で取得できます。',
+        c5b: 'アセット間の<span class="special">依存関係</span>を宣言すると、必要なものがまとめて入手できます。',
         c6t: 'オープンソースバッジ',
-        c6b: '<span class="special">ソースリポジトリ</span>をリンクすると、アセットページに<span class="special">オープンソースバッジ</span>が付与され、何をインストールするのかを正確に示せます。',
+        c6b:
+            '<span class="special">ソースリポジトリ</span>をリンクすると、アセットページに<span class="special">オープンソースバッジ</span>が付きます。',
         highlightTitle: '無料＆オープンソースのアセット',
         highlightBadge: '提供中',
-        highlightHtml: `私たちはすでに独自の<span class="text-accent">無料でオープンソースのアセット</span>を公開しています &mdash; コミュニティによって、コミュニティのために作られています &mdash; さらに <a href="https://godotengine.org" class="${A}">Godot</a> などのエンジン向けに<span class="text-accent">さらに多く</span>を制作中で、開発者がゲームプレイ機能、マルチプレイヤーネットワーク、modサポートなどを自分のゲームに組み込めるよう支援します。私たちは独自のオープンソース<a href="#gaming-platform" class="${A}">ゲーミングプラットフォーム</a>の構築を目指しています！`,
+        highlightHtml:
+            `私たちは自作の<span class="text-accent">無料のオープンソースアセット</span>を公開しており、<a href="https://godotengine.org" class="${A}">Godot</a>などのエンジン向けにも、ゲームプレイ機能、マルチプレイのネットワーク、MODサポートなどを順次追加していきます。オープンソースの<a href="#gaming-platform" class="${A}">ゲームプラットフォーム</a>も作りたいと考えています。`,
         button: 'アセットを見る',
     },
     zh: {
@@ -171,22 +218,25 @@ export const assets: SectionCatalog = {
         titleHtml:
             '分享游戏<span class="special">资源</span>与<span class="special">工具</span>',
         introHtml:
-            '从模型、脚本和纹理到插件、库和完整工具包，上传、管理版本并展示<span class="special">游戏资源</span>和<span class="special">工具</span>。每个资源都拥有内容丰富的页面，包含媒体、分类、依赖项和<span class="special">版本化下载</span>。',
+            '可以上传模型、脚本、纹理、插件和库。每个资源都有自己的页面，包含媒体、分类、依赖项和<span class="special">按版本区分的下载</span>。',
         c1t: '版本化发布',
-        c1b: '发布带有更新日志的<span class="special">版本化发布</span>，并可附加每个高达或超过<span class="special">1 GB</span>的文件，让大家始终获取正确的版本。',
+        c1b:
+            '发布附带更新日志的<span class="special">版本</span>，也可以附加 <span class="special">1 GB</span> 及以上的文件，让大家拿到正确的构建。',
         c2t: '媒体图库',
-        c2b: '通过<span class="special">图片与视频</span>图库展示你的作品，还可自定义图标、横幅和卡片图。',
+        c2b: '添加<span class="special">图片和视频</span>图库，并自定义图标、横幅和卡片图。',
         c3t: '评分与评价',
-        c3b: '收集<span class="special">评分</span>、<span class="special">评价</span>和评论，让大家在下载前就能了解一个资源的真实情况。',
-        c4t: '任何你需要的文件',
-        c4b: '模型、纹理、地图、音频、脚本、二进制文件和压缩包 &mdash; 安全地上传你的<span class="special">游戏</span>或<span class="special">引擎</span>所需的任何格式。',
+        c3b: '收集<span class="special">评分</span>、<span class="special">评价</span>和评论，让大家下载前就能了解资源的实际情况。',
+        c4t: '文件格式',
+        c4b:
+            '可上传模型、纹理、地图、音频、脚本、二进制文件或压缩包，格式按你的<span class="special">游戏</span>或<span class="special">引擎</span>的要求即可。',
         c5t: '依赖项',
-        c5b: '在资源之间声明<span class="special">依赖项</span>，让用户在一个地方获取所需的一切。',
+        c5b: '声明资源之间的<span class="special">依赖项</span>，用户获取资源时会一并拿到它所需的内容。',
         c6t: '开源徽章',
-        c6b: '关联<span class="special">源代码仓库</span>即可在你的资源页面上获得<span class="special">开源徽章</span>，让大家清楚地看到他们正在安装的内容。',
+        c6b: '关联<span class="special">源码仓库</span>，资源页面就会显示<span class="special">开源徽章</span>。',
         highlightTitle: '免费与开源资源',
         highlightBadge: '现已推出',
-        highlightHtml: `我们已经发布了自己的<span class="text-accent">免费开源资源</span> &mdash; 由社区打造，服务社区 &mdash; 并且正在为诸如 <a href="https://godotengine.org" class="${A}">Godot</a> 等引擎创建<span class="text-accent">更多资源</span>，帮助开发者将游戏玩法功能、多人联网、模组支持等集成到他们的游戏中。我们的目标是打造属于我们自己的开源<a href="#gaming-platform" class="${A}">游戏平台</a>！`,
+        highlightHtml:
+            `我们发布自己的<span class="text-accent">免费开源资源</span>，也在为 <a href="https://godotengine.org" class="${A}">Godot</a> 等引擎准备更多：玩法功能、多人联网、模组支持等。我们还想做一个开源的<a href="#gaming-platform" class="${A}">游戏平台</a>。`,
         button: '浏览资源',
     },
     pt: {
@@ -194,22 +244,29 @@ export const assets: SectionCatalog = {
         titleHtml:
             'Compartilhe <span class="special">Recursos</span> &amp; <span class="special">Ferramentas</span> de Jogos',
         introHtml:
-            'De modelos, scripts e texturas a plugins, bibliotecas e kits de ferramentas completos: envie, versione e exiba <span class="special">recursos de jogos</span> e <span class="special">ferramentas</span>. Cada recurso ganha uma página rica com mídia, categorias, dependências e <span class="special">downloads versionados</span>.',
+            'Envie modelos, scripts, texturas, plugins e bibliotecas. Cada recurso tem a sua página com media, categorias, dependências e <span class="special">transferências versionadas</span>.',
         c1t: 'Lançamentos Versionados',
-        c1b: 'Crie <span class="special">lançamentos versionados</span> com registros de alterações e anexe arquivos de até ou mais de <span class="special">1 GB</span> cada, para que as pessoas sempre baixem a build certa.',
+        c1b:
+            'Publique <span class="special">versões</span> com registo de alterações e anexe ficheiros de <span class="special">1 GB</span> ou mais, para que cada pessoa obtenha a build certa.',
         c2t: 'Galerias de Mídia',
-        c2b: 'Mostre seu trabalho com galerias de <span class="special">imagem e vídeo</span>, além de ícone, banner e arte de cartão personalizados.',
+        c2b:
+            'Adicione galerias de <span class="special">imagens e vídeos</span>, além de ícone, banner e imagem de cartão próprios.',
         c3t: 'Avaliações e Análises',
-        c3b: 'Reúna <span class="special">avaliações</span>, <span class="special">análises</span> e comentários para que as pessoas vejam como um recurso realmente é antes de baixá-lo.',
-        c4t: 'Qualquer Arquivo que Você Precise',
-        c4b: 'Modelos, texturas, mapas, áudio, scripts, binários e arquivos compactados &mdash; envie com segurança qualquer formato que seu <span class="special">jogo</span> ou <span class="special">engine</span> exija.',
+        c3b:
+            'Receba <span class="special">classificações</span>, <span class="special">avaliações</span> e comentários, para que se veja como é um recurso antes de o transferir.',
+        c4t: 'Formatos De Ficheiro',
+        c4b:
+            'Envie modelos, texturas, mapas, áudio, scripts, binários ou arquivos, no formato que o seu <span class="special">jogo</span> ou <span class="special">motor</span> espera.',
         c5t: 'Dependências',
-        c5b: 'Declare <span class="special">dependências</span> entre recursos para que os usuários obtenham tudo o que precisam em um só lugar.',
+        c5b:
+            'Declare <span class="special">dependências</span> entre recursos para que se obtenha com ele o que ele precisa.',
         c6t: 'Selo de Código Aberto',
-        c6b: 'Vincule um <span class="special">repositório de código-fonte</span> para ganhar um <span class="special">selo de código aberto</span> na página do seu recurso, mostrando às pessoas exatamente o que estão instalando.',
+        c6b:
+            'Ligue um <span class="special">repositório de código</span> e a página do recurso recebe um <span class="special">selo de código aberto</span>.',
         highlightTitle: 'Recursos Gratuitos e de Código Aberto',
         highlightBadge: 'Disponível Agora',
-        highlightHtml: `Já publicamos nossos próprios <span class="text-accent">recursos gratuitos e de código aberto</span> &mdash; feitos pela comunidade, para a comunidade &mdash; e estamos criando <span class="text-accent">muitos mais</span> em engines como a <a href="https://godotengine.org" class="${A}">Godot</a>, para ajudar os desenvolvedores a integrar recursos de jogabilidade, rede multijogador, suporte a mods e mais em seus jogos. Nosso objetivo é construir nossa própria <a href="#gaming-platform" class="${A}">plataforma de jogos</a> de código aberto!`,
+        highlightHtml:
+            `Publicamos os nossos próprios <span class="text-accent">recursos gratuitos e de código aberto</span>, e vêm aí mais para motores como <a href="https://godotengine.org" class="${A}">Godot</a>: funcionalidades de jogo, rede multijogador, suporte a modding e mais. Queremos também criar uma <a href="#gaming-platform" class="${A}">plataforma de jogos</a> de código aberto.`,
         button: 'Explorar Recursos',
     },
 }

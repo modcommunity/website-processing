@@ -107,8 +107,8 @@ export default function Articles(props : Props & HTMLAttributes<HTMLDivElement>)
         pool,
         fetchedAt,
         buildDay,
-        moddingGuidesHtml = 'Check out some of our modding <span class="special">how-to</span> guides!',
-        serverGuidesHtml = 'Check out some of our server <span class="special">setup</span> guides!',
+        moddingGuidesHtml = 'Some of our modding <span class="special">how-to</span> guides',
+        serverGuidesHtml = 'Some of our server <span class="special">setup</span> guides',
         prevLabel = 'Previous articles',
         nextLabel = 'Next articles',
     } = props

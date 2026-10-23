@@ -3,8 +3,9 @@ import type { SectionCatalog } from './types'
 export const roadmap: SectionCatalog = {
     en: {
         eyebrow: 'Roadmap',
-        titleHtml: 'Know Exactly <span class="special">What Comes Next</span>',
-        introHtml: `Our <a href="/roadmap">public roadmap</a> lays out what is planned, what is being built right now and what already shipped — and it isn't only ours. Anyone who owns content here can build <span class="special">their own roadmap</span> for it, so the people using your content can follow your plans the same way you follow ours.`,
+        titleHtml: 'See What <span class="special">Comes Next</span>',
+        introHtml:
+            'Our <a href="/roadmap">public roadmap</a> shows what is planned, what we are building now and what has shipped. Anyone who owns content here can keep <span class="special">their own roadmap</span> for it too.',
         boardTitle: 'Zombie Infection Mod',
         boardExample: 'Example',
         viewTimeline: 'Timeline',
@@ -31,19 +32,24 @@ export const roadmap: SectionCatalog = {
         i8: 'Crash when the last survivor is turned',
         i9: 'Setup guide for server owners',
         c1t: 'Timeline Or Columns',
-        c1b: `Read the plan as a <span class="special">timeline</span> or as one <span class="special">column per status</span> — planned, in progress, completed, canceled — and hide what is already done.`,
-        c2t: 'Cards With Real Detail',
-        c2b: `Every card carries a <span class="special">type</span>, a <span class="special">priority</span>, dates, who's assigned, tags and its own discussion — and can link straight to the mod, asset or server it's about.`,
+        c1b:
+            'View the plan as a <span class="special">timeline</span> or as <span class="special">one column per status</span> (planned, in progress, completed, canceled), and hide finished work.',
+        c2t: 'Cards With Detail',
+        c2b:
+            'A card has a <span class="special">type</span>, a <span class="special">priority</span>, dates, assignees, tags and its own discussion, and can link to the mod, asset or server it is about.',
         c3t: 'Roadmaps For Your Content',
-        c3b: `Own a mod, asset, server, app, community or group? Open its <span class="special">Roadmap tab</span> and build your own board — more than one, if "1.0" and "long term" belong apart. Members get <span class="special">personal roadmaps</span> on their profile too.`,
+        c3b:
+            'Own a mod, asset, server, app, community or group? Open its <span class="special">Roadmap tab</span> and make a board, or several if "1.0" and "long term" belong apart. Members get <span class="special">personal roadmaps</span> on their profile too.',
         c4t: 'Follow The Progress',
-        c4b: `<span class="special">Follow</span> a board and get notified whenever a card appears or moves to a new status. No changelog archaeology required.`,
+        c4b:
+            '<span class="special">Follow</span> a board to get notified when a card is added or changes status.',
         button: 'View Official Roadmap',
     },
     es: {
         eyebrow: 'Hoja de ruta',
-        titleHtml: 'Descubre Exactamente <span class="special">Qué Viene Después</span>',
-        introHtml: `Nuestra <a href="/roadmap">hoja de ruta pública</a> muestra lo que está planificado, lo que se está construyendo ahora mismo y lo que ya se ha lanzado — y no es solo la nuestra. Cualquiera que tenga contenido aquí puede crear <span class="special">su propia hoja de ruta</span>, para que quienes usan tu contenido sigan tus planes igual que tú sigues los nuestros.`,
+        titleHtml: 'Mira Lo Que <span class="special">Viene Después</span>',
+        introHtml:
+            'Nuestra <a href="/roadmap">hoja de ruta pública</a> muestra lo que está planificado, lo que estamos construyendo ahora y lo que ya se ha publicado. Quien tenga contenido aquí también puede llevar <span class="special">su propia hoja de ruta</span>.',
         boardTitle: 'Mod Infección Zombi',
         boardExample: 'Ejemplo',
         viewTimeline: 'Cronología',
@@ -70,19 +76,24 @@ export const roadmap: SectionCatalog = {
         i8: 'Cierre inesperado al infectar al último superviviente',
         i9: 'Guía de instalación para propietarios de servidores',
         c1t: 'Cronología O Columnas',
-        c1b: `Lee el plan como una <span class="special">cronología</span> o como una <span class="special">columna por estado</span> — planificado, en curso, completado, cancelado — y oculta lo que ya está hecho.`,
-        c2t: 'Tarjetas Con Detalle Real',
-        c2b: `Cada tarjeta lleva un <span class="special">tipo</span>, una <span class="special">prioridad</span>, fechas, personas asignadas, etiquetas y su propia discusión — y puede enlazar directamente al mod, recurso o servidor del que trata.`,
+        c1b:
+            'Mira el plan como <span class="special">línea de tiempo</span> o como <span class="special">una columna por estado</span> (planificado, en curso, completado, cancelado) y oculta lo ya terminado.',
+        c2t: 'Tarjetas Con Detalle',
+        c2b:
+            'Una tarjeta tiene <span class="special">tipo</span>, <span class="special">prioridad</span>, fechas, responsables, etiquetas y su propio debate, y puede enlazar al mod, recurso o servidor del que trata.',
         c3t: 'Hojas De Ruta Para Tu Contenido',
-        c3b: `¿Tienes un mod, un recurso, un servidor, una app, una comunidad o un grupo? Abre su <span class="special">pestaña de hoja de ruta</span> y crea tu propio tablero — más de uno, si «1.0» y «a largo plazo» deben ir por separado. Los miembros también tienen <span class="special">hojas de ruta personales</span> en su perfil.`,
+        c3b:
+            '¿Tienes un mod, recurso, servidor, aplicación, comunidad o grupo? Abre su <span class="special">pestaña Hoja de ruta</span> y crea un tablero, o varios si «1.0» y «largo plazo» van por separado. Los miembros también tienen <span class="special">hojas de ruta personales</span> en su perfil.',
         c4t: 'Sigue El Progreso',
-        c4b: `<span class="special">Sigue</span> un tablero y recibe una notificación cada vez que aparezca una tarjeta o cambie de estado. Sin tener que rebuscar en los registros de cambios.`,
+        c4b:
+            '<span class="special">Sigue</span> un tablero y recibe un aviso cuando se añada una tarjeta o cambie de estado.',
         button: 'Ver La Hoja De Ruta Oficial',
     },
     fr: {
         eyebrow: 'Feuille de route',
-        titleHtml: 'Sachez Exactement <span class="special">Ce Qui Arrive</span>',
-        introHtml: `Notre <a href="/roadmap">feuille de route publique</a> présente ce qui est prévu, ce qui est en cours de développement et ce qui est déjà sorti — et elle n'est pas la seule. Toute personne possédant du contenu ici peut créer <span class="special">sa propre feuille de route</span>, pour que les personnes qui utilisent votre contenu suivent vos plans comme vous suivez les nôtres.`,
+        titleHtml: 'Voyez Ce Qui <span class="special">Arrive Ensuite</span>',
+        introHtml:
+            'Notre <a href="/roadmap">feuille de route publique</a> montre ce qui est prévu, ce que nous construisons en ce moment et ce qui est sorti. Toute personne qui possède du contenu ici peut aussi tenir <span class="special">sa propre feuille de route</span>.',
         boardTitle: 'Mod Infection Zombie',
         boardExample: 'Exemple',
         viewTimeline: 'Chronologie',
@@ -109,19 +120,24 @@ export const roadmap: SectionCatalog = {
         i8: 'Plantage quand le dernier survivant est infecté',
         i9: "Guide d'installation pour les propriétaires de serveurs",
         c1t: 'Chronologie Ou Colonnes',
-        c1b: `Lisez le plan sous forme de <span class="special">chronologie</span> ou d'une <span class="special">colonne par statut</span> — prévu, en cours, terminé, annulé — et masquez ce qui est déjà fait.`,
-        c2t: 'Des Cartes Vraiment Détaillées',
-        c2b: `Chaque carte porte un <span class="special">type</span>, une <span class="special">priorité</span>, des dates, les personnes assignées, des étiquettes et sa propre discussion — et peut renvoyer directement au mod, à la ressource ou au serveur concerné.`,
+        c1b:
+            'Affichez le plan en <span class="special">chronologie</span> ou en <span class="special">une colonne par statut</span> (prévu, en cours, terminé, annulé), et masquez ce qui est fini.',
+        c2t: 'Des Cartes Détaillées',
+        c2b:
+            'Une carte a un <span class="special">type</span>, une <span class="special">priorité</span>, des dates, des responsables, des étiquettes et sa propre discussion, et peut renvoyer au mod, à la ressource ou au serveur concerné.',
         c3t: 'Des Feuilles De Route Pour Votre Contenu',
-        c3b: `Vous possédez un mod, une ressource, un serveur, une app, une communauté ou un groupe ? Ouvrez son <span class="special">onglet Feuille de route</span> et créez votre propre tableau — plusieurs, si « 1.0 » et « long terme » doivent rester séparés. Les membres disposent aussi de <span class="special">feuilles de route personnelles</span> sur leur profil.`,
+        c3b:
+            'Vous possédez un mod, une ressource, un serveur, une application, une communauté ou un groupe ? Ouvrez son <span class="special">onglet Feuille de route</span> et créez un tableau, ou plusieurs si « 1.0 » et « long terme » vont séparément. Les membres ont aussi des <span class="special">feuilles de route personnelles</span> sur leur profil.',
         c4t: 'Suivez L\'Avancement',
-        c4b: `<span class="special">Suivez</span> un tableau et soyez notifié dès qu'une carte apparaît ou change de statut. Plus besoin de fouiller les journaux de modifications.`,
+        c4b:
+            '<span class="special">Suivez</span> un tableau pour être averti quand une carte est ajoutée ou change de statut.',
         button: 'Voir La Feuille De Route Officielle',
     },
     de: {
         eyebrow: 'Roadmap',
-        titleHtml: 'Wisse Genau, <span class="special">Was Als Nächstes Kommt</span>',
-        introHtml: `Unsere <a href="/roadmap">öffentliche Roadmap</a> zeigt, was geplant ist, woran gerade gearbeitet wird und was bereits veröffentlicht wurde — und sie ist nicht die einzige. Wer hier Inhalte besitzt, kann <span class="special">eine eigene Roadmap</span> dafür anlegen, damit alle, die deine Inhalte nutzen, deinen Plänen genauso folgen können wie du unseren.`,
+        titleHtml: 'Sieh, Was <span class="special">Als Nächstes Kommt</span>',
+        introHtml:
+            'Unsere <a href="/roadmap">öffentliche Roadmap</a> zeigt, was geplant ist, woran wir gerade arbeiten und was erschienen ist. Wer hier Inhalte besitzt, kann dafür auch <span class="special">eine eigene Roadmap</span> führen.',
         boardTitle: 'Zombie-Infektion-Mod',
         boardExample: 'Beispiel',
         viewTimeline: 'Zeitachse',
@@ -148,19 +164,24 @@ export const roadmap: SectionCatalog = {
         i8: 'Absturz, wenn der letzte Überlebende infiziert wird',
         i9: 'Einrichtungsanleitung für Serverbetreiber',
         c1t: 'Zeitleiste Oder Spalten',
-        c1b: `Lies den Plan als <span class="special">Zeitleiste</span> oder als <span class="special">eine Spalte pro Status</span> — geplant, in Arbeit, fertig, abgebrochen — und blende aus, was schon erledigt ist.`,
-        c2t: 'Karten Mit Echten Details',
-        c2b: `Jede Karte trägt einen <span class="special">Typ</span>, eine <span class="special">Priorität</span>, Termine, Zuständige, Tags und eine eigene Diskussion — und kann direkt auf den Mod, das Asset oder den Server verweisen, um den es geht.`,
+        c1b:
+            'Sieh den Plan als <span class="special">Zeitleiste</span> oder als <span class="special">eine Spalte pro Status</span> (geplant, in Arbeit, abgeschlossen, abgebrochen) und blende Erledigtes aus.',
+        c2t: 'Karten Mit Details',
+        c2b:
+            'Eine Karte hat <span class="special">Typ</span>, <span class="special">Priorität</span>, Termine, Zuständige, Tags und eine eigene Diskussion und kann auf den Mod, das Asset oder den Server verlinken, um den es geht.',
         c3t: 'Roadmaps Für Deine Inhalte',
-        c3b: `Du hast einen Mod, ein Asset, einen Server, eine App, eine Community oder eine Gruppe? Öffne den <span class="special">Roadmap-Tab</span> und leg dein eigenes Board an — auch mehrere, wenn „1.0“ und „langfristig“ getrennt gehören. Mitglieder bekommen zusätzlich <span class="special">persönliche Roadmaps</span> auf ihrem Profil.`,
+        c3b:
+            'Du besitzt einen Mod, ein Asset, einen Server, eine App, eine Community oder Gruppe? Öffne den <span class="special">Roadmap-Tab</span> und erstelle ein Board, oder mehrere, wenn „1.0“ und „langfristig“ getrennt gehören. Mitglieder haben auch <span class="special">persönliche Roadmaps</span> im Profil.',
         c4t: 'Verfolge Den Fortschritt',
-        c4b: `<span class="special">Folge</span> einem Board und werde benachrichtigt, sobald eine Karte auftaucht oder den Status wechselt. Kein Wühlen in Changelogs.`,
+        c4b:
+            '<span class="special">Folge</span> einem Board und erhalte eine Benachrichtigung, wenn eine Karte hinzukommt oder ihren Status ändert.',
         button: 'Offizielle Roadmap Ansehen',
     },
     ru: {
         eyebrow: 'Дорожная карта',
-        titleHtml: 'Точно Знайте, <span class="special">Что Будет Дальше</span>',
-        introHtml: `Наша <a href="/roadmap">публичная дорожная карта</a> показывает, что запланировано, что делается прямо сейчас и что уже вышло — и она не единственная. Любой владелец контента здесь может создать <span class="special">собственную дорожную карту</span>, чтобы те, кто пользуется вашим контентом, следили за вашими планами так же, как вы следите за нашими.`,
+        titleHtml: 'Смотрите, Что <span class="special">Будет Дальше</span>',
+        introHtml:
+            'Наша <a href="/roadmap">публичная дорожная карта</a> показывает, что запланировано, что мы делаем сейчас и что уже вышло. Каждый, у кого здесь есть контент, может вести для него <span class="special">собственную дорожную карту</span>.',
         boardTitle: 'Мод «Зомби-инфекция»',
         boardExample: 'Пример',
         viewTimeline: 'Хронология',
@@ -187,19 +208,24 @@ export const roadmap: SectionCatalog = {
         i8: 'Вылет при заражении последнего выжившего',
         i9: 'Руководство по настройке для владельцев серверов',
         c1t: 'Хронология Или Колонки',
-        c1b: `Читайте план как <span class="special">хронологию</span> или как <span class="special">колонку на каждый статус</span> — запланировано, в работе, завершено, отменено — и скрывайте то, что уже сделано.`,
-        c2t: 'Карточки С Настоящими Деталями',
-        c2b: `У каждой карточки есть <span class="special">тип</span>, <span class="special">приоритет</span>, даты, назначенные участники, теги и собственное обсуждение — и она может ссылаться прямо на мод, ресурс или сервер, о котором идёт речь.`,
+        c1b:
+            'Смотрите план как <span class="special">временную шкалу</span> или <span class="special">по колонке на статус</span> (запланировано, в работе, готово, отменено) и скрывайте завершённое.',
+        c2t: 'Карточки С Подробностями',
+        c2b:
+            'У карточки есть <span class="special">тип</span>, <span class="special">приоритет</span>, даты, исполнители, теги и собственное обсуждение. Она может ссылаться на мод, ассет или сервер, о котором идёт речь.',
         c3t: 'Дорожные Карты Для Вашего Контента',
-        c3b: `У вас есть мод, ресурс, сервер, приложение, сообщество или группа? Откройте <span class="special">вкладку «Дорожная карта»</span> и создайте свою доску — хоть несколько, если «1.0» и «долгосрочные планы» лучше держать отдельно. У участников есть и <span class="special">личные дорожные карты</span> в профиле.`,
+        c3b:
+            'Есть мод, ассет, сервер, приложение, сообщество или группа? Откройте его <span class="special">вкладку «Дорожная карта»</span> и создайте доску, или несколько, если «1.0» и «на перспективу» лучше разделить. У участников также есть <span class="special">личные дорожные карты</span> в профиле.',
         c4t: 'Следите За Прогрессом',
-        c4b: `<span class="special">Подпишитесь</span> на доску и получайте уведомления, когда появляется карточка или меняется её статус. Раскопки в списках изменений не нужны.`,
+        c4b:
+            '<span class="special">Подпишитесь</span> на доску, и вы получите уведомление, когда появится карточка или изменится её статус.',
         button: 'Открыть Официальную Дорожную Карту',
     },
     nl: {
         eyebrow: 'Roadmap',
-        titleHtml: 'Weet Precies <span class="special">Wat Er Komt</span>',
-        introHtml: `Onze <a href="/roadmap">openbare roadmap</a> laat zien wat gepland staat, waar nu aan gebouwd wordt en wat al uit is — en het is niet alleen de onze. Iedereen met content hier kan er <span class="special">een eigen roadmap</span> voor maken, zodat iedereen die jouw content gebruikt jouw plannen net zo kan volgen als jij de onze volgt.`,
+        titleHtml: 'Zie Wat <span class="special">Er Hierna Komt</span>',
+        introHtml:
+            'Onze <a href="/roadmap">openbare roadmap</a> laat zien wat gepland staat, waar we nu aan bouwen en wat is uitgebracht. Wie hier content bezit, kan er ook <span class="special">een eigen roadmap</span> voor bijhouden.',
         boardTitle: 'Zombie Infection-mod',
         boardExample: 'Voorbeeld',
         viewTimeline: 'Tijdlijn',
@@ -226,19 +252,24 @@ export const roadmap: SectionCatalog = {
         i8: 'Crash wanneer de laatste overlevende wordt besmet',
         i9: 'Installatiegids voor servereigenaren',
         c1t: 'Tijdlijn Of Kolommen',
-        c1b: `Lees het plan als <span class="special">tijdlijn</span> of als <span class="special">één kolom per status</span> — gepland, bezig, afgerond, geannuleerd — en verberg wat al klaar is.`,
-        c2t: 'Kaarten Met Echte Details',
-        c2b: `Elke kaart heeft een <span class="special">type</span>, een <span class="special">prioriteit</span>, datums, toegewezen personen, tags en een eigen discussie — en kan direct verwijzen naar de mod, asset of server waar het over gaat.`,
+        c1b:
+            'Bekijk het plan als <span class="special">tijdlijn</span> of als <span class="special">één kolom per status</span> (gepland, bezig, voltooid, geannuleerd) en verberg wat klaar is.',
+        c2t: 'Kaarten Met Details',
+        c2b:
+            'Een kaart heeft een <span class="special">type</span>, een <span class="special">prioriteit</span>, data, toegewezen mensen, tags en een eigen discussie, en kan linken naar de mod, asset of server waar het over gaat.',
         c3t: 'Roadmaps Voor Jouw Content',
-        c3b: `Heb je een mod, asset, server, app, community of groep? Open het <span class="special">Roadmap-tabblad</span> en bouw je eigen bord — meerdere zelfs, als "1.0" en "lange termijn" apart horen. Leden krijgen ook <span class="special">persoonlijke roadmaps</span> op hun profiel.`,
+        c3b:
+            'Bezit je een mod, asset, server, app, community of groep? Open het <span class="special">tabblad Roadmap</span> en maak een bord, of meerdere als "1.0" en "lange termijn" apart horen. Leden krijgen ook <span class="special">persoonlijke roadmaps</span> op hun profiel.',
         c4t: 'Volg De Voortgang',
-        c4b: `<span class="special">Volg</span> een bord en krijg bericht zodra er een kaart verschijnt of van status verandert. Geen gespit in changelogs.`,
+        c4b:
+            '<span class="special">Volg</span> een bord en krijg een melding als er een kaart bijkomt of van status verandert.',
         button: 'Bekijk De Officiële Roadmap',
     },
     ja: {
         eyebrow: 'ロードマップ',
-        titleHtml: '<span class="special">次に来るもの</span>がひと目でわかる',
-        introHtml: `<a href="/roadmap">公開ロードマップ</a>では、計画中のもの、現在開発中のもの、すでにリリース済みのものを公開しています。しかもこれは私たちだけのものではありません。ここでコンテンツを所有している人なら誰でも<span class="special">自分専用のロードマップ</span>を作成でき、あなたのコンテンツを使っている人も、あなたが私たちの計画を追うのと同じようにあなたの計画を追えます。`,
+        titleHtml: '<span class="special">次に来るもの</span>を確認',
+        introHtml:
+            '<a href="/roadmap">公開ロードマップ</a>では、計画中のもの、現在開発中のもの、リリース済みのものを確認できます。ここでコンテンツを持っている人は、それぞれ<span class="special">自分用のロードマップ</span>も作れます。',
         boardTitle: 'ゾンビ感染 Mod',
         boardExample: '例',
         viewTimeline: 'タイムライン',
@@ -265,19 +296,23 @@ export const roadmap: SectionCatalog = {
         i8: '最後の生存者が感染するとクラッシュする',
         i9: 'サーバー運営者向けセットアップガイド',
         c1t: 'タイムラインとカラム',
-        c1b: `計画は<span class="special">タイムライン</span>としても、<span class="special">ステータスごとのカラム</span>（計画中・進行中・完了・中止）としても読めます。完了済みを非表示にすることもできます。`,
-        c2t: '中身の詰まったカード',
-        c2b: `各カードには<span class="special">種類</span>、<span class="special">優先度</span>、日程、担当者、タグ、専用のディスカッションが付き、対象の Mod・アセット・サーバーへ直接リンクできます。`,
+        c1b:
+            '計画を<span class="special">タイムライン</span>または<span class="special">ステータスごとの列</span>（計画中、進行中、完了、キャンセル）で表示し、完了済みは隠せます。',
+        c2t: '詳細付きのカード',
+        c2b:
+            'カードには<span class="special">種類</span>、<span class="special">優先度</span>、日付、担当者、タグ、専用のディスカッションがあり、対象のMOD、アセット、サーバーへリンクできます。',
         c3t: 'あなたのコンテンツにもロードマップを',
-        c3b: `Mod、アセット、サーバー、アプリ、コミュニティ、グループをお持ちですか？<span class="special">ロードマップタブ</span>を開けば自分のボードを作成できます。「1.0」と「長期計画」を分けたいなら複数でも構いません。メンバーはプロフィールに<span class="special">個人用ロードマップ</span>も持てます。`,
+        c3b:
+            'MOD、アセット、サーバー、アプリ、コミュニティ、グループを持っていますか？その<span class="special">ロードマップタブ</span>でボードを作れます。「1.0」と「長期」を分けたいなら複数も可能です。メンバーはプロフィールに<span class="special">個人用ロードマップ</span>も持てます。',
         c4t: '進捗をフォロー',
-        c4b: `ボードを<span class="special">フォロー</span>すれば、カードが追加されたりステータスが変わったりするたびに通知が届きます。変更履歴を掘り返す必要はありません。`,
+        c4b: 'ボードを<span class="special">フォロー</span>すると、カードの追加やステータス変更が通知されます。',
         button: '公式ロードマップを見る',
     },
     zh: {
         eyebrow: '路线图',
-        titleHtml: '清楚知道<span class="special">接下来会有什么</span>',
-        introHtml: `我们的<a href="/roadmap">公开路线图</a>列出了计划中的、正在开发的以及已经发布的内容——而且不止我们有。任何在这里拥有内容的人都可以为它建立<span class="special">自己的路线图</span>，让使用你内容的人像你关注我们一样关注你的计划。`,
+        titleHtml: '看看<span class="special">接下来做什么</span>',
+        introHtml:
+            '我们的<a href="/roadmap">公开路线图</a>列出了计划中的、正在开发的和已经发布的内容。在这里拥有内容的人，也可以为它维护<span class="special">自己的路线图</span>。',
         boardTitle: '僵尸感染 Mod',
         boardExample: '示例',
         viewTimeline: '时间线',
@@ -304,19 +339,23 @@ export const roadmap: SectionCatalog = {
         i8: '最后一名幸存者被感染时崩溃',
         i9: '服主安装指南',
         c1t: '时间线或看板',
-        c1b: `既可以按<span class="special">时间线</span>阅读计划，也可以按<span class="special">状态分栏</span>查看——计划中、进行中、已完成、已取消——并可隐藏已经做完的部分。`,
-        c2t: '信息完整的卡片',
-        c2b: `每张卡片都带有<span class="special">类型</span>、<span class="special">优先级</span>、日期、负责人、标签和独立的讨论区，还能直接链接到相关的模组、资源或服务器。`,
+        c1b:
+            '可以按<span class="special">时间线</span>或<span class="special">每个状态一列</span>（计划中、进行中、已完成、已取消）查看计划，并隐藏已完成的部分。',
+        c2t: '带详情的卡片',
+        c2b:
+            '卡片有<span class="special">类型</span>、<span class="special">优先级</span>、日期、负责人、标签和专属讨论，还能链接到相关的模组、资源或服务器。',
         c3t: '为你的内容准备的路线图',
-        c3b: `拥有模组、资源、服务器、应用、社区或小组？打开它的<span class="special">路线图标签页</span>就能建立自己的看板——如果「1.0」和「长期规划」需要分开，建立多个也可以。成员的个人主页上还有<span class="special">个人路线图</span>。`,
+        c3b:
+            '拥有模组、资源、服务器、应用、社区或群组？打开它的<span class="special">路线图标签页</span>，建一个看板；如果“1.0”和“长期”要分开，也可以建多个。成员的个人资料页也有<span class="special">个人路线图</span>。',
         c4t: '跟进进度',
-        c4b: `<span class="special">关注</span>一个看板，卡片新增或状态变化时都会收到通知，不用再去翻更新日志。`,
+        c4b: '<span class="special">关注</span>一个看板，卡片新增或状态变化时就会通知你。',
         button: '查看官方路线图',
     },
     pt: {
         eyebrow: 'Roteiro',
-        titleHtml: 'Saiba Exatamente <span class="special">O Que Vem A Seguir</span>',
-        introHtml: `Nosso <a href="/roadmap">roteiro público</a> mostra o que está planejado, o que está sendo construído agora e o que já foi lançado — e ele não é o único. Quem tem conteúdo aqui pode criar <span class="special">o seu próprio roteiro</span>, para que quem usa o seu conteúdo acompanhe seus planos do mesmo jeito que você acompanha os nossos.`,
+        titleHtml: 'Veja O Que <span class="special">Vem A Seguir</span>',
+        introHtml:
+            'O nosso <a href="/roadmap">roteiro público</a> mostra o que está planeado, o que estamos a construir agora e o que já saiu. Quem tem conteúdo aqui também pode manter <span class="special">o seu próprio roteiro</span>.',
         boardTitle: 'Mod Infecção Zumbi',
         boardExample: 'Exemplo',
         viewTimeline: 'Cronologia',
@@ -343,13 +382,17 @@ export const roadmap: SectionCatalog = {
         i8: 'Falha quando o último sobrevivente é infetado',
         i9: 'Guia de configuração para donos de servidores',
         c1t: 'Linha Do Tempo Ou Colunas',
-        c1b: `Leia o plano como uma <span class="special">linha do tempo</span> ou como uma <span class="special">coluna por status</span> — planejado, em andamento, concluído, cancelado — e esconda o que já está pronto.`,
-        c2t: 'Cartões Com Detalhes De Verdade',
-        c2b: `Cada cartão traz um <span class="special">tipo</span>, uma <span class="special">prioridade</span>, datas, responsáveis, tags e a própria discussão — e pode apontar direto para o mod, asset ou servidor de que se trata.`,
+        c1b:
+            'Veja o plano como <span class="special">linha do tempo</span> ou <span class="special">uma coluna por estado</span> (planeado, em curso, concluído, cancelado) e oculte o que já está feito.',
+        c2t: 'Cartões Com Detalhe',
+        c2b:
+            'Um cartão tem <span class="special">tipo</span>, <span class="special">prioridade</span>, datas, responsáveis, etiquetas e a sua própria discussão, e pode ligar ao mod, recurso ou servidor a que diz respeito.',
         c3t: 'Roteiros Para O Seu Conteúdo',
-        c3b: `Tem um mod, asset, servidor, app, comunidade ou grupo? Abra a <span class="special">aba Roteiro</span> e monte o seu próprio quadro — mais de um, se "1.0" e "longo prazo" precisam ficar separados. Os membros também têm <span class="special">roteiros pessoais</span> no perfil.`,
+        c3b:
+            'Tem um mod, recurso, servidor, aplicação, comunidade ou grupo? Abra o seu <span class="special">separador Roteiro</span> e crie um quadro, ou vários se «1.0» e «longo prazo» devem ficar separados. Os membros também têm <span class="special">roteiros pessoais</span> no perfil.',
         c4t: 'Acompanhe O Progresso',
-        c4b: `<span class="special">Siga</span> um quadro e receba um aviso sempre que um cartão aparecer ou mudar de status. Sem escavar changelogs.`,
+        c4b:
+            '<span class="special">Siga</span> um quadro e receba um aviso quando um cartão for adicionado ou mudar de estado.',
         button: 'Ver O Roteiro Oficial',
     },
 }
