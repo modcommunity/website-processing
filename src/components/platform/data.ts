@@ -61,6 +61,7 @@ export const ADDONS: { id: string; cat: AddonCat }[] = [
     { id: 'dot-chat', cat: 'social' },
     { id: 'dot-voice', cat: 'social' },
     { id: 'dot-leaderboard', cat: 'social' },
+    { id: 'dot-stats', cat: 'social' },
 
     { id: 'dot-player-controller', cat: 'gameplay' },
     { id: 'dot-combat', cat: 'gameplay' },
