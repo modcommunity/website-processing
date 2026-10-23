@@ -17,7 +17,7 @@ export const api: SectionCatalog = {
         c4b:
             'Every request is <span class="special">rate-limited</span> and <span class="special">audit-logged</span>, and a key can never do more than its owner can.',
         // Links out to /tmc-cli, translated in all nine locales like this one.
-        cliButton: 'Meet The tmc CLI',
+        cliButton: 'Meet tmc-cli',
     },
     es: {
         eyebrow: 'API para Desarrolladores',
@@ -34,7 +34,7 @@ export const api: SectionCatalog = {
         c4t: 'Límites Y Registros',
         c4b:
             'Cada solicitud tiene <span class="special">límite de frecuencia</span> y queda en el <span class="special">registro de auditoría</span>, y una clave nunca puede hacer más que su propietario.',
-        cliButton: 'Conoce La CLI tmc',
+        cliButton: 'Conoce tmc-cli',
     },
     fr: {
         eyebrow: 'API pour Développeurs',
@@ -51,7 +51,7 @@ export const api: SectionCatalog = {
         c4t: 'Limites Et Journaux',
         c4b:
             'Chaque requête est <span class="special">limitée en débit</span> et <span class="special">journalisée</span>, et une clé ne peut jamais faire plus que son propriétaire.',
-        cliButton: 'Découvrir La CLI tmc',
+        cliButton: 'Découvrir tmc-cli',
     },
     de: {
         eyebrow: 'Entwickler-API',
@@ -68,7 +68,7 @@ export const api: SectionCatalog = {
         c4t: 'Limits Und Protokolle',
         c4b:
             'Jede Anfrage ist <span class="special">ratenbegrenzt</span> und wird <span class="special">protokolliert</span>, und ein Schlüssel kann nie mehr als sein Besitzer.',
-        cliButton: 'Die tmc-CLI Entdecken',
+        cliButton: 'tmc-cli Entdecken',
     },
     ru: {
         eyebrow: 'API для Разработчиков',
@@ -85,7 +85,7 @@ export const api: SectionCatalog = {
         c4t: 'Лимиты И Журналы',
         c4b:
             'У каждого запроса есть <span class="special">лимит частоты</span>, он попадает в <span class="special">журнал аудита</span>, и ключ никогда не может больше, чем его владелец.',
-        cliButton: 'Познакомьтесь с CLI tmc',
+        cliButton: 'Познакомьтесь с tmc-cli',
     },
     nl: {
         eyebrow: 'Ontwikkelaars-API',
@@ -102,7 +102,7 @@ export const api: SectionCatalog = {
         c4t: 'Limieten En Logboeken',
         c4b:
             'Elk verzoek heeft een <span class="special">ratelimiet</span> en komt in het <span class="special">auditlogboek</span>, en een sleutel kan nooit meer dan de eigenaar.',
-        cliButton: 'Maak Kennis Met De tmc-CLI',
+        cliButton: 'Maak Kennis Met tmc-cli',
     },
     ja: {
         eyebrow: '開発者向けAPI',
@@ -119,7 +119,7 @@ export const api: SectionCatalog = {
         c4t: '制限とログ',
         c4b:
             'すべてのリクエストに<span class="special">レート制限</span>がかかり、<span class="special">監査ログ</span>に残ります。キーの権限が所有者を超えることはありません。',
-        cliButton: 'tmc CLI を見る',
+        cliButton: 'tmc-cli を見る',
     },
     zh: {
         eyebrow: '开发者 API',
@@ -135,7 +135,7 @@ export const api: SectionCatalog = {
         c3b: '通过关联 API 推送<span class="special">发行版</span>、<span class="special">文件</span>、<span class="special">图片 &amp; 媒体</span>、链接和安装程序。',
         c4t: '限制与日志',
         c4b: '每个请求都有<span class="special">限速</span>并记入<span class="special">审计日志</span>，密钥的权限永远不会超过其所有者。',
-        cliButton: '认识 tmc 命令行工具',
+        cliButton: '认识 tmc-cli 命令行工具',
     },
     pt: {
         eyebrow: 'API para Desenvolvedores',
@@ -152,6 +152,6 @@ export const api: SectionCatalog = {
         c4t: 'Limites E Registos',
         c4b:
             'Cada pedido tem <span class="special">limite de frequência</span> e fica no <span class="special">registo de auditoria</span>, e uma chave nunca pode mais do que o seu dono.',
-        cliButton: 'Conheça A CLI tmc',
+        cliButton: 'Conheça O tmc-cli',
     },
 }
