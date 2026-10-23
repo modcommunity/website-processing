@@ -44,16 +44,4 @@ const steps: { n: number; cmd?: string[] }[] = [
             </li>
         ))}
     </ol>
-
-    <div class="rounded-2xl border border-amber-400/25 bg-amber-400/5 p-5">
-        <h3 class="text-base font-semibold">{p('runLimitsTitle')}</h3>
-        <ul class="mt-3 flex flex-col gap-2 text-sm text-muted [&_code]:text-foreground">
-            {[1, 2, 3, 4].map((i) => (
-                <li class="flex gap-2">
-                    <span aria-hidden class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-300"></span>
-                    <span class="min-w-0" set:html={p(`runLimit${i}`)}></span>
-                </li>
-            ))}
-        </ul>
-    </div>
 </section>
