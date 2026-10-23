@@ -49,6 +49,16 @@ Each is built like the home page: a shell in `src/components/<Name>.astro` compo
 - **Every claim is checked against the sibling repo.** The protocol list, the four deployment strategies, the relation verbs and the exit codes are copied, not invented, and each is sourced in a comment. `apiTool.ts`'s header names the CLI version it was last checked against; the type, relation and cap lists come from the CLI's `src/tmc_cli/schema.py`, and any test count from actually running its suite, because the README's figure is the thing most likely to have drifted.
 - **`/tmc-cli` links the docs, not a repository.** There is no public repo, so the hero's third button and the closing CTA both point at `DOCS_URL + /tmc-cli`.
 
+## The platform page (`/platform`)
+
+`src/components/PlatformPage.astro` composes `src/components/platform/*` (hero, stack diagram, differentiators, addon explorer, play step-through, games, projects, goals, MIT block, CTA); copy is `src/i18n/sections/platformPage.ts`, and the home page's `landing/Platform.astro` is a teaser over the same `stackLayers()` and `platform.ts`. Interactive parts are three React islands (`StackDiagram`, `AddonExplorer`, `PlayFlow`).
+
+- **Lists are data, in `components/platform/data.ts`.** `ADDONS` (id + category), `GAMES` (id + repo) and `PROJECTS`. Adding one is an entry there plus its keys: `ad_<id>`, `gm_<id>`, or for a project `proj_<id>_desc` and `proj_<id>_g1..gN` (the key names use underscores because the catalogue lookup splits on dots).
+- **"Open source, MIT" is said only about the Dot addons and the listed games**, whose repos have a verified MIT `LICENSE`. The site backend and the desktop app are not MIT and the page says so (`mitScopeHtml`). Check a repo's `LICENSE` before adding it to a list; `dot-bot-learn` has none and is left off.
+- **Every claim traces to the addons' own docs or code, and the stage is stated** (`badgeStage`, `heroNoteHtml`, the Goals section's built / next / not built columns). Update Goals when something ships; do not fold a plan into "built".
+- A project's goals are copied from that project's own goals page and link back to it; do not write goals for someone else.
+- nginx routes `/platform` to this site (`/etc/nginx/sites-enabled/tmc.conf` and `website-city/deployment/docker/nginx.conf`); a new page here needs the same edit in both.
+
 ## Translation
 
 The home page is fully translated in all nine locales, and an English-only key there is a regression. The product pages are translated too (`src/i18n/sections/tmcApp.ts`, `apiTool.ts`), as are the links they added into `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`); the two product heroes are English-only.

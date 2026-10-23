@@ -1,6 +1,6 @@
 # CLAUDE.md — website-processing
 
-The Astro + React static site for The Modding Community's public pages: the home page, the two product pages (`/tmc-app`, `/tmc-cli`), licenses, privacy policy and ToS. It is separate from the core app (`../website-city`, Next.js) so the marketing and legal surface can be a fast static build. Its theme and shell come from `@modcommunity/shared` (`../tmc-global`).
+The Astro + React static site for The Modding Community's public pages: the home page, the gaming platform page (`/platform`), the two product pages (`/tmc-app`, `/tmc-cli`), licenses, privacy policy and ToS. It is separate from the core app (`../website-city`, Next.js) so the marketing and legal surface can be a fast static build. Its theme and shell come from `@modcommunity/shared` (`../tmc-global`).
 
 ## Layout
 
@@ -8,7 +8,7 @@ The Astro + React static site for The Modding Community's public pages: the home
 | --- | --- |
 | `src/pages/*/index.astro`, `src/pages/[lang]/…` | Routes, one pair per page so the language picker never 404s |
 | `src/layouts/Layout.astro` | The single layout: `<html class="dark">`, fonts, `<main class="@container … overflow-x-clip">` |
-| `src/components/*.astro` | Page shells; `landing/`, `tmcApp/`, `apiTool/` hold their sections; `helper/HeroBackdrop.astro` the three hero backdrops |
+| `src/components/*.astro` | Page shells; `landing/`, `platform/`, `tmcApp/`, `apiTool/` hold their sections; `helper/HeroBackdrop.astro` the three hero backdrops |
 | `src/components/SiteHeader.tsx`, `SiteFooter.tsx` | Thin wrappers around the shared `Header`/`Footer` |
 | `src/styles/Global.css` | Tailwind, the shared `theme.css`, the `@source` line, the old-token alias block |
 | `src/lib/site.ts` | Every origin (`SITE_URL`, `CITY_URL`, `DOCS_URL`) |
@@ -54,6 +54,6 @@ The Astro + React static site for The Modding Community's public pages: the home
 | [docs/design-system.md](docs/design-system.md) | Styling: shared theme, CSS wiring, token aliases, dark mode, fonts, icons, island props |
 | [docs/dependencies.md](docs/dependencies.md) | Switching `@modcommunity/shared` between local and registry, touching `three`, bumping a pinned package |
 | [docs/layout.md](docs/layout.md) | Any responsive layout change, or touching the overflow audit |
-| [docs/content.md](docs/content.md) | Origins and env vars, the blog shelf, the product pages, translation keys |
+| [docs/content.md](docs/content.md) | Origins and env vars, the blog shelf, the platform and product pages, translation keys |
 | [docs/heroes.md](docs/heroes.md) | Changing a hero or adding motion |
 | [docs/history.md](docs/history.md) | Wondering why a rule exists: the dead audit, the two grids, the typing headline |

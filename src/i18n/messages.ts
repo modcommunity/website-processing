@@ -12,6 +12,7 @@ import { blog } from './sections/blog'
 import { roadmap } from './sections/roadmap'
 import { feedback } from './sections/feedback'
 import { platform } from './sections/platform'
+import { platformPage } from './sections/platformPage'
 import { tmcApp } from './sections/tmcApp'
 import { apiTool } from './sections/apiTool'
 import { joinCommunity } from './sections/joinCommunity'
@@ -397,6 +398,7 @@ const SECTIONS = {
     feedback,
     blog,
     platform,
+    platformPage,
     joinCommunity,
     // The two dedicated product pages (/tmc-app, /tmc-cli). They live in the
     // same `landing.*` namespace as the home-page sections because they are

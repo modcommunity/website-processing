@@ -1,0 +1,19 @@
+---
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import StackDiagram from "./StackDiagram";
+import { stackLayers } from "./layers";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={p('stackEyebrow')}>
+        <h2 slot="title" set:html={p('stackTitleHtml')}></h2>
+        <p set:html={p('stackIntroHtml')}></p>
+    </SectionIntro>
+    <div class="intersect-once intersect:motion-preset-slide-up">
+        <StackDiagram client:visible layers={stackLayers(t)} hint={p('stackHint')} label={p('stackLabel')} />
+    </div>
+</section>

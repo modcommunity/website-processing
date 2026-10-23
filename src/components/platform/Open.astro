@@ -1,0 +1,31 @@
+---
+import { Code2, GitFork, Scale, BookOpenText } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+import { ADDONS_ORG } from "./data";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+---
+
+<section id="open-source" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
+    <div class="@container flex flex-col items-start gap-6 rounded-3xl border border-emerald-400/25 bg-gradient-to-br from-emerald-400/10 via-surface to-surface p-8 intersect-once intersect:motion-preset-slide-up">
+        <span class="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+            <Scale className="h-4 w-4" />
+            {p('badgeMit')}
+        </span>
+        <h2 class="text-3xl" set:html={p('mitTitleHtml')}></h2>
+        <p class="max-w-3xl text-muted [&_.special]:text-accent [&_code]:text-accent" set:html={p('mitBodyHtml')}></p>
+        <div class="grid w-full grid-cols-1 gap-6 @3xl:grid-cols-3">
+            <FeatureCard icon={BookOpenText} title={p('mit1t')}><Fragment set:html={p('mit1b')} /></FeatureCard>
+            <FeatureCard icon={GitFork} title={p('mit2t')}><Fragment set:html={p('mit2b')} /></FeatureCard>
+            <FeatureCard icon={Code2} title={p('mit3t')}><Fragment set:html={p('mit3b')} /></FeatureCard>
+        </div>
+        <p class="max-w-3xl text-sm text-muted" set:html={p('mitScopeHtml')}></p>
+        <a href={ADDONS_ORG} target="_blank" rel="noreferrer" data-umami-event="platform_page_cta" data-umami-event-to="github" data-umami-event-place="open" class="btn btn-special">
+            <Code2 className="h-5 w-5" />
+            <span>{p('heroBtnSource')}</span>
+        </a>
+    </div>
+</section>

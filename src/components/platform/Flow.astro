@@ -1,0 +1,19 @@
+---
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import PlayFlow from "./PlayFlow";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+const steps = [1, 2, 3, 4, 5].map((n) => ({ title: p(`f${n}t`), body: p(`f${n}b`), source: p(`f${n}s`) }));
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={p('flowEyebrow')}>
+        <h2 slot="title" set:html={p('flowTitleHtml')}></h2>
+        <p set:html={p('flowIntroHtml')}></p>
+    </SectionIntro>
+    <div class="mx-auto w-full max-w-4xl intersect-once intersect:motion-preset-slide-up">
+        <PlayFlow client:visible steps={steps} label={p('flowLabel')} prev={p('flowPrev')} next={p('flowNext')} stepOf={p('flowStepOf')} />
+    </div>
+</section>

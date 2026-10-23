@@ -1,0 +1,33 @@
+---
+import { Globe, MonitorSmartphone, PackageCheck, Server, ShieldCheck, UserRound, Users } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import FeatureCard from "../landing/helper/FeatureCard.astro";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+
+const cards = [
+    { icon: MonitorSmartphone, n: 1 },
+    { icon: PackageCheck, n: 2 },
+    { icon: ShieldCheck, n: 3 },
+    { icon: UserRound, n: 4 },
+    { icon: Users, n: 5 },
+    { icon: Server, n: 6 },
+];
+const delays = ['', 'motion-delay-80', 'motion-delay-160'];
+---
+
+<section class="py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={p('diffEyebrow')}>
+        <h2 slot="title" set:html={p('diffTitleHtml')}></h2>
+        <p set:html={p('diffIntroHtml')}></p>
+    </SectionIntro>
+    <div class="grid grid-cols-1 gap-6 @3xl:grid-cols-2 @5xl:grid-cols-3">
+        {cards.map(({ icon, n }, i) => (
+            <FeatureCard icon={icon} title={p(`d${n}t`)} class={`intersect-once intersect:motion-preset-slide-up ${delays[i % 3]}`}>
+                <Fragment set:html={p(`d${n}b`)} />
+            </FeatureCard>
+        ))}
+    </div>
+</section>

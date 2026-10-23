@@ -1,0 +1,58 @@
+---
+import { ArrowUpRight, Code2, Scale } from 'lucide-react';
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import { PROJECTS } from "./data";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+---
+
+<section id="projects" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={p('projEyebrow')}>
+        <h2 slot="title" set:html={p('projTitleHtml')}></h2>
+        <p set:html={p('projIntroHtml')}></p>
+    </SectionIntro>
+
+    {PROJECTS.map((proj) => (
+        <article class="@container flex min-w-0 flex-col gap-6 rounded-2xl border border-border bg-surface p-6 intersect-once intersect:motion-preset-slide-up">
+            <header class="flex flex-wrap items-center justify-between gap-3">
+                <h3 class="text-2xl">{proj.name}</h3>
+                <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs font-semibold text-emerald-400">
+                    <Scale className="h-3.5 w-3.5" />
+                    {proj.license}
+                </span>
+            </header>
+            <p class="max-w-3xl text-muted" set:html={p(`proj_${proj.id}_desc`)}></p>
+
+            <div class="flex flex-col gap-3">
+                <h4 class="text-sm font-semibold uppercase tracking-wider text-accent">{p('projGoalsTitle')}</h4>
+                <ol class="grid grid-cols-1 gap-3 @3xl:grid-cols-2">
+                    {Array.from({ length: proj.goals }, (_, i) => (
+                        <li class="flex min-w-0 gap-3 rounded-xl border border-border bg-background/40 p-3 text-sm text-muted">
+                            <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10 text-xs font-semibold text-accent">{i + 1}</span>
+                            <span class="min-w-0" set:html={p(`proj_${proj.id}_g${i + 1}`)}></span>
+                        </li>
+                    ))}
+                </ol>
+            </div>
+
+            <div class="flex flex-wrap gap-3">
+                {proj.goalsHref && (
+                    <a href={proj.goalsHref} target="_blank" rel="noreferrer" class="btn btn-special">
+                        <ArrowUpRight className="h-5 w-5" />
+                        <span>{p('projBtnGoals')}</span>
+                    </a>
+                )}
+                <a href={proj.site} target="_blank" rel="noreferrer" class="btn btn-primary">
+                    <ArrowUpRight className="h-5 w-5" />
+                    <span>{p('projBtnSite')}</span>
+                </a>
+                <a href={proj.repoHref} target="_blank" rel="noreferrer" class="btn btn-primary">
+                    <Code2 className="h-5 w-5" />
+                    <span>{p('projBtnSource')}</span>
+                </a>
+            </div>
+        </article>
+    ))}
+</section>

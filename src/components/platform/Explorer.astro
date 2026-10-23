@@ -1,0 +1,29 @@
+---
+import SectionIntro from "../landing/helper/SectionIntro.astro";
+import AddonExplorer from "./AddonExplorer";
+import { ADDONS, ADDON_CATS, ADDONS_ORG } from "./data";
+import { getT } from "../../i18n/t";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+
+const addons = ADDONS.map((a) => ({ id: a.id, cat: a.cat, desc: p(`ad_${a.id}`) }));
+const cats = ADDON_CATS.map((c) => ({ id: c, label: p(`cat_${c}`) }));
+const labels = {
+    search: p('expSearch'),
+    all: p('expAll'),
+    empty: p('expEmpty'),
+    count: p('expCount'),
+    open: p('expOpen'),
+};
+---
+
+<section id="addons" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
+    <SectionIntro eyebrow={p('expEyebrow')}>
+        <h2 slot="title" set:html={p('expTitleHtml')}></h2>
+        <p set:html={p('expIntroHtml')}></p>
+    </SectionIntro>
+    <div class="intersect-once intersect:motion-preset-fade">
+        <AddonExplorer client:visible addons={addons} cats={cats} org={ADDONS_ORG} labels={labels} />
+    </div>
+</section>

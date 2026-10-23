@@ -1,0 +1,86 @@
+---
+import { Code2, Gamepad2, Map, Scale } from 'lucide-react';
+import HeroBackdrop from "../helper/HeroBackdrop.astro";
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+import { CITY_URL } from "../../lib/site";
+import { ADDONS_ORG } from "./data";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+const chips = [p('chipEngine'), p('chipWeb'), p('chipServers')];
+---
+
+{/*
+  * Centred, on the blueprint backdrop like the home page, but the headline
+  * sits over a row of fact chips and the licence badge is the first thing in
+  * it: the page's one claim that is easy to check is the one it opens with.
+  */}
+<section class="px-4 pt-8 @2xl:pt-12">
+    <div class="container mx-auto">
+        <div class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+            <HeroBackdrop variant="blueprint" />
+
+            <div class="@container flex flex-col items-center gap-6 px-6 py-16 text-center @2xl:py-24">
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    <span class="inline-flex items-center gap-2 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-emerald-200 backdrop-blur-md">
+                        <Scale className="h-3.5 w-3.5" />
+                        {p('badgeMit')}
+                    </span>
+                    <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-white/75 backdrop-blur-md">
+                        <span class="h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_8px_2px] shadow-amber-300/60"></span>
+                        {p('badgeStage')}
+                    </span>
+                </div>
+
+                <h2
+                    class="max-w-4xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-[#93c5fd]"
+                    set:html={p('heroTitleHtml')}
+                ></h2>
+
+                <p
+                    class="max-w-2xl text-pretty text-lg text-white/75 [&_.special]:text-[#93c5fd]"
+                    set:html={p('heroTaglineHtml')}
+                ></p>
+
+                <div class="flex flex-wrap items-center justify-center gap-2">
+                    {chips.map((chip) => (
+                        <span class="rounded-lg border border-white/12 bg-white/8 px-3 py-1.5 text-sm text-white/80 backdrop-blur-md">{chip}</span>
+                    ))}
+                </div>
+
+                <div class="flex flex-wrap items-center justify-center gap-3 pt-1">
+                    <a
+                        href={`${CITY_URL}/play`}
+                        data-umami-event="platform_page_cta" data-umami-event-to="play" data-umami-event-place="hero"
+                        class="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-[#05060f] shadow-lg shadow-black/30 transition hover:-translate-y-0.5 hover:bg-white/90 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    >
+                        <Gamepad2 className="h-5 w-5" />
+                        <span>{p('heroBtnPlay')}</span>
+                    </a>
+                    <a
+                        href={ADDONS_ORG} target="_blank" rel="noreferrer"
+                        data-umami-event="platform_page_cta" data-umami-event-to="github" data-umami-event-place="hero"
+                        class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    >
+                        <Code2 className="h-5 w-5" />
+                        <span>{p('heroBtnSource')}</span>
+                    </a>
+                    <a
+                        href={localizePath("/roadmap", Astro.currentLocale)}
+                        data-umami-event="platform_page_cta" data-umami-event-to="roadmap" data-umami-event-place="hero"
+                        class="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-6 py-3 font-semibold text-white backdrop-blur-md transition hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/20 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    >
+                        <Map className="h-5 w-5" />
+                        <span>{p('heroBtnRoadmap')}</span>
+                    </a>
+                </div>
+
+                <p
+                    class="max-w-2xl rounded-xl border border-amber-400/25 bg-amber-400/5 px-4 py-3 text-sm text-white/70 [&_.special]:text-amber-200"
+                    set:html={p('heroNoteHtml')}
+                ></p>
+            </div>
+        </div>
+    </div>
+</section>

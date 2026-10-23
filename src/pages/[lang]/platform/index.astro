@@ -1,0 +1,21 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import PlatformPage from '../../../components/PlatformPage.astro';
+import { NON_DEFAULT_LOCALES } from '../../../i18n/config';
+
+// One localized copy per non-default locale, so the language picker never 404s
+// here. `i18n/sections/platformPage.ts` carries the body copy in all nine
+// languages; the `meta` below is still English, like every other page's.
+export function getStaticPaths() {
+    return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
+}
+---
+
+<Layout pathName={Astro.url.pathname} meta={{
+    title: "The TMC Gaming Platform",
+    titleMain: "The TMC Gaming Platform - The Modding Community",
+    desc: "Dot is a set of MIT-licensed, open-source Godot addons for accounts, dedicated servers, moderation, parties and voice. Games built on it run in a browser tab or on desktop."
+}}>
+    <h1 class="sr-only">The TMC Gaming Platform - The Modding Community</h1>
+    <PlatformPage />
+</Layout>

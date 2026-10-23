@@ -1,0 +1,34 @@
+---
+import { BookOpen, Code2, Gamepad2, Map, Server } from 'lucide-react';
+import { getT } from "../../i18n/t";
+import { localizePath } from "../../i18n/config";
+import { CITY_URL, DOCS_URL } from "../../lib/site";
+import { ADDONS_ORG } from "./data";
+
+const t = getT(Astro.currentLocale);
+const p = (k: string) => t(`landing.platformPage.${k}`);
+---
+
+<section class="py-20 px-4 container mx-auto">
+    <div class="flex flex-col items-center gap-5 rounded-2xl border border-border bg-surface px-6 py-12 text-center intersect-once intersect:motion-preset-slide-up">
+        <h2 class="text-3xl" set:html={p('ctaTitleHtml')}></h2>
+        <p class="max-w-2xl text-muted [&_.special]:text-accent" set:html={p('ctaIntroHtml')}></p>
+        <div class="flex flex-wrap items-center justify-center gap-3">
+            <a href={`${CITY_URL}/play`} data-umami-event="platform_page_cta" data-umami-event-to="play" data-umami-event-place="cta" class="btn btn-special">
+                <Gamepad2 className="h-5 w-5" /><span>{p('ctaPlay')}</span>
+            </a>
+            <a href={`${CITY_URL}/servers/browse`} data-umami-event="platform_page_cta" data-umami-event-to="servers" data-umami-event-place="cta" class="btn btn-primary">
+                <Server className="h-5 w-5" /><span>{p('ctaServers')}</span>
+            </a>
+            <a href={DOCS_URL} data-umami-event="platform_page_cta" data-umami-event-to="docs" data-umami-event-place="cta" class="btn btn-primary">
+                <BookOpen className="h-5 w-5" /><span>{p('ctaDocs')}</span>
+            </a>
+            <a href={ADDONS_ORG} target="_blank" rel="noreferrer" data-umami-event="platform_page_cta" data-umami-event-to="github" data-umami-event-place="cta" class="btn btn-primary">
+                <Code2 className="h-5 w-5" /><span>{p('heroBtnSource')}</span>
+            </a>
+            <a href={localizePath("/roadmap", Astro.currentLocale)} data-umami-event="platform_page_cta" data-umami-event-to="roadmap" data-umami-event-place="cta" class="btn btn-primary">
+                <Map className="h-5 w-5" /><span>{p('heroBtnRoadmap')}</span>
+            </a>
+        </div>
+    </div>
+</section>
