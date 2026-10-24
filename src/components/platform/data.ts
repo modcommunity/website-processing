@@ -106,7 +106,7 @@ export const PROJECTS: {
         goalsHref: 'https://zeesgames.com/goals',
         repoHref: GAMES_ORG,
         license: 'MIT',
-        goals: 8,
+        goals: 9,
         ties: 4,
     },
 ]
