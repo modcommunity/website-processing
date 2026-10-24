@@ -73,7 +73,7 @@ export default function SiteHeader({
             }}
         />
     )
-    const theme = <ThemeToggle labels={{ toLight: t('theme.toLight'), toDark: t('theme.toDark') }} />
+    const theme = <ThemeToggle cookieOptions={{ subdomainUrl: DOCS_URL }} labels={{ toLight: t('theme.toLight'), toDark: t('theme.toDark') }} />
     const account = (className: string) => (
         <AccountButton
             signedIn={signedIn}

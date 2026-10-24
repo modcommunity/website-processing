@@ -26,7 +26,7 @@ New markup uses the website-city names directly (`surface`, `accent`, `foregroun
 
 ## Dark mode
 
-Dark is the default; light is a choice. `Layout.astro`'s `<html>` starts as `class="dark"` and an inline script applies the stored `tmc:theme` (`dark`/`light`, as `class` plus `data-theme`) before first paint; the shared header's `ThemeToggle` writes it. Heroes follow the theme ([heroes](heroes.md)); anything else must use tokens.
+Dark is the default; light is a choice. `Layout.astro`'s `<html>` starts as `class="dark"` and the shared `ThemeInitScript()` (`@modcommunity/shared/theme`) applies the `tmc_theme` parent-domain cookie, then localStorage `tmc:theme`, then the OS (as `class` plus `data-theme`) before first paint; the header's `ThemeToggle` writes both, with the same `cookieOptions` as `WriteLocaleCookie`. Heroes follow the theme ([heroes](heroes.md)); anything else must use tokens.
 
 ## Fonts
 
