@@ -26,7 +26,7 @@ let n = 0;
 ---
 
 <div class="@container min-w-0">
-    <div class="pp relative overflow-hidden rounded-2xl border border-sky-300/25 bg-[#070b1d]/80 shadow-2xl shadow-sky-950/50 ring-1 ring-white/5 backdrop-blur-md">
+    <div class="pp relative overflow-hidden rounded-2xl border border-sky-300/25 bg-surface/80 shadow-xl shadow-slate-900/10 ring-1 ring-white/5 backdrop-blur-md dark:bg-[#070b1d]/80 dark:shadow-2xl dark:shadow-sky-950/50">
         <div class="flex items-center gap-2 border-b border-white/10 px-4 py-2.5">
             <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
             <span class="h-2.5 w-2.5 rounded-full bg-white/20"></span>
@@ -81,9 +81,11 @@ let n = 0;
             animation: pp-flow 2.4s linear infinite;
         }
     }
+    .pp { --pp-ink: 255 255 255; --pp-hi: 125 211 252; --pp-hit: #fff; }
+    :global(html:not(.dark)) .pp { --pp-ink: 15 23 42; --pp-hi: 2 132 199; --pp-hit: #0c4a6e; }
     @keyframes pp-light {
-        0%, 12%, 100% { border-color: rgb(255 255 255 / 0.12); background-color: rgb(255 255 255 / 0.06); color: rgb(255 255 255 / 0.75); }
-        4%, 8% { border-color: rgb(125 211 252 / 0.8); background-color: rgb(125 211 252 / 0.18); color: #fff; }
+        0%, 12%, 100% { border-color: rgb(var(--pp-ink) / 0.12); background-color: rgb(var(--pp-ink) / 0.06); color: rgb(var(--pp-ink) / 0.75); }
+        4%, 8% { border-color: rgb(var(--pp-hi) / 0.8); background-color: rgb(var(--pp-hi) / 0.18); color: var(--pp-hit); }
     }
     @keyframes pp-pulse {
         0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgb(110 231 183 / 0.5); }

@@ -26,7 +26,7 @@ New markup uses the website-city names directly (`surface`, `accent`, `foregroun
 
 ## Dark mode
 
-The site is dark. `Layout.astro`'s `<html>` carries `class="dark"`, which activates the shared theme's `.dark` token block. There is no theme toggle here.
+Dark is the default; light is a choice. `Layout.astro`'s `<html>` starts as `class="dark"` and an inline script applies the stored `tmc:theme` (`dark`/`light`, as `class` plus `data-theme`) before first paint; the shared header's `ThemeToggle` writes it. Heroes follow the theme ([heroes](heroes.md)); anything else must use tokens.
 
 ## Fonts
 

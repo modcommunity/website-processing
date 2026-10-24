@@ -34,7 +34,7 @@ const scenarios = SCENARIOS.map((sc, i) => ({ ...sc, label: t(`landing.apiTool.t
   */}
 <section class="px-4 pt-8 @2xl:pt-12">
     <div class="container mx-auto">
-        <div class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+        <div data-hero class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/40">
             <HeroBackdrop variant="console" />
 
             <div class="flex flex-col gap-8 px-6 py-14 @2xl:py-20">
@@ -51,7 +51,7 @@ const scenarios = SCENARIOS.map((sc, i) => ({ ...sc, label: t(`landing.apiTool.t
                         in the middle of the hero with nothing beside them. */}
                     <div class="flex w-full flex-col gap-6 @5xl:flex-row @5xl:items-end @5xl:justify-between @5xl:gap-12">
                         <h2
-                            class="max-w-3xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-[#5eead4]"
+                            class="max-w-3xl text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white dark:drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-teal-700 dark:[&_.special]:text-[#5eead4]"
                             set:html={t('landing.apiTool.heroTitleHtml')}
                         ></h2>
 
@@ -61,7 +61,7 @@ const scenarios = SCENARIOS.map((sc, i) => ({ ...sc, label: t(`landing.apiTool.t
                                 data-umami-event="cli_page_cta"
                                 data-umami-event-to="api-keys"
                                 data-umami-event-place="hero"
-                                class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-300 px-6 py-3 font-semibold text-[#02141a] shadow-lg shadow-teal-500/20 transition hover:-translate-y-0.5 hover:bg-teal-200"
+                                class="inline-flex items-center justify-center gap-2 hero-keep-dark rounded-xl bg-teal-300 px-6 py-3 font-semibold text-[#02141a] shadow-lg shadow-teal-500/20 transition hover:-translate-y-0.5 hover:bg-teal-200"
                             >
                                 <KeyRound className="h-5 w-5" />
                                 <span>{t('landing.apiTool.heroBtnKey')}</span>
@@ -103,7 +103,7 @@ const scenarios = SCENARIOS.map((sc, i) => ({ ...sc, label: t(`landing.apiTool.t
                         </div>
                     </div>
 
-                    <span aria-hidden class="h-px w-24 bg-gradient-to-r from-teal-200/70 to-transparent"></span>
+                    <span aria-hidden class="h-px w-24 bg-gradient-to-r from-teal-700/60 to-transparent dark:from-teal-200/70"></span>
 
                     <p
                         class="max-w-2xl text-pretty text-lg text-white/75 [&_.special]:text-teal-300"
@@ -130,7 +130,7 @@ const scenarios = SCENARIOS.map((sc, i) => ({ ...sc, label: t(`landing.apiTool.t
                     and push a scrollbar onto the page rather than scroll inside
                     its own box — see docs/layout.md's container-query notes. */}
                 <div class="flex min-w-0 flex-col gap-3">
-                    <TypedTerminal client:visible scenarios={scenarios} label={t('landing.apiTool.tyLabel')} />
+                    <div class="hero-keep-dark"><TypedTerminal client:visible scenarios={scenarios} label={t('landing.apiTool.tyLabel')} /></div>
                     <p class="text-sm text-white/50">{t('landing.apiTool.installNote')}</p>
                 </div>
             </div>

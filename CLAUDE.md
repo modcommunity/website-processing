@@ -42,7 +42,7 @@ The Astro + React static site for The Modding Community's public pages: the home
 - The blog shelf treats every API field as optional and its daily pick must stay deterministic. ([content](docs/content.md#the-blog-shelf-reads-from-website-city))
 - Product pages describe only what is built: `/tmc-app` is released (desktop only, say mobile is not out), `/tmc-cli` installs from a clone and is not on PyPI, untested things are called untested, and every claim is checked against `../tmc-app` or `../tmc-cli`. ([content](docs/content.md#the-product-pages-tmc-app-tmc-cli))
 - Add a translation key to `en` first, then fill all eight others; names, commands, flags and exit codes are never translated. ([content](docs/content.md#translation))
-- Hero backdrops are image-free and fixed-dark, no layout animates, nothing in a hero draws a grid, and motion is an optional layer over a complete backdrop. Keep them in step with website-city's `hero_backdrops.tsx`. ([heroes](docs/heroes.md))
+- Hero backdrops are image-free and theme-aware (a dark palette and a pale tinted one, copy flips via `data-hero` in `Global.css`), no layout animates, nothing in a hero draws a grid, and motion is an optional layer over a complete backdrop. Keep them in step with website-city's `hero_backdrops.tsx`. ([heroes](docs/heroes.md))
 - Reuse `@modcommunity/shared` for anything generic; build a local component only when it is specific to these pages. `.astro` for structure, `.tsx` for interactive islands.
 - Third-party source cloned to be read lives in `/extra/external/` (see its README): look there before designing something from scratch; never a dependency.
 

@@ -133,7 +133,7 @@ export default function DownloadButton({ labels, variant, place }: Props) {
                 data-umami-event="app_page_cta"
                 data-umami-event-to="download"
                 data-umami-event-place={place}
-                className={`group relative isolate inline-flex max-w-full items-center gap-3 rounded-xl px-6 py-3.5 text-left font-semibold shadow-lg transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${hero ? 'bg-white text-[#05060f] shadow-black/30 hover:bg-white/90' : 'bg-accent text-white shadow-accent/30 hover:bg-accent-hover'}`}
+                className={`group relative isolate inline-flex max-w-full items-center gap-3 rounded-xl px-6 py-3.5 text-left font-semibold shadow-lg transition hover:-translate-y-0.5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white motion-reduce:transition-none motion-reduce:hover:translate-y-0 ${hero ? 'bg-foreground text-background shadow-black/20 hover:opacity-90' : 'bg-accent text-white shadow-accent/30 hover:bg-accent-hover'}`}
             >
                 <span aria-hidden className={`absolute -inset-1 -z-10 rounded-2xl blur-lg motion-safe:animate-pulse ${hero ? 'bg-violet-300/40' : 'bg-accent/40'}`} style={{ animationDuration: '3.6s' }} />
                 <Download className="h-6 w-6 shrink-0 transition-transform motion-safe:group-hover:translate-y-0.5" />

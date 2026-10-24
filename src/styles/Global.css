@@ -114,3 +114,42 @@
 @import "./Utilities.css";
 
 @custom-variant dark (&:is(.dark *));
+
+/*
+ * Hero copy, both themes.
+ *
+ * Every hero section carries `data-hero` and writes its copy as white-on-dark
+ * (`text-white/70`, `border-white/10`, `text-sky-300`). Under the light theme
+ * the backdrop is pale, so the same classes must mean ink: this block re-points
+ * the white and the pastel 200/300 shades at darker values for everything
+ * inside a hero. Dark is untouched. A drawing of a dark product (the app
+ * window, the terminal) adds `hero-keep-dark` to restore the originals.
+ */
+html:not(.dark) [data-hero] {
+  --color-white: #0f172a;
+  --color-sky-100: #075985;
+  --color-sky-200: #075985;
+  --color-sky-300: #0369a1;
+  --color-teal-200: #115e59;
+  --color-teal-300: #0f766e;
+  --color-violet-200: #5b21b6;
+  --color-violet-300: #6d28d9;
+  --color-emerald-200: #047857;
+  --color-emerald-300: #047857;
+  --color-amber-200: #92400e;
+  --color-amber-400: #b45309;
+}
+html:not(.dark) [data-hero] .hero-keep-dark {
+  --color-white: #fff;
+  --color-sky-100: oklch(0.951 0.026 236.824);
+  --color-sky-200: oklch(0.901 0.058 230.902);
+  --color-sky-300: oklch(0.828 0.111 230.318);
+  --color-teal-200: oklch(0.91 0.096 180.426);
+  --color-teal-300: oklch(0.855 0.138 181.071);
+  --color-violet-200: oklch(0.894 0.057 293.283);
+  --color-violet-300: oklch(0.811 0.111 293.571);
+  --color-emerald-200: oklch(0.905 0.093 164.15);
+  --color-emerald-300: oklch(0.845 0.143 164.978);
+  --color-amber-200: oklch(0.924 0.12 95.746);
+  --color-amber-400: oklch(0.828 0.189 84.429);
+}

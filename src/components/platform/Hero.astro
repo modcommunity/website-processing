@@ -18,7 +18,7 @@ const chips = [p('chipEngine'), p('chipWeb'), p('chipServers')];
   */}
 <section class="px-4 pt-8 @2xl:pt-12">
     <div class="container mx-auto">
-        <div class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+        <div data-hero class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/40">
             <HeroBackdrop variant="blueprint" />
 
             <div class="@container px-6 py-12 @2xl:py-16">
@@ -36,12 +36,12 @@ const chips = [p('chipEngine'), p('chipWeb'), p('chipServers')];
                         </div>
 
                         <h2
-                            class="text-balance font-pjs text-3xl font-extrabold leading-[1.12] tracking-tight text-white @2xl:text-4xl [&_.special]:text-[#93c5fd]"
+                            class="text-balance font-pjs text-3xl font-extrabold leading-[1.12] tracking-tight text-white @2xl:text-4xl [&_.special]:text-sky-700 dark:[&_.special]:text-[#93c5fd]"
                             set:html={p('heroTitleHtml')}
                         ></h2>
 
                         <p
-                            class="max-w-xl text-pretty leading-relaxed text-white/70 [&_.special]:text-[#93c5fd]"
+                            class="max-w-xl text-pretty leading-relaxed text-white/70 [&_.special]:text-sky-700 dark:[&_.special]:text-[#93c5fd]"
                             set:html={p('heroTaglineHtml')}
                         ></p>
 
@@ -55,7 +55,7 @@ const chips = [p('chipEngine'), p('chipWeb'), p('chipServers')];
                             <a
                                 href="#addons"
                                 data-umami-event="platform_page_cta" data-umami-event-to="addons" data-umami-event-place="hero"
-                                class="inline-flex items-center justify-center gap-2 rounded-lg bg-white px-5 py-2.5 font-semibold text-[#05060f] shadow-lg shadow-black/30 transition hover:bg-white/90"
+                                class="inline-flex items-center justify-center gap-2 rounded-lg bg-foreground px-5 py-2.5 font-semibold text-background shadow-lg shadow-black/20 transition hover:opacity-90"
                             >
                                 <Package className="h-5 w-5" />
                                 <span>{p('heroBtnAddons')}</span>

@@ -21,7 +21,7 @@ const platforms = [
     on the right. The drawing is aria-hidden: the claims are in the copy. */}
 <section class="px-4 pt-8 @2xl:pt-12">
     <div class="container mx-auto">
-        <div class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-2xl shadow-black/40">
+        <div data-hero class="relative isolate overflow-hidden rounded-3xl border border-white/10 shadow-xl shadow-slate-900/10 dark:shadow-2xl dark:shadow-black/40">
             <HeroBackdrop variant="workshop" />
 
             <div class="@container grid grid-cols-1 items-center gap-10 px-6 py-14 @5xl:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] @2xl:py-20">
@@ -32,13 +32,13 @@ const platforms = [
                     </span>
 
                     <h2
-                        class="text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-[#c4b5fd]"
+                        class="text-balance text-4xl font-extrabold leading-[1.08] tracking-tight text-white dark:drop-shadow-xl @2xl:text-5xl @5xl:text-6xl [&_.special]:text-violet-700 dark:[&_.special]:text-[#c4b5fd]"
                         set:html={t('landing.tmcApp.heroTitleHtml')}
                     ></h2>
                     <span aria-hidden class="h-px w-24 bg-gradient-to-r from-white/60 to-transparent"></span>
 
                     <p
-                        class="max-w-xl text-pretty text-lg text-white/75 [&_.special]:text-[#c4b5fd]"
+                        class="max-w-xl text-pretty text-lg text-white/75 [&_.special]:text-violet-700 dark:[&_.special]:text-[#c4b5fd]"
                         set:html={t('landing.tmcApp.heroTaglineHtml')}
                     ></p>
 
@@ -70,7 +70,7 @@ const platforms = [
                 </div>
 
                 <div class="min-w-0">
-                    <AppWindow client:load screens={['apps', 'play', 'servers']} autoplay caption={t('landing.tmcApp.heroMockNote')} />
+                    <div class="hero-keep-dark"><AppWindow client:load screens={['apps', 'play', 'servers']} autoplay caption={t('landing.tmcApp.heroMockNote')} /></div>
                 </div>
             </div>
         </div>

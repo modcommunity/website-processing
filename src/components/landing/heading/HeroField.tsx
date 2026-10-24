@@ -141,6 +141,25 @@ export default function HeroField({ className = '' }: Props) {
             const cloud = new THREE.Points(geo, mat)
             scene.add(cloud)
 
+            // ---- Theme -------------------------------------------------------
+            // Additive pale dots on near-black in the dark theme; ordinary
+            // blended indigo dots on the pale backdrop in the light theme
+            // (additive blending is invisible on white). Fog follows the
+            // backdrop's base so far points sink into it. Re-applied live when
+            // the theme toggle flips `.dark`.
+            const applyTheme = () => {
+                const dark = document.documentElement.classList.contains('dark')
+                const fog = scene.fog as import('three').FogExp2
+                fog.color.set(dark ? 0x04060d : 0xf5f8fe)
+                mat.color.set(dark ? '#9cc4ff' : '#3b5bdb')
+                mat.opacity = dark ? 0.9 : 0.5
+                mat.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending
+                mat.needsUpdate = true
+                if (!raf) renderer.render(scene, camera)
+            }
+            const themeObserver = new MutationObserver(applyTheme)
+            themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+
             // ---- Sizing ------------------------------------------------------
             const resize = () => {
                 const w = host.clientWidth || 1
@@ -157,6 +176,7 @@ export default function HeroField({ className = '' }: Props) {
             ro.observe(host)
 
             // ---- Loop, only while it can be seen ------------------------------
+            let raf = 0
             let elapsed = 0
             let lastFrame = 0
 
@@ -168,7 +188,6 @@ export default function HeroField({ className = '' }: Props) {
                 renderer.render(scene, camera)
             }
 
-            let raf = 0
             let visible = true
             let onScreen = true
             const tick = (now: number) => {
@@ -205,6 +224,7 @@ export default function HeroField({ className = '' }: Props) {
             }
             document.addEventListener('visibilitychange', onVisibility)
 
+            applyTheme()
             // First frame, then hand over to the loop (or not, if reduced).
             draw()
             canvas.style.opacity = '1'
@@ -215,6 +235,7 @@ export default function HeroField({ className = '' }: Props) {
                 io.disconnect()
                 ro.disconnect()
                 document.removeEventListener('visibilitychange', onVisibility)
+                themeObserver.disconnect()
                 geo.dispose()
                 mat.dispose()
                 sprite.dispose()

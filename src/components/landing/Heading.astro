@@ -52,8 +52,8 @@ const surfaces = [
   * `/tmc-cli` keep their own shapes (split and banner), so the three heroes
   * still read as three different places.
   *
-  * The copy inside is white on all of it — that is the reason the backdrop is
-  * fixed-dark rather than tokenised. See HeroBackdrop.astro.
+  * The copy is written white-on-dark; `data-hero` flips it to ink under the
+  * light theme and the backdrop swaps to its pale palette. See HeroBackdrop.astro.
   *
   * The headline is static markup. It used to type itself in, which meant the
   * first paint of the site was an empty box that then pushed everything below
@@ -69,7 +69,7 @@ const surfaces = [
   * other was the interference, so `blueprint` is plain light now and the field
   * on top of it has no lines in it at all.
   */}
-<section data-section="hero" class="relative isolate overflow-hidden border-b border-white/10">
+<section data-section="hero" data-hero class="relative isolate overflow-hidden border-b border-white/10">
     <HeroBackdrop variant="blueprint" />
 
     {/* `client:idle`, not `client:load`: the field is decoration, so it should
@@ -120,7 +120,7 @@ const surfaces = [
                     <a
                         href={localizePath("/explore", Astro.currentLocale)}
                         data-umami-event="cta_explore"
-                        class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-white shadow-lg shadow-accent/25 transition hover:brightness-110"
+                        class="inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-6 py-3 font-semibold text-accent-foreground shadow-lg shadow-accent/25 transition hover:brightness-110"
                     >
                         <Compass className="h-5 w-5" />
                         <span>{t('landing.hero.ctaExplore')}</span>
@@ -179,7 +179,7 @@ const surfaces = [
             <div class="min-w-0 @4xl:col-span-5">
                 <div class="relative">
                     <div aria-hidden="true" class="pointer-events-none absolute -inset-4 -z-10 rounded-[2rem] bg-gradient-to-br from-sky-400/25 via-indigo-500/15 to-transparent blur-2xl"></div>
-                    <div class="rounded-3xl border border-sky-300/30 bg-white/[0.04] p-4 shadow-2xl shadow-black/40 backdrop-blur-sm @2xl:p-5">
+                    <div class="rounded-3xl border border-sky-300/30 bg-surface/70 p-4 shadow-xl shadow-slate-900/10 backdrop-blur-sm dark:bg-white/[0.04] dark:shadow-2xl dark:shadow-black/40 @2xl:p-5">
                         <div class="mb-3 flex flex-wrap items-center gap-2">
                             <span class="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-sky-300">{t('landing.hero.pfKicker')}</span>
                             <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-emerald-200">
@@ -204,7 +204,7 @@ const surfaces = [
                                 href={localizePath("/play", Astro.currentLocale)}
                                 data-umami-event="cta_play"
                                 data-umami-event-place="hero"
-                                class="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-sky-300 to-sky-500 px-5 py-3 font-bold text-[#05060f] shadow-lg shadow-sky-500/30 ring-1 ring-white/30 transition hover:from-sky-200 hover:to-sky-400 hover:shadow-sky-400/40 @md:col-span-2"
+                                class="hero-keep-dark group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-sky-300 to-sky-500 px-5 py-3 font-bold text-[#05060f] shadow-lg shadow-sky-500/30 ring-1 ring-white/30 transition hover:from-sky-200 hover:to-sky-400 hover:shadow-sky-400/40 @md:col-span-2"
                             >
                                 <Play className="h-4 w-4 fill-current" />
                                 <span>{t('landing.hero.pfPlay')}</span>
