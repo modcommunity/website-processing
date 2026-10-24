@@ -1,21 +1,18 @@
 ---
+import { pageMeta } from '../../../i18n/meta';
 import Layout from '../../../layouts/Layout.astro';
 import TmcApp from '../../../components/TmcApp.astro';
 import { NON_DEFAULT_LOCALES } from '../../../i18n/config';
 
 // One localized copy per non-default locale, so the language picker never 404s
 // here. `i18n/sections/tmcApp.ts` carries the body copy in all nine languages;
-// the `meta` below is still English, like every other page's on this site.
+// `pageMeta.ts` carries the title and description.
 export function getStaticPaths() {
     return NON_DEFAULT_LOCALES.map((lang) => ({ params: { lang } }));
 }
 ---
 
-<Layout pathName={Astro.url.pathname} meta={{
-    title: "The TMC App",
-    titleMain: "The TMC App - The Modding Community",
-    desc: "A free, open source (GPL-3.0) server browser and mod manager for Windows, Linux and macOS. Ping measured from your own connection, a mod profile per game, and mods deployed without copying files."
-}}>
-    <h1 class="sr-only">The TMC App - The Modding Community</h1>
+<Layout pathName={Astro.url.pathname} meta={pageMeta("app", Astro.currentLocale)}>
+    <h1 class="sr-only">{pageMeta("app", Astro.currentLocale).titleMain}</h1>
     <TmcApp />
 </Layout>

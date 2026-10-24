@@ -95,6 +95,12 @@ export default defineConfig({
       // The redirect stubs above are built as HTML pages, so they land in the
       // sitemap unless they are filtered out. A redirect is not a destination.
       filter: (page) => !/\/api-tool\/?$/.test(new URL(page).pathname),
+      // Match the canonical/hreflang URLs in Layout.astro: no trailing slash.
+      serialize(item) {
+        item.url = item.url.replace(/(?<=.)\/+$/, '').replace(/^(https?:\/\/[^/]+)\/$/, '$1/')
+        for (const l of item.links ?? []) l.url = l.url.replace(/(?<=\w)\/+$/, '')
+        return item
+      },
     }),
   ]
 });

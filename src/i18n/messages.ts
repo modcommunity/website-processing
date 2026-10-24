@@ -16,6 +16,7 @@ import { platformPage } from './sections/platformPage'
 import { tmcApp } from './sections/tmcApp'
 import { apiTool } from './sections/apiTool'
 import { joinCommunity } from './sections/joinCommunity'
+import { pageMeta } from './sections/pageMeta'
 import { shellNav } from './sections/shellNav'
 import { shellSidebar } from '@modcommunity/shared/i18n'
 import { shellFooter } from './sections/shellFooter'
@@ -400,6 +401,7 @@ const SECTIONS = {
     platform,
     platformPage,
     joinCommunity,
+    pageMeta,
     // The two dedicated product pages (/tmc-app, /tmc-cli). They live in the
     // same `landing.*` namespace as the home-page sections because they are
     // landing pages too — `landing.tmcApp.*` and `landing.apiTool.*`.

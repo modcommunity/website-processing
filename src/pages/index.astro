@@ -1,8 +1,9 @@
 ---
+import { pageMeta } from '../i18n/meta';
 import Landing from '../components/Landing.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout>
+<Layout meta={pageMeta("home", undefined)}>
 	<Landing />
 </Layout>

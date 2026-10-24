@@ -67,10 +67,14 @@ const url = SITE_URL
 // route and then re-localized for each language.
 const routePath = (Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`)
 const basePath = stripLocale(routePath)
-const canonical = new URL(localizeUrl(basePath, locale as LocaleT), url).href
+// Emitted WITHOUT the trailing slash (except the root): the nav and every
+// inbound link use the bare form, and crawlers report the page under it, so a
+// slashed hreflang never matched the crawled URL ("no self-referential link").
+const bare = (path: string) => (path.length > 1 ? path.replace(/\/+$/, "") : path)
+const canonical = new URL(bare(localizeUrl(basePath, locale as LocaleT)), url).href
 const alternates = LOCALES.map((l) => ({
 	locale: l,
-	href: new URL(localizeUrl(basePath, l), url).href
+	href: new URL(bare(localizeUrl(basePath, l)), url).href
 }))
 // The mod workshop and the game-dev asset library are LIVE, not planned. This
 // string said "with plans to launch a mod workshop and more in the future",
@@ -119,7 +123,7 @@ const desc = descMeta ?? import.meta.env.PUBLIC_DESCRIPTION ?? "A modding and ga
 		{alternates.map(({ locale: l, href }) => (
 			<link rel="alternate" hreflang={l} href={href} />
 		))}
-		<link rel="alternate" hreflang="x-default" href={new URL(basePath, url).href} />
+		<link rel="alternate" hreflang="x-default" href={new URL(bare(basePath), url).href} />
 
 		<!-- Open Graph -->
 		<meta property="og:site_name" content={title}>

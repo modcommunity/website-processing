@@ -1,13 +1,10 @@
 ---
+import { pageMeta } from '../../i18n/meta';
 import Layout from '../../layouts/Layout.astro';
 import ApiTool from '../../components/ApiTool.astro';
 ---
 
-<Layout pathName={"/tmc-cli"} meta={{
-    title: "tmc-cli",
-    titleMain: "tmc-cli - The Modding Community",
-    desc: "tmc-cli is a dependency-free Python command-line client for our content API. Create and edit content, manage relations, and upload files and cut releases in a single command."
-}}>
-    <h1 class="sr-only">tmc-cli - The Modding Community</h1>
+<Layout pathName={"/tmc-cli"} meta={pageMeta("cli", undefined)}>
+    <h1 class="sr-only">{pageMeta("cli", undefined).titleMain}</h1>
     <ApiTool />
 </Layout>

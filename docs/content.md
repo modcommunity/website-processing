@@ -63,6 +63,8 @@ Each is built like the home page: a shell in `src/components/<Name>.astro` compo
 
 The home page is fully translated in all nine locales, and an English-only key there is a regression. The product pages are translated too (`src/i18n/sections/tmcApp.ts`, `apiTool.ts`), as are the links they added into `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`).
 
+Each page's `<title>`, description and sr-only `<h1>` come from `src/i18n/sections/pageMeta.ts` via `pageMeta()` (`src/i18n/meta.ts`); a new page adds its keys there. Canonical, hreflang and sitemap URLs are slashless (root excepted); keep `Layout.astro` and the sitemap `serialize` in `astro.config.mjs` in step. The legal pages keep English titles because their bodies are English.
+
 `en` is the reference shape: add a key there first, then fill the other eight. `getT` falls back per key, so a half-filled key still renders (in English) rather than blank.
 
 What stays identical across locales is everything a reader would type or recognise as a name: platform, product and engine names, the CLI's commands, flags, environment variables, HTTP methods and exit codes, snippet titles (`install.sh`, `release.yml`, …), and the mock server's own name and map in `/tmc-app`'s hero. Translating a flag produces a line that does not run. Each catalogue's header comment says this too; keep the two in step.

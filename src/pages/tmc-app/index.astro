@@ -1,13 +1,10 @@
 ---
+import { pageMeta } from '../../i18n/meta';
 import Layout from '../../layouts/Layout.astro';
 import TmcApp from '../../components/TmcApp.astro';
 ---
 
-<Layout pathName={"/tmc-app"} meta={{
-    title: "The TMC App",
-    titleMain: "The TMC App - The Modding Community",
-    desc: "A free, open source (GPL-3.0) server browser and mod manager for Windows, Linux and macOS. Ping measured from your own connection, a mod profile per game, and mods deployed without copying files."
-}}>
-    <h1 class="sr-only">The TMC App - The Modding Community</h1>
+<Layout pathName={"/tmc-app"} meta={pageMeta("app", undefined)}>
+    <h1 class="sr-only">{pageMeta("app", undefined).titleMain}</h1>
     <TmcApp />
 </Layout>
