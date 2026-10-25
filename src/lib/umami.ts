@@ -109,6 +109,7 @@ export const UMAMI_EVENTS = [
     'locale_change',
     'theme_change',
     'account',
+    'header_link',
     'back_to_top',
 ] as const
 

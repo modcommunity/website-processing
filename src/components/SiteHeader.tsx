@@ -3,6 +3,7 @@ import {
     buildChrome,
     Header,
     HeaderActions,
+    HeaderLinks,
     LanguagePicker,
     MobileNav,
     ShellCatalogKey,
@@ -74,6 +75,15 @@ export default function SiteHeader({
         />
     )
     const theme = <ThemeToggle cookieOptions={{ subdomainUrl: DOCS_URL }} labels={{ toLight: t('theme.toLight'), toDark: t('theme.toDark') }} />
+    const links = (showLabels?: boolean) => (
+        <HeaderLinks
+            signedIn={signedIn}
+            locale={locale}
+            labels={{ app: t('account.app'), dashboard: t('account.dashboard') }}
+            onNavigate={(item) => track('header_link', { item })}
+            showLabels={showLabels}
+        />
+    )
     const account = (className: string) => (
         <AccountButton
             signedIn={signedIn}
@@ -110,6 +120,7 @@ export default function SiteHeader({
                     logoSrc={lockup}
                     footer={
                         <div className="flex flex-col gap-3 sm:hidden">
+                            {links(true)}
                             <div className="flex items-center justify-between gap-2">
                                 {/* The list opens upwards here: at the foot of
                                     the drawer a downward one runs off the screen. */}
@@ -128,7 +139,7 @@ export default function SiteHeader({
                     }}
                 />
             }
-            right={<HeaderActions language={language()} theme={theme} account={account('hidden sm:block')} />}
+            right={<HeaderActions language={language()} theme={theme} links={links()} account={account('hidden sm:block')} />}
         />
     )
 }
