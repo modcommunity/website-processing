@@ -51,6 +51,7 @@ const t = getT(Astro.currentLocale);
                 </div>
                 <p class="text-muted" set:html={t('landing.mods.highlightHtml')}></p>
             </div>
+            <a href={localizePath("/tmc-app", Astro.currentLocale)} class="btn btn-special shrink-0 @2xl:ml-auto">{t('landing.mods.highlightCta')}</a>
         </div>
     </div>
 

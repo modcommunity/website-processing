@@ -28,9 +28,10 @@ export const mods: SectionCatalog = {
         c6t: 'Dependencies',
         c6b: 'List the mods and assets yours needs as <span class="special">dependencies</span>.',
         highlightTitle: 'Mod Manager',
-        highlightBadge: 'Planned',
+        highlightBadge: 'Available Now',
         highlightHtml:
-            `We are building an official, <a href="https://github.com/modcommunity/tmc-app" class="${A}">open-source</a> app with a mod launcher: install mods in one click, then manage and update them from the same place.`,
+            `The official, <span class="special">open-source</span> TMC app is out, with a mod launcher: install mods in one click, then manage and update them from the same place. It is still in heavy development, so expect rough edges.`,
+        highlightCta: 'Get the app',
         button: 'Explore Mods',
     },
     es: {
@@ -57,9 +58,10 @@ export const mods: SectionCatalog = {
         c6b:
             'Indica los mods y recursos que necesita el tuyo como <span class="special">dependencias</span>.',
         highlightTitle: 'Gestor de Mods',
-        highlightBadge: 'Planeado',
+        highlightBadge: 'Disponible Ya',
         highlightHtml:
-            `Estamos creando una aplicación oficial de <a href="https://github.com/modcommunity/tmc-app" class="${A}">código abierto</a> con un lanzador de mods: instala mods con un clic y gestiónalos y actualízalos desde el mismo sitio.`,
+            `La aplicación oficial de <span class="special">código abierto</span> de TMC ya está disponible, con un lanzador de mods: instala mods con un clic y gestiónalos y actualízalos desde el mismo sitio. Sigue en pleno desarrollo, así que habrá asperezas.`,
+        highlightCta: 'Obtener la app',
         button: 'Explorar Mods',
     },
     fr: {
@@ -86,9 +88,10 @@ export const mods: SectionCatalog = {
         c6b:
             'Indiquez les mods et ressources dont le vôtre a besoin comme <span class="special">dépendances</span>.',
         highlightTitle: 'Gestionnaire de Mods',
-        highlightBadge: 'Prévu',
+        highlightBadge: 'Disponible Maintenant',
         highlightHtml:
-            `Nous créons une application officielle <a href="https://github.com/modcommunity/tmc-app" class="${A}">open source</a> avec un lanceur de mods : installez des mods en un clic, puis gérez-les et mettez-les à jour au même endroit.`,
+            `L'application officielle <span class="special">open source</span> de TMC est disponible, avec un lanceur de mods : installez des mods en un clic, puis gérez-les et mettez-les à jour au même endroit. Elle est encore en plein développement, attendez-vous à des défauts.`,
+        highlightCta: "Obtenir l'application",
         button: 'Découvrir les Mods',
     },
     de: {
@@ -114,9 +117,10 @@ export const mods: SectionCatalog = {
         c6b:
             'Trage die Mods und Assets, die dein Mod braucht, als <span class="special">Abhängigkeiten</span> ein.',
         highlightTitle: 'Mod-Manager',
-        highlightBadge: 'Geplant',
+        highlightBadge: 'Jetzt Verfügbar',
         highlightHtml:
-            `Wir bauen eine offizielle, <a href="https://github.com/modcommunity/tmc-app" class="${A}">quelloffene</a> App mit Mod-Launcher: Mods mit einem Klick installieren und am selben Ort verwalten und aktualisieren.`,
+            `Die offizielle, <span class="special">quelloffene</span> TMC-App ist da, mit Mod-Launcher: Mods mit einem Klick installieren und am selben Ort verwalten und aktualisieren. Sie befindet sich noch in intensiver Entwicklung, rechne also mit Ecken und Kanten.`,
+        highlightCta: 'App holen',
         button: 'Mods Entdecken',
     },
     ru: {
@@ -143,9 +147,10 @@ export const mods: SectionCatalog = {
         c6b:
             'Укажите моды и ассеты, которые нужны вашему моду, как <span class="special">зависимости</span>.',
         highlightTitle: 'Менеджер Модов',
-        highlightBadge: 'В Планах',
+        highlightBadge: 'Уже Доступно',
         highlightHtml:
-            `Мы делаем официальное <a href="https://github.com/modcommunity/tmc-app" class="${A}">приложение с открытым кодом</a> с лаунчером модов: устанавливайте моды в один клик, управляйте ими и обновляйте в одном месте.`,
+            `Официальное <span class="special">приложение TMC с открытым кодом</span> уже вышло, с лаунчером модов: устанавливайте моды в один клик, затем управляйте и обновляйте их в одном месте. Оно всё ещё в активной разработке, так что возможны шероховатости.`,
+        highlightCta: 'Скачать приложение',
         button: 'Смотреть Моды',
     },
     nl: {
@@ -172,9 +177,10 @@ export const mods: SectionCatalog = {
         c6b:
             'Geef de mods en assets die jouw mod nodig heeft op als <span class="special">afhankelijkheden</span>.',
         highlightTitle: 'Mod-Beheerder',
-        highlightBadge: 'Gepland',
+        highlightBadge: 'Nu Beschikbaar',
         highlightHtml:
-            `We bouwen een officiële, <a href="https://github.com/modcommunity/tmc-app" class="${A}">opensource</a> app met een modlauncher: installeer mods met één klik en beheer en update ze op dezelfde plek.`,
+            `De officiële, <span class="special">open-source</span> TMC-app is uit, met een modlauncher: installeer mods met één klik en beheer en update ze op dezelfde plek. Hij is nog volop in ontwikkeling, dus verwacht ruwe kanten.`,
+        highlightCta: 'App ophalen',
         button: 'Mods Verkennen',
     },
     ja: {
@@ -197,9 +203,10 @@ export const mods: SectionCatalog = {
         c6t: '依存関係',
         c6b: '必要なMODやアセットを<span class="special">依存関係</span>として登録できます。',
         highlightTitle: 'Modマネージャー',
-        highlightBadge: '予定',
+        highlightBadge: '提供中',
         highlightHtml:
-            `MODランチャーを備えた公式の<a href="https://github.com/modcommunity/tmc-app" class="${A}">オープンソース</a>アプリを開発中です。ワンクリックでMODを導入し、同じ場所で管理・更新できるようにします。`,
+            `公式の<span class="special">オープンソース</span>TMCアプリを公開しました。MODランチャーを備え、ワンクリックでMODを導入し、同じ場所で管理・更新できます。現在も活発に開発中のため、不具合があることをご了承ください。`,
+        highlightCta: 'アプリを入手',
         button: 'Modを見る',
     },
     zh: {
@@ -221,9 +228,10 @@ export const mods: SectionCatalog = {
         c6t: '依赖项',
         c6b: '把你的模组需要的其他模组和资源列为<span class="special">依赖项</span>。',
         highlightTitle: '模组管理器',
-        highlightBadge: '计划中',
+        highlightBadge: '现已推出',
         highlightHtml:
-            `我们正在开发带模组启动器的官方<a href="https://github.com/modcommunity/tmc-app" class="${A}">开源</a>应用：一键安装模组，并在同一处管理和更新。`,
+            `官方<span class="special">开源</span> TMC 应用现已发布，带模组启动器：一键安装模组，并在同一处管理和更新。它仍在大力开发中，可能存在不完善之处。`,
+        highlightCta: '获取应用',
         button: '探索模组',
     },
     pt: {
@@ -250,9 +258,10 @@ export const mods: SectionCatalog = {
         c6b:
             'Indique os mods e recursos de que o seu precisa como <span class="special">dependências</span>.',
         highlightTitle: 'Gerenciador de Mods',
-        highlightBadge: 'Planejado',
+        highlightBadge: 'Disponível Agora',
         highlightHtml:
-            `Estamos a criar uma aplicação oficial de <a href="https://github.com/modcommunity/tmc-app" class="${A}">código aberto</a> com um launcher de mods: instale mods com um clique e gira e atualize-os no mesmo sítio.`,
+            `O app oficial de <span class="special">código aberto</span> do TMC já está disponível, com um launcher de mods: instale mods com um clique e gira e atualize-os no mesmo sítio. Ainda está em desenvolvimento intenso, por isso espere arestas.`,
+        highlightCta: 'Obter o app',
         button: 'Explorar Mods',
     },
 }
