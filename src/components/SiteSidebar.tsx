@@ -1,9 +1,31 @@
-import { buildChrome, ShellCatalogKey, Sidebar } from '@modcommunity/shared'
+import {
+    AppSwitcher,
+    AppSwitcherPanel,
+    buildChrome,
+    ShellCatalogKey,
+    Sidebar,
+    useAppSwitcherOpen,
+    useSwitcherApps,
+    type AppSwitcherLabels,
+    type SwitcherApp,
+} from '@modcommunity/shared'
 import { Sparkles } from 'lucide-react'
 import { getT } from '../i18n/t'
 import { localeLink } from '../i18n/link'
 import { stripLocale, localizeUrl, isLocale, type LocaleT } from '../i18n/config'
 import { useSignedIn } from '../lib/auth-hint'
+import { CITY_URL } from '../lib/site'
+
+/** City's URL slug per content type key (website-city `AppContentTypeSlugs`). */
+const CONTENT_TYPE_SLUG: Record<string, string> = {
+    mod: 'mods',
+    server: 'servers',
+    asset: 'assets',
+    article: 'articles',
+    community: 'communities',
+    collection: 'collections',
+    group: 'groups',
+}
 
 /**
  * The landing site's primary sidebar: the shared website-city <Sidebar> over
@@ -38,10 +60,38 @@ export default function SiteSidebar({
     const signedIn = useSignedIn()
     const sections = buildChrome({ site: 'processing', t, keys: ShellCatalogKey, locale, signedIn }).sidebar
 
+    // The list is fetched in the browser, the first time the panel opens. A
+    // failed request leaves it empty: the page never depends on city being up.
+    const switcherOpen = useAppSwitcherOpen()
+    const { apps, loading } = useSwitcherApps(CITY_URL, lang, switcherOpen)
+    const switcher = {
+        apps,
+        loading,
+        currentApp: null, // this site has no per-app routes
+        labels: {
+            find: t('appSwitcher.find'),
+            open: t('appSwitcher.open'),
+            hint: t('appSwitcher.hint'),
+            search: t('appSwitcher.search'),
+            none: t('appSwitcher.none'),
+            visit: t('appSwitcher.visit'),
+            loading: t('appSwitcher.loading'),
+            contentTypes: Object.fromEntries(
+                Object.keys(CONTENT_TYPE_SLUG).map((k) => [k, t(`appSwitcher.contentTypes.${k}`)])
+            ),
+        } satisfies AppSwitcherLabels,
+    }
+    // Apps live on city, under city's own locale prefix (default locale bare).
+    const hrefFor = (app: SwitcherApp, contentType?: string) => {
+        const slug = contentType ? CONTENT_TYPE_SLUG[contentType] ?? contentType : undefined
+        return CITY_URL + localizeUrl(slug ? `/${encodeURIComponent(app.url)}/${slug}` : `/${encodeURIComponent(app.url)}`, lang)
+    }
+
     const shareHref = localizeUrl('/share', lang)
     const shareTitle = t('rail.share.title')
 
     return (
+        <>
         <Sidebar
             activePath={stripLocale(pathName)}
             sections={sections}
@@ -65,6 +115,8 @@ export default function SiteSidebar({
                 unpin: t('sidebar.unpin'),
             }}
             footer={
+                <div className="flex flex-col gap-2">
+                <AppSwitcher {...switcher} expanded />
                 <a
                     href={shareHref}
                     className="group relative block w-full overflow-hidden rounded-xl border border-accent/30 bg-gradient-to-br from-accent/15 to-[#5577f0]/5 p-4 text-left transition-visual duration-300 hover:border-accent/60 hover:shadow-lg hover:shadow-accent/20"
@@ -78,8 +130,11 @@ export default function SiteSidebar({
                     </p>
                     <span className="absolute -right-6 -top-6 h-16 w-16 rounded-full bg-accent/20 blur-2xl transition-visual duration-500 group-hover:scale-150" />
                 </a>
+                </div>
             }
             footerCollapsed={
+                <div className="flex flex-col gap-2">
+                <AppSwitcher {...switcher} expanded={false} />
                 <a
                     href={shareHref}
                     title={shareTitle}
@@ -88,7 +143,10 @@ export default function SiteSidebar({
                 >
                     <Sparkles className="h-4 w-4" />
                 </a>
+                </div>
             }
         />
+        <AppSwitcherPanel {...switcher} hrefFor={hrefFor} />
+        </>
     )
 }
