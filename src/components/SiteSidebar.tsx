@@ -75,6 +75,10 @@ export default function SiteSidebar({
             search: t('appSwitcher.search'),
             none: t('appSwitcher.none'),
             visit: t('appSwitcher.visit'),
+            sort: t('appSwitcher.sort'),
+            sortPopular: t('appSwitcher.sortPopular'),
+            sortName: t('appSwitcher.sortName'),
+            sortTotal: t('appSwitcher.sortTotal'),
             loading: t('appSwitcher.loading'),
             contentTypes: Object.fromEntries(
                 Object.keys(CONTENT_TYPE_SLUG).map((k) => [k, t(`appSwitcher.contentTypes.${k}`)])
