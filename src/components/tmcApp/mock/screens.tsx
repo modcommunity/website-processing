@@ -273,7 +273,7 @@ const GAMES = [
     ['Hide N Seek', 'HN', 'Hide from the seekers.'],
     ['Hungario', 'HU', 'Eat to grow, outlast everyone.'],
     ['Look At Me!', 'LA', 'Finish levels, avoid the witches.'],
-    ['Playground', 'PL', 'A physics sandbox with surf maps.'],
+    ['Playlot', 'PL', 'A physics sandbox with surf maps.'],
 ] as const
 
 export function PlayScreen({ motion }: P) {
