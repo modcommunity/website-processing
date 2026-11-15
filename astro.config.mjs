@@ -20,6 +20,9 @@ const DEFAULT_LOCALE = 'en'
 // the config level too: without `site` it refuses to emit a sitemap at all.
 const SITE = (process.env.PUBLIC_URL ?? 'https://moddingcommunity.com').replace(/\/+$/, '')
 
+// The gaming platform's own site. Mirrors `GAMESPICE_URL` in `src/lib/site.ts`.
+const GAMESPICE = (process.env.PUBLIC_GAMESPICE_URL ?? 'https://gamespice.net').replace(/\/+$/, '')
+
 // https://astro.build/config
 export default defineConfig({
   site: SITE,
@@ -32,10 +35,18 @@ export default defineConfig({
   // a URL that 404s. Renaming the localized route fixes that; these redirects
   // keep the old name working for anything already linking it. Astro emits a
   // meta-refresh page with a canonical link to the target for each.
+  //
+  // `/platform` described the gaming platform when it was called Dot. It is now
+  // GameSpice and has its own site, so every language's copy of the page
+  // forwards there instead.
   redirects: Object.fromEntries(
-    LOCALES.map((l) => (l === DEFAULT_LOCALE
-      ? ['/api-tool', '/tmc-cli']
-      : [`/${l}/api-tool`, `/${l}/tmc-cli`]))
+    LOCALES.flatMap((l) => {
+      const p = l === DEFAULT_LOCALE ? '' : `/${l}`
+      return [
+        [`${p}/api-tool`, `${p}/tmc-cli`],
+        [`${p}/platform`, GAMESPICE],
+      ]
+    })
   ),
 
   // For testing locally since npm run preview (astro preview) doesn't work.
@@ -94,7 +105,7 @@ export default defineConfig({
       },
       // The redirect stubs above are built as HTML pages, so they land in the
       // sitemap unless they are filtered out. A redirect is not a destination.
-      filter: (page) => !/\/api-tool\/?$/.test(new URL(page).pathname),
+      filter: (page) => !/\/(api-tool|platform)\/?$/.test(new URL(page).pathname),
       // Match the canonical/hreflang URLs in Layout.astro: no trailing slash.
       serialize(item) {
         item.url = item.url.replace(/(?<=.)\/+$/, '').replace(/^(https?:\/\/[^/]+)\/$/, '$1/')

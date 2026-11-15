@@ -9,6 +9,7 @@ import PlatformPanel from "../platform/PlatformPanel.astro"
 import Card from "../helper/Card.astro"
 import { getT } from "../../i18n/t";
 import { localizePath } from "../../i18n/config";
+import { GAMESPICE_URL } from "../../lib/site";
 
 
 const t = getT(Astro.currentLocale);
@@ -171,7 +172,7 @@ const surfaces = [
                 </ul>
             </div>
 
-            {/* The gaming platform, as the thing the eye lands on after the
+            {/* GameSpice, the gaming platform, as the thing the eye lands on after the
                 headline: a lit card with its own glow, the licence tag, the
                 stack panel and one button. It is a panel and not a banner so
                 the claim is shown (real addon names, a running server light)
@@ -184,16 +185,21 @@ const surfaces = [
                             <span class="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-sky-300">{t('landing.hero.pfKicker')}</span>
                             <span class="inline-flex items-center gap-1.5 rounded-full border border-emerald-300/30 bg-emerald-300/10 px-2.5 py-0.5 text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-emerald-200">
                                 <Scale className="h-3 w-3" />
-                                {t('landing.platformPage.badgeMit')}
+                                {t('landing.platform.badgeMit')}
                             </span>
                         </div>
-                        <h3 class="font-pjs text-xl font-extrabold leading-snug text-white @2xl:text-2xl">{t('landing.hero.pfTitle')}</h3>
+                        <h3 class="flex items-center gap-2.5 font-pjs text-xl font-extrabold leading-snug text-white @2xl:text-2xl">
+                            <img src="/gamespice-mark.svg" alt="" width="32" height="32" class="h-8 w-8 shrink-0" />
+                            <span class="min-w-0">{t('landing.hero.pfTitle')}</span>
+                        </h3>
                         <p class="mt-2 mb-4 text-sm leading-relaxed text-white/65">{t('landing.hero.pfBody')}</p>
                         <PlatformPanel />
                         <div class="mt-4 grid grid-cols-1 gap-3 @md:grid-cols-5">
                             <a
-                                href={localizePath("/platform", Astro.currentLocale)}
-                                data-umami-event="cta_platform"
+                                href={GAMESPICE_URL}
+                                target="_blank"
+                                rel="noopener"
+                                data-umami-event="cta_gamespice"
                                 data-umami-event-place="hero"
                                 class="group inline-flex items-center justify-center gap-2 rounded-xl border border-sky-300/30 bg-white/[0.05] px-5 py-3 font-semibold text-white shadow-lg shadow-black/20 transition hover:border-sky-300/60 hover:bg-white/10 @md:col-span-3"
                             >

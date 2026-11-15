@@ -1,7 +1,7 @@
 /**
  * Every origin this site points at, in one place.
  *
- * All three are `PUBLIC_*` Vite variables with a PRODUCTION default, so a fresh
+ * All of them are `PUBLIC_*` Vite variables with a PRODUCTION default, so a fresh
  * checkout builds against production with no `.env` at all, and pointing a dev
  * build at a local stack is one line in `.env` rather than an edit to a source
  * file — see `.env.example`.
@@ -40,6 +40,12 @@ export const CITY_URL: string = origin(import.meta.env.PUBLIC_CITY_URL, 'https:/
  * likely to want overriding before that move lands.
  */
 export const DOCS_URL: string = origin(import.meta.env.PUBLIC_DOCS_URL, 'https://docs.moddingcommunity.com')
+
+/**
+ * GameSpice, the gaming platform (formerly Dot). Its own site; `/platform` here
+ * redirects to it (`astro.config.mjs` reads the same variable).
+ */
+export const GAMESPICE_URL: string = origin(import.meta.env.PUBLIC_GAMESPICE_URL, 'https://gamespice.net')
 
 /** A page on the docs site: `docs('/tmc-cli')`. */
 export const docs = (path: string): string =>

@@ -9,8 +9,9 @@ Every origin this site points at lives in `src/lib/site.ts`, and each is a `PUBL
 | `SITE_URL` | `PUBLIC_URL` | `https://moddingcommunity.com` | `Layout.astro`: canonical, hreflang, Open Graph |
 | `CITY_URL` | `PUBLIC_CITY_URL` | `https://moddingcommunity.com` | `lib/blog.ts`: the blog shelf's fetch and its article URLs |
 | `DOCS_URL` | `PUBLIC_DOCS_URL` | `https://docs.moddingcommunity.com` | `apiTool/links.ts`: `docs('/tmc-cli')` |
+| `GAMESPICE_URL` | `PUBLIC_GAMESPICE_URL` | `https://gamespice.net` | `landing/Platform.astro` and the hero's platform card; `astro.config.mjs` reads the same variable for the `/platform` redirects |
 
-`.env.example` documents these along with the page-metadata and analytics variables; copy it to `.env` and uncomment what you need. Before adding a fourth:
+`.env.example` documents these along with the page-metadata and analytics variables; copy it to `.env` and uncomment what you need. Before adding another:
 
 - **`PUBLIC_` is load-bearing, and it is also a limit.** It makes Astro inline the value into the client bundle as well as the build, which the blog shelf needs (its island refetches from `CITY_URL` in the browser). It equally means nothing here may hold a secret: these values ship to every visitor.
 - **Trailing slashes are stripped on the way in.** Call sites concatenate rooted paths (`${CITY_URL}/api/content/article`), so a trailing slash would otherwise build `//api/...`.
@@ -49,15 +50,15 @@ Each is built like the home page: a shell in `src/components/<Name>.astro` compo
 - **Every claim is checked against the sibling repo.** The protocol list, the four deployment strategies, the relation verbs and the exit codes are copied, not invented, and each is sourced in a comment. `apiTool.ts`'s header names the CLI version it was last checked against; the type, relation and cap lists come from the CLI's `src/tmc_cli/schema.py`, and any test count from actually running its suite, because the README's figure is the thing most likely to have drifted.
 - **`/tmc-cli` links the repository and the docs.** The hero's buttons and the closing CTA point at `CLI_REPO` and `DOCS_URL + /tmc-cli`. The hero terminal (`TypedTerminal.tsx`, `scenarios.ts`) shows real output shapes; commands and output are never translated.
 
-## The platform page (`/platform`)
+## GameSpice, the gaming platform (`/platform` redirects)
 
-`src/components/PlatformPage.astro` composes `src/components/platform/*` (hero, stack diagram, differentiators, addon explorer, play step-through, run-a-server steps, workbench, goals, projects, MIT block, CTA); copy is `src/i18n/sections/platformPage.ts`, and the home page's `landing/Platform.astro` is a teaser over the same `stackLayers()` and `platform.ts`. Interactive parts are three React islands (`StackDiagram`, `AddonExplorer`, `PlayFlow`).
+The gaming platform formerly called Dot is now [GameSpice](https://gamespice.net), with its own site. `/platform` and its eight localized copies are redirects to `GAMESPICE_URL` (`astro.config.mjs`, the same mechanism as `/api-tool`), and the sitemap filter drops them. The old page and its components are gone; the home page keeps two GameSpice surfaces, both with copy in `src/i18n/sections/platform.ts` (`landing.platform.*`):
 
-- **Lists are data, in `components/platform/data.ts`.** `ADDONS` (id + category), and `PROJECTS` (more than one may be listed, so headings and buttons never name a single project). Adding one is an entry there plus its keys: `ad_<id>`, or for a project `proj_<id>_desc`, `proj_<id>_g1..gN` and the `projTie*` rows (the key names use underscores because the catalogue lookup splits on dots).
-- **"Open source, MIT" is said only about the Dot addons and the listed projects**, whose repos have a verified MIT `LICENSE`. The site backend and the desktop app are not MIT and the page says so (`mitScopeHtml`). Check a repo's `LICENSE` before adding it to a list; `dot-bot-learn` has none and is left off.
-- **Every claim traces to the addons' own docs or code, and the stage is stated** (`badgeStage`, `heroNoteHtml`, the Goals section's built / next / not built columns). Update Goals when something ships; do not fold a plan into "built".
-- A project's goals are copied from that project's own goals page and link back to it; do not write goals for someone else.
-- nginx routes `/platform` to this site (`/etc/nginx/sites-enabled/tmc.conf` and `website-city/deployment/docker/nginx.conf`); a new page here needs the same edit in both.
+- **The hero's platform card** (`landing/Heading.astro`): `hero.pf*` copy, the `platform/PlatformPanel.astro` stack window (real repository names from `github.com/gamespice-platform` and `zees-games`, never translated; `pn*` keys for the row titles and product names) and a button to GameSpice.
+- **The GameSpice section** (`landing/Platform.astro`): a feature card grid (`f1t`..`f9t`, `f1b`..`f9b`) and a button to GameSpice. Each card is a feature that exists: cross-platform play (WebSocket/TCP and ENet/UDP, one wire format), community servers, open CDN with signed releases, the creator hub, stats and leaderboards, the item store, the Workshop, Workbench and the TMC community tools. Workbench says what it does today (live profile editing in an in-game window or a local web page, export of the changes) and that a full in-game game editor is the aim; check `dot-workbench`'s README before widening that. Do not add a card for something not built.
+- **"Open source, MIT" is said only about the addons and games**, whose repos carry an MIT `LICENSE`. The web back end is not open source.
+- Links to GameSpice open in a new tab with `rel="noopener"`, and the brand mark is `public/gamespice-mark.svg`, copied from `../website-gs/public/brand/`.
+- nginx still routes `/platform` to this site (`/etc/nginx/sites-enabled/tmc.conf` and `website-city/deployment/docker/nginx.conf`), which is what serves the redirect stubs.
 
 ## Translation
 
