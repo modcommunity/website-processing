@@ -57,7 +57,7 @@ The gaming platform formerly called Dot is now [GameSpice](https://gamespice.net
 - **The hero's platform card** (`landing/Heading.astro`): `hero.pf*` copy, the `platform/PlatformPanel.astro` stack window (real repository names from `github.com/gamespice-platform` and `zees-games`, never translated; `pn*` keys for the row titles and product names) and a button to GameSpice.
 - **The GameSpice section** (`landing/Platform.astro`): a feature card grid (`f1t`..`f9t`, `f1b`..`f9b`) and a button to GameSpice. Each card is a feature that exists: cross-platform play (WebSocket/TCP and ENet/UDP, one wire format), community servers, open CDN with signed releases, the creator hub, stats and leaderboards, the item store, the Workshop, Workbench and the TMC community tools. Workbench says what it does today (live profile editing in an in-game window or a local web page, export of the changes) and that a full in-game game editor is the aim; check `dot-workbench`'s README before widening that. Do not add a card for something not built.
 - **"Open source, MIT" is said only about the addons and games**, whose repos carry an MIT `LICENSE`. The web back end is not open source.
-- Links to GameSpice open in a new tab with `rel="noopener"`, and the brand mark is `public/gamespice-mark.svg`, copied from `../website-gs/public/brand/`.
+- Links to GameSpice open in a new tab with `rel="noopener"`, and the brand mark is `public/images/gamespice-mark.svg`, copied from `../website-gs/public/brand/`.
 - nginx still routes `/platform` to this site (`/etc/nginx/sites-enabled/tmc.conf` and `website-city/deployment/docker/nginx.conf`), which is what serves the redirect stubs.
 
 ## Translation

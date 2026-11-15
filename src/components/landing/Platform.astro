@@ -30,7 +30,7 @@ const features = [
 <section data-section="platform" id="gaming-platform" class="scroll-mt-20 py-20 px-4 container mx-auto flex flex-col gap-10">
     <SectionIntro eyebrow={p('eyebrow')}>
         <div slot="title" class="flex items-center gap-3">
-            <img src="/gamespice-mark.svg" alt="" width="48" height="48" class="h-12 w-12 shrink-0" />
+            <img src="/images/gamespice-mark.svg" alt="" width="48" height="48" class="h-12 w-12 shrink-0" />
             <h2 class="min-w-0" set:html={p('titleHtml')}></h2>
         </div>
         <p set:html={p('introHtml')}></p>
@@ -64,7 +64,7 @@ const features = [
             data-umami-event-place="platform"
             class="btn btn-special inline-flex items-center gap-2"
         >
-            <img src="/gamespice-mark.svg" alt="" width="20" height="20" class="h-5 w-5" />
+            <img src="/images/gamespice-mark.svg" alt="" width="20" height="20" class="h-5 w-5" />
             {p('button')}
         </a>
         <a href={localizePath("/roadmap", Astro.currentLocale)} class="btn btn-primary">{p('buttonRoadmap')}</a>
