@@ -95,11 +95,11 @@ export const en = {
      * website-city's `chat.dock.*` and `chat.widget.*`, whose row this one
      * mirrors.
      *
-     * `play`, `playAria` and `console` stay English in every locale on purpose:
-     * city fills those three under `en` alone, and its request pipeline merges
-     * English under every locale, so translating them on this side alone would
-     * make the same button read DIFFERENTLY on the two halves of one domain.
-     * `chat` is city's `widget.aria`, which IS translated there.
+     * `play` and `playAria` are translated in every locale, word for word as
+     * website-city's: the button says "Play Games" and opens GameSpice /games
+     * in a new tab, the same on all three shells. `console` stays English
+     * because city fills it under `en` alone. `chat` is city's `widget.aria`,
+     * which IS translated there.
      *
      * `signIn` is the one string taken from THIS catalogue rather than city's:
      * it repeats `account.signIn`, because the header button and the launcher's
@@ -108,8 +108,8 @@ export const en = {
      * its account menu says ログイン; that is not worth copying.)
      */
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Play Games',
+        playAria: 'Play Games on GameSpice (opens in a new tab)',
         console: 'Console',
         chat: 'Open chats',
         /*
@@ -122,8 +122,8 @@ export const en = {
         chatLabel: 'Chat',
         /*
          * The phone launcher's collapsed/expanded toggle. Translated, unlike
-         * `play` and `console` above: those two stay English because city fills
-         * them under `en` alone and the same button must not read differently
+         * `console` above, which stays English because city fills it under `en`
+         * alone and the same button must not read differently
          * between the shells — this control does not exist over there yet, so
          * there is nothing to stay in step with.
          */
@@ -181,8 +181,8 @@ const es: DeepPartial<Messages> = {
     picker: { select: 'Selecciona un idioma', current: 'Idioma: {name}' },
     actions: { backToTop: 'Volver arriba' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Jugar a juegos',
+        playAria: 'Jugar a juegos en GameSpice (se abre en una pestaña nueva)',
         console: 'Console',
         chat: 'Abrir los chats',
         chatLabel: 'Chats',
@@ -237,8 +237,8 @@ const fr: DeepPartial<Messages> = {
     },
     actions: { backToTop: 'Retour en haut' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Jouer aux jeux',
+        playAria: 'Jouer aux jeux sur GameSpice (s’ouvre dans un nouvel onglet)',
         console: 'Console',
         chat: 'Ouvrir les discussions',
         chatLabel: 'Discussions',
@@ -293,8 +293,8 @@ const de: DeepPartial<Messages> = {
     },
     actions: { backToTop: 'Nach oben' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Spiele spielen',
+        playAria: 'Spiele auf GameSpice spielen (öffnet in einem neuen Tab)',
         console: 'Console',
         chat: 'Chats öffnen',
         chatLabel: 'Chats',
@@ -346,8 +346,8 @@ const ru: DeepPartial<Messages> = {
     picker: { select: 'Выберите язык', current: 'Язык: {name}' },
     actions: { backToTop: 'Наверх' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Играть в игры',
+        playAria: 'Играть в игры на GameSpice (откроется в новой вкладке)',
         console: 'Console',
         chat: 'Открыть чаты',
         chatLabel: 'Чаты',
@@ -399,8 +399,8 @@ const nl: DeepPartial<Messages> = {
     picker: { select: 'Kies een taal', current: 'Taal: {name}' },
     actions: { backToTop: 'Terug naar boven' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Games spelen',
+        playAria: 'Games spelen op GameSpice (opent in een nieuw tabblad)',
         console: 'Console',
         chat: 'Chats openen',
         chatLabel: 'Chats',
@@ -452,8 +452,8 @@ const ja: DeepPartial<Messages> = {
     picker: { select: '言語を選択', current: '言語: {name}' },
     actions: { backToTop: 'トップへ戻る' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'ゲームをプレイ',
+        playAria: 'GameSpice でゲームをプレイ（新しいタブで開きます）',
         console: 'Console',
         chat: 'チャットを開く',
         chatLabel: 'チャット',
@@ -505,8 +505,8 @@ const zh: DeepPartial<Messages> = {
     picker: { select: '选择语言', current: '语言：{name}' },
     actions: { backToTop: '回到顶部' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: '玩游戏',
+        playAria: '在 GameSpice 上玩游戏（在新标签页中打开）',
         console: 'Console',
         chat: '打开聊天',
         chatLabel: '聊天',
@@ -558,8 +558,8 @@ const pt: DeepPartial<Messages> = {
     picker: { select: 'Selecione um idioma', current: 'Idioma: {name}' },
     actions: { backToTop: 'Voltar ao topo' },
     dock: {
-        play: 'Play',
-        playAria: 'Play, open the play center',
+        play: 'Jogar jogos',
+        playAria: 'Jogar jogos no GameSpice (abre num novo separador)',
         console: 'Console',
         chat: 'Abrir conversas',
         chatLabel: 'Conversas',

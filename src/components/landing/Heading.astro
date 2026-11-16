@@ -207,7 +207,9 @@ const surfaces = [
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                             </a>
                             <a
-                                href={localizePath("/play", Astro.currentLocale)}
+                                href={`${GAMESPICE_URL}/games`}
+                                target="_blank"
+                                rel="noopener"
                                 data-umami-event="cta_play"
                                 data-umami-event-place="hero"
                                 class="hero-keep-dark group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-b from-sky-300 to-sky-500 px-5 py-3 font-bold text-[#05060f] shadow-lg shadow-sky-500/30 ring-1 ring-white/30 transition hover:from-sky-200 hover:to-sky-400 hover:shadow-sky-400/40 @md:col-span-2"
