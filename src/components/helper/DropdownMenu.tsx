@@ -58,6 +58,7 @@ export function DropdownMenu(props : {
             className={`relative z-10 ${className ?? ""}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            // umami-ignore: menu open/close is not a conversion
             onClick={() => setShowMenu(p => !p)}
         >
             <div className="flex gap-1 items-center duration-150 cursor-pointer">

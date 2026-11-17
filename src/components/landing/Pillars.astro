@@ -27,6 +27,8 @@ const pillars = [
         {pillars.map((p, i) => (
             <a
                 href={p.href}
+                data-umami-event="pillar_click"
+                data-umami-event-to={p.href.split("/").filter(Boolean).pop()}
                 class={`card group items-center text-center hover:!border-accent intersect-once intersect:motion-preset-slide-up ${DELAYS[i]}`}
             >
                 <span class="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-accent/10 text-accent ring-1 ring-accent/20 transition-transform duration-200 group-hover:scale-110">

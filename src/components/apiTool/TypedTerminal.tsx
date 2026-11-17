@@ -72,6 +72,8 @@ export default function TypedTerminal({ scenarios, label }: Props) {
                             type="button"
                             aria-pressed={i === idx}
                             onClick={() => pick(i)}
+                            data-umami-event="terminal_scenario"
+                            data-umami-event-scenario={s.id}
                             className={`rounded-md px-2.5 py-1 font-mono text-xs transition-colors focus-visible:outline-2 focus-visible:outline-teal-300 ${
                                 i === idx ? 'bg-teal-300/15 text-teal-200' : 'text-white/45 hover:text-white/80'
                             }`}

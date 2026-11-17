@@ -104,6 +104,7 @@ export default function BackToTop({ locale = 'en' }: { locale?: string }) {
         <div className="pointer-events-none fixed inset-x-0 bottom-14 z-40 flex justify-center px-3">
             <button
                 type="button"
+                // umami-ignore: toTop fires back_to_top
                 onClick={toTop}
                 aria-hidden={!shown}
                 tabIndex={shown ? 0 : -1}

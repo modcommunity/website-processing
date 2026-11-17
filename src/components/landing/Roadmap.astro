@@ -291,6 +291,9 @@ const tab = "flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-med
             <span aria-hidden="true" class="roadmap-cta-ring pointer-events-none absolute -inset-0.5 rounded-[0.625rem] ring-2 ring-sky-300/70"></span>
             <a
                 href={localizePath("/roadmap", Astro.currentLocale)}
+                data-umami-event="section_cta"
+                data-umami-event-to="roadmap"
+                data-umami-event-place="roadmap"
                 class="btn btn-special relative px-6 py-3 text-base"
             >
                 <Map className="h-5 w-5" />
@@ -331,7 +334,15 @@ const tab = "flex items-center gap-1.5 rounded-md px-2.5 py-1.5 text-xs font-med
         }
 
         for (const tab of tabs)
-            tab.addEventListener('click', () => show(tab.dataset.roadmapView ?? 'columns'))
+            tab.addEventListener('click', () => {
+                const view = tab.dataset.roadmapView ?? 'columns'
+                show(view)
+                try {
+                    window.umami?.track('roadmap_view', { view, path: window.location.pathname })
+                } catch {
+                    /* Analytics must never break a page. */
+                }
+            })
     }
 </script>
 

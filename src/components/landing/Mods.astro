@@ -51,11 +51,11 @@ const t = getT(Astro.currentLocale);
                 </div>
                 <p class="text-muted" set:html={t('landing.mods.highlightHtml')}></p>
             </div>
-            <a href={localizePath("/tmc-app", Astro.currentLocale)} class="btn btn-special shrink-0 @2xl:ml-auto">{t('landing.mods.highlightCta')}</a>
+            <a href={localizePath("/tmc-app", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="tmc-app" data-umami-event-place="mods" class="btn btn-special shrink-0 @2xl:ml-auto">{t('landing.mods.highlightCta')}</a>
         </div>
     </div>
 
     <div class="flex justify-center">
-        <a href={localizePath("/mods", Astro.currentLocale)} class="btn btn-special">{t('landing.mods.button')}</a>
+        <a href={localizePath("/mods", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="mods" data-umami-event-place="mods" class="btn btn-special">{t('landing.mods.button')}</a>
     </div>
 </section>

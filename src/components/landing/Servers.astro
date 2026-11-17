@@ -37,11 +37,11 @@ const t = getT(Astro.currentLocale);
     </div>
 
     <div class="flex flex-wrap justify-center gap-3">
-        <a href={localizePath("/servers", Astro.currentLocale)} class="btn btn-special">{t('landing.servers.browse')}</a>
+        <a href={localizePath("/servers", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="servers" data-umami-event-place="servers" class="btn btn-special">{t('landing.servers.browse')}</a>
         {/* The live half of this — pings from your own machine, queries in real
             time — is the app's, so the section that describes the browser is
             where its page belongs. */}
-        <a href={localizePath("/tmc-app", Astro.currentLocale)} class="btn btn-primary">
+        <a href={localizePath("/tmc-app", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="tmc-app" data-umami-event-place="servers" class="btn btn-primary">
             <MonitorSmartphone className="h-5 w-5" />
             <span>{t('landing.servers.appLink')}</span>
         </a>

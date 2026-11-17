@@ -10,3 +10,4 @@ The detail behind [CLAUDE.md](../CLAUDE.md). One subject per file; open the one 
 | [content.md](content.md) | Adding an origin or env var, changing the blog shelf, editing the product pages, adding a translation key |
 | [heroes.md](heroes.md) | Changing any of the three heroes or adding motion to a page |
 | [history.md](history.md) | Wondering why one of the above rules exists |
+| [analytics.md](analytics.md) | Adding a button or link, or changing an Umami event |

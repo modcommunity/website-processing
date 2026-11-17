@@ -59,7 +59,7 @@ const body = "text-sm text-muted [&_a]:text-accent [&_.special]:text-accent";
             </div>
             <p class={body} set:html={t('landing.joinCommunity.discordBlurb')}></p>
             <div class="grow"></div>
-            <a href="https://discord.moddingcommunity.com" class="btn btn-special text-sm">
+            <a href="https://discord.moddingcommunity.com" data-umami-event="cta_discord" data-umami-event-place="community" class="btn btn-special text-sm">
                 <FaDiscord className="h-4 w-4" />
                 {t('landing.joinCommunity.discordButton')}
             </a>
@@ -77,6 +77,8 @@ const body = "text-sm text-muted [&_a]:text-accent [&_.special]:text-accent";
                 {socials.map(({ label, href, icon: Icon }) => (
                     <a
                         href={href}
+                        data-umami-event="social_click"
+                        data-umami-event-network={label}
                         target="_blank"
                         rel="noreferrer"
                         aria-label={label}
@@ -97,7 +99,7 @@ const body = "text-sm text-muted [&_a]:text-accent [&_.special]:text-accent";
             </div>
             <p class={body} set:html={t('landing.joinCommunity.discussionsBlurb')}></p>
             <div class="grow"></div>
-            <a href={localizePath("/discussions", Astro.currentLocale)} class="btn btn-primary text-sm">
+            <a href={localizePath("/discussions", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="discussions" data-umami-event-place="community" class="btn btn-primary text-sm">
                 <MessagesSquare className="h-4 w-4" />
                 {t('landing.joinCommunity.discussionsButton')}
             </a>
@@ -111,7 +113,7 @@ const body = "text-sm text-muted [&_a]:text-accent [&_.special]:text-accent";
             </div>
             <p class={body} set:html={t('landing.joinCommunity.contactBlurb')}></p>
             <div class="grow"></div>
-            <a href={localizePath("/contact", Astro.currentLocale)} class="btn btn-primary text-sm">
+            <a href={localizePath("/contact", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="contact" data-umami-event-place="community" class="btn btn-primary text-sm">
                 <Mail className="h-4 w-4" />
                 {t('landing.joinCommunity.contactButton')}
             </a>

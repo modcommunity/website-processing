@@ -16,8 +16,7 @@
  *
  *     npm run umami:check
  *
- * A plain node script rather than a test runner, matching `audit:overflow`:
- * this repo has no vitest and adding one to assert a list is a poor trade.
+ * A plain node script, matching `audit:overflow`, wired into `npm test`.
  * The registry is parsed with a regex rather than imported because it is
  * TypeScript and node is not.
  */
@@ -40,7 +39,7 @@ const body = registry.slice(
     registry.indexOf('] as const')
 )
 
-const names = [...body.matchAll(/^\s*'([a-z0-9_]+)',/gm)].map((m) => m[1])
+const names = [...body.matchAll(/^\s*'([a-z0-9_-]+)',/gm)].map((m) => m[1])
 
 if (names.length === 0) {
     console.error('Parsed no event names out of src/lib/umami.ts — has its shape changed?')
@@ -93,6 +92,52 @@ for (const name of names) {
     } else if (process.env.VERBOSE) {
         console.log(`  ok         ${name.padEnd(18)} ${hits.join(', ')}`)
     }
+}
+
+/*
+ * Fired -> registered. The attribute form has no type protection, so a typo
+ * (`data-umami-event="cta_expolre"`) would be a row nobody queries. Every name
+ * given to `data-umami-event="..."`, `track('...')` or `umami.track('...')`
+ * must be in the registry. Dynamic names (`={...}`) are not checked.
+ */
+const FIRED = [
+    /data-umami-event="([a-z0-9_-]+)"/g,
+    /\btrack\(\s*['"]([a-z0-9_-]+)['"]/g,
+    /umamiEvent="([a-z0-9_-]+)"/g,
+]
+
+for (const [f, text] of corpus) {
+    for (const re of FIRED)
+        for (const m of text.matchAll(re))
+            if (!names.includes(m[1])) {
+                bad++
+                console.log(`  UNREGISTERED  ${m[1]}  (${relative(ROOT, f)})`)
+            }
+}
+
+/*
+ * Handler coverage. Every click handler in a component either fires an event
+ * (a `data-umami-event` or `track(` within WINDOW lines) or says why it does
+ * not with `umami-ignore: <reason>`. A new button is then a decision, not an
+ * accident.
+ */
+const HANDLER = /onClick=\{|addEventListener\(\s*['"]click['"]/
+const COVERED = /data-umami-event|\btrack\(|umami-ignore|umami\??\.track/
+const WINDOW = 10
+
+for (const [f, text] of corpus) {
+    if (f.endsWith('UmamiAnalytics.astro')) continue
+    const lines = text.split('\n')
+
+    lines.forEach((line, i) => {
+        if (!HANDLER.test(line)) return
+        const near = lines.slice(Math.max(0, i - WINDOW), i + WINDOW + 1).join('\n')
+
+        if (!COVERED.test(near)) {
+            bad++
+            console.log(`  UNMARKED HANDLER  ${relative(ROOT, f)}:${i + 1}  (add an event or "umami-ignore: reason")`)
+        }
+    })
 }
 
 if (bad > 0) {

@@ -23,6 +23,7 @@ export default function CopyCommand({ command, copy, copied }: Props) {
             <button
                 type="button"
                 onClick={onCopy}
+                data-umami-event="command_copy"
                 aria-label={copy}
                 className="flex shrink-0 items-center gap-1.5 border-l border-border px-3 text-xs font-semibold text-muted transition-colors hover:text-foreground focus-visible:outline-2 focus-visible:outline-accent"
             >

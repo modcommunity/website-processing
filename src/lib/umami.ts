@@ -69,6 +69,9 @@ export const UMAMI_EVENTS = [
     'cta_explore',
     'cta_discord',
     'cta_github',
+    'cta_app',
+    'cta_gamespice',
+    'cta_play',
     'hero_surface',
 
     /*
@@ -77,6 +80,31 @@ export const UMAMI_EVENTS = [
      * handed, so a nav entry is covered without touching the nav config.
      */
     'app_link',
+
+    /*
+     * Landing-section links into the app, one name for all of them with `to`
+     * (a slug) and `place` (the section) as the two dimensions. Same-host, so
+     * the outbound tagger cannot see them.
+     */
+    'section_cta',
+    'pillar_click',
+    'social_click',
+
+    /* Controls that change what is shown or copy something; no navigation. */
+    'command_copy',
+    'tour_tab',
+    'terminal_scenario',
+    'roadmap_view',
+
+    /* The blog carousel: arrows, and a click through to an article. */
+    'blog_arrow',
+    'blog_article',
+
+    /*
+     * Any link to another host, sent as origin + path only. Fired by the
+     * shared `UmamiAnalytics.astro` helper for links nothing else names.
+     */
+    'outbound-link-click',
 
     /** The stickied Play/Chat control in the bottom-right. */
     'launcher',

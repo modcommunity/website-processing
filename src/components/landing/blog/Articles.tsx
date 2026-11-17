@@ -47,6 +47,8 @@ function Arrow({
         <button
             type="button"
             onClick={onClick}
+            data-umami-event="blog_arrow"
+            data-umami-event-dir={dir}
             aria-label={label}
             className={`absolute top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-border bg-surface/95 text-foreground shadow-lg backdrop-blur transition-colors hover:border-accent hover:text-accent ${
                 dir === "left" ? "left-0" : "right-0"

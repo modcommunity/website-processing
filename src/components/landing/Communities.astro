@@ -35,7 +35,7 @@ const t = getT(Astro.currentLocale);
         to any signed-in account on website-city) is the half the copy is
         actually about. */}
     <div class="flex flex-wrap justify-center gap-3">
-        <a href={localizePath("/communities/add", Astro.currentLocale)} class="btn btn-special">{t('landing.communities.buttonCreate')}</a>
-        <a href={localizePath("/communities", Astro.currentLocale)} class="btn btn-primary">{t('landing.communities.button')}</a>
+        <a href={localizePath("/communities/add", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="communities-add" data-umami-event-place="communities" class="btn btn-special">{t('landing.communities.buttonCreate')}</a>
+        <a href={localizePath("/communities", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="communities" data-umami-event-place="communities" class="btn btn-primary">{t('landing.communities.button')}</a>
     </div>
 </section>

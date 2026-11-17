@@ -122,6 +122,6 @@ const sorts = [
     </div>
 
     <div class="flex justify-center">
-        <a href={localizePath("/feedback", Astro.currentLocale)} class="btn btn-special">{t('landing.feedback.button')}</a>
+        <a href={localizePath("/feedback", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="feedback" data-umami-event-place="feedback" class="btn btn-special">{t('landing.feedback.button')}</a>
     </div>
 </section>

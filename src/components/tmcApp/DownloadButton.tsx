@@ -149,7 +149,7 @@ export default function DownloadButton({ labels, variant, place }: Props) {
             {secondary.length > 0 && (
                 <p className={`flex flex-wrap gap-x-4 gap-y-1 text-sm ${hero ? 'text-white/70' : 'text-muted'}`}>
                     {secondary.map(({ k, b }) => (
-                        <a key={k} href={b.url} className="underline decoration-dotted underline-offset-4 hover:text-accent">
+                        <a key={k} href={b.url} data-umami-event="app_page_cta" data-umami-event-to={`download-${k}`} data-umami-event-place={place} className="underline decoration-dotted underline-offset-4 hover:text-accent">
                             {labels[`also_${k}`]}
                         </a>
                     ))}
@@ -176,7 +176,7 @@ export default function DownloadButton({ labels, variant, place }: Props) {
                                 if (!b) return null
                                 return (
                                     <li key={k}>
-                                        <a href={b.url} className="flex min-w-0 items-center justify-between gap-3 rounded-lg border border-border bg-surface px-3 py-2 text-sm transition-colors hover:border-accent/50">
+                                        <a href={b.url} data-umami-event="app_page_cta" data-umami-event-to={`download-${k}`} data-umami-event-place={`${place}-list`} className="flex min-w-0 items-center justify-between gap-3 rounded-lg border border-border bg-surface px-3 py-2 text-sm transition-colors hover:border-accent/50">
                                             <span className="min-w-0">
                                                 <span className="block truncate font-medium text-foreground">{labels[`list_${k}`]}</span>
                                                 <span className="block truncate font-mono text-[11px] text-muted">{b.name}</span>
@@ -188,7 +188,7 @@ export default function DownloadButton({ labels, variant, place }: Props) {
                             })}
                         </ul>
                     ) : (
-                        <a href={LATEST_PAGE} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-sm text-accent underline decoration-dotted underline-offset-4">
+                        <a href={LATEST_PAGE} target="_blank" rel="noreferrer" data-umami-event="app_page_cta" data-umami-event-to="github-releases" data-umami-event-place={place} className="inline-flex items-center gap-2 text-sm text-accent underline decoration-dotted underline-offset-4">
                             {labels.allOnGithub}
                             <ExternalLink className="h-4 w-4" />
                         </a>

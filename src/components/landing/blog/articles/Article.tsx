@@ -55,7 +55,7 @@ export default function Article(props: Props & HTMLAttributes<HTMLDivElement>) {
     return (
         <div className={`card min-h-110 group ${className ?? ""}`}>
             <div className="w-full h-48">
-                <a href={url} target="_blank">
+                <a href={url} target="_blank" data-umami-event="blog_article" data-umami-event-slot="image">
                     {image ? (
                         <img
                             src={image}
@@ -80,7 +80,7 @@ export default function Article(props: Props & HTMLAttributes<HTMLDivElement>) {
                 </a>
             </div>
             <div className="flex justify-center">
-                <a href={url} target="_blank">
+                <a href={url} target="_blank" data-umami-event="blog_article" data-umami-event-slot="title">
                     <h5>{title}</h5>
                 </a>
             </div>
@@ -92,6 +92,8 @@ export default function Article(props: Props & HTMLAttributes<HTMLDivElement>) {
                 <a
                     href={url}
                     target="_blank"
+                    data-umami-event="blog_article"
+                    data-umami-event-slot="view"
                     className="btn btn-primary text-sm"
                 >View</a>
             </div>

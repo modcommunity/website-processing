@@ -67,6 +67,6 @@ const features = [
             <img src="/images/gamespice-mark.svg" alt="" width="20" height="20" class="h-5 w-5" />
             {p('button')}
         </a>
-        <a href={localizePath("/roadmap", Astro.currentLocale)} class="btn btn-primary">{p('buttonRoadmap')}</a>
+        <a href={localizePath("/roadmap", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="roadmap" data-umami-event-place="platform" class="btn btn-primary">{p('buttonRoadmap')}</a>
     </div>
 </section>

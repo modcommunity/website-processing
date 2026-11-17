@@ -75,6 +75,8 @@ export default function Tour({ tabs, label, caption }: Props) {
                                 aria-controls="tour-panel"
                                 tabIndex={on ? 0 : -1}
                                 onClick={() => pick(i)}
+                                data-umami-event="tour_tab"
+                                data-umami-event-tab={t.id}
                                 onKeyDown={(e) => onKey(e, i)}
                                 className={`relative flex shrink-0 items-center gap-2 overflow-hidden rounded-xl border px-3.5 py-2 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${on ? 'border-accent/50 bg-accent/10 text-foreground' : 'border-border bg-surface text-muted hover:text-foreground'}`}
                             >

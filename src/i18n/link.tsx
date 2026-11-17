@@ -109,6 +109,7 @@ export function localeLink(locale: string): LinkComponent {
                 target={t}
                 rel={mergeRel(href, rel, t === '_blank')}
                 {...rest}
+                // umami-ignore: onClick fires app_link
                 onClick={onClick}
             >
                 {children}

@@ -31,6 +31,6 @@ const t = getT(Astro.currentLocale);
     </div>
 
     <div class="flex justify-center">
-        <a href={localizePath("/collections", Astro.currentLocale)} class="btn btn-special">{t('landing.collections.button')}</a>
+        <a href={localizePath("/collections", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="collections" data-umami-event-place="collections" class="btn btn-special">{t('landing.collections.button')}</a>
     </div>
 </section>

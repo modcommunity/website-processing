@@ -72,13 +72,25 @@ const {
         (() => {
             const name = 'outbound-link-click';
 
-            document.querySelectorAll('a').forEach(a => {
+            /*
+             * Delegated, capture phase: React islands hydrate after load, so a
+             * one-time scan of `a` misses their links. Sends origin + path only,
+             * never the query string or hash, which can carry tokens.
+             */
+            document.addEventListener('click', (ev) => {
+                const el = ev.target instanceof Element ? ev.target.closest('a[href]') : null;
 
-                if (a.host !== window.location.host && !a.getAttribute('data-umami-event')) {
-                    a.setAttribute('data-umami-event', name);
-                    a.setAttribute('data-umami-event-url', a.href);
+                if (!(el instanceof HTMLAnchorElement)) return;
+                if (el.host === window.location.host || !/^https?:$/.test(el.protocol)) return;
+                if (el.getAttribute('data-umami-event')) return;
+
+                try {
+                    if (window.umami)
+                        window.umami.track(name, { url: el.origin + el.pathname });
+                } catch (e) {
+                    /* Analytics must never break a page. */
                 }
-            })
+            }, true);
         })()
     </script>
 )}
