@@ -190,7 +190,7 @@ export function ServersScreen({ motion }: P) {
 
 const APPS = [
     ['Block Survival', 'Game', 'BS', 1.2, 2.0],
-    ['Arena Shooter', 'Game', 'AS', 395, 526],
+    ['Fatal Contact', 'Game', 'FC', 395, 526],
     ['Zombie Sandbox', 'Game · Unity', 'ZS', 302, 522],
     ['Class Wars', 'Game · Source Engine', 'CW', 188, 429],
     ['Deep Mines', 'Game · Unity', 'DM', 321, 300],
@@ -268,7 +268,7 @@ export function DiscoverScreen({ motion }: P) {
 /* ------------------------------------------------------------------- play */
 
 const GAMES = [
-    ['Arena', 'AR', 'Fast first-person deathmatch.'],
+    ['Fatal Contact', 'FC', 'Fast first-person deathmatch.'],
     ['Dangerous Delivery', 'DD', 'Deliveries in awful weather.'],
     ['Hide N Seek', 'HN', 'Hide from the seekers.'],
     ['Hungario', 'HU', 'Eat to grow, outlast everyone.'],
