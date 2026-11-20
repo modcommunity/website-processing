@@ -1,6 +1,6 @@
 # CLAUDE.md — website-processing
 
-The Astro + React static site for The Modding Community's public pages: the home page (including its GameSpice section; `/platform` now redirects to [GameSpice](https://gamespice.net), the gaming platform formerly called Dot), the two product pages (`/tmc-app`, `/tmc-cli`), licenses, privacy policy and ToS. It is separate from the core app (`../website-city`, Next.js) so the marketing and legal surface can be a fast static build. Its theme and shell come from `@modcommunity/shared` (`../tmc-global`).
+The Astro + React static site for The Modding Community's public pages: the home page (including its GameSpice section; `/platform` now redirects to [GameSpice](https://gamespice.net), the gaming platform formerly called Dot), the product page `/tmc-cli` (`/tmc-app` is gone: it redirects to the [GameSpice App](https://gamespice.net/app) page on gamespice.net), licenses, privacy policy and ToS. It is separate from the core app (`../website-city`, Next.js) so the marketing and legal surface can be a fast static build. Its theme and shell come from `@modcommunity/shared` (`../tmc-global`).
 
 ## Layout
 
@@ -8,7 +8,7 @@ The Astro + React static site for The Modding Community's public pages: the home
 | --- | --- |
 | `src/pages/*/index.astro`, `src/pages/[lang]/…` | Routes, one pair per page so the language picker never 404s |
 | `src/layouts/Layout.astro` | The single layout: `<html class="dark">`, fonts, `<main class="@container … overflow-x-clip">` |
-| `src/components/*.astro` | Page shells; `landing/`, `platform/` (the hero's GameSpice panel), `tmcApp/`, `apiTool/` hold their sections; `helper/HeroBackdrop.astro` the three hero backdrops |
+| `src/components/*.astro` | Page shells; `landing/`, `platform/` (the hero's GameSpice panel), `tmcApp/` (only `CopyCommand`, `mock/motion` and the `DownloadButton.tsx` release helper remain, kept until website-gs has its own), `apiTool/` hold their sections; `helper/HeroBackdrop.astro` the three hero backdrops |
 | `src/components/SiteHeader.tsx`, `SiteFooter.tsx` | Thin wrappers around the shared `Header`/`Footer` |
 | `src/styles/Global.css` | Tailwind, the shared `theme.css`, the `@source` line, the old-token alias block |
 | `src/lib/site.ts` | Every origin (`SITE_URL`, `CITY_URL`, `DOCS_URL`, `GAMESPICE_URL`) |
@@ -40,7 +40,7 @@ The Astro + React static site for The Modding Community's public pages: the home
 - `<main>`'s `overflow-x-clip` is for entrance-animation overshoot only; no section may rely on it for layout, and it stays `clip`, not `hidden`. ([layout](docs/layout.md#main-carries-overflow-x-clip-because-of-entrance-animations))
 - Every origin is a `PUBLIC_*` variable in `src/lib/site.ts` with a production default; nothing there may be a secret, because it ships to the browser. ([content](docs/content.md#origins-and-environment))
 - The blog shelf treats every API field as optional and its daily pick must stay deterministic. ([content](docs/content.md#the-blog-shelf-reads-from-website-city))
-- Product pages describe only what is built: `/tmc-app` is released (desktop only, say mobile is not out), `/tmc-cli` installs from a clone and is not on PyPI, untested things are called untested, and every claim is checked against `../tmc-app` or `../tmc-cli`. ([content](docs/content.md#the-product-pages-tmc-app-tmc-cli))
+- Product pages describe only what is built: the app is the GameSpice App and its page is gamespice.net/app (links go through `gamespiceAppUrl()` in `src/lib/site.ts`; never name it "TMC app" in copy), `/tmc-cli` installs from a clone and is not on PyPI, untested things are called untested, and every claim is checked against `../tmc-app` or `../tmc-cli`. ([content](docs/content.md#the-product-page-tmc-cli))
 - Add a translation key to `en` first, then fill all eight others; names, commands, flags and exit codes are never translated. ([content](docs/content.md#translation))
 - Hero backdrops are image-free and theme-aware (a dark palette and a pale tinted one, copy flips via `data-hero` in `Global.css`), no layout animates, nothing in a hero draws a grid, and motion is an optional layer over a complete backdrop. Keep them in step with website-city's `hero_backdrops.tsx`. ([heroes](docs/heroes.md))
 - Reuse `@modcommunity/shared` for anything generic; build a local component only when it is specific to these pages. `.astro` for structure, `.tsx` for interactive islands.

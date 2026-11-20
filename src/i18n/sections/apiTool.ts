@@ -129,7 +129,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'A key is useful today: the API is live and the docs are written. <span class="special">tmc-cli</span> is open source and installs from a clone of its repository. It is not on PyPI yet.',
         ctaBtnKey: 'Create A Key',
         ctaBtnDocs: 'Read The Docs',
-        ctaBtnApp: 'See The TMC App',
+        ctaBtnApp: 'See The GameSpice App',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'Source On GitHub',
@@ -262,7 +262,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'Una clave ya es útil hoy: la API está en marcha y la documentación está escrita. <span class="special">tmc-cli</span> es de código abierto y se instala desde un clon de su repositorio. Todavía no está en PyPI.',
         ctaBtnKey: 'Crear Una Clave',
         ctaBtnDocs: 'Leer La Documentación',
-        ctaBtnApp: 'Ver La App De TMC',
+        ctaBtnApp: 'Ver La App De GameSpice',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'Código en GitHub',
@@ -395,7 +395,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'Une clé est déjà utile aujourd\'hui : l\'API est en ligne et la documentation est écrite. <span class="special">tmc-cli</span> est open source et s\'installe depuis un clone de son dépôt. Il n\'est pas encore sur PyPI.',
         ctaBtnKey: 'Créer Une Clé',
         ctaBtnDocs: 'Lire La Documentation',
-        ctaBtnApp: 'Voir L\'App TMC',
+        ctaBtnApp: 'Voir L\'App GameSpice',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'Code source sur GitHub',
@@ -528,7 +528,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'Ein Schlüssel ist schon heute nützlich: Die API ist live und die Dokumentation geschrieben. <span class="special">tmc-cli</span> ist Open Source und wird aus einem Klon seines Repositorys installiert. Auf PyPI ist es noch nicht.',
         ctaBtnKey: 'Schlüssel Erstellen',
         ctaBtnDocs: 'Doku Lesen',
-        ctaBtnApp: 'Die TMC-App Ansehen',
+        ctaBtnApp: 'Die GameSpice App Ansehen',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'Quellcode auf GitHub',
@@ -661,7 +661,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'Ключ полезен уже сегодня: API работает, документация написана. <span class="special">tmc-cli</span> с открытым кодом и ставится из клона своего репозитория. На PyPI его пока нет.',
         ctaBtnKey: 'Создать Ключ',
         ctaBtnDocs: 'Читать Документацию',
-        ctaBtnApp: 'Посмотреть Приложение TMC',
+        ctaBtnApp: 'Посмотреть GameSpice App',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'Исходный код на GitHub',
@@ -794,7 +794,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'Een sleutel is vandaag al nuttig: de API is live en de documentatie is geschreven. <span class="special">tmc-cli</span> is open source en wordt vanuit een kloon van de repository geïnstalleerd. Het staat nog niet op PyPI.',
         ctaBtnKey: 'Maak Een Sleutel',
         ctaBtnDocs: 'Lees De Documentatie',
-        ctaBtnApp: 'Bekijk De TMC-App',
+        ctaBtnApp: 'Bekijk De GameSpice App',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'Broncode op GitHub',
@@ -927,7 +927,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: 'キーは今日から役立ちます。APIは稼働中で、ドキュメントも書かれています。<span class="special">tmc-cli</span>はオープンソースで、リポジトリのクローンからインストールします。PyPIにはまだありません。',
         ctaBtnKey: 'キーを作成',
         ctaBtnDocs: 'ドキュメントを読む',
-        ctaBtnApp: 'TMC アプリを見る',
+        ctaBtnApp: 'GameSpice App を見る',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'GitHubでソースを見る',
@@ -1060,7 +1060,7 @@ export const apiTool: SectionCatalog = {
         ctaNoteHtml: '密钥今天就有用：API 已上线，文档也写好了。<span class="special">tmc-cli</span> 是开源的，从其仓库的克隆安装。它还没有上架 PyPI。',
         ctaBtnKey: '创建密钥',
         ctaBtnDocs: '阅读文档',
-        ctaBtnApp: '了解 TMC 应用',
+        ctaBtnApp: '了解 GameSpice App',
 
         // ---- Install, commands (new page sections) ----
         heroBtnRepo: 'GitHub 上的源代码',

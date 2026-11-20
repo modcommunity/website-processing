@@ -30,7 +30,7 @@ export const servers: SectionCatalog = {
         c6b:
             `Rust, CS2, Minecraft, Garry's Mod and more, through <span class="special">17 query protocols</span>.`,
         browse: 'Browse Servers',
-        // Links out to /tmc-app, which is translated in all nine locales too.
+        // Links out to the GameSpice App page on gamespice.net (gamespiceAppUrl), in the reader language.
         appLink: 'Get Live Pings In The App',
     },
     es: {

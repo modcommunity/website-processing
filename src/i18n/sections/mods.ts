@@ -30,7 +30,7 @@ export const mods: SectionCatalog = {
         highlightTitle: 'Mod Manager',
         highlightBadge: 'Available Now',
         highlightHtml:
-            `The official, <span class="special">open-source</span> TMC app is out, with a mod launcher: install mods in one click, then manage and update them from the same place. It is still in heavy development, so expect rough edges.`,
+            `The official, <span class="special">open-source</span> GameSpice App is out, with a mod launcher: install mods in one click, then manage and update them from the same place. It is still in heavy development, so expect rough edges.`,
         highlightCta: 'Get the app',
         button: 'Explore Mods',
     },
@@ -119,7 +119,7 @@ export const mods: SectionCatalog = {
         highlightTitle: 'Mod-Manager',
         highlightBadge: 'Jetzt Verfügbar',
         highlightHtml:
-            `Die offizielle, <span class="special">quelloffene</span> TMC-App ist da, mit Mod-Launcher: Mods mit einem Klick installieren und am selben Ort verwalten und aktualisieren. Sie befindet sich noch in intensiver Entwicklung, rechne also mit Ecken und Kanten.`,
+            `Die offizielle, <span class="special">quelloffene</span> GameSpice App ist da, mit Mod-Launcher: Mods mit einem Klick installieren und am selben Ort verwalten und aktualisieren. Sie befindet sich noch in intensiver Entwicklung, rechne also mit Ecken und Kanten.`,
         highlightCta: 'App holen',
         button: 'Mods Entdecken',
     },
@@ -149,7 +149,7 @@ export const mods: SectionCatalog = {
         highlightTitle: 'Менеджер Модов',
         highlightBadge: 'Уже Доступно',
         highlightHtml:
-            `Официальное <span class="special">приложение TMC с открытым кодом</span> уже вышло, с лаунчером модов: устанавливайте моды в один клик, затем управляйте и обновляйте их в одном месте. Оно всё ещё в активной разработке, так что возможны шероховатости.`,
+            `Официальное <span class="special">приложение GameSpice App с открытым кодом</span> уже вышло, с лаунчером модов: устанавливайте моды в один клик, затем управляйте и обновляйте их в одном месте. Оно всё ещё в активной разработке, так что возможны шероховатости.`,
         highlightCta: 'Скачать приложение',
         button: 'Смотреть Моды',
     },
@@ -179,7 +179,7 @@ export const mods: SectionCatalog = {
         highlightTitle: 'Mod-Beheerder',
         highlightBadge: 'Nu Beschikbaar',
         highlightHtml:
-            `De officiële, <span class="special">open-source</span> TMC-app is uit, met een modlauncher: installeer mods met één klik en beheer en update ze op dezelfde plek. Hij is nog volop in ontwikkeling, dus verwacht ruwe kanten.`,
+            `De officiële, <span class="special">open-source</span> GameSpice App is uit, met een modlauncher: installeer mods met één klik en beheer en update ze op dezelfde plek. Hij is nog volop in ontwikkeling, dus verwacht ruwe kanten.`,
         highlightCta: 'App ophalen',
         button: 'Mods Verkennen',
     },
@@ -205,7 +205,7 @@ export const mods: SectionCatalog = {
         highlightTitle: 'Modマネージャー',
         highlightBadge: '提供中',
         highlightHtml:
-            `公式の<span class="special">オープンソース</span>TMCアプリを公開しました。MODランチャーを備え、ワンクリックでMODを導入し、同じ場所で管理・更新できます。現在も活発に開発中のため、不具合があることをご了承ください。`,
+            `公式の<span class="special">オープンソース</span>GameSpice Appを公開しました。MODランチャーを備え、ワンクリックでMODを導入し、同じ場所で管理・更新できます。現在も活発に開発中のため、不具合があることをご了承ください。`,
         highlightCta: 'アプリを入手',
         button: 'Modを見る',
     },
@@ -230,7 +230,7 @@ export const mods: SectionCatalog = {
         highlightTitle: '模组管理器',
         highlightBadge: '现已推出',
         highlightHtml:
-            `官方<span class="special">开源</span> TMC 应用现已发布，带模组启动器：一键安装模组，并在同一处管理和更新。它仍在大力开发中，可能存在不完善之处。`,
+            `官方<span class="special">开源</span> GameSpice App 现已发布，带模组启动器：一键安装模组，并在同一处管理和更新。它仍在大力开发中，可能存在不完善之处。`,
         highlightCta: '获取应用',
         button: '探索模组',
     },

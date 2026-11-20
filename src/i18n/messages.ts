@@ -600,9 +600,9 @@ const SECTIONS = {
     platform,
     joinCommunity,
     pageMeta,
-    // The two dedicated product pages (/tmc-app, /tmc-cli). They live in the
+    // The two dedicated product pages (/tmc-cli; /tmc-app now redirects to gamespice.net/app). They live in the
     // same `landing.*` namespace as the home-page sections because they are
-    // landing pages too — `landing.tmcApp.*` and `landing.apiTool.*`.
+    // landing pages too — `landing.tmcApp.*` (the copy button only) and `landing.apiTool.*`.
     tmcApp,
     apiTool,
 }

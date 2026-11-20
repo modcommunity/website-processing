@@ -1,4 +1,5 @@
 ---
+import { gamespiceAppUrl } from "../../lib/site";
 import { Globe, Heart, LineChart, MonitorSmartphone, RefreshCw, Search, Users } from 'lucide-react';
 import SectionIntro from "./helper/SectionIntro.astro";
 import FeatureCard from "./helper/FeatureCard.astro";
@@ -41,7 +42,7 @@ const t = getT(Astro.currentLocale);
         {/* The live half of this — pings from your own machine, queries in real
             time — is the app's, so the section that describes the browser is
             where its page belongs. */}
-        <a href={localizePath("/tmc-app", Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="tmc-app" data-umami-event-place="servers" class="btn btn-primary">
+        <a href={gamespiceAppUrl(Astro.currentLocale)} data-umami-event="section_cta" data-umami-event-to="gamespice-app" data-umami-event-place="servers" class="btn btn-primary">
             <MonitorSmartphone className="h-5 w-5" />
             <span>{t('landing.servers.appLink')}</span>
         </a>

@@ -1,11 +1,10 @@
-# The three heroes (`src/components/helper/HeroBackdrop.astro`)
+# The heroes (`src/components/helper/HeroBackdrop.astro`)
 
-The home page, `/tmc-app` and `/tmc-cli` each open with a hero, and they are deliberately not the same hero: each is built over its own named backdrop with its own silhouette and frame. The product pages are self-contained rounded panels; the front page is a full-bleed band.
+The home page and `/tmc-cli` each open with a hero, and they are deliberately not the same hero: each is built over its own named backdrop with its own silhouette and frame. The product pages are self-contained rounded panels; the front page is a full-bleed band.
 
 | Page | Backdrop | Shape |
 | --- | --- | --- |
 | `/` (`landing/Heading.astro`) | `blueprint`: two restrained lights and a diagonal sweep, with a slowly turning Three.js point cloud over them (`HeroField.tsx`) | Full-bleed asymmetric band: copy left (eyebrow rule, static display headline, CTAs), the five surfaces as a numbered index in a rule-separated column right |
-| `/tmc-app` (`tmcApp/Hero.astro`) | `workshop`: indigo/violet over a lit horizon | Two-column split: copy left, a pure-markup mock of the app's server browser right |
 | `/tmc-cli` (`apiTool/Hero.astro`) | `console`: teal on black, perspective floor, scanlines | Banner: headline left with CTAs on its baseline, then the full-width install terminal |
 
 ## What is load-bearing
@@ -30,3 +29,5 @@ It is arranged so that it can simply not happen:
 - The camera widens its lens by aspect, not width: a tall, narrow hero sees a smaller slice of the box, so portrait gets a wider FOV.
 
 If another page wants motion, copy this shape: a backdrop complete on its own, and an enhancement layered over it that adds no structure the backdrop already draws. Do not animate a backdrop in place of one, and do not give the enhancement and the backdrop the same motif.
+
+The `workshop` backdrop was the removed `/tmc-app` page's hero and is now unused; remove it from `HeroBackdrop.astro` when next editing that file.

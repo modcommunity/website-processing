@@ -34,18 +34,16 @@ Two separate mechanisms; keep them apart when changing this:
 
 Everything the API returns is treated as optional, because the site has to build against a city deployment that has not shipped a given field yet: no `image` falls back to the local `public/images/blog/article/*` art by slug and then to a gradient, no `path` falls back to `/blog/<slug>`, and a failed fetch falls back to `FALLBACK_ARTICLES` so the section is never empty. The modding/server split reads tags and categories first and falls back to the title.
 
-## The product pages (`/tmc-app`, `/tmc-cli`)
+## The product page (`/tmc-cli`)
 
 Each is built like the home page: a shell in `src/components/<Name>.astro` composing one `.astro` file per section, and a route pair (`src/pages/<route>/index.astro` plus `src/pages/[lang]/<route>/index.astro`) so the language picker never 404s. `/api-tool` is the old name of `/tmc-cli`; `astro.config.mjs` redirects it in every locale.
 
 | Page | Describes | Source of truth |
 | --- | --- | --- |
-| `/tmc-app` | The desktop app: the live server browser, the mod manager, downloads, plugins, its security model | `../tmc-app`, chiefly its `CLAUDE.md` and `docs/` |
 | `/tmc-cli` | `tmc-cli` (package and repo; the installed command is `tmc`), the Python CLI for the public content API | `../tmc-cli`, its `README.md` and `CLAUDE.md` |
 - **The tool is called `tmc-cli` in prose, the command is `tmc`.** Package, repo and every sentence naming the tool say `tmc-cli` (`tmc` alone reads as the community's abbreviation); only what a person types (`tmc whoami`, terminal blocks, the `tmc_` key prefix, `~/.config/tmc`) keeps `tmc`. The install section says so once.
-- **`/tmc-app` is released; `/tmc-cli` is open source but not on PyPI.** The app ships Windows, Linux and macOS builds as GitHub releases and is GPL-3.0; there are no mobile builds, and the hero says so (`heroMobile`). The CLI installs from a clone of its public repository (`Install.astro`), and the copy never prints a `pip install tmc-cli` line. Say "untested" where the sibling repo says it: all supported-game deployment and USVFS are unproven, and `stratNote` / `modsGamesNote` state that.
-- **The Download button is a client-side island** (`tmcApp/DownloadButton.tsx`). Release files carry the version in their name, so it asks GitHub's releases API once (cached in `sessionStorage` for ten minutes), matches builds by pattern, and only accepts URLs under the repo's `releases/download/`. Linux gets the `.deb`, Windows the setup `.exe`, everything else the macOS `.dmg`. Every failure leaves the plain link to the latest release. Its labels are one props object (`dlLabels.ts`), nine locales.
-- **The app mockups are drawings, and say so.** `tmcApp/mock/` draws screens with made-up names and numbers; text inside them stays English like a screenshot would, only page copy is translated. Motion is state-driven (no CSS files) and gated by `useMotion`, which is false on the server and under `prefers-reduced-motion`.
+- **`/tmc-cli` is open source but not on PyPI.** (`/tmc-app` no longer exists here: the app is the GameSpice App, its page is gamespice.net/app, and `/tmc-app` and every `/<lang>/tmc-app` redirect there, in nginx as a 301 and in `astro.config.mjs` as a stub.) The CLI installs from a clone of its public repository (`Install.astro`), and the copy never prints a `pip install tmc-cli` line. Say "untested" where the sibling repo says it: all supported-game deployment and USVFS are unproven, and `stratNote` / `modsGamesNote` state that.
+- **`tmcApp/DownloadButton.tsx` is a leftover.** It is the release-detection helper (GitHub releases API, build matching, own-repo URL check) of the removed app page, kept only until website-gs has its own; delete it once it does.
 - **The platform plan is desktop only for now.** Windows, Linux and macOS; mobile is mentioned once, as not out yet.
 - **Every claim is checked against the sibling repo.** The protocol list, the four deployment strategies, the relation verbs and the exit codes are copied, not invented, and each is sourced in a comment. `apiTool.ts`'s header names the CLI version it was last checked against; the type, relation and cap lists come from the CLI's `src/tmc_cli/schema.py`, and any test count from actually running its suite, because the README's figure is the thing most likely to have drifted.
 - **`/tmc-cli` links the repository and the docs.** The hero's buttons and the closing CTA point at `CLI_REPO` and `DOCS_URL + /tmc-cli`. The hero terminal (`TypedTerminal.tsx`, `scenarios.ts`) shows real output shapes; commands and output are never translated.
@@ -62,12 +60,12 @@ The gaming platform formerly called Dot is now [GameSpice](https://gamespice.net
 
 ## Translation
 
-The home page is fully translated in all nine locales, and an English-only key there is a regression. The product pages are translated too (`src/i18n/sections/tmcApp.ts`, `apiTool.ts`), as are the links they added into `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`).
+The home page is fully translated in all nine locales, and an English-only key there is a regression. The product page is translated too (`apiTool.ts`; `tmcApp.ts` holds only the copy-button labels), as are the links they added into `Servers.astro` and `DeveloperApi.astro` (`servers.appLink`, `api.cliButton`).
 
 Each page's `<title>`, description and sr-only `<h1>` come from `src/i18n/sections/pageMeta.ts` via `pageMeta()` (`src/i18n/meta.ts`); a new page adds its keys there. Canonical, hreflang and sitemap URLs are slashless (root excepted); keep `Layout.astro` and the sitemap `serialize` in `astro.config.mjs` in step. The legal pages keep English titles because their bodies are English.
 
 `en` is the reference shape: add a key there first, then fill the other eight. `getT` falls back per key, so a half-filled key still renders (in English) rather than blank.
 
-What stays identical across locales is everything a reader would type or recognise as a name: platform, product and engine names, the CLI's commands, flags, environment variables, HTTP methods and exit codes, snippet titles (`install.sh`, `release.yml`, …), and the mock server's own name and map in `/tmc-app`'s hero. Translating a flag produces a line that does not run. Each catalogue's header comment says this too; keep the two in step.
+What stays identical across locales is everything a reader would type or recognise as a name: platform, product and engine names, the CLI's commands, flags, environment variables, HTTP methods and exit codes, snippet titles (`install.sh`, `release.yml`, …). Translating a flag produces a line that does not run. Each catalogue's header comment says this too; keep the two in step.
 
 Links into website-city (`/changelog`, `/roadmap`, `/mods`, `/assets`, …) are plain root-relative paths, not localised: same origin in production, so they resolve.

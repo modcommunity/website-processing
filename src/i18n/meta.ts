@@ -1,6 +1,6 @@
 import { getT } from './t'
 
-export type MetaPage = 'home' | 'platform' | 'app' | 'cli'
+export type MetaPage = 'home' | 'platform' | 'cli'
 
 /** `meta` prop for `Layout` in the page's language. */
 export function pageMeta(page: MetaPage, locale: string | undefined) {

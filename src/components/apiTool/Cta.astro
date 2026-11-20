@@ -1,4 +1,5 @@
 ---
+import { gamespiceAppUrl } from "../../lib/site";
 import { BookOpen, KeyRound, MonitorSmartphone } from 'lucide-react';
 import { getT } from "../../i18n/t";
 import { localizePath } from "../../i18n/config";
@@ -27,7 +28,7 @@ const t = getT(Astro.currentLocale);
                 <BookOpen className="h-5 w-5" />
                 <span>{t('landing.apiTool.ctaBtnDocs')}</span>
             </a>
-            <a href={localizePath("/tmc-app", Astro.currentLocale)} data-umami-event="cli_page_cta" data-umami-event-to="tmc-app" data-umami-event-place="cta" class="btn btn-primary">
+            <a href={gamespiceAppUrl(Astro.currentLocale)} data-umami-event="cli_page_cta" data-umami-event-to="gamespice-app" data-umami-event-place="cta" class="btn btn-primary">
                 <MonitorSmartphone className="h-5 w-5" />
                 <span>{t('landing.apiTool.ctaBtnApp')}</span>
             </a>

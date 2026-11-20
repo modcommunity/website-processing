@@ -9,7 +9,7 @@ import PlatformPanel from "../platform/PlatformPanel.astro"
 import Card from "../helper/Card.astro"
 import { getT } from "../../i18n/t";
 import { localizePath } from "../../i18n/config";
-import { GAMESPICE_URL } from "../../lib/site";
+import { GAMESPICE_URL, gamespiceAppUrl } from "../../lib/site";
 
 
 const t = getT(Astro.currentLocale);
@@ -49,7 +49,7 @@ const surfaces = [
   * A full-bleed band, not a rounded panel, and asymmetric rather than centred:
   * the copy runs down the left against the blueprint backdrop, with the five
   * destinations as a row of links under the buttons, and the gaming platform
-  * is the lit card in the column beside it. `/tmc-app` and
+  * is the lit card in the column beside it. the former app page (now on gamespice.net) and
   * `/tmc-cli` keep their own shapes (split and banner), so the three heroes
   * still read as three different places.
   *
@@ -141,7 +141,7 @@ const surfaces = [
                         <span>{t('landing.hero.ctaDiscord')}</span>
                     </a>
                     <a
-                        href={localizePath("/tmc-app", Astro.currentLocale)}
+                        href={gamespiceAppUrl(Astro.currentLocale)}
                         data-umami-event="cta_app"
                         data-umami-event-place="hero"
                         class="inline-flex items-center justify-center gap-2 rounded-lg border border-sky-300/40 bg-sky-300/10 px-6 py-3 font-semibold text-sky-100 transition hover:border-sky-300/70 hover:bg-sky-300/20 hover:text-white"

@@ -50,3 +50,12 @@ export const GAMESPICE_URL: string = origin(import.meta.env.PUBLIC_GAMESPICE_URL
 /** A page on the docs site: `docs('/tmc-cli')`. */
 export const docs = (path: string): string =>
     `${DOCS_URL}${path.startsWith('/') ? path : `/${path}`}`
+
+/**
+ * The GameSpice App page on gamespice.net, in the reader's language. The old
+ * `/tmc-app` page redirects here; every link to the app goes through this.
+ * gamespice.net has the same nine languages and URL scheme as this site
+ * (English bare, the rest under `/<code>`).
+ */
+export const gamespiceAppUrl = (locale?: string): string =>
+    `${GAMESPICE_URL}${locale && locale !== 'en' ? `/${locale}` : ''}/app`

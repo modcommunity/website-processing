@@ -45,6 +45,11 @@ export default defineConfig({
       return [
         [`${p}/api-tool`, `${p}/tmc-cli`],
         [`${p}/platform`, GAMESPICE],
+        // The TMC App became the GameSpice App; its page lives on gamespice.net
+        // (same nine locales, same URL scheme). nginx in website-city answers
+        // these with a real 301 before they reach this site; this is the stub
+        // the static build emits so the old page is never served.
+        [`${p}/tmc-app`, `${GAMESPICE}${p}/app`],
       ]
     })
   ),
@@ -105,7 +110,7 @@ export default defineConfig({
       },
       // The redirect stubs above are built as HTML pages, so they land in the
       // sitemap unless they are filtered out. A redirect is not a destination.
-      filter: (page) => !/\/(api-tool|platform)\/?$/.test(new URL(page).pathname),
+      filter: (page) => !/\/(api-tool|platform|tmc-app)\/?$/.test(new URL(page).pathname),
       // Match the canonical/hreflang URLs in Layout.astro: no trailing slash.
       serialize(item) {
         item.url = item.url.replace(/(?<=.)\/+$/, '').replace(/^(https?:\/\/[^/]+)\/$/, '$1/')
