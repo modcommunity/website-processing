@@ -15,11 +15,11 @@ import { Download, ExternalLink } from 'lucide-react'
  * else gets the macOS .dmg.
  */
 
-const REPO = 'https://github.com/modcommunity/tmc-app'
+const REPO = 'https://github.com/gamespice-platform/app'
 const LATEST_PAGE = `${REPO}/releases/latest`
-const API = 'https://api.github.com/repos/modcommunity/tmc-app/releases/latest'
+const API = 'https://api.github.com/repos/gamespice-platform/app/releases/latest'
 const DOWNLOAD_PREFIX = `${REPO}/releases/download/`
-const CACHE_KEY = 'tmc-app-latest-release'
+const CACHE_KEY = 'gamespice-app-latest-release'
 const CACHE_MS = 10 * 60 * 1000
 
 type Kind = 'setup' | 'portable' | 'msi' | 'deb' | 'appimage' | 'dmg' | 'checksums'
